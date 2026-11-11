@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>學扶考古題</title>
+<meta name="description" content="學習扶助篩選測驗考古題線上練習：數學、國語、英語">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Iansui&family=Noto+Sans+TC:wght@400;700&display=swap">
+<style>
+:root{
+  --paper:#fbfdfb; --grid:#e8f0ea; --card:#ffffff; --ink:#0f1a14; --muted:#435047;
+  --main:#1d6b47; --main-soft:#e4f2ea; --line:#a9bcb0;
+  --f-display:"Iansui","Huninn","Noto Sans TC",sans-serif;
+  --f-body:"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-num:"Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0b110e; --grid:#16201a; --card:#141d18; --ink:#f4fbf6; --muted:#c3cec7;
+  --main:#6fd3a0; --main-soft:#173226; --line:#4a5d52; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0b110e; --grid:#16201a; --card:#141d18; --ink:#f4fbf6; --muted:#c3cec7;
+  --main:#6fd3a0; --main-soft:#173226; --line:#4a5d52; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75}
+.wrap{max-width:760px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+.school{font-size:14px;color:var(--muted);letter-spacing:.05em}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,7vw,44px);line-height:1.25;margin:2px 0 10px;color:var(--main)}
+.lead{margin:0 0 24px;color:var(--muted);max-width:36em}
+.subjects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.subjects{grid-template-columns:1fr}}
+.sub{display:flex;flex-direction:column;gap:2px;min-height:190px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px 18px 16px;color:var(--ink);text-decoration:none}
+a.sub{border-color:var(--main)}
+a.sub:hover{background:var(--main-soft)}
+a.sub:focus-visible{outline:3px solid var(--main);outline-offset:3px}
+.sub .ic{font-size:30px;line-height:1.2}
+.sub b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1.3;color:var(--main)}
+.sub .info{font-size:15px;color:var(--muted)}
+.sub .go{margin-top:auto;font-weight:700;color:var(--main)}
+.sub.soon{opacity:.62}
+.sub.soon b{color:var(--muted)}
+.sub.soon .go{color:var(--muted);font-weight:400}
+footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
+footer p{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="school">學習扶助篩選測驗</div>
+  <h1>學扶考古題 自己來練習</h1>
+  <p class="lead">選一個科目開始。可以整份考古題在平板上作答，老師也能依版本單元或學扶細目挑題，產生 QR code 給學生掃，或匯出 Word、PDF 印成紙本。</p>
+  <div class="subjects">
+    <a class="sub" href="math/">
+      <span class="ic" aria-hidden="true">🔢</span>
+      <b>數學</b>
+      <span class="info">一～六年級<br>111～115 年</span>
+      <span class="go">開始 →</span>
+    </a>
+    <div class="sub soon" aria-disabled="true">
+      <span class="ic" aria-hidden="true">📖</span>
+      <b>國語</b>
+      <span class="info">題目整理中</span>
+      <span class="go">製作中</span>
+    </div>
+    <div class="sub soon" aria-disabled="true">
+      <span class="ic" aria-hidden="true">🔤</span>
+      <b>英語</b>
+      <span class="info">題目整理中</span>
+      <span class="go">製作中</span>
+    </div>
+  </div>
+  <footer>
+    <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
+    <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
+  </footer>
+</div>
+</body>
+</html>
