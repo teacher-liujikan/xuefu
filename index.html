@@ -44,6 +44,15 @@ a.sub:focus-visible{outline:3px solid var(--main);outline-offset:3px}
 .sub.soon .go{color:var(--muted);font-weight:400}
 footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
 footer p{margin:4px 0}
+.credit{margin:22px auto 0;max-width:34em;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);text-align:center;color:var(--muted);font-size:14px;line-height:1.75}
+.credit .by{margin:0;color:var(--ink);font-size:15px}
+.credit .by b{color:var(--main);font-weight:700}
+.credit a{color:var(--main);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
+.credit a:hover{opacity:.8}
+.credit .by a{display:inline-block;white-space:nowrap}
+.credit .visits{margin:6px 0 0;font-variant-numeric:tabular-nums}
+.credit .visits b{color:var(--ink);font-size:16px}
+.credit .cr{margin:8px 0 0;font-size:13px}
 </style>
 </head>
 <body>
@@ -75,6 +84,17 @@ footer p{margin:4px 0}
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
+  <div class="credit">
+    <p class="by">製作：<b>老師媽咪</b>（台南國小教師）・<a href="https://www.threads.com/@teacher_liujikan" target="_blank" rel="noopener">Threads @teacher_liujikan ↗</a></p>
+    <p>題目或答案有錯、想要新功能，歡迎到 Threads 留言或私訊。也可以看看<a href="https://teacher-liujikan.github.io/" target="_blank" rel="noopener">老師媽咪的其他作品</a>。</p>
+    <p class="visits" id="visits" hidden>累計使用 <b id="visitN"></b> 次</p>
+    <p class="cr">© 2026 老師媽咪。網頁設計、模擬卷題目與圖片為老師媽咪原創，歡迎老師、家長免費用於教學，請勿轉售或商業使用。考古題題目著作權屬教育部國民及學前教育署，本站非官方網站，僅整理供教學練習。</p>
+  </div>
 </div>
+<script>
+/* 累計使用次數：GoatCounter（首頁＋數學頁） */
+(function(){var P=["/xuefu/","/xuefu/math/"],sum=0,ok=0;P.forEach(function(p){fetch("https://teacher-liujikan.goatcounter.com/counter/"+encodeURIComponent(p)+".json").then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&d.count){sum+=parseInt(String(d.count).replace(/[^0-9]/g,""),10)||0;ok++}}).catch(function(){}).finally(function(){if(ok){var n=document.getElementById("visitN"),v=document.getElementById("visits");if(n&&v){n.textContent=sum.toLocaleString("zh-TW");v.hidden=false}}})})})();
+</script>
+<script data-goatcounter="https://teacher-liujikan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
