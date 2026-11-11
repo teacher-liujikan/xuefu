@@ -140,9 +140,9 @@ if(!txt){say("請先寫下想說的話。","err");f.elements["意見"].focus();r
 var em=String(d.get("email")||"").trim();if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say("Email 格式好像不對，可以改一下或空著。","err");f.elements["email"].focus();return}
 var body={"_subject":"學扶考古題網站 意見回饋","_template":"table","身分":d.get("身分"),"稱呼":String(d.get("稱呼")||"").trim()||"（未填）","意見":txt,"來自頁面":location.href,"時間":new Date().toLocaleString("zh-TW")};if(em){body.email=em;body["_replyto"]=em}
 btn.disabled=true;say("寄送中⋯⋯");
-fetch("https://formsubmit.co/ajax/"+TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)==="false")throw new Error(j.message||r.status)})})
+fetch("https://formsubmit.co/ajax/"+TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(/Activation/i.test(j.message||"")){var e=new Error("act");e.act=1;throw e}if(!r.ok||String(j.success)==="false")throw new Error(j.message||r.status)})})
 .then(function(){f.reset();say("已經寄出，謝謝你！老師媽咪會盡快看。","ok")})
-.catch(function(){say("","");msg.innerHTML='寄送失敗，請稍後再試，或直接寄信到 <a href="mailto:'+TO+'?subject='+encodeURIComponent("學扶考古題網站 意見回饋")+'">'+TO+'</a>。';msg.className="fbmsg err"})
+.catch(function(er){if(er&&er.act){say("信箱還在啟用中，這則訊息沒有寄出。請晚一點再試，或到 Threads 留言給老師媽咪。","err");return}say("","");msg.innerHTML='寄送失敗，請稍後再試，或直接寄信到 <a href="mailto:'+TO+'?subject='+encodeURIComponent("學扶考古題網站 意見回饋")+'">'+TO+'</a>。';msg.className="fbmsg err"})
 .finally(function(){btn.disabled=false})})})();
 </script>
 </body>
