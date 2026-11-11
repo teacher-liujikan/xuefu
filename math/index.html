@@ -464,7 +464,7 @@ function fillMode(q){
   if(q.type!=='fill'&&q.type!=='calc')return 'none';
   const n=q.blanks.length,s=q.stem;
   if(s.split(BL).length-1===n)return 'inline';
-  if(n===1&&q.blanks[0].split('|').every(v=>/^[<>=＜＞＝]$/.test(v))&&s.split('□').length-1===1)return 'sym';
+  if(n===1&&q.blanks[0].split('|').every(v=>/^[<>=＜＞＝]$/.test(v))&&s.replace(/在\s*□\s*中/g,'').split('□').length-1===1)return 'sym';
   return 'below';
 }
 const isSym=q=>(q.blanks||[]).length&&q.blanks.every(b=>b.split('|').every(v=>/^[<>=＜＞＝]$/.test(v)));
@@ -479,7 +479,7 @@ function stemHTML(q,mode,num){
     if(t.img)return imgTag(t.img);
     let x=fracify(esc(t.text));
     if(fm==='inline')x=x.replace(/（　）/g,()=>'（'+inputTag(q,bi++)+'）');
-    else if(fm==='sym')x=x.replace('□',()=>inputTag(q,bi++));
+    else if(fm==='sym'){const k=x.lastIndexOf('□');if(k>=0)x=x.slice(0,k)+inputTag(q,bi++)+x.slice(k+1)}
     return x.replace(/\n/g,'<br>');
   }).join('');
   return {html:h,rest};
