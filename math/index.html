@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>學扶考古題 自己來練習</title>
-<meta name="description" content="學習扶助篩選測驗數學考古題：依年度整卷線上作答，或由老師依版本單元、學扶細目挑題，匯出 Word／PDF。">
+<meta name="description" content="學習扶助篩選測驗數學考古題：依年度整卷線上作答，或由老師依版本單元、學扶細目挑題；也可以切換成紙本，下載 Word 或列印 PDF。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bpmf+Huninn&family=Huninn&family=Iansui&family=Noto+Sans+TC:wght@400;700&display=swap">
@@ -49,7 +49,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 .btn.big{font-size:19px;padding:8px 28px;min-height:48px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn:focus-visible,input:focus-visible,.opt:focus-visible,.pk:focus-visible,.gt:focus-visible,.chip:focus-visible,.yr:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
-.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 
 .qrthumb{position:absolute;top:4px;right:0;display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 6px 2px;cursor:zoom-in}
 .qrthumb small{font-size:12px;color:#1d2a22;line-height:1.4}
@@ -114,8 +114,6 @@ section.sec{margin-top:26px}
 .pknote{font-size:13px;color:var(--muted);margin:10px 0 0}
 
 /* 匯出 */
-.exbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:10px 0;padding:8px 12px;border:1.5px dashed var(--line);border-radius:12px;background:var(--card);font-size:15px}
-.exlab{font-size:13px;color:var(--card);background:var(--muted);border-radius:999px;padding:0 10px;line-height:1.8}
 .exmsg{flex-basis:100%;font-size:14px;color:var(--main)}
 .exmsg:empty{display:none}
 
@@ -196,6 +194,83 @@ footer p{margin:2px 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
+/* 線上作答／印成紙本 切換 */
+.modebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:14px 0 0;padding:10px 12px;background:var(--card);border:2px solid var(--main);border-radius:16px}
+.modesw{display:flex;gap:4px;padding:4px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;flex:1 1 300px;max-width:420px}
+.modesw button{flex:1;min-height:48px;border:1.5px solid transparent;background:none;color:var(--ink);border-radius:10px;padding:6px 8px;font-size:18px;white-space:nowrap}
+.modesw button.on{background:var(--main);color:var(--main-ink);font-weight:700}
+.modesw button:not(.on):hover{border-color:var(--main)}
+.modesw button:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.modehint{font-size:15px;color:var(--muted);flex:1 1 200px}
+.years.paper{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.yr.pp{min-height:0;gap:6px;cursor:default}
+.yr.pp:hover{border-color:var(--line)}
+.yr.pp .yrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.yr.pp .yrb{display:flex;gap:8px;flex-wrap:wrap}
+.yr.pp .btn{min-height:44px;padding:4px 12px}
+.yr.pp .exmsg{flex-basis:auto}
+.pkex{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+
+/* 作答：一次一題，一題一個畫面 */
+html.running,html.running body{height:100%;overflow:hidden;overscroll-behavior:none}
+html.running .wrap{max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column;padding-block:0;padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
+html.running header.top,html.running footer{display:none}
+html.running #main{flex:1;min-height:0;display:flex;flex-direction:column}
+.run{--figh:34vh;--figh:34dvh;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding-top:max(6px,env(safe-area-inset-top,0px));padding-bottom:max(6px,env(safe-area-inset-bottom,0px))}
+.rbar{flex:none;display:flex;align-items:center;gap:6px;min-width:0}
+.rbar h2{flex:1;min-width:0;margin:0;font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.3;color:var(--main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar .prog{flex:none;font-family:var(--f-num);font-size:15px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rbar .btn{flex:none;min-height:48px;min-width:48px;padding:4px 12px;white-space:nowrap;position:relative}
+.rbar .btn[aria-pressed="true"]{border-color:var(--main);background:var(--main-soft)}
+.sl{display:none}
+.dot{position:absolute;top:4px;right:4px;width:11px;height:11px;border-radius:50%;background:var(--red);border:2px solid var(--card)}
+@media (max-width:640px){.rbar .lbl{display:none}.rbar .sl{display:inline}.rbar h2{font-size:18px}.rbar .btn{padding:4px 8px}}
+.rchips{flex:none;position:relative;display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px}
+.rchips::-webkit-scrollbar{display:none}
+.rchips .chip{width:40px;min-width:40px;height:40px;border-radius:50%;padding:0;background:var(--card)}
+.rchips .chip.done{background:var(--pen);border-color:var(--pen);color:var(--card);font-weight:700}
+.rchips .chip.cur{box-shadow:0 0 0 3px var(--main)}
+.rbody{flex:1;min-height:0;display:flex;gap:8px}
+.stage{flex:1 1 0;min-width:0;min-height:0;display:flex}
+.q.one{flex:1;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
+.q.one .qgrid{flex:1 0 auto;min-height:0}
+@media (min-width:700px){.q.one{font-size:19px}.q.one .opt{font-size:19px}}
+.q.one .fig{max-height:var(--figh);width:auto}
+.q.one .opt{min-height:56px}
+.q.one .opt img{max-height:var(--oh,20vh);width:auto}
+.q.one input.blank{min-height:48px;font-size:22px;width:5em}
+.q.one .symbtns .btn{min-height:48px;min-width:56px}
+@media (min-width:900px){
+  .run:not(.padopen){--figh:48vh;--figh:48dvh}
+  .run:not(.padopen) .q.one{overflow:hidden}
+  .run:not(.padopen) .q.one .qgrid.split:not(.wide){flex:1 1 0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+  .run:not(.padopen) .q.one .qgrid:is(.wide,:not(.split)){flex:1 1 0;overflow:auto;overscroll-behavior:contain}
+  .run:not(.padopen) .q.one .split:not(.wide)>.qL,.run:not(.padopen) .q.one .split:not(.wide)>.qR{min-height:0;overflow:auto;overscroll-behavior:contain;padding:2px}
+  .run:not(.padopen) .q.one .split:not(.wide)>.qR{border-left:1.5px dashed var(--line);padding-left:20px}
+  .run:not(.padopen) .q.one .split:not(.wide) .opts{margin-top:2px}
+}
+.rnav{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px 10px;flex-wrap:wrap}
+.rnav .btn{min-height:52px;min-width:124px}
+.rnav .rno{font-family:var(--f-num);font-size:15px;color:var(--muted);white-space:nowrap}
+.rnav p{margin:0;flex:1 1 200px}
+.rnav p b{color:var(--red);font-family:var(--f-num);font-size:20px}
+@media (max-width:420px){.rnav .btn{min-width:104px;padding-inline:14px}}
+
+/* 計算紙 */
+.pad{flex:1 1 0;min-width:0;min-height:0;display:flex;flex-direction:column;background:#fff;border:2px solid var(--main);border-radius:12px;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.padbar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px;background:var(--main-soft);border-bottom:1.5px solid var(--line)}
+.padbar .btn{min-height:48px;padding:4px 12px;white-space:nowrap}
+.padbar .btn.on{background:var(--main);border-color:var(--main);color:var(--main-ink);font-weight:700}
+.padbar .sp{flex:1}
+.padcv{flex:1;min-height:0;position:relative;background:#fff;background-image:linear-gradient(#e6eef4 1px,transparent 1px),linear-gradient(90deg,#e6eef4 1px,transparent 1px);background-size:28px 28px}
+.padcv canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+.pad.full{position:fixed;inset:0;z-index:40;border-radius:0;border-width:0;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+@media (orientation:portrait){
+  .run.padopen .rbody{flex-direction:column}
+  .run.padopen{--figh:20vh;--figh:20dvh}
+}
+@media (max-width:640px){.padbar .btn{padding:4px 8px;font-size:15px}}
+
 /* 列印（PDF） */
 #printArea{display:none}
 @media print{
@@ -228,21 +303,23 @@ body.printing #printArea{color:#000}
 .pans .nc{font-size:10.5pt;color:#555}
 .pans img{display:block;max-width:70mm;max-height:45mm;margin:2pt 0}
 .school a.home{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.yr b.mk{font-size:24px;line-height:1.5}
 </style>
 </head>
 <body>
 <div class="wrap" id="app">
   <header class="top">
-    <button type="button" class="qrthumb" id="qrOpen" aria-label="放大 QR code，讓學生用平板掃描"><span id="qrSmall"></span><small>學生掃我</small></button>
+    <button type="button" class="qrthumb" id="qrOpen" data-qropen aria-label="放大 QR code，讓學生用平板掃描"><span id="qrSmall"></span><small>學生掃我</small></button>
     <div class="school"><a class="home" href="../">學習扶助篩選測驗</a>・數學</div>
     <h1><span>學扶考古題</span> <span>自己來練習</span></h1>
+    <div class="tools"><button class="btn" id="bpmfBtn" data-bpmf type="button" aria-pressed="false">注音：關</button></div>
     <nav class="gtabs" id="gtabs" aria-label="年級"></nav>
-    <div class="tools"><button class="btn" id="bpmfBtn" type="button" aria-pressed="false">注音：關</button></div>
   </header>
   <main id="main"><p class="loading">題目載入中⋯⋯</p></main>
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
     <p>115 年三～六年級官方未公布答案，答案為自行解題，如有疑義請以官方為準。</p>
+    <p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
 </div>
@@ -257,7 +334,10 @@ body.printing #printArea{color:#000}
 const $=s=>document.querySelector(s);
 const CN=['','一','二','三','四','五','六'];
 const CIRC=['①','②','③','④','⑤'];
-const YEARS=['115','114','113','112','111'];
+const YEARS=['115','114','113','112','111','mA'];
+const isMock=y=>y==='mA';
+const yl=y=>isMock(y)?'模擬卷 A':y+' 年';
+const yv=y=>isMock(y)?0:+y;
 const MAXSET=50;
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS={
@@ -270,6 +350,8 @@ let pref=Object.assign({grade:3,bpmf:{},exo:{ans:false}},LS.get(NS+'pref',{})||{
 if(!pref.bpmf||typeof pref.bpmf!=='object')pref.bpmf={};
 if(!pref.exo)pref.exo={ans:false};
 const savePref=()=>LS.set(NS+'pref',pref);
+/* 老師用的全站切換：online 線上作答／paper 印成紙本（學生掃碼進題組一律是線上作答畫面） */
+let MODE=pref.mode==='paper'?'paper':'online';
 function hashStr(s){let h=5381;for(const c of s)h=((h<<5)+h+c.charCodeAt(0))>>>0;return h.toString(36)}
 function shuffleArr(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 const natCmp=(a,b)=>{const x=a.split(/(\d+)/),y=b.split(/(\d+)/);for(let i=0;i<Math.min(x.length,y.length);i++){if(x[i]===y[i])continue;const n=+x[i],m=+y[i];return (!isNaN(n)&&!isNaN(m)&&x[i]!==''&&y[i]!=='')?n-m:x[i]<y[i]?-1:1}return x.length-y.length};
@@ -280,7 +362,7 @@ const normCode=c=>DUP[c]||c;
 const codeGrade=c=>+(c.split('-')[1]||0);
 const isPaper=q=>q.type==='paper'||!!q.paperOnly;           // 只能在紙上作答
 const gradable=q=>!isPaper(q);
-const qOrder=(a,b)=>a.grade-b.grade||(+b.year)-(+a.year)||a.no-b.no;
+const qOrder=(a,b)=>a.grade-b.grade||yv(b.year)-yv(a.year)||a.no-b.no;
 
 /* ---------- 答案比對 ---------- */
 function normAns(s){
@@ -359,14 +441,15 @@ function classify(img){
   const w=img.naturalWidth,h=img.naturalHeight;if(!w)return;
   const small=h<=110&&w<=260;img.classList.toggle('inl',small);img.classList.toggle('blk',!small);
 }
-document.addEventListener('load',e=>{if(e.target&&e.target.tagName==='IMG')classify(e.target)},true);
+document.addEventListener('load',e=>{if(e.target&&e.target.tagName==='IMG'){classify(e.target);if(e.target.closest('#stage .opt'))fitOpts()}},true);
 const classifyAll=root=>root.querySelectorAll('img.fig').forEach(im=>{if(im.complete)classify(im)});
 
 /* ---------- 年級與注音 ---------- */
 let GRADE=+pref.grade||3;if(!(GRADE>=1&&GRADE<=6))GRADE=3;
 function bpmfOn(g){return g in pref.bpmf?!!pref.bpmf[g]:g<=2}
-function applyBpmf(){const on=bpmfOn(GRADE);document.body.classList.toggle('bpmf',on);const b=$('#bpmfBtn');b.textContent='注音：'+(on?'開':'關');b.setAttribute('aria-pressed',on)}
-$('#bpmfBtn').addEventListener('click',()=>{pref.bpmf[GRADE]=!bpmfOn(GRADE);savePref();applyBpmf()});
+function applyBpmf(){const on=bpmfOn(GRADE);document.body.classList.toggle('bpmf',on);
+  document.querySelectorAll('[data-bpmf]').forEach(b=>{b.innerHTML='<span class="lbl">注音：</span><span class="sl">ㄅ</span>'+(on?'開':'關');b.setAttribute('aria-pressed',on);b.setAttribute('aria-label','注音：'+(on?'開':'關'))})}
+document.addEventListener('click',e=>{if(!e.target.closest('[data-bpmf]'))return;pref.bpmf[GRADE]=!bpmfOn(GRADE);savePref();applyBpmf()});
 function renderTabs(show){
   const t=$('#gtabs');t.hidden=!show;if(!show)return;
   t.innerHTML=[1,2,3,4,5,6].map(g=>`<button type="button" class="gt${g===GRADE?' on':''}" data-grade="${g}" aria-pressed="${g===GRADE}">${CN[g]}年級</button>`).join('');
@@ -380,14 +463,14 @@ function updQR(url,title){
   $('#qrUrl').textContent=url;$('#qrTitle').textContent=title;
   if(url===qrFor)return;qrFor=url;
   if(!window.QRCode){$('#qrOpen').hidden=true;return}
-  $('#qrOpen').hidden=false;
   const lvl=url.length>260?QRCode.CorrectLevel.L:QRCode.CorrectLevel.M;
   const make=(el,size)=>{el.innerHTML='';try{new QRCode(el,{text:url,width:size,height:size,colorDark:'#10231a',colorLight:'#ffffff',correctLevel:lvl})}catch(e){el.textContent='網址太長'}};
   make($('#qrSmall'),160);make($('#qrBig'),440);
 }
+function qrShow(on){$('#qrOpen').hidden=!on||!window.QRCode}
 (function(){
   const m=$('#qrModal');
-  $('#qrOpen').addEventListener('click',()=>{m.hidden=false;$('#qrClose').focus()});
+  document.addEventListener('click',e=>{if(!e.target.closest('[data-qropen]')||!window.QRCode)return;m.hidden=false;$('#qrClose').focus()});
   $('#qrClose').addEventListener('click',()=>{m.hidden=true});
   m.addEventListener('click',e=>{if(e.target===m)m.hidden=true});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')m.hidden=true});
@@ -404,53 +487,61 @@ let SET=null,STATE=null,io=null;
 function route(){
   const r=parseHash();
   if(io){io.disconnect();io=null}
-  if(r.e){const m=r.e.match(/^g([1-6])-(\d{3})$/);if(m){const ids=QS.filter(q=>q.grade===+m[1]&&q.year===m[2]).sort((a,b)=>a.no-b.no).map(q=>q.id);
-      if(ids.length){GRADE=+m[1];openSet({kind:'exam',key:'exam:'+r.e,ids,title:`${m[2]} 年 ${CN[m[1]]}年級`,hash:'#e='+r.e});return}}}
+  if(r.e){const m=r.e.match(/^g([1-6])-(\d{3}|mA)$/);if(m){const ids=QS.filter(q=>q.grade===+m[1]&&q.year===m[2]).sort((a,b)=>a.no-b.no).map(q=>q.id);
+      if(ids.length){GRADE=+m[1];openSet({kind:'exam',key:'exam:'+r.e,ids,title:`${CN[m[1]]}年級 ${yl(m[2])}`,hash:'#e='+r.e});return}}}
   if(r.p){const ids=[...new Set(r.p.split(',').map(s=>s.trim()))].filter(id=>BY[id]).slice(0,MAXSET);
     if(ids.length){GRADE=Math.max(...ids.map(id=>BY[id].grade));const t=(r.t||'挑題練習').slice(0,60);
       openSet({kind:'p',key:'set:'+hashStr(ids.join(',')),ids,title:t,hash:'#p='+ids.join(',')+'&t='+encodeURIComponent(t)});return}}
   if(r.g&&/^[1-6]$/.test(r.g)){GRADE=+r.g;pref.grade=GRADE;savePref()}
-  SET=null;renderHome();
+  SET=null;padReset();renderHome();
 }
 window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});
 
 /* ---------- 首頁 ---------- */
 function examState(g,y){return LS.get(NS+'exam:g'+g+'-'+y,null)}
 function renderHome(){
+  document.documentElement.classList.remove('running');
   applyBpmf();renderTabs(true);
+  const paper=MODE==='paper';
   const ys=YEARS.filter(y=>QS.some(q=>q.grade===GRADE&&q.year===y));
   const cards=ys.map(y=>{
-    const qs=QS.filter(q=>q.grade===GRADE&&q.year===y);const st=examState(GRADE,y);let cls='',txt='還沒開始';
+    const qs=QS.filter(q=>q.grade===GRADE&&q.year===y);
+    if(paper)return `<div class="yr pp" data-exctx="exam:g${GRADE}-${y}"><div class="yrh">${isMock(y)?'<b class="mk">模擬卷<small>A</small></b>':`<b>${y}<small>年</small></b>`}<span>${qs.length} 題</span></div><div class="yrb"><button type="button" class="btn" data-export="word" aria-label="${yl(y)} 下載 Word">📝 Word</button><button type="button" class="btn" data-export="pdf" aria-label="${yl(y)} 列印或存成 PDF">🖨️ PDF</button></div><span class="exmsg" aria-live="polite"></span></div>`;
+    const st=examState(GRADE,y);let cls='',txt='還沒開始';
     if(st&&st.done){const g=qs.filter(gradable);const r=g.filter(q=>isRight(q,(st.v||{})[q.id])).length;cls='done';txt=`得分 ${r}／${g.length}`}
     else if(st&&st.v){const n=qs.filter(q=>isAnswered(q,st.v[q.id])).length;if(n){cls='going';txt=`已作答 ${n} 題`}}
-    return `<button type="button" class="yr ${cls}" data-exam="g${GRADE}-${y}"><b>${y}<small>年</small></b><span>${qs.length} 題</span><span class="st">${txt}</span></button>`;
+    return `<button type="button" class="yr ${cls}" data-exam="g${GRADE}-${y}">${isMock(y)?'<b class="mk">模擬卷<small>A</small></b>':`<b>${y}<small>年</small></b>`}<span>${qs.length} 題</span><span class="st">${txt}</span></button>`;
   }).join('');
-  $('#main').innerHTML=`<section class="sec" aria-labelledby="hYear"><div class="sec-h"><h2 id="hYear">依年度練習</h2><small>${CN[GRADE]}年級・點一張卡片，整卷在線上作答</small></div><div class="years">${cards}</div></section>
-  <section class="sec" aria-labelledby="hPick"><div class="sec-h"><h2 id="hPick">老師挑題</h2><small>依課本單元或學扶細目挑題，產生練習給學生掃 QR code</small></div><div class="picker" id="pickerBox"></div></section>`;
+  $('#main').innerHTML=`<div class="modebar" id="modeBar"><div class="modesw" role="group" aria-label="使用方式">${[['online','💻 線上作答'],['paper','🖨️ 印成紙本']].map(([m,l])=>`<button type="button" class="${MODE===m?'on':''}" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('')}</div><span class="modehint">${paper?'下載 Word 或列印 PDF，發給學生寫':'學生掃 QR code，在平板上作答'}</span>${paper?ansCheck():''}</div>
+  <section class="sec" aria-labelledby="hYear"><div class="sec-h"><h2 id="hYear">${paper?'依年度印整卷':'依年度練習'}</h2><small>${CN[GRADE]}年級・${paper?'整份考古題下載 Word，或列印／存成 PDF':'點一張卡片，整卷在線上作答'}</small></div><div class="years${paper?' paper':''}">${cards}</div></section>
+  <section class="sec" aria-labelledby="hPick"><div class="sec-h"><h2 id="hPick">老師挑題</h2><small>${paper?'依課本單元或學扶細目挑題，做成紙本練習卷':'依課本單元或學扶細目挑題，產生練習給學生掃 QR code'}</small></div><div class="picker" id="pickerBox"></div></section>`;
   renderPicker();
   updQR(BASE()+'#g='+GRADE,`拿平板掃這裡，練習${CN[GRADE]}年級考古題`);
+  qrShow(!paper);
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-exam]');if(b)go('#e='+b.dataset.exam)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b||SET)return;const m=b.dataset.mode==='paper'?'paper':'online';if(m===MODE)return;MODE=m;pref.mode=m;savePref();renderHome();const f=document.querySelector(`[data-mode="${m}"]`);if(f)f.focus()});
 
 /* ---------- 老師挑題 ---------- */
-let PK=Object.assign({mode:'unit',ver:'南一',units:[],codes:[],prev:false,years:null,limit:0,shuffle:false,noPaper:true},pref.PK||{});
+let PK=Object.assign({mode:'unit',ver:'南一',units:[],codes:[],prev:false,years:null,limit:0,shuffle:false},pref.PK||{});delete PK.noPaper;
 const savePick=()=>{pref.PK=PK;savePref()};
 const GROUPS=[['NC','數與量'],['SC','空間與形狀'],['RC','關係'],['DC','資料與不確定性']];
 const semsOf=g=>g>=1?[CN[g]+'上',CN[g]+'下']:[];
 const pkGrades=()=>PK.prev&&GRADE>1?[GRADE-1,GRADE]:[GRADE];
 const pkYears=()=>{const avail=YEARS.filter(y=>QS.some(q=>pkGrades().includes(q.grade)&&q.year===y));const s=PK.years&&PK.years.length?PK.years.filter(y=>avail.includes(y)):avail;return s.length?s:avail};
-function basePool(opt){opt=opt||{};const gs=pkGrades(),ys=pkYears();return QS.filter(q=>gs.includes(q.grade)&&ys.includes(q.year)&&(opt.keepPaper||!(PK.noPaper&&isPaper(q))))}
+/* 線上模式一律排除只能在紙上作答的題目；紙本模式一律包含 */
+function basePool(){const gs=pkGrades(),ys=pkYears(),keep=MODE==='paper';return QS.filter(q=>gs.includes(q.grade)&&ys.includes(q.year)&&(keep||!isPaper(q)))}
 function findUnit(key){const [sem,no]=key.split(':');return ((UNITS[PK.ver]||{})[sem]||[]).find(u=>String(u.no)===no)}
 const unitXF=u=>(u.xuefu||[]).map(normCode);
 const hitUnit=(q,u)=>{const c=unitXF(u);return q.xf.some(x=>c.includes(x))};
-function pickedQs(opt){
-  let pool=basePool(opt);
+function pickedQs(){
+  let pool=basePool();
   if(PK.mode==='unit'){const us=PK.units.map(findUnit).filter(Boolean);pool=pool.filter(q=>us.some(u=>hitUnit(q,u)))}
   else{const cs=PK.codes.map(normCode);pool=pool.filter(q=>q.xf.some(x=>cs.includes(x)))}
   return pool.sort(qOrder);
 }
-function finalIds(opt){
-  let qs=pickedQs(opt);if(!qs.length)return [];
+function finalIds(){
+  let qs=pickedQs();if(!qs.length)return [];
   const lim=Math.min(MAXSET,PK.limit||MAXSET);
   if(qs.length>lim)qs=shuffleArr(qs).slice(0,lim).sort(qOrder);
   if(PK.shuffle)qs=shuffleArr(qs);
@@ -496,19 +587,20 @@ function renderPicker(){
   const qs=pickedQs(),ys=pkYears();
   const avail=YEARS.filter(y=>QS.some(q=>gs.includes(q.grade)&&q.year===y));
   const lim=Math.min(MAXSET,PK.limit||MAXSET);
+  const paper=MODE==='paper';
   box.innerHTML=`<div class="pkmode" role="tablist">${[['unit','📚 依版本單元'],['code','🧩 依學扶細目']].map(([m,l])=>`<button type="button" role="tab" class="pkm${PK.mode===m?' on':''}" data-pmode="${m}" aria-selected="${PK.mode===m}">${l}</button>`).join('')}</div>
   ${GRADE>1?`<label class="chk"><input type="checkbox" id="pkPrev" ${PK.prev?'checked':''}> 一併列出前一年級的${PK.mode==='unit'?'單元':'細目'}（先備概念）</label>`:''}
   ${body}
-  <div class="pkrow"><span class="pklab">年度</span>${avail.map(y=>`<button type="button" class="pk${ys.includes(y)?' on':''}" data-pyear="${y}" aria-pressed="${ys.includes(y)}">${y} 年</button>`).join('')}</div>
+  <div class="pkrow"><span class="pklab">年度</span>${avail.map(y=>`<button type="button" class="pk${ys.includes(y)?' on':''}" data-pyear="${y}" aria-pressed="${ys.includes(y)}">${yl(y)}</button>`).join('')}</div>
   <div class="pkrow"><span class="pklab">題數</span>${[[0,'全部'],[10,'10 題'],[15,'15 題'],[20,'20 題']].map(([n,l])=>`<button type="button" class="pk${PK.limit===n?' on':''}" data-plimit="${n}" aria-pressed="${PK.limit===n}">${l}</button>`).join('')}</div>
-  <div class="pkrow"><label class="chk"><input type="checkbox" id="pkShuffle" ${PK.shuffle?'checked':''}> 題目順序打散</label><label class="chk"><input type="checkbox" id="pkNoPaper" ${PK.noPaper?'checked':''}> 排除只能在紙上作答的題目（線上用）</label></div>
+  <div class="pkrow"><label class="chk"><input type="checkbox" id="pkShuffle" ${PK.shuffle?'checked':''}> 題目順序打散</label></div>
   <div class="pkres"><div><span id="pkCount"><b>${qs.length}</b> 題符合</span>${qs.length>lim?`<br><span class="sm">會隨機抽 ${lim} 題${!PK.limit?'（一份練習最多 50 題）':''}</span>`:''}</div>
-  <button type="button" class="btn primary big" id="pkGo" ${qs.length?'':'disabled'}>產生練習 ▶</button></div>
-  ${exportWidget('picker')}
-  <p class="pknote">單元對照依各版本課程整理，各校進度可能不同，請以實際教學為準。匯出紙本時，會一併放入只能在紙上作答的題目。</p>`;
+  ${paper?`<div class="pkex" data-exctx="picker"><button type="button" class="btn primary big" data-export="word">📝 下載 Word</button><button type="button" class="btn big" data-export="pdf">🖨️ 列印／存成 PDF</button>${ansCheck()}<span class="exmsg" aria-live="polite"></span></div>`
+  :`<button type="button" class="btn primary big" id="pkGo" ${qs.length?'':'disabled'}>產生線上練習 ▶</button>`}</div>
+  <p class="pknote">單元對照依各版本課程整理，各校進度可能不同，請以實際教學為準。${paper?'紙本會一併放入只能在紙上作答的題目（畫圖、用尺量）。':'線上練習不會出只能在紙上作答的題目（畫圖、用尺量）；要印這些題目請切換到「印成紙本」。'}</p>`;
 }
 document.addEventListener('click',e=>{
-  const t=e.target.closest('#pickerBox button');if(!t||t.closest('.exbar'))return;
+  const t=e.target.closest('#pickerBox button');if(!t||t.closest('[data-exctx]'))return;
   if(t.dataset.pmode){PK.mode=t.dataset.pmode}
   else if(t.dataset.pver){PK.ver=t.dataset.pver;PK.units=[]}
   else if(t.dataset.punit){const k=t.dataset.punit;PK.units=PK.units.includes(k)?PK.units.filter(x=>x!==k):[...PK.units,k]}
@@ -524,76 +616,222 @@ document.addEventListener('click',e=>{
 document.addEventListener('change',e=>{
   const id=e.target.id;
   if(id==='pkShuffle'){PK.shuffle=e.target.checked;savePick();return}
-  if(id==='pkNoPaper'){PK.noPaper=e.target.checked;savePick();renderPicker();return}
   if(id==='pkPrev'){PK.prev=e.target.checked;if(!PK.prev){const ok=semsOf(GRADE);PK.units=PK.units.filter(k=>ok.includes(k.split(':')[0]));PK.codes=PK.codes.filter(c=>codeGrade(c)>=GRADE||QS.some(q=>q.grade===GRADE&&q.xf.includes(c)))}savePick();renderPicker()}
 });
 
 /* ---------- 作答畫面 ---------- */
 function loadState(key){const s=LS.get(NS+key,null);return s&&typeof s==='object'?Object.assign({v:{},done:false},s,{v:s.v||{}}):{v:{},done:false}}
 const saveState=()=>{if(SET)LS.set(NS+SET.key,STATE)};
-function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${q.year} 年第 ${q.no} 題`}
+function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${yl(q.year)}第 ${q.no} 題`}
+const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;
 function openSet(s){
+  const same=SET&&SET.key===s.key;
   SET=s;SET.qs=s.ids.map(id=>BY[id]);SET.mixed=new Set(SET.qs.map(q=>q.grade)).size>1;
   STATE=loadState(s.key);
+  if(!same)padReset();
   applyBpmf();renderTabs(false);renderSet();
   updQR(BASE()+s.hash,s.kind==='exam'?`拿平板掃這裡，做${s.title}考古題`:`拿平板掃這裡，做「${s.title}」`);
+  qrShow(true);
 }
 function optsHTML(q,num){
   const im=q.optImgs||[];const texts=q.options||[];
   const hasImg=im.some(Boolean);const long=texts.some(t=>String(t).length>14);const tiny=!hasImg&&texts.every(t=>String(t).length<=6);
   const dis=isPaper(q)?'disabled':'';
-  return `<div class="opts${long?' one':''}${tiny||hasImg?' tiny':''}" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${fracify(esc(t))}</span>`:''}</span></button>`).join('')}</div>`;
+  return `<div class="opts${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${fracify(esc(t))}</span>`:''}</span></button>`).join('')}</div>`;
 }
-function cardHTML(q,k){
-  const num=SET.kind==='exam'?q.no:k+1;
+/* one=true：作答時一次一題（左：題幹和圖；右：選項或填答區）；one=false：交卷後的整份列表 */
+function cardHTML(q,k,one){
+  const num=numOf(q,k);
   const st=stemHTML(q,'screen');const fm=fillMode(q);
-  let body=`<div class="stem"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
-  if(q.type==='choice')body+=optsHTML(q,num);
+  let L=`<div class="stem"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`,R='';
+  if(q.type==='choice')R+=optsHTML(q,num);
   if((q.type==='fill'||q.type==='calc')){
-    if(q.type==='calc')body+=`<p class="hintline">✏️ 把算式寫在紙上，這裡填答案</p>`;
-    if(fm==='below')body+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>`;
-    if(isSym(q))body+=`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`;
+    const sym=isSym(q)?`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`:'';
+    if(q.type==='calc')L+=`<p class="hintline">✏️ 把算式寫在${one?'計算紙':'紙'}上，這裡填答案</p>`;
+    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
+    else L+=sym;
   }
-  if(q.type==='paper')body+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
-  else if(q.paperOnly)body+=`<p class="paperbox">✏️ 這題要用尺量圖，請在紙上作答，不計分。</p>`;
-  return `<article class="q" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${SET.kind==='p'?`<p class="srctag">${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
+  if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
+  else if(q.paperOnly)R+=`<p class="paperbox">✏️ 這題要用尺量圖，請在紙上作答，不計分。</p>`;
+  const body=one?`<div class="qgrid${R?' split':''}"><div class="qL">${L}</div>${R?`<div class="qR">${R}</div>`:''}</div>`:L+R;
+  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${SET.kind==='p'?`<p class="srctag">${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
 }
+function restoreCard(card,q){
+  const v=STATE.v[q.id];
+  if(q.type==='choice'&&v!=null)card.querySelectorAll('.opt').forEach(b=>{const on=+b.dataset.c===+v;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});
+  if(Array.isArray(v))card.querySelectorAll('input.blank').forEach(inp=>{inp.value=v[+inp.dataset.b]||''});
+}
+let CUR=0;
 function renderSet(){
+  if(io){io.disconnect();io=null}
+  document.documentElement.classList.toggle('running',!STATE.done);
+  if(STATE.done)renderReview();else renderRun();
+}
+
+/* --- 交卷前：一次一題 --- */
+function renderRun(){
+  const n=SET.qs.length;
+  CUR=Math.min(Math.max(0,STATE.cur|0),n-1);
+  $('#main').innerHTML=`<div class="run" id="run">
+  <div class="rbar"><button type="button" class="btn" id="homeBtn" aria-label="回首頁">←<span class="lbl"> 回首頁</span></button><h2>${esc(SET.title)}</h2><span class="prog" id="prog" role="status"></span>
+  <button type="button" class="btn" id="padBtn" aria-pressed="false" aria-label="計算紙">✏️<span class="lbl"> 計算紙</span><i class="dot" id="padDot" hidden></i></button>
+  <button type="button" class="btn" data-bpmf aria-pressed="false"></button>
+  <button type="button" class="btn" data-qropen aria-label="顯示 QR code，讓學生用平板掃描"${window.QRCode?'':' hidden'}>QR<span class="lbl"> code</span></button></div>
+  <nav class="rchips" id="chips" aria-label="題號">${SET.qs.map((q,k)=>`<button type="button" class="chip${isPaper(q)?' pp':''}" data-jump="${k}" aria-label="跳到第 ${numOf(q,k)} 題">${numOf(q,k)}</button>`).join('')}</nav>
+  <div class="rbody"><div class="stage" id="stage"></div>
+  <aside class="pad" id="pad" aria-label="計算紙" hidden><div class="padbar"><button type="button" class="btn" data-pad="pen" aria-pressed="true">✏️ 筆</button><button type="button" class="btn" data-pad="er" aria-pressed="false">🧽 橡皮擦</button><button type="button" class="btn" data-pad="clear">🗑️ 清除</button><span class="sp"></span><button type="button" class="btn" data-pad="full">⤢ 放大</button><button type="button" class="btn" data-pad="close">▾ 縮小</button></div><div class="padcv" id="padBox"><canvas id="padCv" aria-label="計算紙，用手指或觸控筆寫"></canvas></div></aside></div>
+  <div class="rnav" id="rnav"></div></div>`;
+  padMount();showQ(CUR);applyBpmf();
+}
+function showQ(k){
+  if(!SET||STATE.done)return;
+  k=Math.min(Math.max(0,k),SET.qs.length-1);
+  CUR=k;if(STATE.cur!==k){STATE.cur=k;saveState()}
+  const q=SET.qs[k],stage=$('#stage');
+  stage.innerHTML=cardHTML(q,k,true);
+  restoreCard(stage.firstElementChild,q);classifyAll(stage);fitOpts();
+  const box=$('#chips');
+  box.querySelectorAll('.chip').forEach((c,i)=>{c.classList.toggle('cur',i===k);if(i===k)c.setAttribute('aria-current','true');else c.removeAttribute('aria-current')});
+  const c=box.children[k];
+  if(c&&box.scrollWidth>box.clientWidth){const l=c.offsetLeft;if(l<box.scrollLeft+4||l+c.offsetWidth>box.scrollLeft+box.clientWidth-4)box.scrollLeft=l-box.clientWidth/2+c.offsetWidth/2}
+  renderNav();updRun();padSwitch();
+}
+/* 選項是圖的題目：依圖的原始大小，挑一種讓圖最不用縮小的排法（左右兩欄或上下排、選項一欄或兩欄） */
+function fitOpts(){
+  const card=document.querySelector('#stage .q.one'),run=$('#run');if(!card||!run)return;
+  const grid=card.querySelector('.qgrid'),opts=card.querySelector('.opts');if(!opts)return;
+  const ims=[...opts.querySelectorAll('img')];if(!ims.length||ims.some(im=>!im.naturalWidth))return;
+  const n=opts.children.length,mw=Math.max(...ims.map(im=>im.naturalWidth)),mh=Math.max(...ims.map(im=>im.naturalHeight));
+  const canSplit=window.innerWidth>=900&&!run.classList.contains('padopen');
+  const W=card.clientWidth-40,H=card.clientHeight-(SET.kind==='p'?62:36);if(W<50||H<50)return;
+  const cand=[];
+  const add=(wide,one,w,h)=>{const cols=one?1:2,rows=Math.ceil(n/cols),ih=(h-(rows-1)*8)/rows-18;cand.push({wide,one,ih,s:Math.min(1,(w/cols-84)/mw,ih/mh)})};
+  if(canSplit){const rw=(W-41)/2.1;add(false,false,rw,H);add(false,true,rw,H)}
+  const hs=H*(canSplit?0.7:0.6);add(true,false,W,hs);add(true,true,W,hs);
+  let best=cand[0];cand.forEach(c=>{if(c.s>best.s+0.05)best=c});
+  grid.classList.toggle('wide',best.wide);
+  opts.classList.toggle('one',best.one||!!opts.dataset.long);
+  opts.style.setProperty('--oh',Math.max(64,Math.floor(best.ih))+'px');
+}
+function renderNav(confirmN){
+  const nav=$('#rnav');if(!nav)return;const n=SET.qs.length,last=CUR===n-1;
+  if(confirmN)nav.innerHTML=`<p>還有 <b>${confirmN}</b> 題沒寫，確定要交卷嗎？</p><button type="button" class="btn big" id="submitNo">繼續寫</button><button type="button" class="btn primary big" id="submitYes">確定交卷</button>`;
+  else nav.innerHTML=`<button type="button" class="btn big" id="prevBtn" ${CUR?'':'disabled'}>← 上一題</button><span class="rno">${CUR+1}／${n}</span><button type="button" class="btn primary big" id="${last?'submitBtn':'nextBtn'}">${last?'交卷 ✔':'下一題 →'}</button>`;
+}
+function updRun(){
+  const g=SET.qs.filter(gradable);const a=g.filter(q=>isAnswered(q,STATE.v[q.id])).length;
+  const p=$('#prog');if(p)p.innerHTML=`<span class="lbl">已作答 </span>${a}／${g.length}`;
+  SET.qs.forEach((q,k)=>{const c=$('#chips').children[k];if(c)c.classList.toggle('done',isAnswered(q,STATE.v[q.id]))});
+}
+
+/* --- 計算紙：每題一張，筆畫用向量記在記憶體裡 --- */
+const PAD={open:false,full:false,tool:'pen',strokes:{},cv:null,ctx:null,ro:null,w:0,h:0,s:1,act:null};
+const PEN_W=3.2,ER_W=28,PAD_INK='#17254a';
+function padReset(){PAD.strokes={};PAD.open=false;PAD.full=false;PAD.tool='pen';PAD.act=null}
+const padId=()=>SET&&SET.qs[CUR]?SET.qs[CUR].id:'';
+const padHas=id=>!!(PAD.strokes[id]&&PAD.strokes[id].some(s=>s.t==='pen'));
+function padMount(){
+  if(PAD.ro){PAD.ro.disconnect();PAD.ro=null}
+  const cv=$('#padCv');PAD.cv=cv;PAD.ctx=cv.getContext('2d');PAD.act=null;
+  cv.addEventListener('pointerdown',padDown);cv.addEventListener('pointermove',padMove);
+  ['pointerup','pointercancel','lostpointercapture'].forEach(t=>cv.addEventListener(t,padUp));
+  const pad=$('#pad');
+  // 在計算紙上滑動時，不讓頁面跟著捲動或縮放
+  pad.addEventListener('touchmove',e=>{e.preventDefault()},{passive:false});
+  pad.addEventListener('gesturestart',e=>{e.preventDefault()});
+  pad.addEventListener('contextmenu',e=>{e.preventDefault()});
+  if(window.ResizeObserver){PAD.ro=new ResizeObserver(()=>padResize());PAD.ro.observe($('#padBox'))}
+  padApply();
+}
+window.addEventListener('resize',()=>{if(SET&&!STATE.done){fitOpts();if(PAD.open)padResize()}});
+function padApply(){
+  const run=$('#run'),pad=$('#pad');if(!run||!pad)return;
+  pad.hidden=!PAD.open;run.classList.toggle('padopen',PAD.open&&!PAD.full);pad.classList.toggle('full',PAD.open&&PAD.full);
+  $('#padBtn').setAttribute('aria-pressed',PAD.open);
+  pad.querySelectorAll('[data-pad="pen"],[data-pad="er"]').forEach(b=>{const on=b.dataset.pad===PAD.tool;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+  pad.querySelector('[data-pad="full"]').textContent=PAD.full?'⤡ 半版':'⤢ 放大';
+  padDot();if(PAD.open)padResize();fitOpts();
+}
+function padDot(){const d=$('#padDot');if(!d)return;const has=padHas(padId());d.hidden=!has;$('#padBtn').setAttribute('aria-label',has?'計算紙（這一題寫過）':'計算紙')}
+function padSwitch(){PAD.act=null;padDot();if(PAD.open)padRedraw()}
+function padResize(){
+  const box=$('#padBox');if(!box||!PAD.cv)return;const r=box.getBoundingClientRect();if(r.width<2||r.height<2)return;
+  const dpr=Math.max(1,window.devicePixelRatio||1);const W=Math.round(r.width*dpr),H=Math.round(r.height*dpr);
+  if(PAD.cv.width!==W||PAD.cv.height!==H){PAD.cv.width=W;PAD.cv.height=H}
+  PAD.w=r.width;PAD.h=r.height;PAD.dpr=dpr;padRedraw();
+}
+function padStroke(ctx,st){
+  const p=st.p;if(!p.length)return;
+  ctx.globalCompositeOperation=st.t==='er'?'destination-out':'source-over';
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=st.t==='er'?ER_W:PEN_W;ctx.strokeStyle=PAD_INK;ctx.fillStyle=PAD_INK;
+  ctx.beginPath();
+  if(p.length===1){ctx.arc(p[0][0],p[0][1],ctx.lineWidth/2,0,Math.PI*2);ctx.fill();return}
+  ctx.moveTo(p[0][0],p[0][1]);
+  for(let i=1;i<p.length-1;i++)ctx.quadraticCurveTo(p[i][0],p[i][1],(p[i][0]+p[i+1][0])/2,(p[i][1]+p[i+1][1])/2);
+  ctx.lineTo(p[p.length-1][0],p[p.length-1][1]);ctx.stroke();
+}
+/* 畫面變小時（放大→半版、旋轉），整張等比例縮小，寫過的東西不會跑到外面看不到 */
+function padRedraw(){
+  const ctx=PAD.ctx;if(!ctx||!PAD.w)return;const list=PAD.strokes[padId()]||[];
+  let mx=0,my=0;list.forEach(st=>st.p.forEach(pt=>{if(pt[0]>mx)mx=pt[0];if(pt[1]>my)my=pt[1]}));
+  PAD.s=Math.min(1,PAD.w/(mx+16),PAD.h/(my+16));
+  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,PAD.cv.width,PAD.cv.height);
+  const k=PAD.dpr*PAD.s;ctx.setTransform(k,0,0,k,0,0);
+  list.forEach(st=>padStroke(ctx,st));
+}
+function padPt(e,rect){return [Math.round((e.clientX-rect.left)/PAD.s*10)/10,Math.round((e.clientY-rect.top)/PAD.s*10)/10]}
+function padDown(e){
+  if(PAD.act||(e.pointerType==='mouse'&&e.button!==0))return;
+  e.preventDefault();
+  const id=padId();if(!id)return;
+  try{PAD.cv.setPointerCapture(e.pointerId)}catch(err){}
+  const rect=PAD.cv.getBoundingClientRect();
+  const st={t:PAD.tool,p:[padPt(e,rect)]};
+  (PAD.strokes[id]=PAD.strokes[id]||[]).push(st);
+  PAD.act={pid:e.pointerId,st,rect};
+  padStroke(PAD.ctx,st);padDot();
+}
+function padMove(e){
+  const a=PAD.act;if(!a||a.pid!==e.pointerId)return;
+  e.preventDefault();
+  const evs=e.getCoalescedEvents?e.getCoalescedEvents():[];
+  (evs.length?evs:[e]).forEach(ev=>{
+    const pt=padPt(ev,a.rect),p=a.st.p,l=p[p.length-1];
+    if(Math.abs(pt[0]-l[0])+Math.abs(pt[1]-l[1])<0.8)return;
+    p.push(pt);const n=p.length,ctx=PAD.ctx;
+    ctx.globalCompositeOperation=a.st.t==='er'?'destination-out':'source-over';
+    ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=a.st.t==='er'?ER_W:PEN_W;ctx.strokeStyle=PAD_INK;
+    ctx.beginPath();
+    if(n===2){ctx.moveTo(p[0][0],p[0][1]);ctx.lineTo((p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2)}
+    else{ctx.moveTo((p[n-3][0]+p[n-2][0])/2,(p[n-3][1]+p[n-2][1])/2);ctx.quadraticCurveTo(p[n-2][0],p[n-2][1],(p[n-2][0]+p[n-1][0])/2,(p[n-2][1]+p[n-1][1])/2)}
+    ctx.stroke();
+  });
+}
+function padUp(e){
+  const a=PAD.act;if(!a||a.pid!==e.pointerId)return;
+  PAD.act=null;try{PAD.cv.releasePointerCapture(e.pointerId)}catch(err){}
+  padRedraw();padDot();
+}
+
+/* --- 交卷後：整份列表，紅筆改 --- */
+function renderReview(){
   const n=SET.qs.length;
   $('#main').innerHTML=`<div class="setbar"><button type="button" class="btn" id="homeBtn">← 回首頁</button><h2>${esc(SET.title)}</h2><small>共 ${n} 題</small></div>
-  ${exportWidget('set')}
-  <nav class="strip" id="strip" aria-label="作答進度"><div class="score"><b id="curNo">第 1 題</b><span id="prog"></span></div><div class="bar"><i id="progBar"></i></div><div class="chips" id="chips">${SET.qs.map((q,k)=>`<button type="button" class="chip${isPaper(q)?' pp':''}" data-jump="${k}" aria-label="跳到第 ${SET.kind==='exam'?q.no:k+1} 題">${SET.kind==='exam'?q.no:k+1}</button>`).join('')}</div></nav>
+  <nav class="strip" id="strip" aria-label="作答進度"><div class="score"><b id="curNo">第 1 題</b><span id="prog"></span></div><div class="bar"><i id="progBar"></i></div><div class="chips" id="chips">${SET.qs.map((q,k)=>`<button type="button" class="chip${isPaper(q)?' pp':''}" data-jump="${k}" aria-label="跳到第 ${numOf(q,k)} 題">${numOf(q,k)}</button>`).join('')}</div></nav>
   <div id="resultTop"></div>
-  <div class="cards" id="cards">${SET.qs.map(cardHTML).join('')}</div>
+  <div class="cards" id="cards">${SET.qs.map((q,k)=>cardHTML(q,k,false)).join('')}</div>
   <div class="finish" id="finish"></div>`;
-  // 還原作答
-  SET.qs.forEach((q,k)=>{const v=STATE.v[q.id];const card=$('#q'+k);
-    if(q.type==='choice'&&v!=null)card.querySelectorAll('.opt').forEach(b=>{const on=+b.dataset.c===+v;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});
-    if(Array.isArray(v))card.querySelectorAll('input.blank').forEach(inp=>{inp.value=v[+inp.dataset.b]||''});
-  });
+  SET.qs.forEach((q,k)=>restoreCard($('#q'+k),q));
   classifyAll($('#cards'));
-  if(STATE.done)showMarks();else renderFinish();
-  updProgress();
+  showMarks();
   io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)setCur(+en.target.dataset.k)})},{rootMargin:'-30% 0px -65% 0px'});
   document.querySelectorAll('#cards .q').forEach(c=>io.observe(c));
   setCur(0);
 }
-let CUR=0;
-function setCur(k){CUR=k;const q=SET.qs[k];$('#curNo').textContent=`第 ${SET.kind==='exam'?q.no:k+1} 題`;
+function setCur(k){const q=SET.qs[k];$('#curNo').textContent=`第 ${numOf(q,k)} 題`;
   document.querySelectorAll('#chips .chip').forEach((c,i)=>c.classList.toggle('cur',i===k));
   const c=document.querySelector(`#chips .chip[data-jump="${k}"]`),box=$('#chips');
   if(c&&box&&box.scrollWidth>box.clientWidth){const l=c.offsetLeft-box.offsetLeft;if(l<box.scrollLeft||l+c.offsetWidth>box.scrollLeft+box.clientWidth)box.scrollLeft=l-box.clientWidth/2}}
-function updProgress(){
-  const g=SET.qs.filter(gradable);const a=g.filter(q=>isAnswered(q,STATE.v[q.id])).length;
-  $('#prog').textContent=STATE.done?`答對 ${g.filter(q=>isRight(q,STATE.v[q.id])).length}／${g.length} 題`:`已作答 ${a}／${g.length} 題`;
-  $('#progBar').style.width=(g.length?a/g.length*100:0)+'%';
-  if(!STATE.done)SET.qs.forEach((q,k)=>{const c=document.querySelector(`#chips [data-jump="${k}"]`);if(c)c.classList.toggle('done',isAnswered(q,STATE.v[q.id]))});
-}
-function renderFinish(confirmN){
-  const f=$('#finish');
-  if(confirmN)f.innerHTML=`<p style="margin:0">還有 <b>${confirmN}</b> 題沒寫，確定要交卷嗎？</p><span class="confirm"><button type="button" class="btn primary" id="submitYes">確定交卷</button><button type="button" class="btn" id="submitNo">繼續寫</button></span>`;
-  else f.innerHTML=`<button type="button" class="btn primary big" id="submitBtn">交卷 ✔</button><small class="muted">交卷後會用紅筆改，告訴你答案</small>`;
-}
 function resultHTML(){
   const g=SET.qs.filter(gradable);const r=g.filter(q=>isRight(q,STATE.v[q.id])).length;const wrong=g.length-r;
   return `<div class="result" role="status"><span class="big">答對</span><b>${r}</b><span class="big">／${g.length} 題</span>${wrong===0?'<span>全部答對，太厲害了！</span>':''}
@@ -603,7 +841,7 @@ function showMarks(){
   SET.qs.forEach((q,k)=>{
     const card=$('#q'+k),v=STATE.v[q.id],box=card.querySelector('.ansbox'),mark=card.querySelector('.mark');
     card.querySelectorAll('.opt,input.blank,[data-sym]').forEach(x=>x.disabled=true);
-    const chip=document.querySelector(`#chips [data-jump="${k}"]`);chip.classList.remove('done');
+    const chip=document.querySelector(`#chips [data-jump="${k}"]`);
     if(q.type==='paper'){box.innerHTML=`<p class="ansline">參考答案：${esc(q.note||'')} <span class="nc">（這題不計分）</span>${q.ansFig?imgTag(q.ansFig,'答案的圖'):''}</p>`;classifyAll(box);return}
     if(q.paperOnly){card.querySelectorAll('.opt').forEach(b=>b.classList.toggle('ansopt',+b.dataset.c===q.answer));box.innerHTML=`<p class="ansline">正確答案：<b>${CIRC[q.answer-1]}</b> <span class="nc">（這題不計分）</span></p>`;return}
     const ok=isRight(q,v);card.classList.add(ok?'right':'wrong');mark.textContent=ok?'○':'✗';chip.classList.add(ok?'ok':'no');
@@ -617,51 +855,64 @@ function showMarks(){
     }
   });
   $('#resultTop').innerHTML=resultHTML();$('#finish').innerHTML=resultHTML();
-  updProgress();
+  const g=SET.qs.filter(gradable);
+  $('#prog').textContent=`答對 ${g.filter(q=>isRight(q,STATE.v[q.id])).length}／${g.length} 題`;
+  $('#progBar').style.width=(g.length?g.filter(q=>isAnswered(q,STATE.v[q.id])).length/g.length*100:0)+'%';
 }
-function submit(){STATE.done=true;STATE.at=Date.now();saveState();showMarks();$('#resultTop').scrollIntoView({block:'start',behavior:'smooth'})}
+function submit(){STATE.done=true;STATE.at=Date.now();delete STATE.cur;saveState();padReset();renderSet();window.scrollTo(0,0)}
 document.addEventListener('click',e=>{
   if(!SET)return;
   const t=e.target.closest('button');if(!t)return;
   if(t.id==='homeBtn'){go('#g='+GRADE);return}
-  if(t.dataset.jump!=null){const c=$('#q'+t.dataset.jump);if(c){c.scrollIntoView({block:'start',behavior:'smooth'});setCur(+t.dataset.jump);const f=c.querySelector('input.blank:not(:disabled),.opt:not(:disabled)');if(f)setTimeout(()=>f.focus({preventScroll:true}),350)}return}
+  if(t.dataset.jump!=null){
+    if(!STATE.done){showQ(+t.dataset.jump);return}
+    const c=$('#q'+t.dataset.jump);if(c){c.scrollIntoView({block:'start',behavior:'smooth'});setCur(+t.dataset.jump)}return}
+  if(t.id==='prevBtn'){showQ(CUR-1);return}
+  if(t.id==='nextBtn'){showQ(CUR+1);return}
+  if(t.id==='padBtn'){PAD.open=!PAD.open;if(!PAD.open)PAD.full=false;padApply();return}
+  if(t.dataset.pad){const a=t.dataset.pad;
+    if(a==='pen'||a==='er')PAD.tool=a;
+    else if(a==='clear'){delete PAD.strokes[padId()];PAD.act=null}
+    else if(a==='full')PAD.full=!PAD.full;
+    else if(a==='close'){PAD.open=false;PAD.full=false}
+    padApply();return}
   if(STATE.done===false&&t.classList.contains('opt')){
     const card=t.closest('.q'),q=BY[card.dataset.id];STATE.v[q.id]=+t.dataset.c;
-    card.querySelectorAll('.opt').forEach(b=>{const on=b===t;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});saveState();updProgress();return}
-  if(t.dataset.sym&&!STATE.done){const card=t.closest('.q'),q=BY[card.dataset.id],inp=card.querySelector('input.blank');inp.value=t.dataset.sym;(STATE.v[q.id]=STATE.v[q.id]||[])[0]=t.dataset.sym;saveState();updProgress();return}
-  if(t.id==='submitBtn'){const n=SET.qs.filter(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id])).length;if(n)renderFinish(n);else submit();return}
+    card.querySelectorAll('.opt').forEach(b=>{const on=b===t;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});saveState();updRun();return}
+  if(t.dataset.sym&&!STATE.done){const card=t.closest('.q'),q=BY[card.dataset.id],inp=card.querySelector('input.blank');inp.value=t.dataset.sym;(STATE.v[q.id]=Array.isArray(STATE.v[q.id])?STATE.v[q.id]:[])[0]=t.dataset.sym;saveState();updRun();return}
+  if(t.id==='submitBtn'){const n=SET.qs.filter(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id])).length;if(n)renderNav(n);else submit();return}
   if(t.id==='submitYes'){submit();return}
-  if(t.id==='submitNo'){renderFinish();const first=SET.qs.findIndex(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id]));if(first>=0)$('#q'+first).scrollIntoView({block:'start',behavior:'smooth'});return}
+  if(t.id==='submitNo'){const first=SET.qs.findIndex(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id]));if(first>=0)showQ(first);else renderNav();return}
   if(t.dataset.act==='retry'){
     const ids=SET.qs.filter(q=>gradable(q)&&!isRight(q,STATE.v[q.id])).map(q=>q.id);if(!ids.length)return;
     const title=(SET.title.replace(/・錯題再做一次$/,'')+'・錯題再做一次').slice(0,60);
     LS.del(NS+'set:'+hashStr(ids.join(',')));
     go('#p='+ids.join(',')+'&t='+encodeURIComponent(title));return}
   if(t.dataset.act==='reset'){const z=t.closest('.rz');z.innerHTML=`<span class="confirm">確定要清掉作答紀錄嗎？<button type="button" class="btn primary" data-act="resetYes">清掉，重新作答</button><button type="button" class="btn" data-act="resetNo">不要</button></span>`;return}
-  if(t.dataset.act==='resetYes'){LS.del(NS+SET.key);STATE={v:{},done:false};renderSet();window.scrollTo(0,0);return}
+  if(t.dataset.act==='resetYes'){LS.del(NS+SET.key);STATE={v:{},done:false};padReset();renderSet();window.scrollTo(0,0);return}
   if(t.dataset.act==='resetNo'){t.closest('.rz').innerHTML=`<button type="button" class="btn" data-act="reset">重新作答</button>`;return}
 });
 document.addEventListener('input',e=>{
   const inp=e.target;if(!SET||STATE.done||!inp.classList||!inp.classList.contains('blank'))return;
   const card=inp.closest('.q'),q=BY[card.dataset.id];const arr=Array.isArray(STATE.v[q.id])?STATE.v[q.id]:[];
-  arr[+inp.dataset.b]=inp.value;STATE.v[q.id]=arr;saveState();updProgress();
+  arr[+inp.dataset.b]=inp.value;STATE.v[q.id]=arr;saveState();updRun();
 });
 document.addEventListener('keydown',e=>{
   if(e.key!=='Enter'||!e.target.classList||!e.target.classList.contains('blank'))return;
-  e.preventDefault();const all=[...document.querySelectorAll('#cards input.blank:not(:disabled)')];const i=all.indexOf(e.target);if(all[i+1])all[i+1].focus();else e.target.blur();
+  e.preventDefault();const card=e.target.closest('.q');const all=card?[...card.querySelectorAll('input.blank:not(:disabled)')]:[];const i=all.indexOf(e.target);if(all[i+1])all[i+1].focus();else e.target.blur();
 });
 
 /* ---------- 匯出 Word／PDF ---------- */
 const LIBS={docx:'https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js'};
 const libP={};
 function loadLib(k){if(libP[k])return libP[k];libP[k]=new Promise((ok,no)=>{const s=document.createElement('script');s.src=LIBS[k];s.onload=ok;s.onerror=()=>{libP[k]=null;no(new Error('load '+k))};document.head.appendChild(s)});return libP[k]}
-function exportWidget(ctx){
-  return `<div class="exbar" data-exctx="${ctx}"><span class="exlab">匯出紙本</span><button type="button" class="btn" data-export="word">📝 Word</button><button type="button" class="btn" data-export="pdf">🖨️ PDF</button><label class="chk"><input type="checkbox" data-exo="ans" ${pref.exo.ans?'checked':''}> 附答案</label><span class="exmsg" aria-live="polite"></span></div>`;
-}
+/* 「附答案」：紙本模式的共同設定，年度卡片和挑題的匯出都吃這個 */
+function ansCheck(){return `<label class="chk"><input type="checkbox" data-exo="ans" ${pref.exo.ans?'checked':''}> 附答案</label>`}
 function gradeText(qs){const gs=[...new Set(qs.map(q=>q.grade))].sort();return gs.map(g=>CN[g]).join('、')+'年級'}
 function exportTarget(ctx){
-  if(ctx==='picker'){const ids=finalIds({keepPaper:true});return ids.length?{ids,title:pickLabel()+' 練習卷'}:null}
-  if(SET)return {ids:SET.ids,title:SET.kind==='exam'?`${SET.title} 考古題`:SET.title.replace(/ 練習$/,'')+' 練習卷'};
+  if(ctx==='picker'){const ids=finalIds();return ids.length?{ids,title:pickLabel()+' 練習卷'}:null}
+  const m=String(ctx).match(/^exam:g([1-6])-(\d{3}|mA)$/);
+  if(m){const ids=QS.filter(q=>q.grade===+m[1]&&q.year===m[2]).sort((a,b)=>a.no-b.no).map(q=>q.id);return ids.length?{ids,title:isMock(m[2])?`${CN[m[1]]}年級 模擬卷 A`:`${m[2]} 年 ${CN[m[1]]}年級 考古題`}:null}
   return null;
 }
 function ansText(q){
@@ -752,8 +1003,8 @@ async function exportWord(ids,title,o,msg){
 }
 document.addEventListener('change',e=>{const k=e.target.dataset&&e.target.dataset.exo;if(!k)return;pref.exo[k]=e.target.checked;savePref();document.querySelectorAll(`[data-exo="${k}"]`).forEach(x=>x.checked=pref.exo[k])});
 document.addEventListener('click',async e=>{
-  const b=e.target.closest('[data-export]');if(!b)return;
-  const bar=b.closest('.exbar'),m=bar.querySelector('.exmsg'),msg=s=>{m.textContent=s};
+  const b=e.target.closest('[data-export]');if(!b||MODE!=='paper'||SET)return;
+  const bar=b.closest('[data-exctx]'),m=bar.querySelector('.exmsg'),msg=s=>{m.textContent=s};
   const tg=exportTarget(bar.dataset.exctx);if(!tg){msg('還沒有選到題目，請先勾選單元或細目');return}
   if(b.dataset.export==='pdf'){exportPdf(tg.ids,tg.title,pref.exo);msg('在列印視窗選「另存為 PDF」');return}
   bar.querySelectorAll('button').forEach(x=>x.disabled=true);

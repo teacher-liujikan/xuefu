@@ -24391,5 +24391,4734 @@
   ],
   "why": "圓周率不因圓大小改變",
   "tagSrc": "self"
+ },
+ {
+  "id": "g1-mA-1",
+  "grade": 1,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面哪一枝鉛筆最長？",
+  "fig": [
+   "img/g1-mA-1.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "一樣長"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-5-1"
+  ],
+  "why": "一端沒對齊，不能只看另一端",
+  "kegang": [
+   "N-1-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-2",
+  "grade": 1,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一盒彩色筆有 10 枝。下面哪一個和 53 枝彩色筆一樣多？",
+  "fig": [],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g1-mA-2-o1.png",
+   "img/g1-mA-2-o2.png",
+   "img/g1-mA-2-o3.png",
+   "img/g1-mA-2-o4.png"
+  ],
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-1"
+  ],
+  "why": "53 是 5 盒又 3 枝",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-3",
+  "grade": 1,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安早上 7 點半出門上學。下面哪一個鐘面的時刻是 7 點半？",
+  "fig": [],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g1-mA-3-o1.png",
+   "img/g1-mA-3-o2.png",
+   "img/g1-mA-3-o3.png",
+   "img/g1-mA-3-o4.png"
+  ],
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-6-3"
+  ],
+  "why": "半點時短針在 7 和 8 中間",
+  "kegang": [
+   "N-1-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-4",
+  "grade": 1,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "ㄅ. 小安明天要去動物園。\nㄆ. 小安昨天去圖書館。\nㄇ. 小安今天在家畫畫。\n請選出小安由先到後的活動順序。",
+  "fig": [],
+  "options": [
+   "ㄅ → ㄆ → ㄇ",
+   "ㄇ → ㄆ → ㄅ",
+   "ㄆ → ㄅ → ㄇ",
+   "ㄆ → ㄇ → ㄅ"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-6-1"
+  ],
+  "why": "昨天、今天、明天的先後順序",
+  "kegang": [
+   "N-1-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-5",
+  "grade": 1,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安摺了 9 隻紙鶴，小宇摺的比小安多 5 隻。小宇摺了幾隻紙鶴？",
+  "fig": [],
+  "options": [
+   "4 隻",
+   "5 隻",
+   "14 隻",
+   "15 隻"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-2-2"
+  ],
+  "why": "「比……多」求較多的量，用加法",
+  "kegang": [
+   "N-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-6",
+  "grade": 1,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「7 個一和 5 個十」合起來是多少？",
+  "fig": [],
+  "options": [
+   "57",
+   "75",
+   "12",
+   "705"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-2"
+  ],
+  "why": "先說個位再說十位，別寫成 75",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-7",
+  "grade": 1,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面的圖形排成一排。[圖]★ 從左邊數來是第 3 個，從右邊數來是第幾個？",
+  "fig": [
+   "img/g1-mA-7.png"
+  ],
+  "options": [
+   "第 3 個",
+   "第 5 個",
+   "第 6 個",
+   "第 7 個"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-4"
+  ],
+  "why": "同一個位置，從左、從右數不一樣",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-8",
+  "grade": 1,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面的形體是用幾個[圖1]堆成的？[圖2]",
+  "fig": [
+   "img/g1-mA-8-cube.png",
+   "img/g1-mA-8.png"
+  ],
+  "options": [
+   "4 個",
+   "5 個",
+   "6 個",
+   "7 個"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-1-2-1"
+  ],
+  "why": "下層被擋住的積木也要數",
+  "kegang": [
+   "S-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-9",
+  "grade": 1,
+  "year": "mA",
+  "no": 9,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面哪一個數比 62 大？",
+  "fig": [],
+  "options": [
+   "67",
+   "26",
+   "59",
+   "60"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-3"
+  ],
+  "why": "先比十位，十位一樣再比個位",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-10",
+  "grade": 1,
+  "year": "mA",
+  "no": 10,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "算算看：\n12 − 5 =（ 7 ）\n12 − 6 =（ 6 ）\n12 − 7 =（　）\n12 − 8 =（　）",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "5|五",
+   "4|四"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-3-1"
+  ],
+  "why": "減數多 1，差就少 1",
+  "kegang": [
+   "N-1-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-11",
+  "grade": 1,
+  "year": "mA",
+  "no": 11,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "按照順序填填看：\n58 → 59 →（　）→ 61 →（　）。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "60",
+   "62"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-1"
+  ],
+  "why": "順著數，59 的下一個是 60",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-12",
+  "grade": 1,
+  "year": "mA",
+  "no": 12,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "一朵花有 5 片花瓣，下面共有（　）片花瓣。",
+  "fig": [
+   "img/g1-mA-12.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "40"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-5"
+  ],
+  "why": "5 個一數：5、10、15……",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-13",
+  "grade": 1,
+  "year": "mA",
+  "no": 13,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "小朋友排成一排。小晴的前面有 4 個人，後面有 3 個人。這一排共有（　）個人。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "8|八"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-4"
+  ],
+  "why": "別忘了把小晴自己也算進去",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-14",
+  "grade": 1,
+  "year": "mA",
+  "no": 14,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "只能移動一塊圖形板，想一想，移動了（　）號圖形板。",
+  "fig": [
+   "img/g1-mA-14.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "3|三"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-1-2-1"
+  ],
+  "why": "比較前後，找出位置改變的那一塊",
+  "kegang": [
+   "S-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-15",
+  "grade": 1,
+  "year": "mA",
+  "no": 15,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "現在的時刻是：[圖]長針再走 1 圈後，是（　）點。",
+  "fig": [
+   "img/g1-mA-15.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "3|三"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-6-3"
+  ],
+  "why": "長針走 1 圈，短針走 1 大格",
+  "kegang": [
+   "N-1-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-16",
+  "grade": 1,
+  "year": "mA",
+  "no": 16,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "算算看：6 + 7 =（　）、15 − 8 =（　）。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "13",
+   "7|七"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-3-1"
+  ],
+  "why": "進位加法和退位減法的基本計算",
+  "kegang": [
+   "N-1-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-17",
+  "grade": 1,
+  "year": "mA",
+  "no": 17,
+  "section": "填充題",
+  "type": "choice",
+  "stem": "一條[圖1]有 10 個[圖2]。甲和乙，誰的積木比較多？圈圈看。（　）[圖3]",
+  "fig": [
+   "img/g1-mA-17-rod.png",
+   "img/g1-mA-17-unit.png",
+   "img/g1-mA-17.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "一樣多"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-3"
+  ],
+  "why": "先比有幾條（幾個十），再比幾個",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-18",
+  "grade": 1,
+  "year": "mA",
+  "no": 18,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "「4 個十和 13 個一」合起來是（　）。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "53"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-2"
+  ],
+  "why": "13 個一要換成 1 個十和 3 個一",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-19",
+  "grade": 1,
+  "year": "mA",
+  "no": 19,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "已經知道 5 + 8 和 8 + 5 一樣大，24 + 7 和（　）+ 24 也一樣大。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "7|七"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-1-2-1"
+  ],
+  "why": "兩數相加，交換位置和不變",
+  "kegang": [
+   "R-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-20",
+  "grade": 1,
+  "year": "mA",
+  "no": 20,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "如圖，鉛筆比蠟筆長（　）個迴紋針。",
+  "fig": [
+   "img/g1-mA-20.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "2|二"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-5-2"
+  ],
+  "why": "各量出幾個迴紋針長，再比較",
+  "kegang": [
+   "N-1-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-21",
+  "grade": 1,
+  "year": "mA",
+  "no": 21,
+  "section": "填充題",
+  "type": "choice",
+  "stem": "書桌和 5 把尺接起來一樣長，櫃子和 7 把同樣的尺接起來一樣長。誰比較長？圈圈看。（　）",
+  "fig": [],
+  "options": [
+   "書桌",
+   "櫃子",
+   "一樣長"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-5-2"
+  ],
+  "why": "用同樣的尺量，量到的數大就比較長",
+  "kegang": [
+   "N-1-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-22",
+  "grade": 1,
+  "year": "mA",
+  "no": 22,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "一捆吸管有 10 支。從下面的吸管拿走 1 捆和 2 支後，剩下（　）支吸管。",
+  "fig": [
+   "img/g1-mA-22.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "45"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-1-1"
+  ],
+  "why": "十和一分開拿走，再數剩下的",
+  "kegang": [
+   "N-1-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-23",
+  "grade": 1,
+  "year": "mA",
+  "no": 23,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "一盒蛋塔有 6 個，2 盒蛋塔有（　）個。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "12"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-2-2"
+  ],
+  "why": "2 盒就是 6 和 6 合起來",
+  "kegang": [
+   "N-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-24",
+  "grade": 1,
+  "year": "mA",
+  "no": 24,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "把做法用算式記下來，並寫出答案。\n小宇早上讀了 7 頁故事書，晚上又讀了 15 頁，小宇早上和晚上共讀了多少頁？\n（　）□（　）=（　）\n答：共讀了（　）頁",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "22"
+  ],
+  "work": [
+   "7+15=22"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-2-1"
+  ],
+  "why": "合起來用加法算式記錄",
+  "kegang": [
+   "N-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g1-mA-25",
+  "grade": 1,
+  "year": "mA",
+  "no": 25,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "把做法用算式記下來，並寫出答案。\n一個杯子要放 1 根吸管。有 15 個杯子和 7 根吸管，有多少個杯子沒有吸管？\n（　）□（　）=（　）\n答：（　）個杯子",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "8|八"
+  ],
+  "work": [
+   "15−7=8",
+   "或 7+8=15"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-1-2-1"
+  ],
+  "why": "一個對一個比多少，用減法",
+  "kegang": [
+   "N-1-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-1",
+  "grade": 2,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一個書包賣 598 元，一個鉛筆盒賣 203 元。買 1 個書包和 1 個鉛筆盒，要付的錢最接近幾元？",
+  "fig": [],
+  "options": [
+   "600 元",
+   "700 元",
+   "800 元",
+   "900 元"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-4-1"
+  ],
+  "why": "兩數取整百後相加估算",
+  "kegang": [
+   "N-2-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-2",
+  "grade": 2,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "鐘面上的時刻和下面哪個數字鐘的時刻一樣？",
+  "fig": [
+   "img/g2-mA-2.png"
+  ],
+  "options": [
+   "8 : 10",
+   "8 : 52",
+   "9 : 52",
+   "10 : 44"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-13-1"
+  ],
+  "why": "報讀幾時幾分（時針接近下一個數字）",
+  "kegang": [
+   "N-2-13"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-3",
+  "grade": 2,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問 306 公分也可以說是多少公尺多少公分？",
+  "fig": [],
+  "options": [
+   "3 公尺 6 公分",
+   "3 公尺 60 公分",
+   "30 公尺 6 公分",
+   "36 公尺"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-11-2"
+  ],
+  "why": "公分化成幾公尺幾公分（十位是 0）",
+  "kegang": [
+   "N-2-11"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-4",
+  "grade": 2,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "看圖比一比，甲、乙、丙誰最輕？",
+  "fig": [
+   "img/g2-mA-4.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "一樣重"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-12-2"
+  ],
+  "why": "用兩個天平間接比較重量",
+  "kegang": [
+   "N-2-12"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-5",
+  "grade": 2,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問 6 × 5 比 6 × 8 少多少？",
+  "fig": [],
+  "options": [
+   "少 3",
+   "少 3 個 5",
+   "少 3 個 6",
+   "少 3 個 8"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-7-1"
+  ],
+  "why": "乘數差 3，積差 3 個 6",
+  "kegang": [
+   "N-2-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-6",
+  "grade": 2,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安、小宇、小晴比賽跳繩，每個人都跳 3 次，結果如下表。[圖]請問誰跳的總下數最多？",
+  "fig": [
+   "img/g2-mA-6.png"
+  ],
+  "options": [
+   "小安",
+   "小宇",
+   "小晴",
+   "一樣多"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-2-2-1"
+  ],
+  "why": "三個數相同、順序不同，和一樣",
+  "kegang": [
+   "R-2-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-7",
+  "grade": 2,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「3 個百、15 個十和 4 個一」合起來是多少？",
+  "fig": [],
+  "options": [
+   "319",
+   "354",
+   "454",
+   "544"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-1-2"
+  ],
+  "why": "15 個十要換成 1 個百 5 個十",
+  "kegang": [
+   "N-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-8",
+  "grade": 2,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，桌上有 3 個一樣的杯子，杯子裡都倒了一些果汁。哪一個杯子的容量最大？",
+  "fig": [
+   "img/g2-mA-8.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "一樣大"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-12-1"
+  ],
+  "why": "容量是裝滿的量，和現在裝多少無關",
+  "kegang": [
+   "N-2-12"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-9",
+  "grade": 2,
+  "year": "mA",
+  "no": 9,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "用圖中的尺量量看，蠟筆長（　）公分。",
+  "fig": [
+   "img/g2-mA-9.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "7|七"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-2-3-1"
+  ],
+  "why": "不是從 0 開始量，要算幾個 1 公分",
+  "kegang": [
+   "S-2-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-10",
+  "grade": 2,
+  "year": "mA",
+  "no": 10,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "填一填，共有多少顆星星？[圖]\n甲的算法：9 ×（　）=（　）。\n乙的算法：4 ×（　）=（　）。",
+  "fig": [
+   "img/g2-mA-10.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "4",
+   "36",
+   "9",
+   "36"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-2-3-1"
+  ],
+  "why": "同一個排列用兩種乘法算式記錄",
+  "kegang": [
+   "R-2-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-11",
+  "grade": 2,
+  "year": "mA",
+  "no": 11,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "比一比，在□中填入 <、= 或 >。\n6 × 4 □ 6 + 6 + 6",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   ">"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-2-1-1"
+  ],
+  "why": "6 × 4 是 4 個 6，比 3 個 6 多",
+  "kegang": [
+   "R-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-12",
+  "grade": 2,
+  "year": "mA",
+  "no": 12,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "在□中填入 <、= 或 >。\n已經知道 36 + 47 < 85，85 < 58 + 29。\n想一想：36 + 47 □ 58 + 29",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "<"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-2-1-2"
+  ],
+  "why": "用遞移關係比較，不用計算",
+  "kegang": [
+   "R-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-13",
+  "grade": 2,
+  "year": "mA",
+  "no": 13,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "撲滿裡原有 318 元，哥哥又把下面的錢放進撲滿。[圖]現在撲滿裡有（　）元。",
+  "fig": [
+   "img/g2-mA-13.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "593"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-5-1"
+  ],
+  "why": "先數出放進去的錢，再相加",
+  "kegang": [
+   "N-2-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-14",
+  "grade": 2,
+  "year": "mA",
+  "no": 14,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "看圖回答問題：[圖]今天下午的畫畫課共上了（　）小時。",
+  "fig": [
+   "img/g2-mA-14.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "3|三"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-13-2"
+  ],
+  "why": "整點到整點經過幾小時",
+  "kegang": [
+   "N-2-13"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-15",
+  "grade": 2,
+  "year": "mA",
+  "no": 15,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "一片[圖1]和 100 個[圖2]一樣多，一條[圖3]和 10 個[圖2]一樣多。數一數，下面的積木和（　）個[圖2]一樣多。[圖4]",
+  "fig": [
+   "img/g2-mA-15-flat.png",
+   "img/g2-mA-15-unit.png",
+   "img/g2-mA-15-rod.png",
+   "img/g2-mA-15.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "306"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-1-1"
+  ],
+  "why": "3 個百、0 個十、6 個一，十位要寫 0",
+  "kegang": [
+   "N-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-16",
+  "grade": 2,
+  "year": "mA",
+  "no": 16,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "下圖中，三角形的外部有（　）個 ●。",
+  "fig": [
+   "img/g2-mA-16.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "5|五"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-2-1-3"
+  ],
+  "why": "分辨內部、外部和周界上的點",
+  "kegang": [
+   "S-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-17",
+  "grade": 2,
+  "year": "mA",
+  "no": 17,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "一包餅乾有 8 片，6 包共有（　）片餅乾。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "48"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-6-2"
+  ],
+  "why": "每包 8 片有 6 包，用乘法",
+  "kegang": [
+   "N-2-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-18",
+  "grade": 2,
+  "year": "mA",
+  "no": 18,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "下面的圖形有（　）個邊、（　）個角。",
+  "fig": [
+   "img/g2-mA-18.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "6|六",
+   "6|六"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-2-1-1"
+  ],
+  "why": "數平面圖形的邊和角（有凹進去的角）",
+  "kegang": [
+   "S-2-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-19",
+  "grade": 2,
+  "year": "mA",
+  "no": 19,
+  "section": "填充題",
+  "type": "fill",
+  "stem": "如圖，每一方格的邊長都是 1 公分，灰色圖形的周長是（　）公分。",
+  "fig": [
+   "img/g2-mA-19.png"
+  ],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "18"
+  ],
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-2-4-2"
+  ],
+  "why": "沿著周界數邊長，不是數格子",
+  "kegang": [
+   "S-2-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-20",
+  "grade": 2,
+  "year": "mA",
+  "no": 20,
+  "section": "填充題",
+  "type": "choice",
+  "stem": "教室的寬度和 12 根球棒接起來一樣長，也和 9 支掃把接起來一樣長。1 根球棒和 1 支掃把，誰比較長？圈圈看。（　）",
+  "fig": [],
+  "options": [
+   "1 根球棒",
+   "1 支掃把",
+   "一樣長"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-11-1"
+  ],
+  "why": "量的次數越少，那個東西越長",
+  "kegang": [
+   "N-2-11"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-21",
+  "grade": 2,
+  "year": "mA",
+  "no": 21,
+  "section": "計算題",
+  "type": "calc",
+  "stem": "寫成直式算算看：635 − 281 =（　）",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "354"
+  ],
+  "work": [
+   "635−281=354"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-2-2"
+  ],
+  "why": "三位數減法，十位不夠減要退位",
+  "kegang": [
+   "N-2-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-22",
+  "grade": 2,
+  "year": "mA",
+  "no": 22,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "一輛三輪車有 3 個輪子，8 輛三輪車共有多少個輪子？請用乘法算式把做法記下來。",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "24"
+  ],
+  "work": [
+   "3×8=24"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-6-1"
+  ],
+  "why": "用乘法算式記錄「幾個幾」",
+  "kegang": [
+   "N-2-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-23",
+  "grade": 2,
+  "year": "mA",
+  "no": 23,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "姐姐有 52 張貼紙，姐姐比妹妹多 18 張，請問妹妹有多少張貼紙？",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "34"
+  ],
+  "work": [
+   "52−18=34"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-3-1"
+  ],
+  "why": "「比……多」的比較型問題，要用減法",
+  "kegang": [
+   "N-2-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-24",
+  "grade": 2,
+  "year": "mA",
+  "no": 24,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "公車上原有 34 位乘客，到站後有 17 位下車，又有 25 位上車，現在公車上有多少位乘客？",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "42"
+  ],
+  "work": [
+   "34−17=17",
+   "17+25=42"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-8-1"
+  ],
+  "why": "先減再加的兩步驟問題",
+  "kegang": [
+   "N-2-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g2-mA-25",
+  "grade": 2,
+  "year": "mA",
+  "no": 25,
+  "section": "應用題",
+  "type": "calc",
+  "stem": "一盒彩色筆有 5 枝紅筆和 3 枝藍筆，6 盒彩色筆共有多少枝筆？",
+  "fig": [],
+  "options": null,
+  "optImgs": null,
+  "answer": null,
+  "blanks": [
+   "48"
+  ],
+  "work": [
+   "5+3=8",
+   "8×6=48",
+   "或 5×6=30",
+   "3×6=18",
+   "30+18=48"
+  ],
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-2-8-3"
+  ],
+  "why": "先加再乘的兩步驟問題",
+  "kegang": [
+   "N-2-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-1",
+  "grade": 3,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "觀察下面圖形變化的規律：[圖]下一個圖形是哪個圖形？",
+  "fig": [
+   "img/g3-mA-1.png"
+  ],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g3-mA-1-o1.png",
+   "img/g3-mA-1-o2.png",
+   "img/g3-mA-1-o3.png",
+   "img/g3-mA-1-o4.png"
+  ],
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-3-2-1"
+  ],
+  "why": "灰色格子順時針輪流移動",
+  "kegang": [
+   "R-3-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-2",
+  "grade": 3,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，5003 − 1468 = ？",
+  "fig": [],
+  "options": [
+   "3535",
+   "3545",
+   "4465",
+   "6471"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-2-1"
+  ],
+  "why": "被減數中間有 0 的連續退位",
+  "kegang": [
+   "N-3-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-3",
+  "grade": 3,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面哪個選項的圖卡合起來和 2031 一樣多？",
+  "fig": [],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g3-mA-3-o1.png",
+   "img/g3-mA-3-o2.png",
+   "img/g3-mA-3-o3.png",
+   "img/g3-mA-3-o4.png"
+  ],
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-1-1"
+  ],
+  "why": "百位是0，分清楚10和100",
+  "kegang": [
+   "N-3-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-4",
+  "grade": 3,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一本故事書賣 264 元，學校買了 6 本，共要付多少元？",
+  "fig": [],
+  "options": [
+   "1264 元",
+   "1564 元",
+   "1584 元",
+   "123624 元"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-3-2"
+  ],
+  "why": "三位數乘一位數連續進位",
+  "kegang": [
+   "N-3-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-5",
+  "grade": 3,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "把 58 張貼紙平分給 8 個小朋友，每人最多可以分到多少張？還剩下多少張？",
+  "fig": [],
+  "options": [
+   "每人分到 6 張，剩下 10 張",
+   "每人分到 7 張，剩下 2 張",
+   "每人分到 8 張，剩下 6 張",
+   "每人分到 2 張，剩下 7 張"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-4-2"
+  ],
+  "why": "有餘數的平分，餘數要比除數小",
+  "kegang": [
+   "N-3-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-6",
+  "grade": 3,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，「921 ÷ 9」的商和餘數各是多少？",
+  "fig": [],
+  "options": [
+   "商是 120，餘數是 3",
+   "商是 102，餘數是 3",
+   "商是 12，餘數是 3",
+   "商是 1，餘數是 21"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-5-2"
+  ],
+  "why": "商的十位要補 0",
+  "kegang": [
+   "N-3-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-7",
+  "grade": 3,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「38 個包子，每 5 個裝一盒，最多可以裝成多少盒？還剩下多少個？」下面哪個算式和答案都正確？",
+  "fig": [],
+  "options": [
+   "38 ÷ 5 = 7……3，答：最多可以裝成 7 盒，還剩下 3 個",
+   "38 ÷ 5 = 7……3，答：最多可以裝成 3 盒，還剩下 7 個",
+   "38 ÷ 5 = 6……8，答：最多可以裝成 6 盒，還剩下 8 個",
+   "38 ÷ 7 = 5……3，答：最多可以裝成 5 盒，還剩下 3 個"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-4-1"
+  ],
+  "why": "除數是每盒個數；商和餘數的意思",
+  "kegang": [
+   "N-3-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-8",
+  "grade": 3,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一條蛋糕平分成 8 塊。小安吃了 3/8 條，小宇吃了 2/8 條，兩人共吃了多少條蛋糕？",
+  "fig": [],
+  "options": [
+   "1/8 條",
+   "5/16 條",
+   "5/8 條",
+   "5 條"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-9-2"
+  ],
+  "why": "同分母相加，分母不變",
+  "kegang": [
+   "N-3-9"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-9",
+  "grade": 3,
+  "year": "mA",
+  "no": 9,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一件上衣特價 298 元，老師買了 5 件。5 件上衣的價錢最接近下列哪個選項？",
+  "fig": [],
+  "options": [
+   "2000 元",
+   "1500 元",
+   "1000 元",
+   "300 元"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-8-2"
+  ],
+  "why": "298 看成 300 再乘",
+  "kegang": [
+   "N-3-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-10",
+  "grade": 3,
+  "year": "mA",
+  "no": 10,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一盒餅乾有 12 片，吃掉一些後，盒子裡剩下的餅乾如下圖。[圖]剩下的餅乾是多少盒？",
+  "fig": [
+   "img/g3-mA-10.png"
+  ],
+  "options": [
+   "5/12 盒",
+   "7 盒",
+   "1/7 盒",
+   "7/12 盒"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-9-1"
+  ],
+  "why": "7 片是一盒 12 片中的 7 份",
+  "kegang": [
+   "N-3-9"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-11",
+  "grade": 3,
+  "year": "mA",
+  "no": 11,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一條數線，（　）內應填入哪個數？",
+  "fig": [
+   "img/g3-mA-11.png"
+  ],
+  "options": [
+   "43",
+   "50",
+   "55",
+   "59"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-11-1"
+  ],
+  "why": "先看出 1 小格是 5，不是 1",
+  "kegang": [
+   "N-3-11"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-12",
+  "grade": 3,
+  "year": "mA",
+  "no": 12,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "將甲、乙、丙三個角，由大到小依序排列，哪個排列順序正確？",
+  "fig": [
+   "img/g3-mA-12.png"
+  ],
+  "options": [
+   "乙＞丙＞甲",
+   "甲＞丙＞乙",
+   "丙＞乙＞甲",
+   "甲＞乙＞丙"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-13-1"
+  ],
+  "why": "角的大小看張開程度，和邊長無關",
+  "kegang": [
+   "N-3-13"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-13",
+  "grade": 3,
+  "year": "mA",
+  "no": 13,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，將左邊的長方形圖卡沿著虛線剪成兩個圖卡。[圖1]再分別拼成甲、乙、丙三個圖卡。[圖2]請問哪個圖卡的面積最大？",
+  "fig": [
+   "img/g3-mA-13.png",
+   "img/g3-mA-13-2.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "一樣大"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-3-4-1"
+  ],
+  "why": "切開重拼，形狀變了面積不變",
+  "kegang": [
+   "S-3-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-14",
+  "grade": 3,
+  "year": "mA",
+  "no": 14,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問 4050 的「4」所代表的數，可以換成多少個十？",
+  "fig": [],
+  "options": [
+   "4 個",
+   "40 個",
+   "400 個",
+   "405 個"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-1-2"
+  ],
+  "why": "4 在千位，4000 是 400 個十",
+  "kegang": [
+   "N-3-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-15",
+  "grade": 3,
+  "year": "mA",
+  "no": 15,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "麵包店烤了 96 個餐包，每 8 個裝一袋，全部裝完後賣掉 5 袋，還剩下多少袋？",
+  "fig": [],
+  "options": [
+   "7 袋",
+   "12 袋",
+   "17 袋",
+   "83 袋"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-7-1"
+  ],
+  "why": "先除再減的兩步驟問題",
+  "kegang": [
+   "N-3-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-16",
+  "grade": 3,
+  "year": "mA",
+  "no": 16,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一本數學習作的厚度大約是 5（　）。請問（　）內適合填入什麼單位？",
+  "fig": [],
+  "options": [
+   "公尺",
+   "毫米",
+   "公分",
+   "公斤"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-12-1"
+  ],
+  "why": "毫米的量感：很薄的東西用毫米",
+  "kegang": [
+   "N-3-12"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-17",
+  "grade": 3,
+  "year": "mA",
+  "no": 17,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一條繩子長 4 公尺 30 公分，剪掉 1 公尺 50 公分後，還剩下多少公尺多少公分？",
+  "fig": [],
+  "options": [
+   "5 公尺 80 公分",
+   "3 公尺 80 公分",
+   "3 公尺 20 公分",
+   "2 公尺 80 公分"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-12-2"
+  ],
+  "why": "公分不夠減，1 公尺換成 100 公分",
+  "kegang": [
+   "N-3-12"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-18",
+  "grade": 3,
+  "year": "mA",
+  "no": 18,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "圖書館原有 6012 本書，被借走了 2995 本，圖書館裡大約還剩下多少本書？",
+  "fig": [],
+  "options": [
+   "3000 本",
+   "4000 本",
+   "8000 本",
+   "9000 本"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-8-1"
+  ],
+  "why": "兩數取整千後相減",
+  "kegang": [
+   "N-3-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-19",
+  "grade": 3,
+  "year": "mA",
+  "no": 19,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖中，哪些圖形是正方形？",
+  "fig": [
+   "img/g3-mA-19.png"
+  ],
+  "options": [
+   "只有甲、乙",
+   "只有甲、丙",
+   "只有甲",
+   "甲、乙、丙"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-3-2-1"
+  ],
+  "why": "正方形要四個直角而且四邊等長",
+  "kegang": [
+   "S-3-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-20",
+  "grade": 3,
+  "year": "mA",
+  "no": 20,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一個長方形，請問甲邊和乙邊各長多少公分？",
+  "fig": [
+   "img/g3-mA-20.png"
+  ],
+  "options": [
+   "甲邊長 9 公分，乙邊長 5 公分",
+   "甲邊長 5 公分，乙邊長 9 公分",
+   "甲邊和乙邊都長 9 公分",
+   "甲邊和乙邊都長 5 公分"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-3-2-2"
+  ],
+  "why": "長方形相對的兩邊一樣長",
+  "kegang": [
+   "S-3-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-21",
+  "grade": 3,
+  "year": "mA",
+  "no": 21,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問 2 公升 50 毫升和多少毫升一樣多？",
+  "fig": [],
+  "options": [
+   "250 毫升",
+   "2005 毫升",
+   "2050 毫升",
+   "2500 毫升"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-15-1"
+  ],
+  "why": "2 公升是 2000 毫升，再加 50",
+  "kegang": [
+   "N-3-15"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-22",
+  "grade": 3,
+  "year": "mA",
+  "no": 22,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一袋米重 3 公斤 50 公克，一袋紅豆重 1200 公克，一袋米和一袋紅豆合起來重多少公斤多少公克？",
+  "fig": [],
+  "options": [
+   "4 公斤 250 公克",
+   "4 公斤 70 公克",
+   "4 公斤 700 公克",
+   "15 公斤 50 公克"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-16-2"
+  ],
+  "why": "1200 公克先換成公斤公克",
+  "kegang": [
+   "N-3-16"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-23",
+  "grade": 3,
+  "year": "mA",
+  "no": 23,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是 1 公斤秤的秤面，指針所指的刻度是多少公克？",
+  "fig": [
+   "img/g3-mA-23.png"
+  ],
+  "options": [
+   "303 公克",
+   "315 公克",
+   "330 公克",
+   "380 公克"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-16-1"
+  ],
+  "why": "1 小格是 10 公克，不是 1 公克",
+  "kegang": [
+   "N-3-16"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-24",
+  "grade": 3,
+  "year": "mA",
+  "no": 24,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一包色紙有 15 張，一袋有 4 包，6 袋共有多少張色紙？",
+  "fig": [],
+  "options": [
+   "25 張",
+   "60 張",
+   "90 張",
+   "360 張"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-3-7-3"
+  ],
+  "why": "連乘兩次的兩步驟問題",
+  "kegang": [
+   "N-3-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g3-mA-25",
+  "grade": 3,
+  "year": "mA",
+  "no": 25,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一個圓，黑點是圓心。哪一條線段是這個圓的半徑？",
+  "fig": [
+   "img/g3-mA-25.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "丁"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-3-3-1"
+  ],
+  "why": "半徑是圓心到圓周的線段",
+  "kegang": [
+   "S-3-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-1",
+  "grade": 4,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，406 × 35 = ？",
+  "fig": [],
+  "options": [
+   "1610",
+   "3248",
+   "14210",
+   "123830"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-2-1"
+  ],
+  "why": "被乘數中間有 0，部分積要對位",
+  "kegang": [
+   "N-4-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-2",
+  "grade": 4,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "四年丙班每人選一種最喜歡的水果，結果畫成下面的長條圖。[圖]下列敘述何者正確？",
+  "fig": [
+   "img/g4-mA-2.png"
+  ],
+  "options": [
+   "四年丙班共有 25 人",
+   "喜歡芭樂的人數比喜歡葡萄的多 3 人",
+   "喜歡香蕉的人數最多",
+   "喜歡蘋果和喜歡香蕉的人數合起來是 12 人"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "DC-4-1-1"
+  ],
+  "why": "報讀長條圖（刻度每格 1 人，只標偶數）",
+  "kegang": [
+   "D-4-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-3",
+  "grade": 4,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面哪個分數和 23/6 一樣大？",
+  "fig": [],
+  "options": [
+   "2又3/6",
+   "3又5/6",
+   "5又3/6",
+   "6又3/5"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-5-2"
+  ],
+  "why": "假分數換成帶分數（23 ÷ 6）",
+  "kegang": [
+   "N-4-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-4",
+  "grade": 4,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「一盒雞蛋有 10 顆，媽媽買了 6 盒，做蛋糕用掉 24 顆，還剩下多少顆雞蛋？」下列哪個算式可以算出正確答案？",
+  "fig": [],
+  "options": [
+   "10 × 6 − 24",
+   "10 + 6 − 24",
+   "(10 − 6) × 24",
+   "10 × (24 − 6)"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-4-1-1"
+  ],
+  "why": "先乘再減，併成一個算式",
+  "kegang": [
+   "R-4-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-5",
+  "grade": 4,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，1公里350公尺 × 4 = ？",
+  "fig": [],
+  "options": [
+   "4 公里 350 公尺",
+   "4 公里 400 公尺",
+   "5 公里 400 公尺",
+   "18 公里"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-9-2"
+  ],
+  "why": "公尺滿 1000 要進位成 1 公里",
+  "kegang": [
+   "N-4-9"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-6",
+  "grade": 4,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面是甲、乙、丙三人關於四邊形的說法。\n甲說：正方形的四個邊一樣長。\n乙說：平行四邊形的兩雙對邊分別一樣長。\n丙說：梯形的兩雙對邊都互相平行。\n哪些人的說法正確？",
+  "fig": [],
+  "options": [
+   "只有甲、乙",
+   "只有甲、丙",
+   "只有乙、丙",
+   "甲、乙、丙都正確"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-8-3"
+  ],
+  "why": "梯形只有一雙對邊平行",
+  "kegang": [
+   "S-4-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-7",
+  "grade": 4,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一條分數數線，（　）內應填入哪個數？",
+  "fig": [
+   "img/g4-mA-7.png"
+  ],
+  "options": [
+   "2又3/4",
+   "2又3/6",
+   "3又3/5",
+   "2又3/5"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-8-2"
+  ],
+  "why": "1 平分成 5 段，數「段」不是數刻度",
+  "kegang": [
+   "N-4-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-8",
+  "grade": 4,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，一條直線和甲、乙、丙三條直線相交。下列敘述何者正確？",
+  "fig": [
+   "img/g4-mA-8.png"
+  ],
+  "options": [
+   "甲和乙互相平行",
+   "甲和丙互相平行",
+   "乙和丙互相平行",
+   "甲、乙、丙都互相平行"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-5-2"
+  ],
+  "why": "都和同一直線垂直的兩線才平行",
+  "kegang": [
+   "S-4-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-9",
+  "grade": 4,
+  "year": "mA",
+  "no": 9,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問「5236 ÷ 26」的商和餘數各是多少？",
+  "fig": [],
+  "options": [
+   "商是 21，餘數是 10",
+   "商是 200，餘數是 36",
+   "商是 210，餘數是 10",
+   "商是 201，餘數是 10"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-2-2"
+  ],
+  "why": "商的十位要補 0；餘數要比除數小",
+  "kegang": [
+   "N-4-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-10",
+  "grade": 4,
+  "year": "mA",
+  "no": 10,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "用下圖的量角器量量看，角 A 是多少度？",
+  "fig": [
+   "img/g4-mA-10.png"
+  ],
+  "options": [
+   "70",
+   "80",
+   "100",
+   "130"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-10-1"
+  ],
+  "why": "角的一邊沒對齊 0，要算兩個刻度的差",
+  "kegang": [
+   "N-4-10"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-11",
+  "grade": 4,
+  "year": "mA",
+  "no": 11,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，請問甲角是多少度？",
+  "fig": [
+   "img/g4-mA-11.png"
+  ],
+  "options": [
+   "50",
+   "130",
+   "230",
+   "360"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-2-1"
+  ],
+  "why": "周角 360 度，減去已知的角",
+  "kegang": [
+   "S-4-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-12",
+  "grade": 4,
+  "year": "mA",
+  "no": 12,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，506萬8000 + 37萬4500 = ？",
+  "fig": [],
+  "options": [
+   "543萬2500",
+   "544萬2500",
+   "881萬3000",
+   "54萬4250"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-1-2"
+  ],
+  "why": "千位相加滿 1 萬要進到萬",
+  "kegang": [
+   "N-4-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-13",
+  "grade": 4,
+  "year": "mA",
+  "no": 13,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "園遊會準備了 72 個氣球，先平分給 3 個班，每個班再把分到的氣球平分給 4 個小組，每個小組可以分到多少個氣球？",
+  "fig": [],
+  "options": [
+   "6",
+   "18",
+   "24",
+   "96"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-3-2"
+  ],
+  "why": "連續除兩次的兩步驟問題",
+  "kegang": [
+   "N-4-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-14",
+  "grade": 4,
+  "year": "mA",
+  "no": 14,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，甲、乙兩個三角形全等。下列哪個選項是邊 AB 的對應邊？",
+  "fig": [
+   "img/g4-mA-14.png"
+  ],
+  "options": [
+   "邊 DE",
+   "邊 DF",
+   "邊 AC",
+   "邊 EF"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-6-1"
+  ],
+  "why": "翻轉後的全等三角形，用角度找對應邊",
+  "kegang": [
+   "S-4-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-15",
+  "grade": 4,
+  "year": "mA",
+  "no": 15,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是文具店 1 月到 6 月賣出的雨傘數量折線圖。[圖]下列敘述何者正確？",
+  "fig": [
+   "img/g4-mA-15.png"
+  ],
+  "options": [
+   "3 月賣出的雨傘比 2 月多",
+   "賣出最少的月分是 6 月",
+   "4 月到 5 月增加了 15 把",
+   "1 月和 6 月賣出的數量相差 20 把"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "DC-4-1-2"
+  ],
+  "why": "報讀折線圖（一小格是 5 把）",
+  "kegang": [
+   "D-4-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-16",
+  "grade": 4,
+  "year": "mA",
+  "no": 16,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「一枝原子筆 18 元，一盒有 25 枝，老師買了 4 盒，共要付多少元？」可以用 18 × 25 × 4 來算。下列哪個算式無法算出正確的答案？",
+  "fig": [],
+  "options": [
+   "18 × (25 × 4)",
+   "(18 × 25) × 4",
+   "18 × 100",
+   "18 × 25 + 4"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-4-2-1"
+  ],
+  "why": "三數相乘先乘哪兩個都可以",
+  "kegang": [
+   "R-4-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-17",
+  "grade": 4,
+  "year": "mA",
+  "no": 17,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面是甲、乙、丙三人關於三角形的說法。\n甲說：等腰三角形有兩個邊一樣長。\n乙說：鈍角三角形有兩個鈍角。\n丙說：正三角形的三個角一樣大。\n哪些人的說法正確？",
+  "fig": [],
+  "options": [
+   "只有甲、乙",
+   "只有甲、丙",
+   "只有乙、丙",
+   "甲、乙、丙都正確"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-7-1"
+  ],
+  "why": "鈍角三角形只有一個鈍角",
+  "kegang": [
+   "S-4-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-18",
+  "grade": 4,
+  "year": "mA",
+  "no": 18,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，1 張色紙平分成 100 格，塗色的部分合起來是多少張色紙？",
+  "fig": [
+   "img/g4-mA-18.png"
+  ],
+  "options": [
+   "1.07",
+   "1.7",
+   "10.7",
+   "107"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-7-1"
+  ],
+  "why": "1 張又 7 格，十分位要寫 0",
+  "kegang": [
+   "N-4-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-19",
+  "grade": 4,
+  "year": "mA",
+  "no": 19,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "用一條長 20 公分的鐵絲，剛好圍成一個正方形。這個正方形的面積是多少平方公分？",
+  "fig": [],
+  "options": [
+   "20",
+   "25",
+   "80",
+   "400"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-3-2"
+  ],
+  "why": "先用周長求邊長，再算面積",
+  "kegang": [
+   "S-4-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-20",
+  "grade": 4,
+  "year": "mA",
+  "no": 20,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，這個四邊形的四個邊都是 4 公分。它是哪種四邊形？",
+  "fig": [
+   "img/g4-mA-20.png"
+  ],
+  "options": [
+   "正方形",
+   "長方形",
+   "菱形",
+   "梯形"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-8-1"
+  ],
+  "why": "四邊等長但角不是直角，是菱形不是正方形",
+  "kegang": [
+   "S-4-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-21",
+  "grade": 4,
+  "year": "mA",
+  "no": 21,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一條緞帶長 5又1/6 公尺，包裝禮物用掉 2又5/6 公尺，還剩下多少公尺的緞帶？",
+  "fig": [],
+  "options": [
+   "3又4/6",
+   "3又2/6",
+   "2又4/6",
+   "2又2/6"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-5-3"
+  ],
+  "why": "分子不夠減，要從整數借 1（6/6）",
+  "kegang": [
+   "N-4-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-22",
+  "grade": 4,
+  "year": "mA",
+  "no": 22,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "請問下圖的周長是多少公分？",
+  "fig": [
+   "img/g4-mA-22.png"
+  ],
+  "options": [
+   "21",
+   "30",
+   "42",
+   "108"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-3-1"
+  ],
+  "why": "沒標長度的邊也要算進周長",
+  "kegang": [
+   "S-4-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-23",
+  "grade": 4,
+  "year": "mA",
+  "no": 23,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，120 − 40 ÷ 8 = ？",
+  "fig": [],
+  "options": [
+   "5",
+   "10",
+   "125",
+   "115"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-4-1-2"
+  ],
+  "why": "先乘除後加減",
+  "kegang": [
+   "R-4-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-24",
+  "grade": 4,
+  "year": "mA",
+  "no": 24,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面的圖形都畫在方格紙上，哪個圖形是平行四邊形？",
+  "fig": [],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g4-mA-24-o1.png",
+   "img/g4-mA-24-o2.png",
+   "img/g4-mA-24-o3.png",
+   "img/g4-mA-24-o4.png"
+  ],
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-4-8-2"
+  ],
+  "why": "平行四邊形要兩雙對邊都平行",
+  "kegang": [
+   "S-4-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g4-mA-25",
+  "grade": 4,
+  "year": "mA",
+  "no": 25,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一打鉛筆有 12 枝，29 枝鉛筆是多少打？",
+  "fig": [],
+  "options": [
+   "12/29",
+   "2又5/29",
+   "2又5/12",
+   "29"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-4-5-1"
+  ],
+  "why": "12 枝是 1 打，分母是 12",
+  "kegang": [
+   "N-4-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-1",
+  "grade": 5,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一個長方體，哪個面和塗色的面 BCGF 互相平行？",
+  "fig": [
+   "img/g5-mA-1.png"
+  ],
+  "options": [
+   "面 ABCD",
+   "面 ABFE",
+   "面 ADHE",
+   "面 DCGH"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-6-1"
+  ],
+  "why": "找出長方體中互相平行的面",
+  "kegang": [
+   "S-5-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-2",
+  "grade": 5,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是由兩個長方體組成的立體形體，它的體積是多少立方公分？",
+  "fig": [
+   "img/g5-mA-2.png"
+  ],
+  "options": [
+   "96",
+   "156",
+   "160",
+   "256"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-5-1"
+  ],
+  "why": "分成兩個長方體，分別算體積再相加",
+  "kegang": [
+   "S-5-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-3",
+  "grade": 5,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "文具店進了 6 盒鉛筆，每盒有 12 枝。賣掉 16 枝後，剩下的鉛筆每 8 枝綁成一捆，剛好綁完，請問可以綁成多少捆？",
+  "fig": [],
+  "options": [
+   "7",
+   "9",
+   "11",
+   "56"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-2-1"
+  ],
+  "why": "先乘、再減、再除的三步驟問題",
+  "kegang": [
+   "N-5-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-4",
+  "grade": 5,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "老師把 32 枝鉛筆和 48 個橡皮擦全部分裝成小禮物，每一袋的鉛筆要一樣多，橡皮擦也要一樣多，最多可以裝成多少袋？",
+  "fig": [],
+  "options": [
+   "4",
+   "8",
+   "96",
+   "16"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-3-1"
+  ],
+  "why": "「最多幾袋」要找最大公因數",
+  "kegang": [
+   "N-5-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-5",
+  "grade": 5,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，三角形 ABC 中，∠A = 65 度，∠B = 40 度，∠C 是多少度？",
+  "fig": [
+   "img/g5-mA-5.png"
+  ],
+  "options": [
+   "25 度",
+   "75 度",
+   "105 度",
+   "255 度"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-1-1"
+  ],
+  "why": "三角形三個角的和是 180 度",
+  "kegang": [
+   "S-5-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-6",
+  "grade": 5,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "已知 426 × 35 = 14910，請問 4.26 × 3.5 = ？",
+  "fig": [],
+  "options": [
+   "0.1491",
+   "1.491",
+   "14.91",
+   "149.1"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-8-1"
+  ],
+  "why": "被乘數兩位、乘數一位，積有三位小數",
+  "kegang": [
+   "N-5-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-7",
+  "grade": 5,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一包米重 5 公斤，12 公斤的米相當於多少包？",
+  "fig": [],
+  "options": [
+   "2又2/5",
+   "5/12",
+   "2",
+   "60"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-6-2"
+  ],
+  "why": "12 ÷ 5 的結果用分數表示",
+  "kegang": [
+   "N-5-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-8",
+  "grade": 5,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "在「5.055」這個數中，最左邊的 5 所代表的值是最右邊的 5 所代表的值的多少倍？",
+  "fig": [],
+  "options": [
+   "1/1000",
+   "1/100",
+   "100",
+   "1000"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-1-1"
+  ],
+  "why": "個位和千分位差三個位值",
+  "kegang": [
+   "N-5-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-9",
+  "grade": 5,
+  "year": "mA",
+  "no": 9,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個分數和 12/18 一樣大？",
+  "fig": [],
+  "options": [
+   "2/3",
+   "4/9",
+   "6/12",
+   "24/27"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-4-1"
+  ],
+  "why": "分子、分母要同除以或同乘以一個數",
+  "kegang": [
+   "N-5-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-10",
+  "grade": 5,
+  "year": "mA",
+  "no": 10,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一瓶牛奶有 5/6 公升，小安喝了 1/4 公升，還剩下多少公升？",
+  "fig": [],
+  "options": [
+   "4/2",
+   "4/12",
+   "7/12",
+   "1又1/12"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-4-2"
+  ],
+  "why": "先通分成分母 12 再相減",
+  "kegang": [
+   "N-5-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-11",
+  "grade": 5,
+  "year": "mA",
+  "no": 11,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一袋橘子有 30 顆，小宇全家吃了 2/5 袋，請問他們吃了多少顆橘子？",
+  "fig": [],
+  "options": [
+   "6",
+   "12",
+   "18",
+   "75"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-5-1"
+  ],
+  "why": "求 30 顆的 2/5 是多少顆",
+  "kegang": [
+   "N-5-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-12",
+  "grade": 5,
+  "year": "mA",
+  "no": 12,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "甲燈每 12 秒閃一次，乙燈每 18 秒閃一次。兩個燈同時閃了一次之後，最少要再過多少秒才會再同時閃？",
+  "fig": [],
+  "options": [
+   "6",
+   "30",
+   "36",
+   "216"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-3-2"
+  ],
+  "why": "「最少再過幾秒」要找最小公倍數",
+  "kegang": [
+   "N-5-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-13",
+  "grade": 5,
+  "year": "mA",
+  "no": 13,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，塗色三角形的面積是多少平方公分？",
+  "fig": [
+   "img/g5-mA-13.png"
+  ],
+  "options": [
+   "48",
+   "60",
+   "90",
+   "96"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-2-1"
+  ],
+  "why": "找出底 8 對應的高 12，還要除以 2",
+  "kegang": [
+   "S-5-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-14",
+  "grade": 5,
+  "year": "mA",
+  "no": 14,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "算算看，240 − 96 ÷ 8 × 3 = ？",
+  "fig": [],
+  "options": [
+   "6",
+   "54",
+   "204",
+   "236"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-5-2-3"
+  ],
+  "why": "先乘除（由左而右）、後加減",
+  "kegang": [
+   "R-5-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-15",
+  "grade": 5,
+  "year": "mA",
+  "no": 15,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "用四捨五入法將「8.3462」取概數到小數點後第一位，結果是多少？",
+  "fig": [],
+  "options": [
+   "8",
+   "8.3",
+   "8.35",
+   "8.4"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-11-1"
+  ],
+  "why": "只看小數第二位的 4，要捨去",
+  "kegang": [
+   "N-5-11"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-16",
+  "grade": 5,
+  "year": "mA",
+  "no": 16,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是一個周長 40 公分的平行四邊形，（　）內要填入哪個數？",
+  "fig": [
+   "img/g5-mA-16.png"
+  ],
+  "options": [
+   "8",
+   "14",
+   "16",
+   "28"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-1-3"
+  ],
+  "why": "對邊等長，扣掉兩個 12 再平分",
+  "kegang": [
+   "S-5-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-17",
+  "grade": 5,
+  "year": "mA",
+  "no": 17,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個算式的答案和「25 × 104」一樣？",
+  "fig": [],
+  "options": [
+   "25 × 100 + 4",
+   "25 × 100 + 25 × 4",
+   "25 × 100 × 4",
+   "25 + 100 × 25 + 4"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-5-2-1"
+  ],
+  "why": "104 拆成 100 + 4 再用分配律",
+  "kegang": [
+   "R-5-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-18",
+  "grade": 5,
+  "year": "mA",
+  "no": 18,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「電影票一張 280 元，小安全家 4 個人去看電影，用了折價券，總共可以少付 150 元。爸爸付了 1000 元，可以找回多少元？」下列哪個算式可以算出正確答案？",
+  "fig": [],
+  "options": [
+   "1000 − 280 × 4 − 150",
+   "(1000 − 280) × 4 − 150",
+   "1000 − (280 − 150) × 4",
+   "1000 − (280 × 4 − 150)"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-2-2"
+  ],
+  "why": "先算實際要付的錢，要用括號括起來",
+  "kegang": [
+   "N-5-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-19",
+  "grade": 5,
+  "year": "mA",
+  "no": 19,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "甲、乙、丙三組各有三根竹籤，長度如圖。哪一組的三根竹籤無法排成一個三角形？",
+  "fig": [
+   "img/g5-mA-19.png"
+  ],
+  "options": [
+   "甲",
+   "乙",
+   "丙",
+   "三組都可以排成三角形"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-1-2"
+  ],
+  "why": "兩短邊的和等於長邊，排不成三角形",
+  "kegang": [
+   "S-5-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-20",
+  "grade": 5,
+  "year": "mA",
+  "no": 20,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，塗色扇形的圓心角是 72 度，它是幾分之幾圓？",
+  "fig": [
+   "img/g5-mA-20.png"
+  ],
+  "options": [
+   "1/4",
+   "1/72",
+   "18/25",
+   "1/5"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-3-1"
+  ],
+  "why": "圓心角 ÷ 360 度，再約分",
+  "kegang": [
+   "S-5-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-21",
+  "grade": 5,
+  "year": "mA",
+  "no": 21,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一瓶沙拉油有 2又2/5 公升，媽媽用掉了 3/4 瓶，請問用掉了多少公升？",
+  "fig": [],
+  "options": [
+   "1又4/5",
+   "1又13/20",
+   "2又6/20",
+   "3又3/20"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-5-2"
+  ],
+  "why": "帶分數先化成假分數再乘",
+  "kegang": [
+   "N-5-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-22",
+  "grade": 5,
+  "year": "mA",
+  "no": 22,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "把 27 公升的水平分裝成 4 桶，每桶裝多少公升？",
+  "fig": [],
+  "options": [
+   "0.675",
+   "6.3",
+   "6.75",
+   "67.5"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-9-1"
+  ],
+  "why": "除不盡要補 0 繼續除到小數",
+  "kegang": [
+   "N-5-9"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-23",
+  "grade": 5,
+  "year": "mA",
+  "no": 23,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一包色紙有 20 張。老師把 4 包色紙全部平分給 5 組，請問每組可以分到多少包色紙？",
+  "fig": [],
+  "options": [
+   "16",
+   "5/4",
+   "4/20",
+   "4/5"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-6-1"
+  ],
+  "why": "問的是「包」：4 ÷ 5，不是算張數",
+  "kegang": [
+   "N-5-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-24",
+  "grade": 5,
+  "year": "mA",
+  "no": 24,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面哪個圖形是線對稱圖形？",
+  "fig": [],
+  "options": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "optImgs": [
+   "img/g5-mA-24-o1.png",
+   "img/g5-mA-24-o2.png",
+   "img/g5-mA-24-o3.png",
+   "img/g5-mA-24-o4.png"
+  ],
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-4-1"
+  ],
+  "why": "平行四邊形對摺後兩邊不會完全重疊",
+  "kegang": [
+   "S-5-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g5-mA-25",
+  "grade": 5,
+  "year": "mA",
+  "no": 25,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "把 5/6 公斤的綠豆平分裝成 4 包，每包重多少公斤？",
+  "fig": [],
+  "options": [
+   "20/6",
+   "24/5",
+   "5/24",
+   "20/24"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-7-1"
+  ],
+  "why": "分子不變，分母變成 6 × 4",
+  "kegang": [
+   "N-5-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-1",
+  "grade": 6,
+  "year": "mA",
+  "no": 1,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個數是合數？",
+  "fig": [],
+  "options": [
+   "1",
+   "2",
+   "9",
+   "11"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-1-1"
+  ],
+  "why": "1 不是質數也不是合數",
+  "kegang": [
+   "N-6-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-2",
+  "grade": 6,
+  "year": "mA",
+  "no": 2,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，在長方體中，和面 BCGF 平行的面是哪個面？",
+  "fig": [
+   "img/g6-mA-2.png"
+  ],
+  "options": [
+   "面 ADHE",
+   "面 ABCD",
+   "面 CDHG",
+   "面 EFGH"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-5-6-1"
+  ],
+  "why": "相鄰的面是垂直，對面才平行",
+  "kegang": [
+   "S-5-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-3",
+  "grade": 6,
+  "year": "mA",
+  "no": 3,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列何者是 36/84 的最簡分數？",
+  "fig": [],
+  "options": [
+   "9/21",
+   "3/7",
+   "6/14",
+   "4/9"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-2-4"
+  ],
+  "why": "約分要約到分子分母互質",
+  "kegang": [
+   "N-6-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-4",
+  "grade": 6,
+  "year": "mA",
+  "no": 4,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個選項是 60 的質因數分解？",
+  "fig": [],
+  "options": [
+   "6 × 10",
+   "2 × 3 × 10",
+   "3 × 4 × 5",
+   "2 × 2 × 3 × 5"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-1-2"
+  ],
+  "why": "每個乘數都要是質數",
+  "kegang": [
+   "N-6-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-5",
+  "grade": 6,
+  "year": "mA",
+  "no": 5,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個數和 14 互質？",
+  "fig": [],
+  "options": [
+   "7",
+   "21",
+   "27",
+   "35"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-2-3"
+  ],
+  "why": "互質是最大公因數為 1，不必是質數",
+  "kegang": [
+   "N-6-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-6",
+  "grade": 6,
+  "year": "mA",
+  "no": 6,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個算式的答案和「7/12 ÷ 5/9」的答案一樣大？",
+  "fig": [],
+  "options": [
+   "7/12 × 9/5",
+   "12/7 × 5/9",
+   "12/7 × 9/5",
+   "7/12 × 5/9"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-6-1-2"
+  ],
+  "why": "被除數不變，除數變倒數",
+  "kegang": [
+   "R-6-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-7",
+  "grade": 6,
+  "year": "mA",
+  "no": 7,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下列哪個算式的答案和「7.5 × 3.6 + 7.5 × 6.4」的答案一樣？",
+  "fig": [],
+  "options": [
+   "(7.5 + 7.5) × (3.6 + 6.4)",
+   "7.5 × 3.6 × 6.4",
+   "3.6 × (7.5 + 6.4)",
+   "7.5 × (3.6 + 6.4)"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "RC-6-1-1"
+  ],
+  "why": "小數的分配律",
+  "kegang": [
+   "R-6-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-8",
+  "grade": 6,
+  "year": "mA",
+  "no": 8,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下面是用短除法求 42 和 70 最大公因數的計算過程。[圖]請問 42 和 70 的最大公因數是多少？",
+  "fig": [
+   "img/g6-mA-8.png"
+  ],
+  "options": [
+   "15",
+   "14",
+   "7",
+   "210"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-2-1"
+  ],
+  "why": "左邊的除數相乘，不是最下面的數",
+  "kegang": [
+   "N-6-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-9",
+  "grade": 6,
+  "year": "mA",
+  "no": 9,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "將 23.4651 用四捨五入法取概數到小數點後第二位是多少？",
+  "fig": [],
+  "options": [
+   "23.4",
+   "23.5",
+   "23.46",
+   "23.47"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-5-11-1"
+  ],
+  "why": "看小數第三位決定進位",
+  "kegang": [
+   "N-5-11"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-10",
+  "grade": 6,
+  "year": "mA",
+  "no": 10,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安每 6 天去一次圖書館，小宇每 10 天去一次圖書館。今天兩人都去了圖書館，最少再過多少天，兩人又會在同一天去圖書館？",
+  "fig": [],
+  "options": [
+   "2",
+   "16",
+   "30",
+   "60"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-2-2"
+  ],
+  "why": "求最小公倍數，不是兩數相乘",
+  "kegang": [
+   "N-6-2"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-11",
+  "grade": 6,
+  "year": "mA",
+  "no": 11,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一條繩子長 4又1/2 公尺，每 3/4 公尺剪成一段，全部剪完，可以剪成多少段？",
+  "fig": [],
+  "options": [
+   "1/6",
+   "3又3/8",
+   "3又3/4",
+   "6"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-3-1"
+  ],
+  "why": "包含除：帶分數除以真分數",
+  "kegang": [
+   "N-6-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-12",
+  "grade": 6,
+  "year": "mA",
+  "no": 12,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "把 9.5 公斤的砂糖，每 0.6 公斤裝成一包，最多可以裝滿多少包？還剩下多少公斤？",
+  "fig": [],
+  "options": [
+   "裝滿 15 包，還剩下 0.5 公斤",
+   "裝滿 15 包，還剩下 5 公斤",
+   "裝滿 150 包，還剩下 0.5 公斤",
+   "裝滿 150 包，還剩下 5 公斤"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-4-1"
+  ],
+  "why": "小數除法的商與餘數的小數點位置",
+  "kegang": [
+   "N-6-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-13",
+  "grade": 6,
+  "year": "mA",
+  "no": 13,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，三角形乙是三角形甲的 1.5 倍放大圖，A 的對應點是 D，B 的對應點是 E，C 的對應點是 F。[圖]請問邊 DE 的長是多少公分？",
+  "fig": [
+   "img/g6-mA-13.png"
+  ],
+  "options": [
+   "7.5",
+   "9",
+   "12",
+   "15"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-1-1"
+  ],
+  "why": "找對應邊再乘以倍數",
+  "kegang": [
+   "S-6-1"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-14",
+  "grade": 6,
+  "year": "mA",
+  "no": 14,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「一瓶醬油有 1.2 公升，媽媽買了 5 瓶，做菜用掉 3/4 公升後，還剩下多少公升？」下列哪個算式可以算出正確答案？",
+  "fig": [],
+  "options": [
+   "(1.2 − 3/4) × 5",
+   "1.2 × 5 − 3/4",
+   "1.2 × 5 + 3/4",
+   "1.2 × (5 − 3/4)"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-5-1"
+  ],
+  "why": "先乘再減；用掉的是公升數",
+  "kegang": [
+   "N-6-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-15",
+  "grade": 6,
+  "year": "mA",
+  "no": 15,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安騎腳踏車 3 分鐘前進 720 公尺，用相同的速率騎 12 分鐘，可以前進多少公尺？",
+  "fig": [],
+  "options": [
+   "240",
+   "2160",
+   "2880",
+   "8640"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-7-1"
+  ],
+  "why": "先求分速，再乘以時間",
+  "kegang": [
+   "N-6-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-16",
+  "grade": 6,
+  "year": "mA",
+  "no": 16,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "圓形杯墊的圓周長是 31.4 公分，直徑是 10 公分；圓形餐桌的圓周長是 314 公分，直徑是 100 公分。餐桌的「圓周長 ÷ 直徑」是杯墊的「圓周長 ÷ 直徑」的多少倍？",
+  "fig": [],
+  "options": [
+   "1/10",
+   "1",
+   "10",
+   "100"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-3-1"
+  ],
+  "why": "圓周率不隨圓的大小改變",
+  "kegang": [
+   "S-6-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-17",
+  "grade": 6,
+  "year": "mA",
+  "no": 17,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "分速 1.5 公里，也可以說時速是多少公里？",
+  "fig": [],
+  "options": [
+   "90",
+   "15",
+   "5400",
+   "0.025"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-7-2"
+  ],
+  "why": "分速換時速要乘以 60",
+  "kegang": [
+   "N-6-7"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-18",
+  "grade": 6,
+  "year": "mA",
+  "no": 18,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "小安和小宇的彈珠數量比是 3 : 5，已知小安有 24 顆彈珠，請問小宇有多少顆彈珠？",
+  "fig": [],
+  "options": [
+   "9",
+   "15",
+   "40",
+   "64"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-6-1"
+  ],
+  "why": "24 顆對應的是 3 份，不是全部",
+  "kegang": [
+   "N-6-6"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-19",
+  "grade": 6,
+  "year": "mA",
+  "no": 19,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "哥哥和弟弟共存了 720 元，哥哥存的錢是弟弟的 2 倍，弟弟存了多少元？",
+  "fig": [],
+  "options": [
+   "240",
+   "360",
+   "480",
+   "1440"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-8-1"
+  ],
+  "why": "弟弟是 1 份，兩人合起來是 3 份",
+  "kegang": [
+   "N-6-8"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-20",
+  "grade": 6,
+  "year": "mA",
+  "no": 20,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "一本故事書賣 285 元，一本圖鑑賣 419 元。學校買了 30 本故事書和 30 本圖鑑，大約要付多少元？(先用四捨五入法把兩種書的價錢分別取概數到百位，再計算)",
+  "fig": [],
+  "options": [
+   "24000",
+   "21120",
+   "21100",
+   "21000"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-5-2"
+  ],
+  "why": "先取概數再算，不是算完才取概數",
+  "kegang": [
+   "N-6-5"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-21",
+  "grade": 6,
+  "year": "mA",
+  "no": 21,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "「一桶油漆用掉 2/5 桶，剛好用掉 6 公升，一桶油漆有多少公升？」用 y 公升表示一桶油漆的量，請問下列哪個選項的列式和答案都正確？",
+  "fig": [],
+  "options": [
+   "y × 2/5 ＝ 6，y ＝ 15",
+   "y × 2/5 ＝ 6，y ＝ 2又2/5",
+   "y ÷ 2/5 ＝ 6，y ＝ 15",
+   "y ÷ 2/5 ＝ 6，y ＝ 2又2/5"
+  ],
+  "optImgs": null,
+  "answer": 1,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "NC-6-9-1"
+  ],
+  "why": "一桶的 2/5 是 y × 2/5",
+  "kegang": [
+   "N-6-9"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-22",
+  "grade": 6,
+  "year": "mA",
+  "no": 22,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，扇形的周長是多少公分？(圓周率 ＝ 3.14)",
+  "fig": [
+   "img/g6-mA-22.png"
+  ],
+  "options": [
+   "18.84",
+   "27.84",
+   "36.84",
+   "84.78"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-3-2"
+  ],
+  "why": "扇形周長＝弧長＋2 條半徑",
+  "kegang": [
+   "S-6-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-23",
+  "grade": 6,
+  "year": "mA",
+  "no": 23,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，在邊長 10 公分的正方形裡畫一個半徑 10 公分的 1/4 圓。灰色部分的面積是多少平方公分？(圓周率 ＝ 3.14)",
+  "fig": [
+   "img/g6-mA-23.png"
+  ],
+  "options": [
+   "214",
+   "84.3",
+   "78.5",
+   "21.5"
+  ],
+  "optImgs": null,
+  "answer": 4,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-3-3"
+  ],
+  "why": "正方形面積減去 1/4 圓面積",
+  "kegang": [
+   "S-6-3"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-24",
+  "grade": 6,
+  "year": "mA",
+  "no": 24,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "如圖，三角柱的底面是直角三角形，這個三角柱的體積是多少立方公分？",
+  "fig": [
+   "img/g6-mA-24.png"
+  ],
+  "options": [
+   "576",
+   "288",
+   "168",
+   "26"
+  ],
+  "optImgs": null,
+  "answer": 2,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-4-1"
+  ],
+  "why": "底面積要除以 2，再乘以柱高",
+  "kegang": [
+   "S-6-4"
+  ],
+  "tagSrc": "mock"
+ },
+ {
+  "id": "g6-mA-25",
+  "grade": 6,
+  "year": "mA",
+  "no": 25,
+  "section": "選擇題",
+  "type": "choice",
+  "stem": "下圖是某地圖的比例尺，圖上每一小段的長都是 1 公分。[圖]學校和公園在這張地圖上的距離是 3.5 公分，請問學校和公園的實際距離是多少公尺？",
+  "fig": [
+   "img/g6-mA-25.png"
+  ],
+  "options": [
+   "3.5",
+   "350",
+   "700",
+   "70000"
+  ],
+  "optImgs": null,
+  "answer": 3,
+  "blanks": null,
+  "work": null,
+  "ansFig": null,
+  "note": "",
+  "ansSrc": "mock",
+  "xuefu": [
+   "SC-6-2-1"
+  ],
+  "why": "圖上 1 公分代表實際 200 公尺",
+  "kegang": [
+   "S-6-2"
+  ],
+  "tagSrc": "mock"
  }
 ]
