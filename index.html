@@ -53,6 +53,26 @@ footer p{margin:4px 0}
 .credit .visits{margin:6px 0 0;font-variant-numeric:tabular-nums}
 .credit .visits b{color:var(--ink);font-size:16px}
 .credit .cr{margin:8px 0 0;font-size:13px}
+.fb{margin:12px 0 4px;text-align:left}
+.fb summary{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 18px;border:1.5px solid var(--main);border-radius:999px;color:var(--main);font-weight:700;cursor:pointer;list-style:none;font-size:15px}
+.fb summary::-webkit-details-marker{display:none}
+.fb[open] summary{background:var(--main);color:var(--main-ink,#fff)}
+.fbwrap{text-align:center}
+.fbform{display:grid;gap:10px;margin-top:12px;text-align:left}
+.fbform label{display:grid;gap:4px;font-size:14px;color:var(--ink)}
+.fbform label small{color:var(--muted);font-weight:400}
+.fbform input,.fbform select,.fbform textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;box-sizing:border-box}
+.fbform textarea{min-height:120px;resize:vertical;line-height:1.6}
+.fbform input:focus-visible,.fbform select:focus-visible,.fbform textarea:focus-visible{outline:3px solid var(--main);outline-offset:1px}
+.fbrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.fbrow{grid-template-columns:1fr}}
+.fbnote{margin:0;font-size:13px;color:var(--muted)}
+.fbsend{justify-self:center;min-height:46px;padding:6px 28px;border:none;border-radius:999px;background:var(--main);color:var(--main-ink,#fff);font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.fbsend:disabled{opacity:.55;cursor:wait}
+.fbmsg{margin:0;text-align:center;font-size:15px;min-height:1.2em}
+.fbmsg.ok{color:var(--main);font-weight:700}
+.fbmsg.err{color:#c62a1f}
+.fbhp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 </style>
 </head>
 <body>
@@ -86,7 +106,22 @@ footer p{margin:4px 0}
   </footer>
   <div class="credit">
     <p class="by">製作：<b>老師媽咪</b>（台南國小教師）・<a href="https://www.threads.com/@teacher_liujikan" target="_blank" rel="noopener">Threads @teacher_liujikan ↗</a></p>
-    <p>題目或答案有錯、想要新功能，歡迎到 Threads 留言或私訊。也可以看看<a href="https://teacher-liujikan.github.io/" target="_blank" rel="noopener">老師媽咪的其他作品</a>。</p>
+    <p>題目或答案有錯、想要新功能，歡迎寫信給我，或到 Threads 留言、私訊。也可以看看<a href="https://teacher-liujikan.github.io/" target="_blank" rel="noopener">老師媽咪的其他作品</a>。</p>
+    <div class="fbwrap"><details class="fb" id="fb">
+      <summary>✉️ 寫信給老師媽咪</summary>
+      <form class="fbform" id="fbForm" novalidate>
+        <div class="fbrow">
+          <label>我是<select name="身分"><option>老師</option><option>家長</option><option>學生</option><option>其他</option></select></label>
+          <label>怎麼稱呼你 <small>（可不填）</small><input name="稱呼" autocomplete="name" maxlength="40"></label>
+        </div>
+        <label>你的 Email <small>（想收到回覆再填）</small><input name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"></label>
+        <label>想說的話 <small>（必填，例如：幾年級哪一年第幾題答案有錯）</small><textarea name="意見" required maxlength="3000"></textarea></label>
+        <input class="fbhp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="fbnote">請不要填寫學生的姓名或個人資料。按「送出」後，內容會寄到老師媽咪的信箱。</p>
+        <button type="submit" class="fbsend" id="fbSend">送出</button>
+        <p class="fbmsg" id="fbMsg" aria-live="polite"></p>
+      </form>
+    </details></div>
     <p class="visits" id="visits" hidden>累計使用 <b id="visitN"></b> 次</p>
     <p class="cr">© 2026 老師媽咪。網頁設計、模擬卷題目與圖片為老師媽咪原創，歡迎老師、家長免費用於教學，請勿轉售或商業使用。考古題題目著作權屬教育部國民及學前教育署，本站非官方網站，僅整理供教學練習。</p>
   </div>
@@ -96,5 +131,19 @@ footer p{margin:4px 0}
 (function(){var P=["/xuefu/","/xuefu/math/"],sum=0,ok=0;P.forEach(function(p){fetch("https://teacher-liujikan.goatcounter.com/counter/"+encodeURIComponent(p)+".json").then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&d.count){sum+=parseInt(String(d.count).replace(/[^0-9]/g,""),10)||0;ok++}}).catch(function(){}).finally(function(){if(ok){var n=document.getElementById("visitN"),v=document.getElementById("visits");if(n&&v){n.textContent=sum.toLocaleString("zh-TW");v.hidden=false}}})})})();
 </script>
 <script data-goatcounter="https://teacher-liujikan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+/* 意見回饋：FormSubmit 轉寄到老師媽咪的信箱 */
+(function(){var f=document.getElementById("fbForm");if(!f)return;var TO="tina12345920@ymes.tn.edu.tw",msg=document.getElementById("fbMsg"),btn=document.getElementById("fbSend");
+function say(t,c){msg.textContent=t;msg.className="fbmsg"+(c?" "+c:"")}
+f.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(f);if(d.get("_honey"))return;var txt=String(d.get("意見")||"").trim();
+if(!txt){say("請先寫下想說的話。","err");f.elements["意見"].focus();return}
+var em=String(d.get("email")||"").trim();if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say("Email 格式好像不對，可以改一下或空著。","err");f.elements["email"].focus();return}
+var body={"_subject":"學扶考古題網站 意見回饋","_template":"table","身分":d.get("身分"),"稱呼":String(d.get("稱呼")||"").trim()||"（未填）","意見":txt,"來自頁面":location.href,"時間":new Date().toLocaleString("zh-TW")};if(em){body.email=em;body["_replyto"]=em}
+btn.disabled=true;say("寄送中⋯⋯");
+fetch("https://formsubmit.co/ajax/"+TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)==="false")throw new Error(j.message||r.status)})})
+.then(function(){f.reset();say("已經寄出，謝謝你！老師媽咪會盡快看。","ok")})
+.catch(function(){say("","");msg.innerHTML='寄送失敗，請稍後再試，或直接寄信到 <a href="mailto:'+TO+'?subject='+encodeURIComponent("學扶考古題網站 意見回饋")+'">'+TO+'</a>。';msg.className="fbmsg err"})
+.finally(function(){btn.disabled=false})})})();
+</script>
 </body>
 </html>
