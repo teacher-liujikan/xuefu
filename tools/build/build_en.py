@@ -30,8 +30,9 @@ def main(sheets=False):
         m=loadsrc(g,y); EX=getattr(m,'EX',{}) if m else {}; OPT=getattr(m,'OPT',{}) if m else {}; STEM=getattr(m,'STEM',{}) if m else {}
         ims=[]
         for q in qs:
-            n=q['no']; im=cropq(d,q); ims.append((n,im))
-            sec=q['sec']['name']; tag=SECTAG[sec]
+            n=q['no']; sec=q['sec']['name']; tag=SECTAG[sec]
+            if tag[0]=='L' and not sheets: continue   # 聽力題沒有音檔，先不放
+            im=cropq(d,q); ims.append((n,im))
             o=dict(id=f'g{g}-{y}-{n}',grade=g,year=y,no=n,type='choice',stem=STEM.get(n,''),options=OPT.get(n,['(1)','(2)','(3)']),answer=q['ans'],
                    img=save(im,f'g{g}-{y}-{n}.png'),iw=im.width,ih=im.height,xf=[f'{tag[0]}-{g}-{tag[1]}'],listen=tag[0]=='L',sec=sec)
             if n in EX: o['ex']=EX[n]
@@ -58,7 +59,7 @@ def main(sheets=False):
                 o.save(f'/home/claude/papers_en/pg/sheet_g{g}-{y}-{part}.png'); print('sheet',g,y,part,o.size)
     json.dump(QS,open(OUT+'data/questions.json','w'),ensure_ascii=False,indent=1)
     json.dump({},open(OUT+'data/passages.json','w'))
-    LAB={'L1':'聽辨語音','L2':'聽辨單字','L3':'聽辨常用語或句子','R1':'辨識單字','R2':'辨識句子'}
+    LAB={'R1':'辨識單字','R2':'辨識句子'}
     json.dump({'xuefu':{f'{k[0]}-{g}-{k[1]}':{'label':v,'summary':''} for g in (4,5,6) for k,v in LAB.items()}},open(OUT+'data/codes.json','w'),ensure_ascii=False,indent=1)
     print('total',len(QS),'problems',len(rep)); 
     for r in rep[:12]: print(' !',r)

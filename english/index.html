@@ -401,8 +401,6 @@ body.printing #printArea{color:#000}
 .psg.pic{padding:8px}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.lis{margin:0 0 8px;padding:6px 12px;border-radius:10px;background:var(--main-soft);font-size:.9em}
-.lis a{color:var(--main);font-weight:700}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
 .exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
@@ -423,7 +421,7 @@ body.printing #printArea{color:#000}
   <main id="main"><p class="loading">題目載入中⋯⋯</p></main>
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
-    <p>四～六年級、113 和 114 年，答案用官方答案卷。每份第 1～10 題是聽力，要搭配音檔；第 11～25 題是閱讀，可以直接作答。</p>
+    <p>四～六年級、113 和 114 年，答案用官方答案卷。這裡只放閱讀題（原卷第 11～25 題）；聽力題（第 1～10 題）要搭配音檔，目前還沒有放。</p>
     <p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
@@ -738,9 +736,7 @@ document.addEventListener('click',e=>{
 /* ---------- 老師挑題 ---------- */
 let PK=Object.assign({mode:'code',ver:'南一',units:[],codes:[],prev:false,years:null,limit:0,shuffle:false},pref.PK||{});delete PK.noPaper;PK.mode='code';
 const savePick=()=>{pref.PK=PK;savePref()};
-const GROUPS=[['L','聽力（要搭配音檔）'],['R','閱讀']];
-const AUDIO={'g4-114':'1zigT22FijEqXnn7U8OPpOcskzXK-8NrG','g5-114':'1X82eNdmukC0py2quhuHkGHGac0IjQj6T','g6-114':'1ABp11Qz2wU1J6F6acp6yaVbrdATxg2Uf','g4-113':'1y2g_msfeO3vS9iQCSAEwxWp5YNNrIHUf','g5-113':'1qpngR1t9RBZwP6lQ26g3syZ6wHn1irBU','g6-113':'1VLYRyIQwn_Dk3pRBNK6TM51UHaLmsgf6'};
-const lisNote=q=>{if(!q.listen)return '';const id=AUDIO['g'+q.grade+'-'+q.year];return `<p class="lis">🔊 聽力題：要先聽音檔再作答（每題播三遍）。${id?` <a href="https://drive.google.com/file/d/${id}/view" target="_blank" rel="noopener">打開 ${q.year} 年${CN[q.grade]}年級聽力音檔</a>`:''}</p>`};
+const GROUPS=[['R','閱讀']];
 const semsOf=g=>g>=1?[CN[g]+'上',CN[g]+'下']:[];
 const pkGrades=()=>PK.prev&&GRADE>1?[GRADE-1,GRADE]:[GRADE];
 const pkYears=()=>{const avail=YEARS.filter(y=>QS.some(q=>pkGrades().includes(q.grade)&&q.year===y));const s=PK.years&&PK.years.length?PK.years.filter(y=>avail.includes(y)):avail;return s.length?s:avail};
@@ -812,7 +808,7 @@ function renderPicker(){
   <div class="pkres"><div><span id="pkCount"><b>${qs.length}</b> 題符合</span>${qs.length>lim?`<br><span class="sm">會隨機抽 ${lim} 題${!PK.limit?'（一份練習最多 50 題）':''}</span>`:''}</div>
   ${paper?`<div class="pkex" data-exctx="picker"><button type="button" class="btn primary big" data-export="word">📝 下載 Word</button><button type="button" class="btn big" data-export="pdf">🖨️ 列印／存成 PDF</button>${ansCheck(homeHasEx())}<span class="exmsg" aria-live="polite"></span></div>`
   :`<button type="button" class="btn primary big" id="pkGo" ${qs.length?'':'disabled'}>產生線上練習 ▶</button>`}</div>
-  <p class="pknote">題型照原卷的大題名稱分類。聽力題要搭配音檔，只想練閱讀可以只勾「閱讀」。${paper?'紙本會一併放入只能在紙上作答的題目（畫圖、用尺量）。':'線上練習不會出只能在紙上作答的題目（畫圖、用尺量）；要印這些題目請切換到「印成紙本」。'}</p>`;
+  <p class="pknote">題型照原卷的大題名稱分類。${paper?'紙本會一併放入只能在紙上作答的題目（畫圖、用尺量）。':'線上練習不會出只能在紙上作答的題目（畫圖、用尺量）；要印這些題目請切換到「印成紙本」。'}</p>`;
 }
 document.addEventListener('click',e=>{
   const t=e.target.closest('#pickerBox button');if(!t||t.closest('[data-exctx]'))return;
@@ -848,7 +844,7 @@ function askLeave(){$('#leaveModal').hidden=false;$('#leaveStay').focus()}
 window.addEventListener('popstate',()=>{if(!GUARD)return;GUARD=false;if(inRun()&&location.href===GURL){armGuard();askLeave()}});
 document.addEventListener('click',e=>{if(e.target.closest('#leaveStay'))$('#leaveModal').hidden=true;else if(e.target.closest('#leaveGo')){$('#leaveModal').hidden=true;GUARD=false;go('#g='+GRADE)}});
 function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${yl(q.year)}第 ${q.no} 題`}
-const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;
+const numOf=(q,k)=>k+1;
 function openSet(s){
   const same=SET&&SET.key===s.key;
   SET=s;SET.qs=s.ids.map(id=>BY[id]);SET.mixed=new Set(SET.qs.map(q=>q.grade)).size>1;
@@ -870,7 +866,7 @@ function cardHTML(q,k,one){
   const num=numOf(q,k);
   const st=stemHTML(q,'screen');const fm=fillMode(q);
   const pg=psgHTML(q,k>0?SET.qs[k-1]:null,one);
-  const stemBox=`${one?lisNote(q):''}<div class="stem${q.img?' hasimg':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
+  const stemBox=`<div class="stem${q.img?' hasimg':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
   let L=one&&pg?pg:pg+stemBox,R=one&&pg?stemBox:'';
   if(q.type==='choice')R+=optsHTML(q,num);
   if((q.type==='fill'||q.type==='calc')){
@@ -882,7 +878,7 @@ function cardHTML(q,k,one){
   if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
   else if(q.paperOnly)R+=`<p class="paperbox">✏️ 這題要用尺量圖，請在紙上作答，不計分。</p>`;
   const body=one?`<div class="qgrid${R?' split':''}"><div class="qL">${L}</div>${R?`<div class="qR">${R}</div>`:''}</div>`:L+R;
-  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${SET.kind==='p'?`<p class="srctag">${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
+  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${true?`<p class="srctag">原卷 ${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
 }
 function restoreCard(card,q){
   const v=STATE.v[q.id];
