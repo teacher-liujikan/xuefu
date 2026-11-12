@@ -160,7 +160,7 @@ function nlFrames(s){
       else if((s.hide||[]).includes(v))b+=tx(x,130,k>=N&&v===s.start+hops*s.step?v:'（ ）',k>=N&&v===s.start+hops*s.step?'nlab ans':'nlab');
     }
     for(let i=1;i<=k;i++){const x1=X(s.start+dir*(i-1)*s.step),x2=X(s.start+dir*i*s.step),mx=(x1+x2)/2;
-      b+=`<path d="M${x1} 80 Q${mx} ${80-Math.min(46,Math.abs(x2-x1)*.9)} ${x2} 80" class="hop${i===k?' hi':''}"/>`+tx(mx,80-Math.min(46,Math.abs(x2-x1)*.9)/2-10,i,'hopn');}
+      b+=`<path d="M${x1} 80 Q${mx} ${80-Math.min(46,Math.abs(x2-x1)*.9)} ${x2} 80" pathLength="1" class="hop${i===k?' hi':''}"/>`+tx(mx,80-Math.min(46,Math.abs(x2-x1)*.9)/2-10,i,'hopn');}
     const cx=X(s.start+dir*k*s.step);
     b+=`<circle cx="${X(s.start)}" cy="96" r="7" class="pt0"/><circle cx="${cx}" cy="96" r="9" class="pt"/>`;
     return svg(W,H,b,'數線');
@@ -179,7 +179,7 @@ function rdFrames(s){
       for(let j=0;j<=10;j++){const xx=L+(R-L)*j/10;b+=`<line x1="${xx}" y1="${y-(j%5?5:10)}" x2="${xx}" y2="${y+(j%5?5:10)}" class="tk"/>`}
       b+=tx(L,y+34,it.lo,'nlab'+(to===it.lo?' ans':''))+tx(R,y+34,it.hi,'nlab'+(to===it.hi?' ans':''))+tx((L+R)/2,y+34,(it.lo+it.hi)/2,'nsm');
       b+=`<circle cx="${x}" cy="${y}" r="8" class="pt"/>`+tx(Math.min(Math.max(x,L+30),R-30),y-18,it.n,'nlab hi');
-      b+=`<path d="M${x} ${y+12} Q${(x+X(to))/2} ${y+26} ${X(to)} ${y+12}" class="hop${i===k?' hi':''}"/>`;
+      b+=`<path d="M${x} ${y+12} Q${(x+X(to))/2} ${y+26} ${X(to)} ${y+12}" pathLength="1" class="hop${i===k?' hi':''}"/>`;
     });
     return svg(W,s.items.length*rowH+10,b,'估算');};
   s.items.forEach((it,i)=>{const to=(it.n-it.lo)<(it.hi-it.n)?it.lo:it.hi;
@@ -196,7 +196,7 @@ function frFrames(s){
       for(let i=0;i<den;i++){const k=r*den+i;let cls='fc';
         if(k<na)cls+=' fa';else if(k<na+nb)cls+=' fb';
         o+=`<rect x="${x0+i*cw}" y="${y}" width="${cw}" height="${bh}" class="${cls}"/>`;
-        if(cross&&k>=na-cross&&k<na)o+=`<path d="M${x0+i*cw+8} ${y+8} L${x0+(i+1)*cw-8} ${y+bh-8} M${x0+(i+1)*cw-8} ${y+8} L${x0+i*cw+8} ${y+bh-8}" class="fx"/>`;
+        if(cross&&k>=na-cross&&k<na)o+=`<path d="M${x0+i*cw+8} ${y+8} L${x0+(i+1)*cw-8} ${y+bh-8} M${x0+(i+1)*cw-8} ${y+8} L${x0+i*cw+8} ${y+bh-8}" pathLength="1" class="fx"/>`;
       }
       o+=tx(x0+bw+10,y+bh/2+7,`1 ${u}`,'nsm','start');}
     return svg(W,14+bars*(bh+gap),o,'分數圖');};
@@ -277,7 +277,7 @@ function nfFrames(s){
     if(s.dec)return String(Math.round((w+r/s.den)*100)/100);return r===0?String(w):(w?`${w}又${r}/${s.den}`:`${r}/${s.den}`)};
   const draw=k=>{let b=`<line x1="${L-18}" y1="96" x2="${R+18}" y2="96" class="ax"/>`;
     for(let i=0;i<=n;i++){const big=i%s.den===0;b+=`<line x1="${X(i)}" y1="${big?80:88}" x2="${X(i)}" y2="${big?112:104}" class="tk"/>`;if(big)b+=tx(X(i),134,s.from+i/s.den,'nlab')}
-    for(let j=1;j<=k;j++){const x1=X(i0+dir*(j-1)),x2=X(i0+dir*j),mx=(x1+x2)/2,hh=Math.min(40,Math.abs(x2-x1)*.9);b+=`<path d="M${x1} 78 Q${mx} ${78-hh} ${x2} 78" class="hop${j===k?' hi':''}"/>`+tx(mx,78-hh/2-10,j,'hopn')}
+    for(let j=1;j<=k;j++){const x1=X(i0+dir*(j-1)),x2=X(i0+dir*j),mx=(x1+x2)/2,hh=Math.min(40,Math.abs(x2-x1)*.9);b+=`<path d="M${x1} 78 Q${mx} ${78-hh} ${x2} 78" pathLength="1" class="hop${j===k?' hi':''}"/>`+tx(mx,78-hh/2-10,j,'hopn')}
     b+=`<circle cx="${X(i0)}" cy="96" r="7" class="pt0"/><circle cx="${X(i0+dir*k)}" cy="96" r="9" class="pt"/>`;return svg(W,H,b,'數線')};
   const unit=s.dec?String(1/s.den):`1/${s.den}`;
   F.push({h:draw(0),c:`${s.from} 到 ${s.from+1} 中間平分成 ${s.den} 小格，1 小格是 ${unit}。從 ${s.start} 開始數。`});
@@ -352,9 +352,20 @@ function mount(el,spec){
   el.classList.add('vizbox');
   el.innerHTML=`<p class="vzt">${esc(title(spec))}</p><div class="vzfig"></div><p class="vzcap" aria-live="polite"></p><div class="vzbtns"><button type="button" class="btn" data-vz="prev">← 上一步</button><span class="vzn"></span><button type="button" class="btn primary" data-vz="next">下一步 →</button><button type="button" class="btn" data-vz="again" hidden>↺ 再看一次</button></div>`;
   const fig=el.querySelector('.vzfig'),cap=el.querySelector('.vzcap'),n=el.querySelector('.vzn'),bp=el.querySelector('[data-vz=prev]'),bn=el.querySelector('[data-vz=next]'),ba=el.querySelector('[data-vz=again]');
-  const show=()=>{const f=F[i];fig.innerHTML=f.h;cap.innerHTML=(window.XFfrac?window.XFfrac(esc(f.c)):esc(f.c));cap.className='vzcap'+(f.warn?' warn':'')+(f.end?' end':'');n.textContent=`${i+1}／${F.length}`;bp.disabled=i===0;bn.hidden=i===F.length-1;ba.hidden=i!==F.length-1};
+  let fwd=false;
+  /* 往前一步時，找出這一步新出現或改變的地方，讓它動起來（數字跳出來、進位飄上去、弧線畫出來、格子塗上色） */
+  const snap=()=>{const m={};fig.querySelectorAll('td').forEach(td=>{m[td.parentNode.rowIndex+','+td.cellIndex]=td.textContent+'|'+td.classList.contains('cut')});
+    const pt=fig.querySelector('circle.pt');return {td:m,rc:[...fig.querySelectorAll('rect.fc')].map(r=>r.getAttribute('class')),fx:fig.querySelectorAll('.fx').length,pt:pt?+pt.getAttribute('cx'):null}};
+  const animate=p=>{
+    fig.querySelectorAll('td').forEach(td=>{const k=td.parentNode.rowIndex+','+td.cellIndex,s=td.textContent+'|'+td.classList.contains('cut');if(p.td[k]!==s&&(td.textContent||td.classList.contains('cut')))td.classList.add('chg')});
+    fig.querySelectorAll('rect.fc').forEach((r,k)=>{if(p.rc[k]!==r.getAttribute('class'))r.classList.add('chg')});
+    if(fig.querySelectorAll('.fx').length!==p.fx)fig.querySelectorAll('.fx').forEach(x=>x.classList.add('chg'));
+    fig.querySelectorAll('.hop.hi').forEach(x=>x.classList.add('chg'));
+    const pt=fig.querySelector('circle.pt');if(pt&&p.pt!=null&&p.pt!==+pt.getAttribute('cx')){pt.style.setProperty('--dx',(p.pt-(+pt.getAttribute('cx')))+'px');pt.classList.add('mv')}
+    fig.querySelectorAll('.veq b').forEach(x=>x.classList.add('chg'))};
+  const show=()=>{const f=F[i];const pv=fwd?snap():null;fig.innerHTML=f.h;if(pv)animate(pv);fwd=false;cap.innerHTML=(window.XFfrac?window.XFfrac(esc(f.c)):esc(f.c));cap.className='vzcap'+(f.warn?' warn':'')+(f.end?' end':'');n.textContent=`${i+1}／${F.length}`;bp.disabled=i===0;bn.hidden=i===F.length-1;ba.hidden=i!==F.length-1};
   el.addEventListener('click',e=>{const b=e.target.closest('[data-vz]');if(!b)return;
-    if(b.dataset.vz==='next'&&i<F.length-1)i++;else if(b.dataset.vz==='prev'&&i>0)i--;else if(b.dataset.vz==='again')i=0;show()});
+    if(b.dataset.vz==='next'&&i<F.length-1){i++;fwd=true}else if(b.dataset.vz==='prev'&&i>0)i--;else if(b.dataset.vz==='again')i=0;show()});
   show();
 }
 const CSS=`
@@ -448,6 +459,24 @@ svg.vg text.tB{fill:#c2410c;font-weight:700}
 svg.vg text.tC{fill:#15803d;font-weight:700}
 svg.vg text.tD{fill:#be185d;font-weight:700}
 svg.vg text.red{fill:#c2410c;font-weight:700}
+@keyframes vzpop{0%{transform:scale(2.1);opacity:0}60%{transform:scale(.9);opacity:1}100%{transform:scale(1)}}
+@keyframes vzfly{0%{transform:translate(26px,74px) scale(1.7);opacity:0}25%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes vzdrop{0%{transform:translateY(-26px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes vzcut{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes vzdraw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes vzmove{0%{transform:translateX(var(--dx))}100%{transform:none}}
+@keyframes vzfill{0%{fill-opacity:0}100%{fill-opacity:1}}
+table.vz td.chg,table.vpv td.chg{animation:vzpop .5s ease-out both}
+table.vz tr.ann td.car.chg{animation:vzfly .8s .25s cubic-bezier(.3,0,.2,1) both}
+table.vz tr.ann td.bor.chg{animation:vzdrop .5s .35s ease-out both}
+table.vz td.cut.chg{animation:none}
+table.vz td.cut.chg::after{animation:vzcut .45s ease-out both}
+svg.vsvg .hop.chg{stroke-dasharray:1;animation:vzdraw .7s ease-in-out both}
+svg.vsvg circle.pt.mv{animation:vzmove .7s ease-in-out both}
+svg.vsvg rect.fc.chg{animation:vzfill .6s ease-out both}
+svg.vsvg .fx.chg{stroke-dasharray:1;animation:vzdraw .5s ease-out both}
+.veq b.chg{display:inline-block;animation:vzpop .45s ease-out both}
+@media (prefers-reduced-motion:reduce){.vizbox .chg,.vizbox .mv,table.vz td.cut.chg::after{animation:none!important}}
 @media print{.vizbox{display:none}}
 `;
 if(typeof document!=='undefined'){const st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st)}
