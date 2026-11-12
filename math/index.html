@@ -244,6 +244,14 @@ footer p{margin:2px 0}
 html.running,html.running body{height:100%;overflow:hidden;overscroll-behavior:none}
 html.running .wrap{max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column;padding-block:0;padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
 html.running header.top,html.running footer,html.running .credit{display:none}
+html.running .wrap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+html.running input{-webkit-user-select:text;user-select:text}
+html.running img{-webkit-touch-callout:none;-webkit-user-drag:none;user-drag:none}
+.leavep{margin:0;font-size:18px;line-height:1.6}
+.leavebtns{display:flex;flex-direction:column;gap:10px;width:100%;min-width:min(300px,80vw)}
+.leavebtns .btn{min-height:52px;font-size:18px;justify-content:center}
+.resume{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:14px 18px;border:2px solid var(--main);border-radius:14px;background:var(--main-soft);color:inherit;text-decoration:none;font-size:18px;font-weight:500}
+.resume small{font-weight:400;opacity:.8}
 html.running #main{flex:1;min-height:0;display:flex;flex-direction:column}
 .run{--figh:34vh;--figh:34dvh;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding-top:max(6px,env(safe-area-inset-top,0px));padding-bottom:max(6px,env(safe-area-inset-bottom,0px))}
 .rbar{flex:none;display:flex;align-items:center;gap:6px;min-width:0}
@@ -407,6 +415,7 @@ body.printing #printArea{color:#000}
     <p class="cr">© 2026 老師媽咪。網頁設計、模擬卷題目與圖片為老師媽咪原創，歡迎老師、家長免費用於教學，請勿轉售或商業使用。考古題題目著作權屬教育部國民及學前教育署，本站非官方網站，僅整理供教學練習。</p>
   </div>
 </div>
+<div class="qrmodal" id="leaveModal" hidden><div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="leaveTitle"><h2 id="leaveTitle">還沒交卷喔！</h2><p class="leavep">要繼續作答嗎？</p><div class="leavebtns"><button type="button" class="btn primary" id="leaveStay">繼續作答</button><button type="button" class="btn" id="leaveGo">先離開（寫過的會留著）</button></div></div></div>
 <div class="qrmodal" id="qrModal" hidden><div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="qrTitle"><h2 id="qrTitle">拿平板掃這裡</h2><div id="qrBig"></div><p class="qrurl" id="qrUrl"></p><button type="button" class="btn primary" id="qrClose">關閉</button></div></div>
 <div id="printArea"></div>
 
@@ -625,7 +634,9 @@ function renderHome(){
     else if(st&&st.v){const n=qs.filter(q=>isAnswered(q,st.v[q.id])).length;if(n){cls='going';txt=`已作答 ${n} 題`}}
     return `<button type="button" class="yr ${cls}" data-exam="g${GRADE}-${y}">${isMock(y)?'<b class="mk">模擬卷<small>A</small></b>':`<b>${y}<small>年</small></b>`}<span>${qs.length} 題</span><span class="st">${txt}</span></button>`;
   }).join('');
-  $('#main').innerHTML=`<div class="modebar" id="modeBar"><div class="modesw" role="group" aria-label="使用方式">${[['online','💻 線上作答'],['paper','🖨️ 印成紙本']].map(([m,l])=>`<button type="button" class="${MODE===m?'on':''}" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('')}</div><span class="modehint">${paper?'下載 Word 或列印 PDF，發給學生寫':'學生掃 QR code，在平板上作答'}</span>${paper?ansCheck(homeHasEx()):''}</div>
+  const last=paper?null:LS.get(NS+'last',null);const lastSt=last&&last.key?LS.get(NS+last.key,null):null;
+  const resume=last&&last.hash&&last.n>0&&lastSt&&!lastSt.done&&Date.now()-last.at<864e5?`<a class="resume" href="${esc(last.hash)}">▶ 繼續剛剛的作答：${esc(last.title)} <small>（已寫 ${last.n} 題）</small></a>`:'';
+  $('#main').innerHTML=`${resume}<div class="modebar" id="modeBar"><div class="modesw" role="group" aria-label="使用方式">${[['online','💻 線上作答'],['paper','🖨️ 印成紙本']].map(([m,l])=>`<button type="button" class="${MODE===m?'on':''}" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('')}</div><span class="modehint">${paper?'下載 Word 或列印 PDF，發給學生寫':'學生掃 QR code，在平板上作答'}</span>${paper?ansCheck(homeHasEx()):''}</div>
   <section class="sec" aria-labelledby="hYear"><div class="sec-h"><h2 id="hYear">${paper?'依年度印整卷':'依年度練習'}</h2><small>${CN[GRADE]}年級・${paper?'整份考古題下載 Word，或列印／存成 PDF':'點一張卡片，整卷在線上作答'}</small></div><div class="years${paper?' paper':''}">${cards}</div></section>
   <section class="sec" aria-labelledby="hPick"><div class="sec-h"><h2 id="hPick">老師挑題</h2><small>${paper?'依課本單元或學扶細目挑題，做成紙本練習卷':'依課本單元或學扶細目挑題，產生練習給學生掃 QR code'}</small></div><div class="picker" id="pickerBox"></div></section>`;
   renderPicker();
@@ -760,7 +771,17 @@ document.addEventListener('change',e=>{
 
 /* ---------- 作答畫面 ---------- */
 function loadState(key){const s=LS.get(NS+key,null);return s&&typeof s==='object'?Object.assign({v:{},done:false},s,{v:s.v||{}}):{v:{},done:false}}
-const saveState=()=>{if(SET)LS.set(NS+SET.key,STATE)};
+const saveState=()=>{if(!SET)return;LS.set(NS+SET.key,STATE);if(STATE.done){const l=LS.get(NS+'last',null);if(l&&l.key===SET.key)LS.del(NS+'last')}else LS.set(NS+'last',{key:SET.key,hash:SET.hash,title:SET.title,n:SET.qs.filter(q=>isAnswered(q,STATE.v[q.id])).length,at:Date.now()})};
+/* 防止不小心跳出作答：返回手勢／回首頁先問一次 */
+const inRun=()=>!!(SET&&STATE&&!STATE.done&&document.documentElement.classList.contains('running'));
+const hasAns=()=>inRun()&&SET.qs.some(q=>isAnswered(q,STATE.v[q.id]));
+let GUARD=false;
+let GURL='';
+function armGuard(){if(GUARD||!inRun())return;try{GURL=location.href;history.pushState({xfGuard:1},'',GURL);GUARD=true}catch(e){}}
+document.addEventListener('pointerdown',armGuard,true);
+function askLeave(){$('#leaveModal').hidden=false;$('#leaveStay').focus()}
+window.addEventListener('popstate',()=>{if(!GUARD)return;GUARD=false;if(inRun()&&location.href===GURL){armGuard();if(hasAns())askLeave()}});
+document.addEventListener('click',e=>{if(e.target.closest('#leaveStay'))$('#leaveModal').hidden=true;else if(e.target.closest('#leaveGo')){$('#leaveModal').hidden=true;GUARD=false;go('#g='+GRADE)}});
 function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${yl(q.year)}第 ${q.no} 題`}
 const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;
 function openSet(s){
@@ -1008,7 +1029,7 @@ function submit(){STATE.done=true;STATE.at=Date.now();delete STATE.cur;saveState
 document.addEventListener('click',e=>{
   if(!SET)return;
   const t=e.target.closest('button');if(!t)return;
-  if(t.id==='homeBtn'){go('#g='+GRADE);return}
+  if(t.id==='homeBtn'){if(hasAns())askLeave();else go('#g='+GRADE);return}
   if(t.dataset.jump!=null){
     if(!STATE.done){showQ(+t.dataset.jump);return}
     const c=$('#q'+t.dataset.jump);if(c){c.scrollIntoView({block:'start',behavior:'smooth'});setCur(+t.dataset.jump)}return}
