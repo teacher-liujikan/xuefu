@@ -203,6 +203,15 @@ input.blank:disabled{opacity:1;-webkit-text-fill-color:currentColor}
 .exsteps li:not(.warn)::before{content:counter(ex) ".";position:absolute;left:0;width:1.5em;text-align:right;font-family:var(--f-num);font-weight:700;color:var(--pen)}
 .exsteps li.warn{margin:6px 0;padding:5px 12px;background:var(--warn-soft);border:1.5px solid var(--warn);border-radius:10px}
 .exsteps li.warn b{color:var(--warn)}
+.exsteps li{scroll-margin:120px 0 16px}
+.exsteps li.vizli{padding:10px 12px 12px;counter-increment:none}
+.exsteps li.vizli::before{content:none}
+.exsteps li.new{animation:exin .35s ease}
+@keyframes exin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.exsteps li.new{animation:none}}
+.exctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.exctl .btn{min-height:46px;font-size:17px}
+.exctl small{color:var(--muted)}
 /* 交卷後的「錯題」操作 */
 .wops{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding-top:10px;border-top:1px dashed var(--line)}
 .wops .wlab{font-family:var(--f-display);font-size:20px;color:var(--red)}
@@ -420,6 +429,7 @@ body.printing #printArea{color:#000}
 <div id="printArea"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="viz.js?v=1"></script>
 <script>
 (function(){
 'use strict';
@@ -500,7 +510,7 @@ function figPlan(q){
   });
   return {seq,rest:figs.filter((f,i)=>!used.has(i))};
 }
-const fracify=h=>h.replace(/(\d+)\/(\d+)/g,'<span class="frac" aria-label="$2分之$1"><i>$1</i><i>$2</i></span>');
+const fracify=h=>h.replace(/(\d+)\/(\d+)/g,'<span class="frac" aria-label="$2分之$1"><i>$1</i><i>$2</i></span>');window.XFfrac=fracify;
 /* 詳解（欄位 ex：逐步說明；「小心：」開頭的是提醒）。沒有 ex 的題目什麼都不顯示 */
 const WARN=/^小心[：:]\s*/;
 const exList=q=>Array.isArray(q.ex)?q.ex.map(s=>String(s==null?'':s).trim()).filter(Boolean):[];
@@ -510,8 +520,24 @@ function exSteps(q,cls){return `<ol class="${cls}">${exList(q).map(s=>WARN.test(
 /* open=true：直接展開（答錯、沒作答）；false：收合，按「看詳解」才展開（答對） */
 function exHTML(q,open){
   if(!hasEx(q))return '';
-  return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox"${open?'':' hidden'}><h3>詳解</h3>${exSteps(q,'exsteps')}</div></div>`;
+  /* 一步一步出現：先顯示第 1 步，按「下一步」才出現下一步；q.viz 是配合某一步的圖解（直式、數線…） */
+  const L=exList(q),viz=(window.XFViz&&Array.isArray(q.viz))?q.viz:[];
+  const lis=L.map((s,k)=>{const hid=k>0?' hidden':'';
+    return (WARN.test(s)?`<li class="warn" data-k="${k}"${hid}><b>小心：</b>${exText(s.replace(WARN,''))}</li>`:`<li data-k="${k}"${hid}>${exText(s)}</li>`)+
+      viz.filter(v=>(v.at||0)===k).map(v=>`<li class="vizli" data-k="${k}"${hid} data-viz="${esc(JSON.stringify(v))}"></li>`).join('')}).join('');
+  const ctl=L.length>1?`<div class="exctl"><button type="button" class="btn primary" data-exnext>下一步 →</button><button type="button" class="btn" data-exall>全部顯示</button><small data-exn>1／${L.length}</small></div>`:'';
+  return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox" data-n="${L.length}" data-shown="1"${open?'':' hidden'}><h3>詳解</h3><ol class="exsteps">${lis}</ol>${ctl}</div></div>`;
 }
+function exReveal(box,all){
+  const n=+box.dataset.n;let k=+box.dataset.shown;const to=all?n:Math.min(n,k+1);
+  for(;k<to;k++)box.querySelectorAll(`li[data-k="${k}"]`).forEach(li=>{li.hidden=false;li.classList.add('new')});
+  box.dataset.shown=to;const c=box.querySelector('.exctl');
+  if(c){if(to>=n)c.hidden=true;else c.querySelector('[data-exn]').textContent=`${to}／${n}`}
+  if(!all){const last=[...box.querySelectorAll(`li[data-k="${to-1}"]`)].pop();if(last&&last.scrollIntoView)last.scrollIntoView({block:'nearest',behavior:'smooth'})}
+}
+function mountViz(root){if(!window.XFViz)return;(root||document).querySelectorAll('li[data-viz]:not([data-vzok])').forEach(li=>{li.dataset.vzok='1';try{XFViz.mount(li,JSON.parse(li.dataset.viz))}catch(e){li.remove()}})}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-exnext],[data-exall]');if(!b)return;const box=b.closest('.exbox');if(box)exReveal(box,b.dataset.exall!=null)});
+new MutationObserver(()=>mountViz()).observe(document.documentElement,{childList:true,subtree:true});
 const imgTag=(src,alt)=>`<img class="fig" src="${esc(src)}" alt="${esc(alt||'題目的圖')}" decoding="async">`;
 const BL='（　）';
 function fillMode(q){
