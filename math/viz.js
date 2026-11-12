@@ -448,6 +448,9 @@ svg.vg .box{fill:#fde68a;fill-opacity:.55;stroke:#d97706;stroke-width:3;rx:10}
 svg.vg .hi{stroke:#ea580c!important;stroke-width:7!important}
 svg.vg .ok{stroke:#16a34a!important;stroke-width:7!important}
 svg.vg .no{stroke:#dc2626!important;stroke-width:7!important}
+svg.vg .fA{fill:#93c5fd!important}
+svg.vg .fB{fill:#fdba74!important}
+svg.vg .fC{fill:#86efac!important}
 svg.vg .fok{fill:#bbf7d0!important}
 svg.vg .fno{fill:#fecaca!important}
 svg.vg text{font-family:var(--f-num,sans-serif);fill:var(--ink,#111);font-size:22px}
