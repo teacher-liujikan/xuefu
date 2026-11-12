@@ -780,7 +780,7 @@ let GURL='';
 function armGuard(){if(GUARD||!inRun())return;try{GURL=location.href;history.pushState({xfGuard:1},'',GURL);GUARD=true}catch(e){}}
 document.addEventListener('pointerdown',armGuard,true);
 function askLeave(){$('#leaveModal').hidden=false;$('#leaveStay').focus()}
-window.addEventListener('popstate',()=>{if(!GUARD)return;GUARD=false;if(inRun()&&location.href===GURL){armGuard();if(hasAns())askLeave()}});
+window.addEventListener('popstate',()=>{if(!GUARD)return;GUARD=false;if(inRun()&&location.href===GURL){armGuard();askLeave()}});
 document.addEventListener('click',e=>{if(e.target.closest('#leaveStay'))$('#leaveModal').hidden=true;else if(e.target.closest('#leaveGo')){$('#leaveModal').hidden=true;GUARD=false;go('#g='+GRADE)}});
 function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${yl(q.year)}第 ${q.no} 題`}
 const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;
@@ -1029,7 +1029,7 @@ function submit(){STATE.done=true;STATE.at=Date.now();delete STATE.cur;saveState
 document.addEventListener('click',e=>{
   if(!SET)return;
   const t=e.target.closest('button');if(!t)return;
-  if(t.id==='homeBtn'){if(hasAns())askLeave();else go('#g='+GRADE);return}
+  if(t.id==='homeBtn'){if(inRun())askLeave();else go('#g='+GRADE);return}
   if(t.dataset.jump!=null){
     if(!STATE.done){showQ(+t.dataset.jump);return}
     const c=$('#q'+t.dataset.jump);if(c){c.scrollIntoView({block:'start',behavior:'smooth'});setCur(+t.dataset.jump)}return}
