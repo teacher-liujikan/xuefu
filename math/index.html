@@ -429,7 +429,7 @@ body.printing #printArea{color:#000}
 <div id="printArea"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="viz.js?v=2"></script>
+<script src="viz.js?v=3"></script>
 <script>
 (function(){
 'use strict';
@@ -525,7 +525,7 @@ function exHTML(q,open){
   const lis=L.map((s,k)=>{const hid=k>0?' hidden':'';
     return (WARN.test(s)?`<li class="warn" data-k="${k}"${hid}><b>小心：</b>${exText(s.replace(WARN,''))}</li>`:`<li data-k="${k}"${hid}>${exText(s)}</li>`)+
       viz.filter(v=>(v.at||0)===k).map(v=>`<li class="vizli" data-k="${k}"${hid} data-viz="${esc(JSON.stringify(v))}"></li>`).join('')}).join('');
-  const ctl=L.length>1?`<div class="exctl"><button type="button" class="btn primary" data-exnext>下一步 →</button><button type="button" class="btn" data-exall>全部顯示</button><small data-exn>1／${L.length}</small></div>`:'';
+  const ctl=L.length>1?`<div class="exctl"><button type="button" class="btn primary" data-exnext>下一句說明 →</button><button type="button" class="btn" data-exall>全部顯示</button><small data-exn>1／${L.length}</small></div>`:'';
   return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox" data-n="${L.length}" data-shown="1"${open?'':' hidden'}><h3>詳解</h3><ol class="exsteps">${lis}</ol>${ctl}</div></div>`;
 }
 function exReveal(box,all){

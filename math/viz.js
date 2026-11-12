@@ -311,7 +311,42 @@ function title(s){
   if(s.t==='v')return `直式：${s.a} ${OPS[s.op]} ${s.b}`;
   return {nf:'在數線上數數看',eq:'算式一步一步算',nl:'在數線上跳跳看',rd:'在數線上看接近誰',fr:'用圖看分數',pv:'用定位板看',uc:'用換算表看',cu:'單位分開算'}[s.t]||'圖解';
 }
+/* ---------- 動畫場景：{t:'g',w,h,els:[…],steps:[{c,s:{id:{x,y,r,sx,sy,o,c,dash}}}]}
+   每個元件留在畫面上，換步驟時只改位置／角度／透明度，用 CSS transition 做出移動、旋轉、翻面 ---------- */
+function gEl(e){
+  const a=e.a||[],cls=`class="${esc(e.cls||'')}" data-id="${esc(e.id||'')}"`;
+  if(e.k==='poly')return `<polygon points="${esc(e.pts)}" ${cls}/>`;
+  if(e.k==='line')return `<line x1="${a[0]}" y1="${a[1]}" x2="${a[2]}" y2="${a[3]}" ${cls}/>`;
+  if(e.k==='circ')return `<circle cx="${a[0]}" cy="${a[1]}" r="${a[2]}" pathLength="1" ${cls}/>`;
+  if(e.k==='path')return `<path d="${esc(e.d)}" pathLength="1" ${cls}/>`;
+  if(e.k==='text')return `<text x="${a[0]}" y="${a[1]}" text-anchor="middle" ${cls}>${esc(e.s)}</text>`;
+  if(e.k==='g')return `<g ${cls}>${e.ch.map(gEl).join('')}</g>`;
+  return '';
+}
+function gMount(el,spec){
+  const S=spec.steps;let i=0;
+  el.classList.add('vizbox');
+  el.innerHTML=`<p class="vzt">${esc(spec.title||'動畫')}</p><div class="vzfig"><svg class="vsvg vg" viewBox="0 0 ${spec.w||600} ${spec.h||300}" role="img" aria-label="${esc(spec.title||'動畫')}">${spec.els.map(gEl).join('')}</svg></div><p class="vzcap" aria-live="polite"></p><div class="vzbtns"><button type="button" class="btn" data-vz="prev">← 上一步</button><span class="vzn"></span><button type="button" class="btn primary" data-vz="next">下一步 →</button><button type="button" class="btn" data-vz="again" hidden>↺ 再看一次</button></div>`;
+  const init={};const walk=es=>es.forEach(e=>{if(e.id)init[e.id]=Object.assign({x:0,y:0,r:0,sx:1,sy:1,o:1,c:'',ox:0,oy:0,dash:null},e.i||{});if(e.ch)walk(e.ch)});walk(spec.els);
+  const nodes={};el.querySelectorAll('[data-id]').forEach(n=>{if(n.dataset.id)nodes[n.dataset.id]=n});
+  const base={};Object.keys(nodes).forEach(k=>base[k]=nodes[k].getAttribute('class')||'');
+  const cap=el.querySelector('.vzcap'),n=el.querySelector('.vzn'),bp=el.querySelector('[data-vz=prev]'),bn=el.querySelector('[data-vz=next]'),ba=el.querySelector('[data-vz=again]');
+  const show=()=>{
+    const st={};Object.keys(init).forEach(k=>st[k]=Object.assign({},init[k]));
+    for(let j=0;j<=i;j++){const s=S[j].s||{};Object.keys(s).forEach(k=>{if(st[k])Object.assign(st[k],s[k])})}
+    Object.keys(nodes).forEach(k=>{const v=st[k],nd=nodes[k];
+      nd.style.transformOrigin=`${v.ox}px ${v.oy}px`;
+      nd.style.transform=`translate(${v.x}px,${v.y}px) rotate(${v.r}deg) scale(${v.sx},${v.sy})`;
+      nd.style.opacity=v.o;nd.setAttribute('class',(base[k]+' '+(v.c||'')).trim());
+      if(v.dash!=null){nd.style.strokeDasharray='1';nd.style.strokeDashoffset=String(1-v.dash)}});
+    const f=S[i];cap.innerHTML=(window.XFfrac?window.XFfrac(esc(f.c)):esc(f.c));cap.className='vzcap'+(f.warn?' warn':'')+(i===S.length-1?' end':'');
+    n.textContent=`${i+1}／${S.length}`;bp.disabled=i===0;bn.hidden=i===S.length-1;ba.hidden=i!==S.length-1};
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-vz]');if(!b)return;
+    if(b.dataset.vz==='next'&&i<S.length-1)i++;else if(b.dataset.vz==='prev'&&i>0)i--;else if(b.dataset.vz==='again')i=0;show()});
+  show();
+}
 function mount(el,spec){
+  if(spec.t==='g'){try{gMount(el,spec)}catch(e){console.warn('viz',e);el.hidden=true}return}
   const F=frames(spec);if(!F.length){el.hidden=true;return}
   let i=0;
   el.classList.add('vizbox');
@@ -378,6 +413,40 @@ table.vpv.vcu td.res{color:var(--pen,#1d4ed8)}
 .veq{font-family:var(--f-num,sans-serif);font-size:32px;padding:26px 8px;text-align:center;color:var(--ink,#111);letter-spacing:1px}
 .veq b{background:#fde68a;color:#111;border-radius:8px;padding:2px 8px}
 table.vz td.dsr{white-space:nowrap;width:auto;padding-right:4px}
+svg.vg{max-width:640px}
+svg.vg [data-id]{transition:transform .95s cubic-bezier(.4,0,.2,1),opacity .5s ease,fill .4s,stroke .4s,stroke-dashoffset 1.4s ease-in-out}
+@media (prefers-reduced-motion:reduce){svg.vg [data-id]{transition:none}}
+svg.vg .pA{fill:#93c5fd;stroke:#1e3a8a;stroke-width:2.5;stroke-linejoin:round}
+svg.vg .pB{fill:#fdba74;stroke:#9a3412;stroke-width:2.5;stroke-linejoin:round}
+svg.vg .pC{fill:#86efac;stroke:#166534;stroke-width:2.5;stroke-linejoin:round}
+svg.vg .pD{fill:#f9a8d4;stroke:#9d174d;stroke-width:2.5;stroke-linejoin:round}
+svg.vg .pN{fill:var(--card,#fff);stroke:var(--ink,#111);stroke-width:3;stroke-linejoin:round}
+svg.vg .pG{fill:#d1d5db;stroke:var(--ink,#111);stroke-width:2}
+svg.vg .ln{stroke:var(--ink,#111);stroke-width:4;stroke-linecap:round;fill:none}
+svg.vg .lnA{stroke:#1d4ed8;stroke-width:5;stroke-linecap:round;fill:none}
+svg.vg .lnB{stroke:#ea580c;stroke-width:5;stroke-linecap:round;fill:none}
+svg.vg .lnC{stroke:#15803d;stroke-width:5;stroke-linecap:round;fill:none}
+svg.vg .lnD{stroke:#be185d;stroke-width:5;stroke-linecap:round;fill:none}
+svg.vg .thin{stroke:var(--ink,#111);stroke-width:1.5;fill:none}
+svg.vg .dash{stroke:var(--ink,#111);stroke-width:2;stroke-dasharray:7 6;fill:none}
+svg.vg .gridl{stroke:var(--shade,#bbb);stroke-width:1;fill:none}
+svg.vg .cir{stroke:var(--ink,#111);stroke-width:3.5;fill:none}
+svg.vg .dot{fill:var(--ink,#111)}
+svg.vg .box{fill:#fde68a;fill-opacity:.55;stroke:#d97706;stroke-width:3;rx:10}
+svg.vg .hi{stroke:#ea580c!important;stroke-width:7!important}
+svg.vg .ok{stroke:#16a34a!important;stroke-width:7!important}
+svg.vg .no{stroke:#dc2626!important;stroke-width:7!important}
+svg.vg .fok{fill:#bbf7d0!important}
+svg.vg .fno{fill:#fecaca!important}
+svg.vg text{font-family:var(--f-num,sans-serif);fill:var(--ink,#111);font-size:22px}
+svg.vg text.big{font-size:30px}
+svg.vg text.sm{font-size:16px;fill:var(--muted,#555)}
+svg.vg text.tok{font-size:30px}
+svg.vg text.tA{fill:#1d4ed8;font-weight:700}
+svg.vg text.tB{fill:#c2410c;font-weight:700}
+svg.vg text.tC{fill:#15803d;font-weight:700}
+svg.vg text.tD{fill:#be185d;font-weight:700}
+svg.vg text.red{fill:#c2410c;font-weight:700}
 @media print{.vizbox{display:none}}
 `;
 if(typeof document!=='undefined'){const st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st)}
