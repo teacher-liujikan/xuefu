@@ -420,6 +420,7 @@ svg.vg .pA{fill:#93c5fd;stroke:#1e3a8a;stroke-width:2.5;stroke-linejoin:round}
 svg.vg .pB{fill:#fdba74;stroke:#9a3412;stroke-width:2.5;stroke-linejoin:round}
 svg.vg .pC{fill:#86efac;stroke:#166534;stroke-width:2.5;stroke-linejoin:round}
 svg.vg .pD{fill:#f9a8d4;stroke:#9d174d;stroke-width:2.5;stroke-linejoin:round}
+svg.vg .sq{fill:#fde68a;fill-opacity:.7;stroke:#b45309;stroke-width:3;stroke-linejoin:round}
 svg.vg .pN{fill:var(--card,#fff);stroke:var(--ink,#111);stroke-width:3;stroke-linejoin:round}
 svg.vg .pG{fill:#d1d5db;stroke:var(--ink,#111);stroke-width:2}
 svg.vg .ln{stroke:var(--ink,#111);stroke-width:4;stroke-linecap:round;fill:none}
