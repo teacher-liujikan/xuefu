@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>學扶考古題 自己來練習</title>
+<meta name="description" content="學習扶助篩選測驗英語考古題：依年度整卷線上作答，或由老師依題型挑題；也可以切換成紙本，下載 Word 或列印 PDF。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bpmf+Huninn&family=Huninn&family=Iansui&family=Noto+Sans+TC:wght@400;700&display=swap">
+<style>
+/* 方格紙底、白色卡片、紅筆 ○／✗、藍筆選取；主色用綠色，和「學力檢測」網站分得出來 */
+:root{
+  --paper:#fbfdfb; --grid:#e8f0ea; --card:#ffffff; --ink:#0f1a14; --muted:#435047;
+  --main:#1d6b47; --main-soft:#e4f2ea; --main-ink:#ffffff;
+  --pen:#1d46b8; --pen-soft:#e7edfb; --red:#c62a1f; --red-soft:#fdeceb;
+  --ok:#137a4c; --ok-soft:#e5f5ec; --line:#a9bcb0; --shade:#b9c4bd;
+  --warn:#b97400; --warn-soft:#fff3d1;
+  --f-display:"Iansui","Huninn","Noto Sans TC",sans-serif;
+  --f-body:"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-num:"Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --lh:1.75;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0b110e; --grid:#16201a; --card:#141d18; --ink:#f4fbf6; --muted:#c3cec7;
+  --main:#6fd1a0; --main-soft:#1a3226; --main-ink:#06140d;
+  --pen:#9db4ff; --pen-soft:#1f2a45; --red:#ff7d71; --red-soft:#3a1f1e;
+  --ok:#5fd69d; --ok-soft:#173226; --line:#4a5d52; --shade:#5a6a60; --warn:#f0c060; --warn-soft:#3b2e10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0b110e; --grid:#16201a; --card:#141d18; --ink:#f4fbf6; --muted:#c3cec7;
+  --main:#6fd1a0; --main-soft:#1a3226; --main-ink:#06140d;
+  --pen:#9db4ff; --pen-soft:#1f2a45; --red:#ff7d71; --red-soft:#3a1f1e;
+  --ok:#5fd69d; --ok-soft:#173226; --line:#4a5d52; --shade:#5a6a60; --warn:#f0c060; --warn-soft:#3b2e10; color-scheme:dark}
+body.bpmf{--f-body:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif; --lh:2.25}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:var(--lh);overflow-x:hidden}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 60px}
+header.top{position:relative;display:flex;flex-direction:column;gap:4px;padding:8px 104px 10px 0;min-height:110px}
+.school{font-size:14px;color:var(--muted);letter-spacing:.05em}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,6vw,40px);line-height:1.25;margin:0;color:var(--main)}
+h1 span{white-space:nowrap}
+button{font:inherit;cursor:pointer;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:40px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 16px;font-size:16px;line-height:1.4;text-decoration:none}
+.btn:hover{border-color:var(--main)}
+.btn.primary{background:var(--main);border-color:var(--main);color:var(--main-ink)}
+.btn.big{font-size:19px;padding:8px 28px;min-height:48px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,input:focus-visible,.opt:focus-visible,.pk:focus-visible,.gt:focus-visible,.chip:focus-visible,.yr:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+
+.qrthumb{position:absolute;top:4px;right:0;display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 6px 2px;cursor:zoom-in}
+.qrthumb small{font-size:12px;color:#1d2a22;line-height:1.4}
+.qrthumb img,.qrthumb canvas{display:block;width:80px!important;height:80px!important}
+.qrmodal{position:fixed;inset:0;z-index:50;background:rgba(10,20,15,.72);display:grid;place-items:center;padding:16px}
+.qrcard{background:#fff;color:#16221b;border-radius:18px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%;text-align:center}
+.qrcard h2{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0;line-height:1.4}
+#qrBig img,#qrBig canvas{display:block;width:min(78vw,60vh,440px)!important;height:auto!important}
+.qrurl{margin:0;font-family:var(--f-num);font-size:12px;color:#55605a;word-break:break-all;max-width:440px;max-height:5.4em;overflow:auto}
+
+.gtabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;margin:12px 0 4px;padding:4px;background:var(--card);border:1.5px solid var(--line);border-radius:14px}
+@media (max-width:520px){.gtabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gt{min-height:44px;border:1.5px solid transparent;background:none;color:var(--ink);border-radius:10px;padding:4px 2px;font-size:17px;line-height:1.3}
+.gt.on{background:var(--main);color:var(--main-ink);font-weight:700}
+.gt:not(.on):hover{border-color:var(--main)}
+
+section.sec{margin-top:26px}
+.sec-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.sec-h h2{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0;color:var(--main)}
+.sec-h small{color:var(--muted);font-size:14px}
+.muted{color:var(--muted)}
+
+.years{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px}
+@media (max-width:420px){.years{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.yr{display:flex;flex-direction:column;align-items:flex-start;gap:0;text-align:left;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 16px;min-height:96px}
+.yr:hover{border-color:var(--main)}
+.yr b{font-family:var(--f-display);font-weight:400;font-size:30px;line-height:1.2;color:var(--main)}
+.yr b small{font-size:17px;margin-left:2px}
+.yr span{font-size:15px}
+.yr .st{font-size:14px;color:var(--muted)}
+.yr.going{border-color:var(--pen)} .yr.going .st{color:var(--pen)}
+.yr.done{border-color:var(--ok)} .yr.done .st{color:var(--ok);font-weight:700}
+
+/* 老師挑題 */
+.picker{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px}
+.pkmode{display:flex;gap:6px;padding:4px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;margin:0 0 10px}
+.pkm{flex:1;min-height:44px;border:1.5px solid transparent;background:none;color:var(--ink);border-radius:10px;padding:6px 8px;font-size:17px}
+.pkm.on{background:var(--main);color:var(--main-ink);font-weight:700}
+.pkrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0}
+.pklab{font-size:14px;color:var(--muted);min-width:2.6em}
+.pkgrp{margin:10px 0;padding:10px 12px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px}
+.pkgrp.prev{border-style:dashed}
+.pkhead{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin-bottom:6px}
+.pkhead b{font-size:17px}
+.pkhead .tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 8px}
+.linkbtn{border:none;background:none;color:var(--main);font-size:15px;text-decoration:underline;padding:4px 2px;min-height:36px}
+.pkchips{display:flex;flex-wrap:wrap;gap:6px}
+.pksub{flex-basis:100%;font-size:13px;color:var(--muted);margin-top:4px}
+.pk{min-height:40px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:15px;line-height:1.5;display:inline-flex;align-items:center;gap:6px;text-align:left;max-width:100%}
+.pk i{font-style:normal;font-family:var(--f-num);font-size:12px;color:var(--muted);background:var(--grid);border-radius:999px;padding:0 7px;flex:none}
+.pk.on{border-color:var(--pen);background:var(--pen-soft);font-weight:700}
+.pk.on i{background:var(--pen);color:var(--card)}
+.pk:disabled{opacity:.4;cursor:not-allowed}
+.pk .uno{font-family:var(--f-num);color:var(--main)}
+.pk .cd{font-family:var(--f-num);font-size:12px;color:var(--muted);white-space:nowrap}
+.pk.ver{font-size:16px;padding:4px 18px}
+.chk{display:inline-flex;align-items:center;gap:6px;min-height:40px;font-size:15px;cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--main);margin:0}
+.pkres{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:12px 14px;background:var(--paper);border:2px solid var(--main);border-radius:14px}
+.pkres b{font-family:var(--f-num);font-size:22px;color:var(--red)}
+.pkres .sm{font-size:14px;color:var(--muted)}
+.pknote{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* 匯出 */
+.chks{display:inline-flex;flex-wrap:wrap;align-items:center;gap:0 12px}
+.exmsg{flex-basis:100%;font-size:14px;color:var(--main)}
+.exmsg:empty{display:none}
+
+/* 作答畫面 */
+.setbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:6px 0 4px}
+.setbar h2{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,5vw,28px);margin:0;line-height:1.3;color:var(--main);flex:1 1 220px}
+.setbar small{color:var(--muted);font-size:14px}
+.strip{position:sticky;top:0;z-index:5;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:8px 12px;margin-block:8px 16px;display:flex;flex-direction:column;gap:6px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.score b{font-family:var(--f-num);font-size:20px;font-variant-numeric:tabular-nums;color:var(--main)}
+.score span{color:var(--muted);font-size:14px}
+.bar{height:6px;border-radius:6px;background:var(--grid);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--main);transition:width .3s}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+@media (max-width:640px){.chips{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:4px;margin-inline:-4px;padding-inline:4px}}
+.chip{flex:none;min-width:40px;height:40px;font-family:var(--f-num);font-size:15px;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:0 6px;background:var(--paper);font-variant-numeric:tabular-nums}
+.chip.done{background:var(--pen-soft);border-color:var(--pen);color:var(--pen)}
+.chip.cur{box-shadow:0 0 0 2px var(--main)}
+.chip.pp{border-style:dashed;color:var(--muted)}
+.chip.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.chip.no{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.cards{display:flex;flex-direction:column;gap:14px}
+.q{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;scroll-margin-top:150px;min-width:0}
+@media (max-width:480px){.q{padding:12px 14px}}
+.q.right{border-color:var(--ok)}
+.q.wrong{border-color:var(--red)}
+.srctag{margin:0 0 2px;font-size:13px;color:var(--muted)}
+.qn{font-family:var(--f-num);font-weight:700;color:var(--main);margin-right:6px}
+.stem{margin:0 0 6px;overflow-wrap:anywhere}
+.mark{position:absolute;top:-14px;right:-6px;font-family:var(--f-display);font-size:54px;line-height:1;color:var(--red);pointer-events:none;transform:rotate(-8deg)}
+.fig{max-width:100%;height:auto;vertical-align:middle;background:#fff;border-radius:4px}
+.fig.blk{display:block;margin:8px auto}
+.fig.inl{display:inline-block;margin:0 3px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin:6px 0}
+.figs .fig.blk{margin:0}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-family:var(--f-num);line-height:1.1;margin:0 .12em;font-size:.92em}
+.frac i{font-style:normal;padding:0 .18em}
+.frac i:first-child{border-bottom:1.5px solid currentColor}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 4px}
+.opts.one{grid-template-columns:1fr}
+@media (max-width:480px){.opts:not(.tiny){grid-template-columns:1fr}}
+.opt{min-height:48px;text-align:left;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:6px 12px;display:flex;gap:10px;align-items:center;min-width:0;font-size:17px;line-height:1.6}
+.opt .k{font-family:var(--f-num);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--muted);font-size:15px;flex:none}
+.opt .ot{min-width:0;overflow-wrap:anywhere;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.opt img{max-width:100%;height:auto;background:#fff;border-radius:4px;display:block}
+.opt.sel{border-color:var(--pen);background:var(--pen-soft)}
+.opt.sel .k{background:var(--pen);border-color:var(--pen);color:var(--card)}
+.opt[disabled]{cursor:default}
+.opt.ansopt{border-color:var(--red);box-shadow:0 0 0 2px var(--red) inset}
+.opt.ansopt .k{border-color:var(--red);color:var(--red)}
+.opt.sel.ansopt .k{background:var(--red);color:var(--card)}
+.opt.minebad{border-color:var(--red);border-style:dashed;background:var(--red-soft)}
+.opt{position:relative}
+.opt .mytag{position:absolute;right:8px;bottom:2px;font-style:normal;font-size:12px;line-height:1.4;color:var(--muted);white-space:nowrap;background:var(--card);border-radius:6px;padding:0 4px}
+input.blank{font-family:var(--f-num);font-size:19px;color:var(--pen);background:var(--paper);border:none;border-bottom:2.5px solid var(--muted);border-radius:6px 6px 0 0;padding:2px 6px;width:4.4em;min-height:40px;text-align:center;font-variant-numeric:tabular-nums;vertical-align:middle;margin:2px 2px}
+input.blank:disabled{opacity:1;-webkit-text-fill-color:currentColor}
+.blank.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.blank.no{border-color:var(--red);color:var(--red);background:var(--red-soft)}
+.fillrow{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:8px 0 2px}
+.fillrow label{display:inline-flex;align-items:center;gap:4px;font-size:15px;color:var(--muted)}
+.symbtns{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 2px;font-size:14px;color:var(--muted)}
+.symbtns .btn{min-width:48px;font-family:var(--f-num);font-size:20px;padding:2px 12px}
+.hintline{margin:6px 0 2px;color:var(--muted);font-size:15px}
+.paperbox{margin:8px 0 2px;padding:6px 12px;border:1.5px dashed var(--line);border-radius:10px;background:var(--paper);color:var(--muted);font-size:15px}
+.ansline{margin:10px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--ink)}
+.ansline b{color:var(--red);font-family:var(--f-num);font-size:18px}
+.ansline .nc{font-size:14px;color:var(--muted)}
+.ansline .fig{margin-top:6px}
+.finish{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:22px;text-align:center}
+.confirm{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.result{background:var(--card);border:2px solid var(--red);border-radius:14px;padding:10px 16px;margin:0 0 14px;display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap}
+.result .big{font-family:var(--f-display);font-size:22px}
+.result b{font-family:var(--f-num);font-size:30px;color:var(--red)}
+.result .acts{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.loading{padding:40px 0;text-align:center;color:var(--muted)}
+/* 詳解 */
+.exwrap{margin:10px 0 0}
+.exbtn{min-height:44px}
+.exbtn[aria-expanded="true"]{border-color:var(--pen);background:var(--pen-soft)}
+.exbox{margin:8px 0 0;padding:8px 14px 10px;border-left:5px solid var(--pen);background:var(--pen-soft);border-radius:0 10px 10px 0}
+.exbox h3{margin:0 0 2px;font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.5;color:var(--pen)}
+.exsteps{list-style:none;margin:0;padding:0;counter-reset:ex;font-size:18px}
+.exsteps li{position:relative;padding:1px 0 1px 1.9em;overflow-wrap:anywhere}
+.exsteps li:not(.warn){counter-increment:ex}
+.exsteps li:not(.warn)::before{content:counter(ex) ".";position:absolute;left:0;width:1.5em;text-align:right;font-family:var(--f-num);font-weight:700;color:var(--pen)}
+.exsteps li.warn{margin:6px 0;padding:5px 12px;background:var(--warn-soft);border:1.5px solid var(--warn);border-radius:10px}
+.exsteps li.warn b{color:var(--warn)}
+.exsteps li{scroll-margin:120px 0 16px}
+.exsteps li.vizli{padding:10px 12px 12px;counter-increment:none}
+.exsteps li.vizli::before{content:none}
+.exsteps li.new{animation:exin .35s ease}
+@keyframes exin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.exsteps li.new{animation:none}}
+.exctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.exctl .btn{min-height:46px;font-size:17px}
+.exctl small{color:var(--muted)}
+/* 交卷後的「錯題」操作 */
+.wops{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding-top:10px;border-top:1px dashed var(--line)}
+.wops .wlab{font-family:var(--f-display);font-size:20px;color:var(--red)}
+.wops .btn{min-height:48px}
+.qrfail{margin:0;padding:24px 8px;max-width:20em;font-size:20px;line-height:1.7;color:#c62a1f}
+/* 錯題整理頁（老師掃錯題 QR code 進來） */
+.wpage{margin-top:14px;background:var(--card);border:2px solid var(--main);border-radius:16px;padding:14px 18px}
+.wpage h2{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,5vw,30px);margin:0 0 2px;color:var(--main);line-height:1.4}
+.wlist{margin:8px 0 14px;padding:0;list-style:none;border-top:1px dashed var(--line)}
+.wlist li{display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline;padding:6px 2px;border-bottom:1px dashed var(--line)}
+.wlist .wsrc{flex:none;font-family:var(--f-num);font-weight:700;color:var(--main);font-size:15px;min-width:10.5em}
+.wlist .wstem{flex:1 1 12em;min-width:0;overflow-wrap:anywhere}
+.wacts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.wacts .btn{min-height:48px}
+.wback{margin:16px 0 0}
+footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center;line-height:1.7}
+footer p{margin:2px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* 線上作答／印成紙本 切換 */
+.modebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:14px 0 0;padding:10px 12px;background:var(--card);border:2px solid var(--main);border-radius:16px}
+.modesw{display:flex;gap:4px;padding:4px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;flex:1 1 300px;max-width:420px}
+.modesw button{flex:1;min-height:48px;border:1.5px solid transparent;background:none;color:var(--ink);border-radius:10px;padding:6px 8px;font-size:18px;white-space:nowrap}
+.modesw button.on{background:var(--main);color:var(--main-ink);font-weight:700}
+.modesw button:not(.on):hover{border-color:var(--main)}
+.modesw button:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.modehint{font-size:15px;color:var(--muted);flex:1 1 200px}
+.years.paper{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.yr.pp{min-height:0;gap:6px;cursor:default}
+.yr.pp:hover{border-color:var(--line)}
+.yr.pp .yrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.yr.pp .yrb{display:flex;gap:8px;flex-wrap:wrap}
+.yr.pp .btn{min-height:44px;padding:4px 12px}
+.yr.pp .exmsg{flex-basis:auto}
+.pkex{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+
+/* 作答：一次一題，一題一個畫面 */
+html.running,html.running body{height:100%;overflow:hidden;overscroll-behavior:none}
+html.running .wrap{max-width:none;height:100vh;height:100dvh;display:flex;flex-direction:column;padding-block:0;padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
+html.running header.top,html.running footer,html.running .credit{display:none}
+html.running .wrap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+html.running input{-webkit-user-select:text;user-select:text}
+html.running img{-webkit-touch-callout:none;-webkit-user-drag:none;user-drag:none}
+.leavep{margin:0;font-size:18px;line-height:1.6}
+.leavebtns{display:flex;flex-direction:column;gap:10px;width:100%;min-width:min(300px,80vw)}
+.leavebtns .btn{min-height:52px;font-size:18px;justify-content:center}
+.resume{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:14px 18px;border:2px solid var(--main);border-radius:14px;background:var(--main-soft);color:inherit;text-decoration:none;font-size:18px;font-weight:500}
+.resume small{font-weight:400;opacity:.8}
+html.running #main{flex:1;min-height:0;display:flex;flex-direction:column}
+.run{--figh:34vh;--figh:34dvh;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding-top:max(6px,env(safe-area-inset-top,0px));padding-bottom:max(6px,env(safe-area-inset-bottom,0px))}
+.rbar{flex:none;display:flex;align-items:center;gap:6px;min-width:0}
+.rbar h2{flex:1;min-width:0;margin:0;font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.3;color:var(--main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar .prog{flex:none;font-family:var(--f-num);font-size:15px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rbar .btn{flex:none;min-height:48px;min-width:48px;padding:4px 12px;white-space:nowrap;position:relative}
+.rbar .btn[aria-pressed="true"]{border-color:var(--main);background:var(--main-soft)}
+.sl{display:none}
+.dot{position:absolute;top:4px;right:4px;width:11px;height:11px;border-radius:50%;background:var(--red);border:2px solid var(--card)}
+@media (max-width:640px){.rbar .lbl{display:none}.rbar .sl{display:inline}.rbar h2{font-size:18px}.rbar .btn{padding:4px 8px}}
+.rchips{flex:none;position:relative;display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px}
+.rchips::-webkit-scrollbar{display:none}
+.rchips .chip{width:40px;min-width:40px;height:40px;border-radius:50%;padding:0;background:var(--card)}
+.rchips .chip.done{background:var(--pen);border-color:var(--pen);color:var(--card);font-weight:700}
+.rchips .chip.cur{box-shadow:0 0 0 3px var(--main)}
+.rbody{flex:1;min-height:0;display:flex;gap:8px}
+.stage{flex:1 1 0;min-width:0;min-height:0;display:flex}
+.q.one{flex:1;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
+.q.one .qgrid{flex:1 0 auto;min-height:0}
+@media (min-width:700px){.q.one{font-size:19px}.q.one .opt{font-size:19px}}
+.q.one .fig{max-height:var(--figh);width:auto}
+.q.one .opt{min-height:56px}
+.q.one .opt img{max-height:var(--oh,20vh);width:auto}
+.q.one input.blank{min-height:48px;font-size:22px;width:5em}
+.q.one .symbtns .btn{min-height:48px;min-width:56px}
+@media (min-width:900px){
+  .run:not(.padopen){--figh:48vh;--figh:48dvh}
+  .run:not(.padopen) .q.one{overflow:hidden}
+  .run:not(.padopen) .q.one .qgrid.split:not(.wide){flex:1 1 0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+  .run:not(.padopen) .q.one .qgrid:is(.wide,:not(.split)){flex:1 1 0;overflow:auto;overscroll-behavior:contain}
+  .run:not(.padopen) .q.one .split:not(.wide)>.qL,.run:not(.padopen) .q.one .split:not(.wide)>.qR{min-height:0;overflow:auto;overscroll-behavior:contain;padding:2px}
+  .run:not(.padopen) .q.one .split:not(.wide)>.qR{border-left:1.5px dashed var(--line);padding-left:20px}
+  .run:not(.padopen) .q.one .split:not(.wide) .opts{margin-top:2px}
+}
+.rnav{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px 10px;flex-wrap:wrap}
+.rnav .btn{min-height:52px;min-width:124px}
+.rnav .rno{font-family:var(--f-num);font-size:15px;color:var(--muted);white-space:nowrap}
+.rnav p{margin:0;flex:1 1 200px}
+.rnav p b{color:var(--red);font-family:var(--f-num);font-size:20px}
+@media (max-width:420px){.rnav .btn{min-width:104px;padding-inline:14px}}
+
+/* 計算紙 */
+.pad{flex:1 1 0;min-width:0;min-height:0;display:flex;flex-direction:column;background:#fff;border:2px solid var(--main);border-radius:12px;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.padbar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px;background:var(--main-soft);border-bottom:1.5px solid var(--line)}
+.padbar .btn{min-height:48px;padding:4px 12px;white-space:nowrap}
+.padbar .btn.on{background:var(--main);border-color:var(--main);color:var(--main-ink);font-weight:700}
+.padbar .sp{flex:1}
+.padcv{flex:1;min-height:0;position:relative;background:#fff;background-image:linear-gradient(#e6eef4 1px,transparent 1px),linear-gradient(90deg,#e6eef4 1px,transparent 1px);background-size:28px 28px}
+.padcv canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+.pad.full{position:fixed;inset:0;z-index:40;border-radius:0;border-width:0;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+@media (orientation:portrait){
+  .run.padopen .rbody{flex-direction:column}
+  .run.padopen{--figh:20vh;--figh:20dvh}
+}
+@media (max-width:640px){.padbar .btn{padding:4px 8px;font-size:15px}}
+
+/* 列印（PDF） */
+#printArea{display:none}
+@media print{
+  @page{size:A4;margin:14mm 14mm}
+  body.printing{background:#fff!important;background-image:none!important;color:#000}
+  body.printing>*:not(#printArea){display:none!important}
+  body.printing #printArea{display:block}
+}
+body.printing #printArea{color:#000}
+.psheet{font-family:"標楷體","DFKai-SB","BiauKai","TW-Kai",var(--f-body);font-size:13.5pt;line-height:1.7;color:#000;background:#fff}
+.ph1{font-size:20pt;text-align:center;margin:0 0 2pt;font-weight:700;color:#000;font-family:inherit}
+.psub{text-align:center;font-size:10.5pt;color:#444;margin:0 0 8pt}
+.pname{margin:0 0 12pt;padding-bottom:6pt;border-bottom:1.5pt solid #000}
+.pq{break-inside:avoid;margin:0 0 12pt}
+.pstem{margin:0 0 4pt}
+.psrc{font-size:9.5pt;color:#666}
+.psheet .fig{background:none;max-height:80mm;width:auto}
+.psheet .fig.blk{margin:4pt auto}
+.psheet .frac i:first-child{border-bottom-color:#000}
+.popts{list-style:none;padding:0 0 0 1.4em;margin:2pt 0 0;display:grid;grid-template-columns:1fr 1fr;gap:2pt 14pt}
+.popts.one{grid-template-columns:1fr}
+.popts.row{display:flex;flex-wrap:wrap;gap:2pt 22pt}
+.popts li{display:flex;gap:4pt;align-items:center}
+.popts img{max-height:40mm;width:auto;max-width:100%}
+.pwork{height:22mm}
+.pbreak{break-before:page}
+.ph2{font-size:16pt;margin:0 0 8pt}
+.pans{margin:0;padding:0;list-style:none;columns:2;column-gap:14mm}
+.pans li{break-inside:avoid;margin:0 0 4pt}
+.pans .nc{font-size:10.5pt;color:#555}
+.pans img{display:block;max-width:70mm;max-height:45mm;margin:2pt 0}
+.pex{list-style:none;margin:1pt 0 5pt;padding:0 0 0 1.1em;font-size:11pt;line-height:1.55;counter-reset:pex}
+.pans .pex li{position:relative;margin:0;padding-left:2em}
+.pans .pex li:not(.warn){counter-increment:pex}
+.pans .pex li:not(.warn)::before{content:"(" counter(pex) ")";position:absolute;left:0}
+.pans .pex li.warn{margin:2pt 0;padding:1pt 5pt;border:.75pt solid #777;border-radius:3pt;background:#f1f1f1}
+.school a.home{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.yr b.mk{font-size:24px;line-height:1.5}
+.credit{margin:22px auto 0;max-width:34em;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);text-align:center;color:var(--muted);font-size:14px;line-height:1.75}
+.credit .by{margin:0;color:var(--ink);font-size:15px}
+.credit .by b{color:var(--main);font-weight:700}
+.credit a{color:var(--main);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
+.credit a:hover{opacity:.8}
+.credit .by a{display:inline-block;white-space:nowrap}
+.credit .visits{margin:6px 0 0;font-variant-numeric:tabular-nums}
+.credit .visits b{color:var(--ink);font-size:16px}
+.credit .cr{margin:8px 0 0;font-size:13px}
+.fb{margin:12px 0 4px;text-align:left}
+.fb summary{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 18px;border:1.5px solid var(--main);border-radius:999px;color:var(--main);font-weight:700;cursor:pointer;list-style:none;font-size:15px}
+.fb summary::-webkit-details-marker{display:none}
+.fb[open] summary{background:var(--main);color:var(--main-ink,#fff)}
+.fbwrap{text-align:center}
+.fbform{display:grid;gap:10px;margin-top:12px;text-align:left}
+.fbform label{display:grid;gap:4px;font-size:14px;color:var(--ink)}
+.fbform label small{color:var(--muted);font-weight:400}
+.fbform input,.fbform select,.fbform textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;box-sizing:border-box}
+.fbform textarea{min-height:120px;resize:vertical;line-height:1.6}
+.fbform input:focus-visible,.fbform select:focus-visible,.fbform textarea:focus-visible{outline:3px solid var(--main);outline-offset:1px}
+.fbrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.fbrow{grid-template-columns:1fr}}
+.fbnote{margin:0;font-size:13px;color:var(--muted)}
+.fbsend{justify-self:center;min-height:46px;padding:6px 28px;border:none;border-radius:999px;background:var(--main);color:var(--main-ink,#fff);font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.fbsend:disabled{opacity:.55;cursor:wait}
+.fbmsg{margin:0;text-align:center;font-size:15px;min-height:1.2em}
+.fbmsg.ok{color:var(--main);font-weight:700}
+.fbmsg.err{color:#c62a1f}
+.fbhp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* ---- 國語 ---- */
+#padBtn,[data-bpmf],.tools{display:none!important}
+.stem u,.opt u,.psg u,.pstem u,.popts u,.pans u{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1.5px}
+.stem b,.psg b,.pstem b{font-weight:700;text-decoration:underline double;text-underline-offset:.2em}
+.psg b{text-decoration:none}
+.qimg,.pimg{display:block;height:auto;background:#fff;border-radius:8px;padding:6px;box-sizing:border-box;max-width:100%}
+.stem.hasimg{display:flex;gap:4px;align-items:flex-start}
+.stem.hasimg>.qn{white-space:nowrap;padding-top:6px}
+.stem.hasimg .qimg{min-width:0;flex:0 1 auto}
+.stem.hasimg .qimg{flex:0 1 auto;min-width:0}
+.psg{border:1.5px solid var(--line);border-radius:12px;background:var(--card);padding:10px 14px;margin:0 0 12px;line-height:1.95}
+.psg p{margin:0 0 .35em;text-indent:2em}
+.psg p.psgi{text-indent:0;font-weight:700;color:var(--main);font-size:.92em;margin-bottom:.5em}
+.psg.pic{padding:8px}
+.psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
+.opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lis{margin:0 0 8px;padding:6px 12px;border-radius:10px;background:var(--main-soft);font-size:.9em}
+.lis a{color:var(--main);font-weight:700}
+.opts.numonly .opt{justify-content:center;min-height:64px}
+.opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
+.exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
+.exbox .nz,.exbox.bp .nz{font-family:"Huninn","Noto Sans TC",sans-serif}
+.psheet .psg{border:1px solid #000;border-radius:0;background:#fff;color:#000;break-inside:avoid-page;margin:10px 0}
+.psheet .qimg,.psheet .pimg{padding:0}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <header class="top">
+    <button type="button" class="qrthumb" id="qrOpen" data-qropen aria-label="放大 QR code，讓學生用平板掃描"><span id="qrSmall"></span><small>學生掃我</small></button>
+    <div class="school"><a class="home" href="../">學習扶助篩選測驗</a>・英語</div>
+    <h1><span>學扶考古題</span> <span>自己來練習</span></h1>
+    <div class="tools"><button class="btn" id="bpmfBtn" data-bpmf type="button" aria-pressed="false">注音：關</button></div>
+    <nav class="gtabs" id="gtabs" aria-label="年級"></nav>
+  </header>
+  <main id="main"><p class="loading">題目載入中⋯⋯</p></main>
+  <footer>
+    <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
+    <p>四～六年級、113 和 114 年，答案用官方答案卷。每份第 1～10 題是聽力，要搭配音檔；第 11～25 題是閱讀，可以直接作答。</p>
+    <p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>
+    <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
+  </footer>
+  <div class="credit">
+    <p class="by">製作：<b>老師媽咪</b>（台南國小教師）・<a href="https://www.threads.com/@teacher_liujikan" target="_blank" rel="noopener">Threads @teacher_liujikan ↗</a></p>
+    <p>題目或答案有錯、想要新功能，歡迎寫信給我，或到 Threads 留言、私訊。也可以看看<a href="https://teacher-liujikan.github.io/" target="_blank" rel="noopener">老師媽咪的其他作品</a>。</p>
+    <div class="fbwrap"><details class="fb" id="fb">
+      <summary>✉️ 寫信給老師媽咪</summary>
+      <form class="fbform" id="fbForm" novalidate>
+        <div class="fbrow">
+          <label>我是<select name="身分"><option>老師</option><option>家長</option><option>學生</option><option>其他</option></select></label>
+          <label>怎麼稱呼你 <small>（可不填）</small><input name="稱呼" autocomplete="name" maxlength="40"></label>
+        </div>
+        <label>你的 Email <small>（想收到回覆再填）</small><input name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"></label>
+        <label>想說的話 <small>（必填，例如：幾年級哪一年第幾題答案有錯）</small><textarea name="意見" required maxlength="3000"></textarea></label>
+        <input class="fbhp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="fbnote">請不要填寫學生的姓名或個人資料。按「送出」後，內容會寄到老師媽咪的信箱。</p>
+        <button type="submit" class="fbsend" id="fbSend">送出</button>
+        <p class="fbmsg" id="fbMsg" aria-live="polite"></p>
+      </form>
+    </details></div>
+    <p class="visits" id="visits" hidden>累計使用 <b id="visitN"></b> 次</p>
+    <p class="cr">© 2026 老師媽咪。網頁設計、模擬卷題目與圖片為老師媽咪原創，歡迎老師、家長免費用於教學，請勿轉售或商業使用。考古題題目著作權屬教育部國民及學前教育署，本站非官方網站，僅整理供教學練習。</p>
+  </div>
+</div>
+<div class="qrmodal" id="leaveModal" hidden><div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="leaveTitle"><h2 id="leaveTitle">還沒交卷喔！</h2><p class="leavep">要繼續作答嗎？</p><div class="leavebtns"><button type="button" class="btn primary" id="leaveStay">繼續作答</button><button type="button" class="btn" id="leaveGo">先離開（寫過的會留著）</button></div></div></div>
+<div class="qrmodal" id="qrModal" hidden><div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="qrTitle"><h2 id="qrTitle">拿平板掃這裡</h2><div id="qrBig"></div><p class="qrurl" id="qrUrl"></p><button type="button" class="btn primary" id="qrClose">關閉</button></div></div>
+<div id="printArea"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+'use strict';
+/* ---------- 小工具 ---------- */
+const $=s=>document.querySelector(s);
+const CN=['','一','二','三','四','五','六'];
+const CIRC=['①','②','③','④','⑤'];
+const YEARS=['114','113'];
+const isMock=y=>y==='mA';
+const yl=y=>isMock(y)?'模擬卷 A':y+' 年';
+const yv=y=>isMock(y)?0:+y;
+const MAXSET=50;
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={
+  get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}}
+};
+const NS='xuefu-en:';
+let pref=Object.assign({grade:3,bpmf:{},exo:{ans:false,ex:false}},LS.get(NS+'pref',{})||{});
+if(!pref.bpmf||typeof pref.bpmf!=='object')pref.bpmf={};
+if(!pref.exo||typeof pref.exo!=='object')pref.exo={ans:false,ex:false};
+const savePref=()=>LS.set(NS+'pref',pref);
+/* 老師用的全站切換：online 線上作答／paper 印成紙本（學生掃碼進題組一律是線上作答畫面） */
+let MODE=pref.mode==='paper'?'paper':'online';
+function hashStr(s){let h=5381;for(const c of s)h=((h<<5)+h+c.charCodeAt(0))>>>0;return h.toString(36)}
+function shuffleArr(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+const natCmp=(a,b)=>{const x=a.split(/(\d+)/),y=b.split(/(\d+)/);for(let i=0;i<Math.min(x.length,y.length);i++){if(x[i]===y[i])continue;const n=+x[i],m=+y[i];return (!isNaN(n)&&!isNaN(m)&&x[i]!==''&&y[i]!=='')?n-m:x[i]<y[i]?-1:1}return x.length-y.length};
+
+/* ---------- 資料 ---------- */
+let QS=[],BY={},UNITS={},XF={},DUP={},PSG={};
+const normCode=c=>DUP[c]||c;
+const codeGrade=c=>+(c.split('-')[1]||0);
+const isPaper=q=>q.type==='paper'||!!q.paperOnly;           // 只能在紙上作答
+const gradable=q=>!isPaper(q);
+const qOrder=(a,b)=>a.grade-b.grade||yv(b.year)-yv(a.year)||a.no-b.no;
+
+/* ---------- 答案比對 ---------- */
+function normAns(s){
+  s=String(s==null?'':s).normalize('NFKC');
+  s=s.replace(/[\s　]+/g,'');
+  s=s.replace(/[﹤〈‹]/g,'<').replace(/[﹥〉›]/g,'>').replace(/[﹦]/g,'=').replace(/[−–—‐]/g,'-');
+  s=s.replace(/(\d+)分之(\d+)/g,'$2/$1');
+  s=s.replace(/(\d),(?=\d{3}(?!\d))/g,'$1');
+  return s.toLowerCase();
+}
+function blankOk(input,spec){
+  const a=normAns(input);if(!a)return false;
+  return String(spec).split('|').some(v=>{const b=normAns(v);if(a===b)return true;
+    if(/^-?\d+(\.\d+)?$/.test(a)&&/^-?\d+(\.\d+)?$/.test(b))return Number(a)===Number(b);return false});
+}
+function isAnswered(q,v){
+  if(isPaper(q))return false;
+  if(q.type==='choice')return v!=null&&v!=='';
+  return Array.isArray(v)&&q.blanks.every((_,i)=>String(v[i]||'').trim()!=='');
+}
+function isRight(q,v){
+  if(q.type==='choice')return +v===q.answer;
+  if(!Array.isArray(v))return false;
+  return q.blanks.every((b,i)=>blankOk(v[i],b));
+}
+/* 給人看的答案：多種寫法只列出不是國字數字的寫法 */
+function showBlank(spec){
+  const vs=String(spec).split('|');const keep=vs.filter((v,i)=>i===0||!/^[一二三四五六七八九十百千零兩]+$/.test(v));
+  return keep.join(' 或 ');
+}
+
+/* ---------- 題幹排版 ---------- */
+function figPlan(q){
+  const figs=q.fig||[];const parts=String(q.stem||'').split(/(\[圖\d*\])/);
+  const used=new Set();parts.forEach(p=>{const m=p.match(/^\[圖(\d+)\]$/);if(m&&figs[+m[1]-1])used.add(+m[1]-1)});
+  let next=0;const seq=[];
+  parts.forEach(p=>{
+    if(!p)return;
+    if(p==='[圖]'){while(next<figs.length&&used.has(next))next++;if(next<figs.length){used.add(next);seq.push({img:figs[next]});next++}return}
+    const m=p.match(/^\[圖(\d+)\]$/);if(m){const f=figs[+m[1]-1];if(f)seq.push({img:f});return}
+    seq.push({text:p});
+  });
+  return {seq,rest:figs.filter((f,i)=>!used.has(i))};
+}
+const fracify=h=>h.replace(/(\d+)\/(\d+)/g,'<span class="frac" aria-label="$2分之$1"><i>$1</i><i>$2</i></span>');window.XFfrac=fracify;
+/* 詳解（欄位 ex：逐步說明；「小心：」開頭的是提醒）。沒有 ex 的題目什麼都不顯示 */
+const rich=s=>esc(s).replace(/&lt;(\/?[ub])&gt;/g,'<$1>');
+const plain=s=>String(s==null?'':s).replace(/<\/?[ub]>/g,'');
+const WARN=/^小心[：:]\s*/;
+const exList=q=>Array.isArray(q.ex)?q.ex.map(s=>String(s==null?'':s).trim()).filter(Boolean):[];
+const hasEx=q=>exList(q).length>0;
+const exText=s=>rich(s).replace(/\{([^{}]+)\}/g,'<span class="nz">$1</span>').replace(/\n/g,'<br>');
+function exSteps(q,cls){return `<ol class="${cls}">${exList(q).map(s=>WARN.test(s)?`<li class="warn"><b>小心：</b>${exText(s.replace(WARN,''))}</li>`:`<li>${exText(s)}</li>`).join('')}</ol>`}
+/* open=true：直接展開（答錯、沒作答）；false：收合，按「看詳解」才展開（答對） */
+function exHTML(q,open){
+  if(!hasEx(q))return '';
+  /* 一步一步出現：先顯示第 1 步，按「下一步」才出現下一步；q.viz 是配合某一步的圖解（直式、數線…） */
+  const L=exList(q),viz=(window.XFViz&&Array.isArray(q.viz))?q.viz:[];
+  const lis=L.map((s,k)=>{const hid='';
+    return (WARN.test(s)?`<li class="warn" data-k="${k}"${hid}><b>小心：</b>${exText(s.replace(WARN,''))}</li>`:`<li data-k="${k}"${hid}>${exText(s)}</li>`)+
+      viz.filter(v=>(v.at||0)===k).map(v=>`<li class="vizli" data-k="${k}"${hid} data-viz="${esc(JSON.stringify(v))}"></li>`).join('')}).join('');
+  const ctl='';
+  return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox" data-n="${L.length}" data-shown="${L.length}"${open?'':' hidden'}><h3>詳解</h3><ol class="exsteps">${lis}</ol>${ctl}</div></div>`;
+}
+function exReveal(box,all){
+  const n=+box.dataset.n;let k=+box.dataset.shown;const to=all?n:Math.min(n,k+1);
+  for(;k<to;k++)box.querySelectorAll(`li[data-k="${k}"]`).forEach(li=>{li.hidden=false;li.classList.add('new')});
+  box.dataset.shown=to;const c=box.querySelector('.exctl');
+  if(c){if(to>=n)c.hidden=true;else c.querySelector('[data-exn]').textContent=`${to}／${n}`}
+  if(!all){const last=[...box.querySelectorAll(`li[data-k="${to-1}"]`)].pop();if(last&&last.scrollIntoView)last.scrollIntoView({block:'nearest',behavior:'smooth'})}
+}
+function mountViz(root){if(!window.XFViz)return;(root||document).querySelectorAll('li[data-viz]:not([data-vzok])').forEach(li=>{li.dataset.vzok='1';try{XFViz.mount(li,JSON.parse(li.dataset.viz))}catch(e){li.remove()}})}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-exnext],[data-exall]');if(!b)return;const box=b.closest('.exbox');if(box)exReveal(box,b.dataset.exall!=null)});
+new MutationObserver(()=>mountViz()).observe(document.documentElement,{childList:true,subtree:true});
+const imgTag=(src,alt)=>`<img class="fig" src="${esc(src)}" alt="${esc(alt||'題目的圖')}" decoding="async">`;
+const BL='（　）';
+const qimgTag=q=>`<img class="qimg" src="${esc(q.img)}" width="${q.iw}" height="${q.ih}" style="max-width:min(100%,${Math.round(q.iw/1.55)}px)" alt="${esc(plain(q.stem)+' '+(q.options||[]).map((t,j)=>'('+(j+1)+')'+plain(t)).join(' '))}" decoding="async">`;
+/* 題組文章：同一篇文章連續出現時，只在第一題前面放一次（作答時一次一題，每題都放） */
+function psgHTML(q,prev,always){
+  const p=q.psg&&PSG[q.psg];if(!p)return '';
+  if(!always&&prev&&prev.psg===q.psg)return '';
+  const pic=!!p.img;
+  const ttl=p.title?`<p class="psgt">${esc(p.title)}</p>`:'';
+  const body=ttl+(pic?`<img class="pimg" src="${esc(p.img)}" width="${p.w}" height="${p.h}" style="max-width:min(100%,${Math.round(p.w/1.55)}px)" alt="${esc(plain(p.text))}" decoding="async">`:p.text.split('\n').map(t=>`<p>${rich(t)}</p>`).join(''));
+  return `<div class="psg${pic?' pic':''}"><p class="psgi">📖 請先閱讀下面的${/圖文/.test(p.intro)?'圖文':'文章'}，再回答問題：</p>${body}</div>`;
+}
+function fillMode(q){
+  if(q.type!=='fill'&&q.type!=='calc')return 'none';
+  const n=q.blanks.length,s=q.stem;
+  if(s.split(BL).length-1===n)return 'inline';
+  if(n===1&&q.blanks[0].split('|').every(v=>/^[<>=＜＞＝]$/.test(v))&&s.replace(/在\s*□\s*中/g,'').split('□').length-1===1)return 'sym';
+  return 'below';
+}
+const isSym=q=>(q.blanks||[]).length&&q.blanks.every(b=>b.split('|').every(v=>/^[<>=＜＞＝]$/.test(v)));
+function inputTag(q,i){
+  const first=q.blanks[i].split('|')[0];const im=/^\d+$/.test(first)?'numeric':(/^[\d.]+$/.test(first)?'decimal':'text');
+  return `<input class="blank" type="text" data-b="${i}" inputmode="${im}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="第 ${i+1} 格">`;
+}
+/* mode: 'screen' 作答畫面；'print' 紙本 */
+function stemHTML(q,mode,num){
+  if(q.img)return {html:qimgTag(q),rest:[]};
+  const {seq,rest}=figPlan(q);const fm=mode==='screen'?fillMode(q):'none';let bi=0;
+  let h=seq.map(t=>{
+    if(t.img)return imgTag(t.img);
+    let x=rich((t.text));
+    if(fm==='inline')x=x.replace(/（　）/g,()=>'（'+inputTag(q,bi++)+'）');
+    else if(fm==='sym'){const k=x.lastIndexOf('□');if(k>=0)x=x.slice(0,k)+inputTag(q,bi++)+x.slice(k+1)}
+    return x.replace(/\n/g,'<br>');
+  }).join('');
+  return {html:h,rest};
+}
+function figsHTML(list){return list.length?`<div class="figs">${list.map(f=>imgTag(f)).join('')}</div>`:''}
+/* 圖片載入後：小圖（高 ≤110 且寬 ≤260）放行內，大圖獨立一行 */
+function classify(img){
+  if(!img.classList||!img.classList.contains('fig'))return;
+  const w=img.naturalWidth,h=img.naturalHeight;if(!w)return;
+  const small=h<=110&&w<=260;img.classList.toggle('inl',small);img.classList.toggle('blk',!small);
+}
+document.addEventListener('load',e=>{if(e.target&&e.target.tagName==='IMG'){classify(e.target);if(e.target.closest('#stage .opt'))fitOpts()}},true);
+const classifyAll=root=>root.querySelectorAll('img.fig').forEach(im=>{if(im.complete)classify(im)});
+
+/* ---------- 年級與注音 ---------- */
+let GRADE=+pref.grade||3;if(!(GRADE>=1&&GRADE<=6))GRADE=3;
+function bpmfOn(g){return false}
+function applyBpmf(){const on=bpmfOn(GRADE);document.body.classList.toggle('bpmf',on);
+  document.querySelectorAll('[data-bpmf]').forEach(b=>{b.innerHTML='<span class="lbl">注音：</span><span class="sl">ㄅ</span>'+(on?'開':'關');b.setAttribute('aria-pressed',on);b.setAttribute('aria-label','注音：'+(on?'開':'關'))})}
+document.addEventListener('click',e=>{if(!e.target.closest('[data-bpmf]'))return;pref.bpmf[GRADE]=!bpmfOn(GRADE);savePref();applyBpmf()});
+function renderTabs(show){
+  const t=$('#gtabs');t.hidden=!show;if(!show)return;
+  t.innerHTML=[1,2,3,4,5,6].filter(g=>QS.some(q=>q.grade===g)).map(g=>`<button type="button" class="gt${g===GRADE?' on':''}" data-grade="${g}" aria-pressed="${g===GRADE}">${CN[g]}年級</button>`).join('');
+}
+$('#gtabs').addEventListener('click',e=>{const b=e.target.closest('[data-grade]');if(!b)return;const g=+b.dataset.grade;if(g===GRADE)return;GRADE=g;pref.grade=g;PK.units=[];PK.codes=[];savePref();go('#g='+g)});
+
+/* ---------- QR code ---------- */
+const BASE=()=>location.origin+location.pathname;
+let qrFor=null,qrBigFor=null,qrMain={url:'',title:''};
+const QR_MAX=2900;   // 低容錯等級的 QR code 最多放得下的網址長度
+function qrMake(el,url,size){
+  el.innerHTML='';if(!window.QRCode||url.length>QR_MAX)return false;
+  const lvl=url.length>260?QRCode.CorrectLevel.L:QRCode.CorrectLevel.M;
+  try{new QRCode(el,{text:url,width:size,height:size,colorDark:'#10231a',colorLight:'#ffffff',correctLevel:lvl});return true}catch(e){el.innerHTML='';return false}
+}
+/* 對話框裡的大 QR code：平常是這一頁的網址，按「錯題 QR code」時換成錯題網址 */
+function qrBig(url,title,failMsg){
+  $('#qrTitle').textContent=title;
+  if(qrBigFor!==url){qrBigFor=url;const okQ=qrMake($('#qrBig'),url,440);$('#qrBig').dataset.ok=okQ?'1':'0';if(!okQ)$('#qrBig').innerHTML=`<p class="qrfail">${esc(failMsg||'網址太長，沒辦法做成 QR code')}</p>`}
+  $('#qrUrl').textContent=$('#qrBig').dataset.ok==='1'?url:'';
+}
+function updQR(url,title){
+  qrMain={url,title};
+  if(!window.QRCode){$('#qrUrl').textContent=url;$('#qrTitle').textContent=title;$('#qrOpen').hidden=true;return}
+  if(url!==qrFor){qrFor=url;if(!qrMake($('#qrSmall'),url,160))$('#qrSmall').textContent='網址太長'}
+  qrBig(url,title);
+}
+function qrOpenModal(){$('#qrModal').hidden=false;$('#qrClose').focus()}
+function wrongQR(ids){
+  if(!window.QRCode||!ids.length)return;
+  qrBig(BASE()+'#w='+ids.join(','),'老師掃這裡，拿到這份錯題','錯題太多，請直接在這台裝置按錯題 PDF');qrOpenModal();
+}
+function qrShow(on){$('#qrOpen').hidden=!on||!window.QRCode}
+(function(){
+  const m=$('#qrModal');
+  document.addEventListener('click',e=>{if(!e.target.closest('[data-qropen]')||!window.QRCode)return;qrBig(qrMain.url,qrMain.title);qrOpenModal()});
+  $('#qrClose').addEventListener('click',()=>{m.hidden=true});
+  m.addEventListener('click',e=>{if(e.target===m)m.hidden=true});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')m.hidden=true});
+})();
+
+/* ---------- 路由 ---------- */
+function go(h){if(location.hash===h)route();else location.hash=h}
+function parseHash(){
+  const h=location.hash.replace(/^#/,'');const o={};
+  h.split('&').forEach(kv=>{const i=kv.indexOf('=');if(i<0)return;try{o[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1))}catch(e){o[kv.slice(0,i)]=kv.slice(i+1)}});
+  return o;
+}
+let SET=null,STATE=null,io=null,WS=null;
+function route(){
+  const r=parseHash();
+  if(io){io.disconnect();io=null}
+  WS=null;
+  if(r.w){const ids=[...new Set(r.w.split(',').map(s=>s.trim()))].filter(id=>BY[id]);
+    if(ids.length){renderWrongPage(ids);return}}
+  if(r.e){const m=r.e.match(/^g([1-6])-(\d{3}|mA)$/);if(m){const ids=QS.filter(q=>q.grade===+m[1]&&q.year===m[2]).sort((a,b)=>a.no-b.no).map(q=>q.id);
+      if(ids.length){GRADE=+m[1];openSet({kind:'exam',key:'exam:'+r.e,ids,title:`${CN[m[1]]}年級 ${yl(m[2])}`,hash:'#e='+r.e});return}}}
+  if(r.p){const ids=[...new Set(r.p.split(',').map(s=>s.trim()))].filter(id=>BY[id]).slice(0,MAXSET);
+    if(ids.length){GRADE=Math.max(...ids.map(id=>BY[id].grade));const t=(r.t||'挑題練習').slice(0,60);
+      openSet({kind:'p',key:'set:'+hashStr(ids.join(',')),ids,title:t,hash:'#p='+ids.join(',')+'&t='+encodeURIComponent(t)});return}}
+  if(r.g&&/^[1-6]$/.test(r.g)){GRADE=+r.g;pref.grade=GRADE;savePref()}
+  SET=null;padReset();renderHome();
+}
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});
+
+/* ---------- 首頁 ---------- */
+function examState(g,y){return LS.get(NS+'exam:g'+g+'-'+y,null)}
+function renderHome(){
+  document.documentElement.classList.remove('running');
+  applyBpmf();renderTabs(true);
+  const paper=MODE==='paper';
+  const ys=YEARS.filter(y=>QS.some(q=>q.grade===GRADE&&q.year===y));
+  const cards=ys.map(y=>{
+    const qs=QS.filter(q=>q.grade===GRADE&&q.year===y);
+    if(paper)return `<div class="yr pp" data-exctx="exam:g${GRADE}-${y}"><div class="yrh">${isMock(y)?'<b class="mk">模擬卷<small>A</small></b>':`<b>${y}<small>年</small></b>`}<span>${qs.length} 題</span></div><div class="yrb"><button type="button" class="btn" data-export="word" aria-label="${yl(y)} 下載 Word">📝 Word</button><button type="button" class="btn" data-export="pdf" aria-label="${yl(y)} 列印或存成 PDF">🖨️ PDF</button></div><span class="exmsg" aria-live="polite"></span></div>`;
+    const st=examState(GRADE,y);let cls='',txt='還沒開始';
+    if(st&&st.done){const g=qs.filter(gradable);const r=g.filter(q=>isRight(q,(st.v||{})[q.id])).length;cls='done';txt=`得分 ${r}／${g.length}`}
+    else if(st&&st.v){const n=qs.filter(q=>isAnswered(q,st.v[q.id])).length;if(n){cls='going';txt=`已作答 ${n} 題`}}
+    return `<button type="button" class="yr ${cls}" data-exam="g${GRADE}-${y}">${isMock(y)?'<b class="mk">模擬卷<small>A</small></b>':`<b>${y}<small>年</small></b>`}<span>${qs.length} 題</span><span class="st">${txt}</span></button>`;
+  }).join('');
+  const last=paper?null:LS.get(NS+'last',null);const lastSt=last&&last.key?LS.get(NS+last.key,null):null;
+  const resume=last&&last.hash&&last.n>0&&lastSt&&!lastSt.done&&Date.now()-last.at<864e5?`<a class="resume" href="${esc(last.hash)}">▶ 繼續剛剛的作答：${esc(last.title)} <small>（已寫 ${last.n} 題）</small></a>`:'';
+  $('#main').innerHTML=`${resume}<div class="modebar" id="modeBar"><div class="modesw" role="group" aria-label="使用方式">${[['online','💻 線上作答'],['paper','🖨️ 印成紙本']].map(([m,l])=>`<button type="button" class="${MODE===m?'on':''}" data-mode="${m}" aria-pressed="${MODE===m}">${l}</button>`).join('')}</div><span class="modehint">${paper?'下載 Word 或列印 PDF，發給學生寫':'學生掃 QR code，在平板上作答'}</span>${paper?ansCheck(homeHasEx()):''}</div>
+  <section class="sec" aria-labelledby="hYear"><div class="sec-h"><h2 id="hYear">${paper?'依年度印整卷':'依年度練習'}</h2><small>${CN[GRADE]}年級・${paper?'整份考古題下載 Word，或列印／存成 PDF':'點一張卡片，整卷在線上作答'}</small></div><div class="years${paper?' paper':''}">${cards}</div></section>
+  <section class="sec" aria-labelledby="hPick"><div class="sec-h"><h2 id="hPick">老師挑題</h2><small>${paper?'依題型挑題，做成紙本練習卷':'依題型挑題，產生練習給學生掃 QR code'}</small></div><div class="picker" id="pickerBox"></div></section>`;
+  renderPicker();
+  updQR(BASE()+'#g='+GRADE,`拿平板掃這裡，練習${CN[GRADE]}年級考古題`);
+  qrShow(!paper);
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-exam]');if(b)go('#e='+b.dataset.exam)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b||SET)return;const m=b.dataset.mode==='paper'?'paper':'online';if(m===MODE)return;MODE=m;pref.mode=m;savePref();renderHome();const f=document.querySelector(`[data-mode="${m}"]`);if(f)f.focus()});
+
+/* ---------- 錯題整理頁：老師掃學生平板上的「錯題 QR code」進來（#w=題號,題號…），不受線上／紙本模式影響 ---------- */
+function stemPeek(q,n){
+  const cs=[...String(q.stem||'').replace(/\[圖\d*\]/g,'').replace(/\s+/g,' ').trim()];
+  return cs.length?cs.slice(0,n).join('')+(cs.length>n?'⋯':''):'（看圖作答）';
+}
+function renderWrongPage(ids){
+  SET=null;padReset();document.documentElement.classList.remove('running');
+  const qs=ids.map(id=>BY[id]);
+  GRADE=Math.max(...qs.map(q=>q.grade));
+  applyBpmf();renderTabs(false);
+  const one=new Set(qs.map(q=>q.grade+'-'+q.year)).size===1;
+  WS={ids,title:(one?`${CN[qs[0].grade]}年級 ${yl(qs[0].year)} `:'')+'錯題練習'};
+  $('#main').innerHTML=`<section class="wpage" aria-labelledby="hWrong"><h2 id="hWrong">錯題整理（${qs.length} 題）</h2>
+  <p class="muted" style="margin:0">這是學生這次做錯的題目。可以印成紙本，或在這台裝置線上再練一次。</p>
+  <ol class="wlist">${qs.map(q=>`<li><span class="wsrc">${srcOf(q,true)}</span><span class="wstem">${esc(stemPeek(q,20))}</span></li>`).join('')}</ol>
+  <div class="wacts" data-exctx="wsheet"><button type="button" class="btn primary big" data-wgo>💻 線上再練一次</button><button type="button" class="btn big" data-export="word">📝 下載 Word</button><button type="button" class="btn big" data-export="pdf">🖨️ 列印／存成 PDF</button>${ansCheck(qs.some(hasEx))}<span class="exmsg" aria-live="polite"></span></div>
+  <p class="wback"><a class="btn" href="#g=${GRADE}">← 回首頁</a></p></section>`;
+  updQR(BASE()+'#w='+ids.join(','),'老師掃這裡，拿到這份錯題');
+  qrShow(false);
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('[data-wgo]')||!WS)return;
+  LS.del(NS+'set:'+hashStr(WS.ids.join(',')));
+  go('#p='+WS.ids.join(',')+'&t='+encodeURIComponent(WS.title));
+});
+
+/* ---------- 老師挑題 ---------- */
+let PK=Object.assign({mode:'code',ver:'南一',units:[],codes:[],prev:false,years:null,limit:0,shuffle:false},pref.PK||{});delete PK.noPaper;PK.mode='code';
+const savePick=()=>{pref.PK=PK;savePref()};
+const GROUPS=[['L','聽力（要搭配音檔）'],['R','閱讀']];
+const AUDIO={'g4-114':'1zigT22FijEqXnn7U8OPpOcskzXK-8NrG','g5-114':'1X82eNdmukC0py2quhuHkGHGac0IjQj6T','g6-114':'1ABp11Qz2wU1J6F6acp6yaVbrdATxg2Uf','g4-113':'1y2g_msfeO3vS9iQCSAEwxWp5YNNrIHUf','g5-113':'1qpngR1t9RBZwP6lQ26g3syZ6wHn1irBU','g6-113':'1VLYRyIQwn_Dk3pRBNK6TM51UHaLmsgf6'};
+const lisNote=q=>{if(!q.listen)return '';const id=AUDIO['g'+q.grade+'-'+q.year];return `<p class="lis">🔊 聽力題：要先聽音檔再作答（每題播三遍）。${id?` <a href="https://drive.google.com/file/d/${id}/view" target="_blank" rel="noopener">打開 ${q.year} 年${CN[q.grade]}年級聽力音檔</a>`:''}</p>`};
+const semsOf=g=>g>=1?[CN[g]+'上',CN[g]+'下']:[];
+const pkGrades=()=>PK.prev&&GRADE>1?[GRADE-1,GRADE]:[GRADE];
+const pkYears=()=>{const avail=YEARS.filter(y=>QS.some(q=>pkGrades().includes(q.grade)&&q.year===y));const s=PK.years&&PK.years.length?PK.years.filter(y=>avail.includes(y)):avail;return s.length?s:avail};
+/* 線上模式一律排除只能在紙上作答的題目；紙本模式一律包含 */
+function basePool(){const gs=pkGrades(),ys=pkYears(),keep=MODE==='paper';return QS.filter(q=>gs.includes(q.grade)&&ys.includes(q.year)&&(keep||!isPaper(q)))}
+function findUnit(key){const [sem,no]=key.split(':');return ((UNITS[PK.ver]||{})[sem]||[]).find(u=>String(u.no)===no)}
+const unitXF=u=>(u.xuefu||[]).map(normCode);
+const hitUnit=(q,u)=>{const c=unitXF(u);return q.xf.some(x=>c.includes(x))};
+function pickedQs(){
+  let pool=basePool();
+  if(PK.mode==='unit'){const us=PK.units.map(findUnit).filter(Boolean);pool=pool.filter(q=>us.some(u=>hitUnit(q,u)))}
+  else{const cs=PK.codes.map(normCode);pool=pool.filter(q=>q.xf.some(x=>cs.includes(x)))}
+  return pool.sort(qOrder);
+}
+function finalIds(){
+  let qs=pickedQs();if(!qs.length)return [];
+  const lim=Math.min(MAXSET,PK.limit||MAXSET);
+  if(qs.length>lim)qs=shuffleArr(qs).slice(0,lim).sort(qOrder);
+  if(PK.shuffle)qs=shuffleArr(qs);
+  return qs.map(q=>q.id);
+}
+function pickLabel(){
+  if(PK.mode==='unit'){
+    const parts=[];const allSems=[...semsOf(GRADE-1),...semsOf(GRADE)];
+    allSems.forEach(sem=>{const nos=PK.units.filter(k=>k.startsWith(sem+':')).map(k=>+k.split(':')[1]).sort((a,b)=>a-b);if(!nos.length)return;
+      const runs=[];let s=nos[0],p=nos[0];for(let k=1;k<=nos.length;k++){if(nos[k]===p+1){p=nos[k];continue}runs.push(s===p?`${s}`:`${s}～${p}`);s=p=nos[k]}
+      parts.push(`${sem}第${runs.join('、')}單元`)});
+    return `${PK.ver}${parts.join('＋')}`;
+  }
+  const lab=c=>(XF[c]&&XF[c].label)||c;const cs=PK.codes;
+  return cs.length<=2?cs.map(lab).join('、'):`${lab(cs[0])}等 ${cs.length} 項`;
+}
+function renderPicker(){
+  const box=$('#pickerBox');if(!box)return;
+  const gs=pkGrades();
+  const chip=(on,attr,label,n,title)=>`<button type="button" class="pk${on?' on':''}" ${attr} ${n?'':'disabled'} aria-pressed="${!!on}"${title?` title="${esc(title)}"`:''}>${label}<i>${n}</i></button>`;
+  let body='';const pool=basePool();
+  if(PK.mode==='unit'){
+    const V=UNITS[PK.ver]||{};
+    body=`<div class="pkrow"><span class="pklab">版本</span>${Object.keys(UNITS).map(v=>`<button type="button" class="pk ver${PK.ver===v?' on':''}" data-pver="${v}" aria-pressed="${PK.ver===v}">${v}</button>`).join('')}</div>`;
+    gs.forEach(g=>semsOf(g).forEach(sem=>{
+      const us=V[sem]||[];const prev=g<GRADE;
+      if(!us.length){body+=`<div class="pkrow"><span class="pklab">${sem}</span><span class="muted">（沒有單元資料）</span></div>`;return}
+      body+=`<div class="pkgrp${prev?' prev':''}"><div class="pkhead"><b>${PK.ver} ${sem}</b>${prev?'<span class="tag">前一年級・先備概念</span>':''}<button type="button" class="linkbtn" data-psem="${sem}">全選／取消</button></div><div class="pkchips">${us.map(u=>{const k=sem+':'+u.no;const n=pool.filter(q=>hitUnit(q,u)).length;return chip(PK.units.includes(k),`data-punit="${k}"`,`<b class="uno">${u.no}</b>${esc(u.name)}`,n)}).join('')}</div></div>`;
+    }));
+  }else{
+    const all=QS.filter(q=>gs.includes(q.grade));
+    const used=new Set();all.forEach(q=>q.xf.forEach(c=>used.add(c)));PK.codes.forEach(c=>used.add(c));
+    const codes=[...used].filter(c=>XF[c]&&!DUP[c]).sort((a,b)=>codeGrade(a)-codeGrade(b)||natCmp(a,b));
+    body=GROUPS.map(([k,name])=>{
+      const cs=codes.filter(c=>c.startsWith(k+'-'));if(!cs.length)return '';
+      let lastG=0,inner='';
+      cs.forEach(c=>{const n=pool.filter(q=>q.xf.includes(c)).length;const g=codeGrade(c);
+        if(gs.length>1&&g!==lastG){inner+=`<span class="pksub">${CN[g]}年級${g<GRADE?'（前一年級）':''}</span>`;lastG=g}
+        inner+=chip(PK.codes.includes(c),`data-pcode="${c}"`,esc(XF[c].label),n,XF[c].summary)});
+      return `<div class="pkgrp"><div class="pkhead"><b>${name}</b></div><div class="pkchips">${inner}</div></div>`;
+    }).join('');
+  }
+  const qs=pickedQs(),ys=pkYears();
+  const avail=YEARS.filter(y=>QS.some(q=>gs.includes(q.grade)&&q.year===y));
+  const lim=Math.min(MAXSET,PK.limit||MAXSET);
+  const paper=MODE==='paper';
+  box.innerHTML=`<div class="pkmode" role="tablist">${[['code','🧩 依題型挑題']].map(([m,l])=>`<button type="button" role="tab" class="pkm${PK.mode===m?' on':''}" data-pmode="${m}" aria-selected="${PK.mode===m}">${l}</button>`).join('')}</div>
+  ${GRADE>1?`<label class="chk"><input type="checkbox" id="pkPrev" ${PK.prev?'checked':''}> 一併列出前一年級的題目</label>`:''}
+  ${body}
+  <div class="pkrow"><span class="pklab">年度</span>${avail.map(y=>`<button type="button" class="pk${ys.includes(y)?' on':''}" data-pyear="${y}" aria-pressed="${ys.includes(y)}">${yl(y)}</button>`).join('')}</div>
+  <div class="pkrow"><span class="pklab">題數</span>${[[0,'全部'],[10,'10 題'],[15,'15 題'],[20,'20 題']].map(([n,l])=>`<button type="button" class="pk${PK.limit===n?' on':''}" data-plimit="${n}" aria-pressed="${PK.limit===n}">${l}</button>`).join('')}</div>
+  <div class="pkrow"><label class="chk"><input type="checkbox" id="pkShuffle" ${PK.shuffle?'checked':''}> 題目順序打散</label></div>
+  <div class="pkres"><div><span id="pkCount"><b>${qs.length}</b> 題符合</span>${qs.length>lim?`<br><span class="sm">會隨機抽 ${lim} 題${!PK.limit?'（一份練習最多 50 題）':''}</span>`:''}</div>
+  ${paper?`<div class="pkex" data-exctx="picker"><button type="button" class="btn primary big" data-export="word">📝 下載 Word</button><button type="button" class="btn big" data-export="pdf">🖨️ 列印／存成 PDF</button>${ansCheck(homeHasEx())}<span class="exmsg" aria-live="polite"></span></div>`
+  :`<button type="button" class="btn primary big" id="pkGo" ${qs.length?'':'disabled'}>產生線上練習 ▶</button>`}</div>
+  <p class="pknote">題型照原卷的大題名稱分類。聽力題要搭配音檔，只想練閱讀可以只勾「閱讀」。${paper?'紙本會一併放入只能在紙上作答的題目（畫圖、用尺量）。':'線上練習不會出只能在紙上作答的題目（畫圖、用尺量）；要印這些題目請切換到「印成紙本」。'}</p>`;
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('#pickerBox button');if(!t||t.closest('[data-exctx]'))return;
+  if(t.dataset.pmode){PK.mode=t.dataset.pmode}
+  else if(t.dataset.pver){PK.ver=t.dataset.pver;PK.units=[]}
+  else if(t.dataset.punit){const k=t.dataset.punit;PK.units=PK.units.includes(k)?PK.units.filter(x=>x!==k):[...PK.units,k]}
+  else if(t.dataset.psem){const sem=t.dataset.psem;const pool=basePool();const ks=((UNITS[PK.ver]||{})[sem]||[]).filter(u=>pool.some(q=>hitUnit(q,u))).map(u=>sem+':'+u.no);const all=ks.every(k=>PK.units.includes(k));PK.units=all?PK.units.filter(k=>!ks.includes(k)):[...new Set([...PK.units,...ks])]}
+  else if(t.dataset.pcode){const c=t.dataset.pcode;PK.codes=PK.codes.includes(c)?PK.codes.filter(x=>x!==c):[...PK.codes,c]}
+  else if(t.dataset.pyear){const y=t.dataset.pyear;let ys=pkYears();ys=ys.includes(y)?ys.filter(x=>x!==y):[...ys,y];PK.years=ys.length?ys:[y]}
+  else if(t.dataset.plimit!=null){PK.limit=+t.dataset.plimit}
+  else if(t.id==='pkGo'){const ids=finalIds();if(!ids.length)return;savePick();
+    const label=pickLabel();go('#p='+ids.join(',')+'&t='+encodeURIComponent(label+' 練習'));return}
+  else return;
+  savePick();renderPicker();
+});
+document.addEventListener('change',e=>{
+  const id=e.target.id;
+  if(id==='pkShuffle'){PK.shuffle=e.target.checked;savePick();return}
+  if(id==='pkPrev'){PK.prev=e.target.checked;if(!PK.prev){const ok=semsOf(GRADE);PK.units=PK.units.filter(k=>ok.includes(k.split(':')[0]));PK.codes=PK.codes.filter(c=>codeGrade(c)>=GRADE||QS.some(q=>q.grade===GRADE&&q.xf.includes(c)))}savePick();renderPicker()}
+});
+
+/* ---------- 作答畫面 ---------- */
+function loadState(key){const s=LS.get(NS+key,null);return s&&typeof s==='object'?Object.assign({v:{},done:false},s,{v:s.v||{}}):{v:{},done:false}}
+const saveState=()=>{if(!SET)return;LS.set(NS+SET.key,STATE);if(STATE.done){const l=LS.get(NS+'last',null);if(l&&l.key===SET.key)LS.del(NS+'last')}else LS.set(NS+'last',{key:SET.key,hash:SET.hash,title:SET.title,n:SET.qs.filter(q=>isAnswered(q,STATE.v[q.id])).length,at:Date.now()})};
+/* 防止不小心跳出作答：返回手勢／回首頁先問一次 */
+const inRun=()=>!!(SET&&STATE&&!STATE.done&&document.documentElement.classList.contains('running'));
+const hasAns=()=>inRun()&&SET.qs.some(q=>isAnswered(q,STATE.v[q.id]));
+let GUARD=false;
+let GURL='';
+function armGuard(){if(GUARD||!inRun())return;try{GURL=location.href;history.pushState({xfGuard:1},'',GURL);GUARD=true}catch(e){}}
+document.addEventListener('pointerdown',armGuard,true);
+function askLeave(){$('#leaveModal').hidden=false;$('#leaveStay').focus()}
+window.addEventListener('popstate',()=>{if(!GUARD)return;GUARD=false;if(inRun()&&location.href===GURL){armGuard();askLeave()}});
+document.addEventListener('click',e=>{if(e.target.closest('#leaveStay'))$('#leaveModal').hidden=true;else if(e.target.closest('#leaveGo')){$('#leaveModal').hidden=true;GUARD=false;go('#g='+GRADE)}});
+function srcOf(q,mixed){return `${mixed?CN[q.grade]+'年級 ':''}${yl(q.year)}第 ${q.no} 題`}
+const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;
+function openSet(s){
+  const same=SET&&SET.key===s.key;
+  SET=s;SET.qs=s.ids.map(id=>BY[id]);SET.mixed=new Set(SET.qs.map(q=>q.grade)).size>1;
+  STATE=loadState(s.key);
+  if(!same)padReset();
+  applyBpmf();renderTabs(false);renderSet();
+  updQR(BASE()+s.hash,s.kind==='exam'?`拿平板掃這裡，做${s.title}考古題`:`拿平板掃這裡，做「${s.title}」`);
+  qrShow(true);
+}
+function optsHTML(q,num){
+  const im=q.optImgs||[];const texts=q.options||[];
+  const hasImg=im.some(Boolean);const long=texts.some(t=>String(t).length>14);const tiny=!hasImg&&texts.every(t=>String(t).length<=6);
+  const dis=isPaper(q)?'disabled':'';
+  if(q.img)return `<div class="opts numonly" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
+  return `<div class="opts${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${rich((t))}</span>`:''}</span></button>`).join('')}</div>`;
+}
+/* one=true：作答時一次一題（左：題幹和圖；右：選項或填答區）；one=false：交卷後的整份列表 */
+function cardHTML(q,k,one){
+  const num=numOf(q,k);
+  const st=stemHTML(q,'screen');const fm=fillMode(q);
+  const pg=psgHTML(q,k>0?SET.qs[k-1]:null,one);
+  const stemBox=`${one?lisNote(q):''}<div class="stem${q.img?' hasimg':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
+  let L=one&&pg?pg:pg+stemBox,R=one&&pg?stemBox:'';
+  if(q.type==='choice')R+=optsHTML(q,num);
+  if((q.type==='fill'||q.type==='calc')){
+    const sym=isSym(q)?`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`:'';
+    if(q.type==='calc')L+=`<p class="hintline">✏️ 把算式寫在${one?'計算紙':'紙'}上，這裡填答案</p>`;
+    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
+    else L+=sym;
+  }
+  if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
+  else if(q.paperOnly)R+=`<p class="paperbox">✏️ 這題要用尺量圖，請在紙上作答，不計分。</p>`;
+  const body=one?`<div class="qgrid${R?' split':''}"><div class="qL">${L}</div>${R?`<div class="qR">${R}</div>`:''}</div>`:L+R;
+  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${SET.kind==='p'?`<p class="srctag">${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
+}
+function restoreCard(card,q){
+  const v=STATE.v[q.id];
+  if(q.type==='choice'&&v!=null)card.querySelectorAll('.opt').forEach(b=>{const on=+b.dataset.c===+v;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});
+  if(Array.isArray(v))card.querySelectorAll('input.blank').forEach(inp=>{inp.value=v[+inp.dataset.b]||''});
+}
+let CUR=0;
+function renderSet(){
+  if(io){io.disconnect();io=null}
+  document.documentElement.classList.toggle('running',!STATE.done);
+  if(STATE.done)renderReview();else renderRun();
+}
+
+/* --- 交卷前：一次一題 --- */
+function renderRun(){
+  const n=SET.qs.length;
+  CUR=Math.min(Math.max(0,STATE.cur|0),n-1);
+  $('#main').innerHTML=`<div class="run" id="run">
+  <div class="rbar"><button type="button" class="btn" id="homeBtn" aria-label="回首頁">←<span class="lbl"> 回首頁</span></button><h2>${esc(SET.title)}</h2><span class="prog" id="prog" role="status"></span>
+  <button type="button" class="btn" id="padBtn" aria-pressed="false" aria-label="計算紙">✏️<span class="lbl"> 計算紙</span><i class="dot" id="padDot" hidden></i></button>
+  <button type="button" class="btn" data-bpmf aria-pressed="false"></button>
+  <button type="button" class="btn" data-qropen aria-label="顯示 QR code，讓學生用平板掃描"${window.QRCode?'':' hidden'}>QR<span class="lbl"> code</span></button></div>
+  <nav class="rchips" id="chips" aria-label="題號">${SET.qs.map((q,k)=>`<button type="button" class="chip${isPaper(q)?' pp':''}" data-jump="${k}" aria-label="跳到第 ${numOf(q,k)} 題">${numOf(q,k)}</button>`).join('')}</nav>
+  <div class="rbody"><div class="stage" id="stage"></div>
+  <aside class="pad" id="pad" aria-label="計算紙" hidden><div class="padbar"><button type="button" class="btn" data-pad="pen" aria-pressed="true">✏️ 筆</button><button type="button" class="btn" data-pad="er" aria-pressed="false">🧽 橡皮擦</button><button type="button" class="btn" data-pad="clear">🗑️ 清除</button><span class="sp"></span><button type="button" class="btn" data-pad="full">⤢ 放大</button><button type="button" class="btn" data-pad="close">▾ 縮小</button></div><div class="padcv" id="padBox"><canvas id="padCv" aria-label="計算紙，用手指或觸控筆寫"></canvas></div></aside></div>
+  <div class="rnav" id="rnav"></div></div>`;
+  padMount();showQ(CUR);applyBpmf();
+}
+function showQ(k){
+  if(!SET||STATE.done)return;
+  k=Math.min(Math.max(0,k),SET.qs.length-1);
+  CUR=k;if(STATE.cur!==k){STATE.cur=k;saveState()}
+  const q=SET.qs[k],stage=$('#stage');
+  stage.innerHTML=cardHTML(q,k,true);
+  restoreCard(stage.firstElementChild,q);classifyAll(stage);fitOpts();
+  const box=$('#chips');
+  box.querySelectorAll('.chip').forEach((c,i)=>{c.classList.toggle('cur',i===k);if(i===k)c.setAttribute('aria-current','true');else c.removeAttribute('aria-current')});
+  const c=box.children[k];
+  if(c&&box.scrollWidth>box.clientWidth){const l=c.offsetLeft;if(l<box.scrollLeft+4||l+c.offsetWidth>box.scrollLeft+box.clientWidth-4)box.scrollLeft=l-box.clientWidth/2+c.offsetWidth/2}
+  renderNav();updRun();padSwitch();
+}
+/* 選項是圖的題目：依圖的原始大小，挑一種讓圖最不用縮小的排法（左右兩欄或上下排、選項一欄或兩欄） */
+function fitOpts(){
+  const card=document.querySelector('#stage .q.one'),run=$('#run');if(!card||!run)return;
+  const grid=card.querySelector('.qgrid'),opts=card.querySelector('.opts');if(!opts)return;
+  const ims=[...opts.querySelectorAll('img')];if(!ims.length||ims.some(im=>!im.naturalWidth))return;
+  const n=opts.children.length,mw=Math.max(...ims.map(im=>im.naturalWidth)),mh=Math.max(...ims.map(im=>im.naturalHeight));
+  const canSplit=window.innerWidth>=900&&!run.classList.contains('padopen');
+  const W=card.clientWidth-40,H=card.clientHeight-(SET.kind==='p'?62:36);if(W<50||H<50)return;
+  const cand=[];
+  const add=(wide,one,w,h)=>{const cols=one?1:2,rows=Math.ceil(n/cols),ih=(h-(rows-1)*8)/rows-18;cand.push({wide,one,ih,s:Math.min(1,(w/cols-84)/mw,ih/mh)})};
+  if(canSplit){const rw=(W-41)/2.1;add(false,false,rw,H);add(false,true,rw,H)}
+  const hs=H*(canSplit?0.7:0.6);add(true,false,W,hs);add(true,true,W,hs);
+  let best=cand[0];cand.forEach(c=>{if(c.s>best.s+0.05)best=c});
+  grid.classList.toggle('wide',best.wide);
+  opts.classList.toggle('one',best.one||!!opts.dataset.long);
+  opts.style.setProperty('--oh',Math.max(64,Math.floor(best.ih))+'px');
+}
+function renderNav(confirmN){
+  const nav=$('#rnav');if(!nav)return;const n=SET.qs.length,last=CUR===n-1;
+  if(confirmN)nav.innerHTML=`<p>還有 <b>${confirmN}</b> 題沒寫，確定要交卷嗎？</p><button type="button" class="btn big" id="submitNo">繼續寫</button><button type="button" class="btn primary big" id="submitYes">確定交卷</button>`;
+  else nav.innerHTML=`<button type="button" class="btn big" id="prevBtn" ${CUR?'':'disabled'}>← 上一題</button><span class="rno">${CUR+1}／${n}</span><button type="button" class="btn primary big" id="${last?'submitBtn':'nextBtn'}">${last?'交卷 ✔':'下一題 →'}</button>`;
+}
+function updRun(){
+  const g=SET.qs.filter(gradable);const a=g.filter(q=>isAnswered(q,STATE.v[q.id])).length;
+  const p=$('#prog');if(p)p.innerHTML=`<span class="lbl">已作答 </span>${a}／${g.length}`;
+  SET.qs.forEach((q,k)=>{const c=$('#chips').children[k];if(c)c.classList.toggle('done',isAnswered(q,STATE.v[q.id]))});
+}
+
+/* --- 計算紙：每題一張，筆畫用向量記在記憶體裡 --- */
+const PAD={open:false,full:false,tool:'pen',strokes:{},cv:null,ctx:null,ro:null,w:0,h:0,s:1,act:null};
+const PEN_W=3.2,ER_W=28,PAD_INK='#17254a';
+function padReset(){PAD.strokes={};PAD.open=false;PAD.full=false;PAD.tool='pen';PAD.act=null}
+const padId=()=>SET&&SET.qs[CUR]?SET.qs[CUR].id:'';
+const padHas=id=>!!(PAD.strokes[id]&&PAD.strokes[id].some(s=>s.t==='pen'));
+function padMount(){
+  if(PAD.ro){PAD.ro.disconnect();PAD.ro=null}
+  const cv=$('#padCv');PAD.cv=cv;PAD.ctx=cv.getContext('2d');PAD.act=null;
+  cv.addEventListener('pointerdown',padDown);cv.addEventListener('pointermove',padMove);
+  ['pointerup','pointercancel','lostpointercapture'].forEach(t=>cv.addEventListener(t,padUp));
+  const pad=$('#pad');
+  // 在計算紙上滑動時，不讓頁面跟著捲動或縮放
+  pad.addEventListener('touchmove',e=>{e.preventDefault()},{passive:false});
+  pad.addEventListener('gesturestart',e=>{e.preventDefault()});
+  pad.addEventListener('contextmenu',e=>{e.preventDefault()});
+  if(window.ResizeObserver){PAD.ro=new ResizeObserver(()=>padResize());PAD.ro.observe($('#padBox'))}
+  padApply();
+}
+window.addEventListener('resize',()=>{if(SET&&!STATE.done){fitOpts();if(PAD.open)padResize()}});
+function padApply(){
+  const run=$('#run'),pad=$('#pad');if(!run||!pad)return;
+  pad.hidden=!PAD.open;run.classList.toggle('padopen',PAD.open&&!PAD.full);pad.classList.toggle('full',PAD.open&&PAD.full);
+  $('#padBtn').setAttribute('aria-pressed',PAD.open);
+  pad.querySelectorAll('[data-pad="pen"],[data-pad="er"]').forEach(b=>{const on=b.dataset.pad===PAD.tool;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+  pad.querySelector('[data-pad="full"]').textContent=PAD.full?'⤡ 半版':'⤢ 放大';
+  padDot();if(PAD.open)padResize();fitOpts();
+}
+function padDot(){const d=$('#padDot');if(!d)return;const has=padHas(padId());d.hidden=!has;$('#padBtn').setAttribute('aria-label',has?'計算紙（這一題寫過）':'計算紙')}
+function padSwitch(){PAD.act=null;padDot();if(PAD.open)padRedraw()}
+function padResize(){
+  const box=$('#padBox');if(!box||!PAD.cv)return;const r=box.getBoundingClientRect();if(r.width<2||r.height<2)return;
+  const dpr=Math.max(1,window.devicePixelRatio||1);const W=Math.round(r.width*dpr),H=Math.round(r.height*dpr);
+  if(PAD.cv.width!==W||PAD.cv.height!==H){PAD.cv.width=W;PAD.cv.height=H}
+  PAD.w=r.width;PAD.h=r.height;PAD.dpr=dpr;padRedraw();
+}
+function padStroke(ctx,st){
+  const p=st.p;if(!p.length)return;
+  ctx.globalCompositeOperation=st.t==='er'?'destination-out':'source-over';
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=st.t==='er'?ER_W:PEN_W;ctx.strokeStyle=PAD_INK;ctx.fillStyle=PAD_INK;
+  ctx.beginPath();
+  if(p.length===1){ctx.arc(p[0][0],p[0][1],ctx.lineWidth/2,0,Math.PI*2);ctx.fill();return}
+  ctx.moveTo(p[0][0],p[0][1]);
+  for(let i=1;i<p.length-1;i++)ctx.quadraticCurveTo(p[i][0],p[i][1],(p[i][0]+p[i+1][0])/2,(p[i][1]+p[i+1][1])/2);
+  ctx.lineTo(p[p.length-1][0],p[p.length-1][1]);ctx.stroke();
+}
+/* 畫面變小時（放大→半版、旋轉），整張等比例縮小，寫過的東西不會跑到外面看不到 */
+function padRedraw(){
+  const ctx=PAD.ctx;if(!ctx||!PAD.w)return;const list=PAD.strokes[padId()]||[];
+  let mx=0,my=0;list.forEach(st=>st.p.forEach(pt=>{if(pt[0]>mx)mx=pt[0];if(pt[1]>my)my=pt[1]}));
+  PAD.s=Math.min(1,PAD.w/(mx+16),PAD.h/(my+16));
+  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,PAD.cv.width,PAD.cv.height);
+  const k=PAD.dpr*PAD.s;ctx.setTransform(k,0,0,k,0,0);
+  list.forEach(st=>padStroke(ctx,st));
+}
+function padPt(e,rect){return [Math.round((e.clientX-rect.left)/PAD.s*10)/10,Math.round((e.clientY-rect.top)/PAD.s*10)/10]}
+function padDown(e){
+  if(PAD.act||(e.pointerType==='mouse'&&e.button!==0))return;
+  e.preventDefault();
+  const id=padId();if(!id)return;
+  try{PAD.cv.setPointerCapture(e.pointerId)}catch(err){}
+  const rect=PAD.cv.getBoundingClientRect();
+  const st={t:PAD.tool,p:[padPt(e,rect)]};
+  (PAD.strokes[id]=PAD.strokes[id]||[]).push(st);
+  PAD.act={pid:e.pointerId,st,rect};
+  padStroke(PAD.ctx,st);padDot();
+}
+function padMove(e){
+  const a=PAD.act;if(!a||a.pid!==e.pointerId)return;
+  e.preventDefault();
+  const evs=e.getCoalescedEvents?e.getCoalescedEvents():[];
+  (evs.length?evs:[e]).forEach(ev=>{
+    const pt=padPt(ev,a.rect),p=a.st.p,l=p[p.length-1];
+    if(Math.abs(pt[0]-l[0])+Math.abs(pt[1]-l[1])<0.8)return;
+    p.push(pt);const n=p.length,ctx=PAD.ctx;
+    ctx.globalCompositeOperation=a.st.t==='er'?'destination-out':'source-over';
+    ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=a.st.t==='er'?ER_W:PEN_W;ctx.strokeStyle=PAD_INK;
+    ctx.beginPath();
+    if(n===2){ctx.moveTo(p[0][0],p[0][1]);ctx.lineTo((p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2)}
+    else{ctx.moveTo((p[n-3][0]+p[n-2][0])/2,(p[n-3][1]+p[n-2][1])/2);ctx.quadraticCurveTo(p[n-2][0],p[n-2][1],(p[n-2][0]+p[n-1][0])/2,(p[n-2][1]+p[n-1][1])/2)}
+    ctx.stroke();
+  });
+}
+function padUp(e){
+  const a=PAD.act;if(!a||a.pid!==e.pointerId)return;
+  PAD.act=null;try{PAD.cv.releasePointerCapture(e.pointerId)}catch(err){}
+  padRedraw();padDot();
+}
+
+/* --- 交卷後：整份列表，紅筆改 --- */
+function renderReview(){
+  const n=SET.qs.length;
+  $('#main').innerHTML=`<div class="setbar"><button type="button" class="btn" id="homeBtn">← 回首頁</button><h2>${esc(SET.title)}</h2><small>共 ${n} 題</small></div>
+  <nav class="strip" id="strip" aria-label="作答進度"><div class="score"><b id="curNo">第 1 題</b><span id="prog"></span></div><div class="bar"><i id="progBar"></i></div><div class="chips" id="chips">${SET.qs.map((q,k)=>`<button type="button" class="chip${isPaper(q)?' pp':''}" data-jump="${k}" aria-label="跳到第 ${numOf(q,k)} 題">${numOf(q,k)}</button>`).join('')}</div></nav>
+  <div id="resultTop"></div>
+  <div class="cards" id="cards">${SET.qs.map((q,k)=>cardHTML(q,k,false)).join('')}</div>
+  <div class="finish" id="finish"></div>`;
+  SET.qs.forEach((q,k)=>restoreCard($('#q'+k),q));
+  classifyAll($('#cards'));
+  showMarks();
+  io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)setCur(+en.target.dataset.k)})},{rootMargin:'-30% 0px -65% 0px'});
+  document.querySelectorAll('#cards .q').forEach(c=>io.observe(c));
+  setCur(0);
+}
+function setCur(k){const q=SET.qs[k];$('#curNo').textContent=`第 ${numOf(q,k)} 題`;
+  document.querySelectorAll('#chips .chip').forEach((c,i)=>c.classList.toggle('cur',i===k));
+  const c=document.querySelector(`#chips .chip[data-jump="${k}"]`),box=$('#chips');
+  if(c&&box&&box.scrollWidth>box.clientWidth){const l=c.offsetLeft-box.offsetLeft;if(l<box.scrollLeft||l+c.offsetWidth>box.scrollLeft+box.clientWidth)box.scrollLeft=l-box.clientWidth/2}}
+/* 錯題：可計分、沒答對的題目（沒作答也算） */
+const wrongIds=()=>SET.qs.filter(q=>gradable(q)&&!isRight(q,STATE.v[q.id])).map(q=>q.id);
+const wrongTitle=()=>{const t=SET.title.replace(/・錯題再做一次$/,'').replace(/\s*錯題練習$/,'').replace(/\s+練習$/,'').trim();return ((t?t+' ':'')+'錯題練習').slice(0,60)};
+/* top=true：上面的得分區塊，有錯題時多一排「錯題」操作（再做一次、PDF、Word、QR code） */
+function resultHTML(top){
+  const g=SET.qs.filter(gradable);const r=g.filter(q=>isRight(q,STATE.v[q.id])).length;const wrong=g.length-r;
+  const retry=wrong?`<button type="button" class="btn primary" data-act="retry">錯題再做一次（${wrong} 題）</button>`:'';
+  return `<div class="result" role="status"><span class="big">答對</span><b>${r}</b><span class="big">／${g.length} 題</span>${wrong===0?'<span>全部答對，太厲害了！</span>':''}
+  <span class="acts">${top?'':retry}<span class="rz"><button type="button" class="btn" data-act="reset">重新作答</button></span></span>
+  ${top&&wrong?`<div class="wops" data-exctx="wrong" role="group" aria-label="錯題"><span class="wlab">錯題</span>${retry}<button type="button" class="btn" data-export="pdf">🖨️ 錯題 PDF</button><button type="button" class="btn" data-export="word">📝 錯題 Word</button>${ansCheck(wrongIds().some(id=>hasEx(BY[id])))}<button type="button" class="btn" data-act="wrongqr"${window.QRCode?'':' hidden'}>📱 錯題 QR code</button><span class="exmsg" aria-live="polite"></span></div>`:''}</div>`;
+}
+function showMarks(){
+  SET.qs.forEach((q,k)=>{
+    const card=$('#q'+k),v=STATE.v[q.id],box=card.querySelector('.ansbox'),mark=card.querySelector('.mark');
+    card.querySelectorAll('.opt,input.blank,[data-sym]').forEach(x=>x.disabled=true);
+    const chip=document.querySelector(`#chips [data-jump="${k}"]`);
+    if(q.type==='paper'){box.innerHTML=`<p class="ansline">參考答案：${esc(q.note||'')} <span class="nc">（這題不計分）</span>${q.ansFig?imgTag(q.ansFig,'答案的圖'):''}</p>${exHTML(q,false)}`;classifyAll(box);return}
+    if(q.paperOnly){card.querySelectorAll('.opt').forEach(b=>b.classList.toggle('ansopt',+b.dataset.c===q.answer));box.innerHTML=`<p class="ansline">正確答案：<b>${CIRC[q.answer-1]}</b> <span class="nc">（這題不計分）</span></p>${exHTML(q,false)}`;return}
+    const ok=isRight(q,v);card.classList.add(ok?'right':'wrong');mark.textContent=ok?'○':'✗';chip.classList.add(ok?'ok':'no');
+    if(q.type==='choice'){
+      card.querySelectorAll('.opt').forEach(b=>{const c=+b.dataset.c;b.classList.toggle('ansopt',c===q.answer);b.classList.toggle('minebad',c===+v&&c!==q.answer);
+        if(c===+v&&!b.querySelector('.mytag'))b.insertAdjacentHTML('beforeend','<em class="mytag">我選的</em>')});
+      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}<b>${ok?'':CIRC[q.answer-1]}</b>${v==null?' <span class="nc">（沒有作答）</span>':''}</p>${exHTML(q,!ok)}`;
+    }else{
+      card.querySelectorAll('input.blank').forEach(inp=>{const i=+inp.dataset.b;inp.classList.add(blankOk((v||[])[i],q.blanks[i])?'ok':'no')});
+      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}${ok?'':q.blanks.map(b=>`<b>${rich((showBlank(b)))}</b>`).join('、')}</p>${exHTML(q,!ok)}`;
+    }
+  });
+  $('#resultTop').innerHTML=resultHTML(true);$('#finish').innerHTML=resultHTML(false);
+  const g=SET.qs.filter(gradable);
+  $('#prog').textContent=`答對 ${g.filter(q=>isRight(q,STATE.v[q.id])).length}／${g.length} 題`;
+  $('#progBar').style.width=(g.length?g.filter(q=>isAnswered(q,STATE.v[q.id])).length/g.length*100:0)+'%';
+}
+function submit(){STATE.done=true;STATE.at=Date.now();delete STATE.cur;saveState();padReset();renderSet();window.scrollTo(0,0)}
+document.addEventListener('click',e=>{
+  if(!SET)return;
+  const t=e.target.closest('button');if(!t)return;
+  if(t.id==='homeBtn'){if(inRun())askLeave();else go('#g='+GRADE);return}
+  if(t.dataset.jump!=null){
+    if(!STATE.done){showQ(+t.dataset.jump);return}
+    const c=$('#q'+t.dataset.jump);if(c){c.scrollIntoView({block:'start',behavior:'smooth'});setCur(+t.dataset.jump)}return}
+  if(t.id==='prevBtn'){showQ(CUR-1);return}
+  if(t.id==='nextBtn'){showQ(CUR+1);return}
+  if(t.id==='padBtn'){PAD.open=!PAD.open;if(!PAD.open)PAD.full=false;padApply();return}
+  if(t.dataset.pad){const a=t.dataset.pad;
+    if(a==='pen'||a==='er')PAD.tool=a;
+    else if(a==='clear'){delete PAD.strokes[padId()];PAD.act=null}
+    else if(a==='full')PAD.full=!PAD.full;
+    else if(a==='close'){PAD.open=false;PAD.full=false}
+    padApply();return}
+  if(STATE.done===false&&t.classList.contains('opt')){
+    const card=t.closest('.q'),q=BY[card.dataset.id];STATE.v[q.id]=+t.dataset.c;
+    card.querySelectorAll('.opt').forEach(b=>{const on=b===t;b.classList.toggle('sel',on);b.setAttribute('aria-checked',on)});saveState();updRun();return}
+  if(t.dataset.sym&&!STATE.done){const card=t.closest('.q'),q=BY[card.dataset.id],inp=card.querySelector('input.blank');inp.value=t.dataset.sym;(STATE.v[q.id]=Array.isArray(STATE.v[q.id])?STATE.v[q.id]:[])[0]=t.dataset.sym;saveState();updRun();return}
+  if(t.id==='submitBtn'){const n=SET.qs.filter(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id])).length;if(n)renderNav(n);else submit();return}
+  if(t.id==='submitYes'){submit();return}
+  if(t.id==='submitNo'){const first=SET.qs.findIndex(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id]));if(first>=0)showQ(first);else renderNav();return}
+  if(t.dataset.extoggle!=null){const box=t.parentElement.querySelector('.exbox');if(!box)return;const open=box.hidden;box.hidden=!open;t.setAttribute('aria-expanded',open);t.textContent=open?'▴ 收起詳解':'💡 看詳解';return}
+  if(t.dataset.act==='wrongqr'){if(STATE.done)wrongQR(wrongIds());return}
+  if(t.dataset.act==='retry'){
+    const ids=wrongIds();if(!ids.length)return;
+    const title=(SET.title.replace(/・錯題再做一次$/,'')+'・錯題再做一次').slice(0,60);
+    LS.del(NS+'set:'+hashStr(ids.join(',')));
+    go('#p='+ids.join(',')+'&t='+encodeURIComponent(title));return}
+  if(t.dataset.act==='reset'){const z=t.closest('.rz');z.innerHTML=`<span class="confirm">確定要清掉作答紀錄嗎？<button type="button" class="btn primary" data-act="resetYes">清掉，重新作答</button><button type="button" class="btn" data-act="resetNo">不要</button></span>`;return}
+  if(t.dataset.act==='resetYes'){LS.del(NS+SET.key);STATE={v:{},done:false};padReset();renderSet();window.scrollTo(0,0);return}
+  if(t.dataset.act==='resetNo'){t.closest('.rz').innerHTML=`<button type="button" class="btn" data-act="reset">重新作答</button>`;return}
+});
+document.addEventListener('input',e=>{
+  const inp=e.target;if(!SET||STATE.done||!inp.classList||!inp.classList.contains('blank'))return;
+  const card=inp.closest('.q'),q=BY[card.dataset.id];const arr=Array.isArray(STATE.v[q.id])?STATE.v[q.id]:[];
+  arr[+inp.dataset.b]=inp.value;STATE.v[q.id]=arr;saveState();updRun();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'||!e.target.classList||!e.target.classList.contains('blank'))return;
+  e.preventDefault();const card=e.target.closest('.q');const all=card?[...card.querySelectorAll('input.blank:not(:disabled)')]:[];const i=all.indexOf(e.target);if(all[i+1])all[i+1].focus();else e.target.blur();
+});
+
+/* ---------- 匯出 Word／PDF ---------- */
+const LIBS={docx:'https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js'};
+const libP={};
+function loadLib(k){if(libP[k])return libP[k];libP[k]=new Promise((ok,no)=>{const s=document.createElement('script');s.src=LIBS[k];s.onload=ok;s.onerror=()=>{libP[k]=null;no(new Error('load '+k))};document.head.appendChild(s)});return libP[k]}
+/* 「附答案」「附詳解」：紙本的共同設定，年度卡片、挑題、錯題的匯出都吃這個。附詳解視同也附答案 */
+/* withEx：這批題目裡有沒有詳解；都沒有就不顯示「附詳解」 */
+function ansCheck(withEx){return `<span class="chks"><label class="chk"><input type="checkbox" data-exo="ans" ${pref.exo.ans||pref.exo.ex?'checked':''}> 附答案</label>${withEx?`<label class="chk"><input type="checkbox" data-exo="ex" ${pref.exo.ex?'checked':''}> 附詳解</label>`:''}</span>`}
+const homeHasEx=()=>QS.some(q=>(q.grade===GRADE||q.grade===GRADE-1)&&hasEx(q));
+const exoNow=()=>({ans:!!(pref.exo.ans||pref.exo.ex),ex:!!pref.exo.ex});
+function gradeText(qs){const gs=[...new Set(qs.map(q=>q.grade))].sort();return gs.map(g=>CN[g]).join('、')+'年級'}
+function exportTarget(ctx){
+  if(ctx==='wrong'){const ids=SET&&STATE&&STATE.done?wrongIds():[];return ids.length?{ids,title:wrongTitle()}:null}
+  if(ctx==='wsheet')return WS?{ids:WS.ids,title:WS.title}:null;
+  if(ctx==='picker'){const ids=finalIds();return ids.length?{ids,title:pickLabel()+' 練習卷'}:null}
+  const m=String(ctx).match(/^exam:g([1-6])-(\d{3}|mA)$/);
+  if(m){const ids=QS.filter(q=>q.grade===+m[1]&&q.year===m[2]).sort((a,b)=>a.no-b.no).map(q=>q.id);return ids.length?{ids,title:isMock(m[2])?`${CN[m[1]]}年級 模擬卷 A`:`${m[2]} 年 ${CN[m[1]]}年級 考古題`}:null}
+  return null;
+}
+function ansText(q){
+  if(q.type==='choice')return CIRC[q.answer-1];
+  if(q.type==='paper')return q.note||'見答案圖';
+  return q.blanks.map(showBlank).join('、');
+}
+function sheetHTML(ids,title,o){
+  const qs=ids.map(id=>BY[id]);const mixed=new Set(qs.map(q=>q.grade)).size>1;
+  const qh=qs.map((q,k)=>{
+    const st=stemHTML(q,'print');
+    let opts='';const pg=psgHTML(q,k>0?qs[k-1]:null,false);
+    if(q.type==='choice'&&!q.img){const im=q.optImgs||[];const ts=q.options||[];const hasImg=im.some(Boolean);const short=!hasImg&&ts.every(t=>plain(String(t)).length<=4);const long=ts.some(t=>String(t).length>16);
+      opts=`<ol class="popts${short?' row':long?' one':''}">${ts.map((t,j)=>`<li><span>${CIRC[j]}</span>${im[j]?`<img src="${esc(im[j])}" alt="">`:''}${t?` ${rich((t))}`:''}</li>`).join('')}</ol>`}
+    const work=q.type==='calc'?'<div class="pwork"></div>':'';
+    return `${pg}<div class="pq"><p class="pstem"><b>${k+1}.</b> ${st.html} <span class="psrc">（${srcOf(q,mixed)}）</span></p>${figsHTML(st.rest)}${opts}${work}</div>`;
+  }).join('');
+  let ans='';
+  if(o.ans){ans=`<div class="pbreak"></div><h2 class="ph2">${o.ex&&qs.some(hasEx)?'答案與詳解':'答案'}</h2><ol class="pans">${qs.map((q,k)=>`<li><b>${k+1}.</b> ${rich((ansText(q)))}${q.ansSrc==='self'?' <span class="nc">（非官方答案）</span>':''}${q.type==='paper'&&q.ansFig?`<img src="${esc(q.ansFig)}" alt="">`:''}${o.ex&&hasEx(q)?exSteps(q,'pex'):''}</li>`).join('')}</ol>`}
+  return `<div class="psheet"><h1 class="ph1">${esc(title)}</h1><p class="psub">學習扶助篩選測驗・${gradeText(qs)}英語　共 ${qs.length} 題</p><p class="pname">班級：＿＿＿＿　座號：＿＿＿　姓名：＿＿＿＿＿＿　得分：＿＿＿＿</p>${qh}${ans}</div>`;
+}
+function exportPdf(ids,title,o){
+  const pa=$('#printArea');pa.innerHTML=sheetHTML(ids,title,o);classifyAll(pa);
+  const html=document.documentElement,prevTheme=html.getAttribute('data-theme');html.setAttribute('data-theme','light');
+  document.body.classList.add('printing');
+  const done=()=>{document.body.classList.remove('printing');if(prevTheme==null)html.removeAttribute('data-theme');else html.setAttribute('data-theme',prevTheme);window.removeEventListener('afterprint',done);document.removeEventListener('pointerdown',done,true)};
+  window.addEventListener('afterprint',done);
+  const imgs=[...pa.querySelectorAll('img')];
+  Promise.all(imgs.map(im=>im.complete?0:new Promise(r=>{im.onload=im.onerror=r}))).then(()=>{classifyAll(pa);setTimeout(()=>{try{window.print()}catch(e){}setTimeout(()=>document.addEventListener('pointerdown',done,true),800)},120)});
+}
+const imgCache={};
+function getImg(src){
+  if(imgCache[src])return imgCache[src];
+  return imgCache[src]=fetch(src).then(r=>{if(!r.ok)throw new Error(src);return r.arrayBuffer()}).then(buf=>new Promise((ok,no)=>{
+    const url=URL.createObjectURL(new Blob([buf],{type:'image/png'}));const im=new Image();
+    im.onload=()=>{ok({data:new Uint8Array(buf),w:im.naturalWidth,h:im.naturalHeight});URL.revokeObjectURL(url)};im.onerror=()=>no(new Error(src));im.src=url}));
+}
+async function exportWord(ids,title,o,msg){
+  msg('準備中⋯⋯');
+  await loadLib('docx');const D=window.docx;
+  const FONT='標楷體';const MAXW=600;
+  const T=(text,x)=>new D.TextRun(Object.assign({text,font:{name:FONT,eastAsia:FONT},size:26},x||{}));
+  const IMG=async(src,maxw)=>{const m=await getImg(src);let w=m.w,h=m.h;const mw=maxw||MAXW;if(w>mw){h=h*mw/w;w=mw}return new D.ImageRun({data:m.data,transformation:{width:Math.round(w),height:Math.round(h)}})};
+  const RUNS=(text,x)=>String(text).split(/(<u>.*?<\/u>|<b>.*?<\/b>)/).filter(Boolean).map(t=>/^<u>/.test(t)?T(plain(t),Object.assign({underline:{}},x||{})):/^<b>/.test(t)?T(plain(t),Object.assign({bold:true,underline:{type:'double'}},x||{})):T(t,x));
+  const isSmall=async src=>{const m=await getImg(src);return m.h<=110&&m.w<=260};
+  const qs=ids.map(id=>BY[id]);const mixed=new Set(qs.map(q=>q.grade)).size>1;
+  const children=[];
+  const para=(runs,x)=>new D.Paragraph(Object.assign({children:runs,spacing:{after:60,line:360}},x||{}));
+  children.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:80},children:[T(title,{bold:true,size:36})]}));
+  children.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:120},children:[T(`學習扶助篩選測驗・${gradeText(qs)}英語　共 ${qs.length} 題`,{size:22,color:'555555'})]}));
+  children.push(new D.Paragraph({spacing:{after:240},border:{bottom:{style:D.BorderStyle.SINGLE,size:8,color:'000000',space:4}},children:[T('班級：＿＿＿＿　座號：＿＿＿　姓名：＿＿＿＿＿＿　得分：＿＿＿＿')]}));
+  for(let k=0;k<qs.length;k++){
+    const q=qs[k];msg(`轉換第 ${k+1}／${qs.length} 題⋯⋯`);
+    const P0=q.psg&&PSG[q.psg]&&!(k>0&&qs[k-1].psg===q.psg)?PSG[q.psg]:null;
+    if(P0){children.push(para([T(`請先閱讀下面的${/圖文/.test(P0.intro)?'圖文':'文章'}，再回答問題：`,{bold:true})],{spacing:{before:120,after:80}}));
+      if(P0.img)children.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:120},children:[await IMG(P0.img,Math.min(MAXW,Math.round(P0.w/1.7)))]}));
+      else P0.text.split('\n').forEach(t=>children.push(para(RUNS('　　'+t),{spacing:{after:40,line:380},border:undefined})));
+      children.push(new D.Paragraph({spacing:{after:80},children:[]}))}
+    const {seq,rest}=q.img?{seq:[],rest:[]}:figPlan(q);
+    const out=[];let cur=[T((k+1)+'. ',{bold:true})];
+    if(q.img){cur.push(T(`（${srcOf(q,mixed)}）`,{size:20,color:'777777'}));out.push(para(cur));cur=[];out.push(new D.Paragraph({indent:{left:240},spacing:{after:60},children:[await IMG(q.img,Math.min(MAXW-20,Math.round(q.iw/1.7)))]}))}
+    const flush=()=>{if(cur.length){out.push(para(cur));cur=[]}};
+    for(const t of seq){
+      if(t.img){if(await isSmall(t.img))cur.push(await IMG(t.img));else{flush();out.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:60},children:[await IMG(t.img)]}))}continue}
+      const lines=t.text.split('\n');lines.forEach((ln,i)=>{if(i>0)flush();if(ln)RUNS(ln).forEach(r=>cur.push(r))});
+    }
+    const src=T(`（${srcOf(q,mixed)}）`,{size:20,color:'777777'});
+    if(!q.img){cur.push(src);flush()}
+    if(rest.length){const runs=[];for(const f of rest){if(runs.length)runs.push(T('　'));runs.push(await IMG(f))}out.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:60},children:runs}))}
+    if(q.type==='choice'&&!q.img){
+      const im=q.optImgs||[];const ts=(q.options||[]).map(plain);const hasImg=im.some(Boolean);const short=!hasImg&&ts.every(t=>plain(String(t)).length<=4);
+      if(short)out.push(para([T('　'+ts.map((t,j)=>`${CIRC[j]} ${t}`).join('　　　'))],{indent:{left:360}}));
+      else for(let j=0;j<ts.length;j++){const runs=[T(CIRC[j]+' ')];if(im[j])runs.push(await IMG(im[j],420));if(ts[j])runs.push(T((im[j]?' ':'')+ts[j]));out.push(para(runs,{indent:{left:360}}))}
+    }
+    if(q.type==='calc')out.push(para([T('')]),para([T('')]));
+    out.forEach(p=>children.push(p));
+    // 題與題之間空一點
+    children.push(new D.Paragraph({spacing:{after:120},children:[]}));
+  }
+  if(o.ans){
+    children.push(new D.Paragraph({pageBreakBefore:true,spacing:{after:200},children:[T(o.ex&&qs.some(hasEx)?'答案與詳解':'答案',{bold:true,size:32})]}));
+    for(let k=0;k<qs.length;k++){const q=qs[k];const runs=[T(`${k+1}. `,{bold:true}),T(plain(ansText(q)))];
+      if(q.ansSrc==='self')runs.push(T('（非官方答案）',{size:20,color:'777777'}));
+      children.push(para(runs,{spacing:{after:40}}));
+      if(q.type==='paper'&&q.ansFig)children.push(new D.Paragraph({indent:{left:360},spacing:{after:80},children:[await IMG(q.ansFig,360)]}));
+      if(o.ex&&hasEx(q)){let sn=0;const steps=exList(q);
+        steps.forEach((s,i)=>{const w=WARN.test(s);const runs=w?[T('小心：',{bold:true,size:22}),T(s.replace(WARN,''),{size:22})]:[T(`(${++sn}) `+plain(s).replace(/[{}]/g,''),{size:22})];
+          children.push(para(runs,{indent:{left:w?480:840,hanging:w?0:360},spacing:{after:i===steps.length-1?160:20,line:320},shading:w?{type:D.ShadingType.CLEAR,color:'auto',fill:'EEEEEE'}:undefined}))});
+      }
+    }
+  }
+  msg('產生檔案⋯⋯');
+  const doc=new D.Document({creator:'學扶考古題',title,styles:{default:{document:{run:{font:{name:FONT,eastAsia:FONT},size:26}}}},
+    sections:[{properties:{page:{size:{width:11906,height:16838},margin:{top:1000,bottom:1000,left:1100,right:1100}}},children}]});
+  const blob=await D.Packer.toBlob(doc);
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${title.replace(/[\\/:*?"<>|]/g,'_')}.docx`;document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);
+  msg('✔ 已下載 Word 檔');
+}
+document.addEventListener('change',e=>{const k=e.target.dataset&&e.target.dataset.exo;if(!k)return;
+  if(k==='ex'){pref.exo.ex=e.target.checked;if(pref.exo.ex)pref.exo.ans=true}
+  else{pref.exo[k]=e.target.checked;if(k==='ans'&&!pref.exo.ans)pref.exo.ex=false}
+  savePref();document.querySelectorAll('[data-exo]').forEach(x=>{x.checked=!!pref.exo[x.dataset.exo]})});
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-export]');if(!b)return;
+  const bar=b.closest('[data-exctx]');if(!bar)return;const ctx=bar.dataset.exctx;
+  /* 錯題（交卷後畫面、錯題整理頁）不受線上／紙本模式影響；其他匯出只在紙本模式的首頁 */
+  if(ctx==='wrong'){if(!SET||!STATE.done)return}else if(ctx==='wsheet'){if(SET||!WS)return}else if(MODE!=='paper'||SET)return;
+  const m=bar.querySelector('.exmsg'),msg=s=>{m.textContent=s};
+  const tg=exportTarget(ctx);if(!tg){msg('還沒有選到題目，請先勾選題型');return}
+  const o=exoNow();
+  if(b.dataset.export==='pdf'){exportPdf(tg.ids,tg.title,o);msg('在列印視窗選「另存為 PDF」');return}
+  bar.querySelectorAll('button').forEach(x=>x.disabled=true);
+  try{await exportWord(tg.ids,tg.title,o,msg)}catch(err){console.error(err);msg('匯出失敗，請確認網路連線後再試一次')}
+  bar.querySelectorAll('button').forEach(x=>x.disabled=false);
+});
+
+/* ---------- 開始 ---------- */
+Promise.all(['questions','passages','codes'].map(n=>fetch('data/'+n+'.json').then(r=>{if(!r.ok)throw new Error(n);return r.json()}))).then(([q,u,c])=>{
+  XF=c.xuefu||{};
+  Object.keys(XF).forEach(k=>{const m=String(XF[k].summary||'').match(/^同((?:NC|SC|RC|DC)-[\d-]+)/);if(m&&XF[m[1]])DUP[k]=m[1]});
+  UNITS={};PSG=u;
+  QS=q.map(x=>{const o=Object.assign({},x);if(o.id==='g6-115-24')o.paperOnly=true;o.xf=o.xf||[];return o});
+  QS.forEach(x=>{BY[x.id]=x});
+  route();
+}).catch(err=>{console.error(err);$('#main').innerHTML='<p class="loading">題目載入失敗。請用網址（http／https）開啟這個網頁，或重新整理再試一次。</p>'});
+window.__xuefu={get QS(){return QS},get SET(){return SET},normAns,blankOk,wrongQR};
+})();
+</script>
+<script>
+/* 累計使用次數：GoatCounter（首頁＋數學頁） */
+(function(){var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/","/xuefu/english/"],sum=0,ok=0;P.forEach(function(p){fetch("https://teacher-liujikan.goatcounter.com/counter/"+encodeURIComponent(p)+".json").then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&d.count){sum+=parseInt(String(d.count).replace(/[^0-9]/g,""),10)||0;ok++}}).catch(function(){}).finally(function(){if(ok){var n=document.getElementById("visitN"),v=document.getElementById("visits");if(n&&v){n.textContent=sum.toLocaleString("zh-TW");v.hidden=false}}})})})();
+</script>
+<script data-goatcounter="https://teacher-liujikan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+/* 意見回饋：FormSubmit 轉寄到老師媽咪的信箱 */
+(function(){var f=document.getElementById("fbForm");if(!f)return;var TO="tina12345920@ymes.tn.edu.tw",msg=document.getElementById("fbMsg"),btn=document.getElementById("fbSend");
+function say(t,c){msg.textContent=t;msg.className="fbmsg"+(c?" "+c:"")}
+f.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(f);if(d.get("_honey"))return;var txt=String(d.get("意見")||"").trim();
+if(!txt){say("請先寫下想說的話。","err");f.elements["意見"].focus();return}
+var em=String(d.get("email")||"").trim();if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say("Email 格式好像不對，可以改一下或空著。","err");f.elements["email"].focus();return}
+var body={"_subject":"學扶考古題網站 意見回饋","_template":"table","身分":d.get("身分"),"稱呼":String(d.get("稱呼")||"").trim()||"（未填）","意見":txt,"來自頁面":location.href,"時間":new Date().toLocaleString("zh-TW")};if(em){body.email=em;body["_replyto"]=em}
+btn.disabled=true;say("寄送中⋯⋯");
+fetch("https://formsubmit.co/ajax/"+TO,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(/Activation/i.test(j.message||"")){var e=new Error("act");e.act=1;throw e}if(!r.ok||String(j.success)==="false")throw new Error(j.message||r.status)})})
+.then(function(){f.reset();say("已經寄出，謝謝你！老師媽咪會盡快看。","ok")})
+.catch(function(er){if(er&&er.act){say("信箱還在啟用中，這則訊息沒有寄出。請晚一點再試，或到 Threads 留言給老師媽咪。","err");return}say("","");msg.innerHTML='寄送失敗，請稍後再試，或直接寄信到 <a href="mailto:'+TO+'?subject='+encodeURIComponent("學扶考古題網站 意見回饋")+'">'+TO+'</a>。';msg.className="fbmsg err"})
+.finally(function(){btn.disabled=false})})})();
+</script>
+</body>
+</html>

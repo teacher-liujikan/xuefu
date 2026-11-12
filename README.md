@@ -25,7 +25,12 @@
   - 題型分類為自行標註，不是官方學扶細目
   - 一、二年級是紙筆手寫卷，還沒有做
   - 資料：`chinese/data/questions.json`、`passages.json`、`codes.json`，圖在 `chinese/img/`
-- 英語：製作中
+- 英語：https://teacher-liujikan.github.io/xuefu/english/
+  - 四～六年級，113、114 年，共 150 題（三選一；題目直接用原卷畫面）
+  - 每份第 1～10 題是聽力，要搭配音檔（目前只放雲端音檔的連結，沒有把音檔放進網站）；第 11～25 題是閱讀
+  - 每題附文字詳解；聽力題的詳解是依官方答案和圖片寫的，沒有實際聽過音檔
+  - 三年級整份是聽寫和聽力，還沒有做；111、112 年沒有答案卷，還沒有做
+  - 資料：`english/data/questions.json`，圖在 `english/img/`
 
 作答紀錄只存在學生自己裝置的瀏覽器（localStorage），不會上傳。
 

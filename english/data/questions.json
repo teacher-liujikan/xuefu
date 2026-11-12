@@ -1,0 +1,4065 @@
+[
+ {
+  "id": "g4-114-1",
+  "grade": 4,
+  "year": "114",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "am",
+   "um",
+   "an"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-1.png",
+  "iw": 536,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。t 後面接的音是 am。",
+   "所以選 ① am"
+  ]
+ },
+ {
+  "id": "g4-114-2",
+  "grade": 4,
+  "year": "114",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "l",
+   "z",
+   "r"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-2.png",
+  "iw": 516,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 l，合起來是 lid（蓋子）。",
+   "所以選 ① l"
+  ]
+ },
+ {
+  "id": "g4-114-3",
+  "grade": 4,
+  "year": "114",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a",
+   "e",
+   "o"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-3.png",
+  "iw": 523,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。中間的音是 o，合起來是 jot。",
+   "所以選 ③ o"
+  ]
+ },
+ {
+  "id": "g4-114-4",
+  "grade": 4,
+  "year": "114",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 蛋",
+   "圖 (2) 蛋糕",
+   "圖 (3) 牛奶"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-4.png",
+  "iw": 660,
+  "ih": 256,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 cake（蛋糕）。",
+   "圖 (1) 是 egg（蛋），圖 (3) 是 milk（牛奶）。",
+   "所以選 ② 圖 (2) 蛋糕"
+  ]
+ },
+ {
+  "id": "g4-114-5",
+  "grade": 4,
+  "year": "114",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 白色",
+   "圖 (2) 藍色",
+   "圖 (3) 黃色"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-5.png",
+  "iw": 785,
+  "ih": 246,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 blue（藍色）。",
+   "圖 (1) 是 white（白色），圖 (3) 是 yellow（黃色）。",
+   "所以選 ② 圖 (2) 藍色"
+  ]
+ },
+ {
+  "id": "g4-114-6",
+  "grade": 4,
+  "year": "114",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 尺",
+   "圖 (2) 老虎",
+   "圖 (3) 調色盤"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-6.png",
+  "iw": 744,
+  "ih": 230,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 ruler（尺）。",
+   "圖 (2) 是 tiger（老虎）。",
+   "所以選 ① 圖 (1) 尺"
+  ]
+ },
+ {
+  "id": "g4-114-7",
+  "grade": 4,
+  "year": "114",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-7.png",
+  "iw": 782,
+  "ih": 286,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (2)：女生對拿著球的男生比讚。",
+   "所以選 ② 圖 (2)"
+  ]
+ },
+ {
+  "id": "g4-114-8",
+  "grade": 4,
+  "year": "114",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 把手放下",
+   "圖 (2) 坐下",
+   "圖 (3) 把書收進書包"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-8.png",
+  "iw": 768,
+  "ih": 288,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：把手放下（Hands down.）。",
+   "圖 (2) 是坐下（Sit down.）。",
+   "所以選 ① 圖 (1) 把手放下"
+  ]
+ },
+ {
+  "id": "g4-114-9",
+  "grade": 4,
+  "year": "114",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 老虎",
+   "圖 (2) 黑色油漆",
+   "圖 (3) 名牌 Tiger Black"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-9.png",
+  "iw": 760,
+  "ih": 280,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：名牌，是在說名字。",
+   "所以選 ③ 圖 (3) 名牌 Tiger Black"
+  ]
+ },
+ {
+  "id": "g4-114-10",
+  "grade": 4,
+  "year": "114",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 指著遠處的鉛筆",
+   "圖 (2) 指著遠處的尺",
+   "圖 (3) 指著近處的鉛筆"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-10.png",
+  "iw": 786,
+  "ih": 287,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：手指著遠遠的鉛筆，遠的東西用 that。",
+   "圖 (3) 鉛筆在手旁邊，近的東西要用 this。",
+   "所以選 ① 圖 (1) 指著遠處的鉛筆"
+  ]
+ },
+ {
+  "id": "g4-114-11",
+  "grade": 4,
+  "year": "114",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "cake",
+   "milk",
+   "book"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-11.png",
+  "iw": 394,
+  "ih": 199,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一盒牛奶。",
+   "牛奶是 milk。cake 是蛋糕，book 是書。",
+   "所以選 ② milk"
+  ]
+ },
+ {
+  "id": "g4-114-12",
+  "grade": 4,
+  "year": "114",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "fish",
+   "dog",
+   "lion"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-12.png",
+  "iw": 376,
+  "ih": 186,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一條魚。",
+   "魚是 fish。dog 是狗，lion 是獅子。",
+   "所以選 ① fish"
+  ]
+ },
+ {
+  "id": "g4-114-13",
+  "grade": 4,
+  "year": "114",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "book",
+   "blue",
+   "bird"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-13.png",
+  "iw": 420,
+  "ih": 203,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一隻鳥。",
+   "鳥是 bird。book 是書，blue 是藍色。",
+   "所以選 ③ bird"
+  ]
+ },
+ {
+  "id": "g4-114-14",
+  "grade": 4,
+  "year": "114",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "yellow",
+   "white",
+   "red"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-14.png",
+  "iw": 451,
+  "ih": 163,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "手指著第一顆星星，它是白色的。",
+   "白色是 white。yellow 是黃色，red 是紅色。",
+   "所以選 ② white"
+  ]
+ },
+ {
+  "id": "g4-114-15",
+  "grade": 4,
+  "year": "114",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "milk",
+   "ruler",
+   "marker"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-15.png",
+  "iw": 418,
+  "ih": 199,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一枝彩色筆（麥克筆）。",
+   "彩色筆是 marker。milk 是牛奶，ruler 是尺。",
+   "所以選 ③ marker"
+  ]
+ },
+ {
+  "id": "g4-114-16",
+  "grade": 4,
+  "year": "114",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "book",
+   "black",
+   "name"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-16.png",
+  "iw": 410,
+  "ih": 187,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一本書。",
+   "書是 book。black 是黑色，name 是名字。",
+   "所以選 ① book"
+  ]
+ },
+ {
+  "id": "g4-114-17",
+  "grade": 4,
+  "year": "114",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a blue banana",
+   "a red banana",
+   "a red pen"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-17.png",
+  "iw": 557,
+  "ih": 225,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是用紅色的筆幫香蕉塗顏色，畫出來是紅色的香蕉。",
+   "red 是紅色，banana 是香蕉。",
+   "③ a red pen 是紅色的「筆」，但是題目問的是被塗色的東西。",
+   "所以選 ② a red banana"
+  ]
+ },
+ {
+  "id": "g4-114-18",
+  "grade": 4,
+  "year": "114",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 一顆蛋",
+   "圖 (2) 兩顆蛋",
+   "圖 (3) 杯子蛋糕"
+  ],
+  "answer": 1,
+  "img": "img/g4-114-18.png",
+  "iw": 756,
+  "ih": 314,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "It's an egg. 意思是「它是一顆蛋」。",
+   "an egg 是「一顆」蛋，圖 (2) 有兩顆，圖 (3) 是杯子蛋糕。",
+   "所以選 ① 圖 (1) 一顆蛋"
+  ]
+ },
+ {
+  "id": "g4-114-19",
+  "grade": 4,
+  "year": "114",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 藍色",
+   "圖 (2) 黃色",
+   "圖 (3) 綠色"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-19.png",
+  "iw": 794,
+  "ih": 393,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What color is it?（它是什麼顏色？）",
+   "B 答：It's yellow.（它是黃色。）",
+   "所以選 ② 圖 (2) 黃色"
+  ]
+ },
+ {
+  "id": "g4-114-20",
+  "grade": 4,
+  "year": "114",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 白兔",
+   "圖 (2) 黑松鼠",
+   "圖 (3) 黑兔"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-20.png",
+  "iw": 739,
+  "ih": 320,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "It's a rabbit.（它是兔子。）It's black.（它是黑色的。）",
+   "要找「黑色的兔子」。圖 (2) 是黑色的，但牠是松鼠。",
+   "所以選 ③ 圖 (3) 黑兔"
+  ]
+ },
+ {
+  "id": "g4-114-21",
+  "grade": 4,
+  "year": "114",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 指著老虎",
+   "圖 (2) 指著獅子",
+   "圖 (3) 遠處的獅子"
+  ],
+  "answer": 2,
+  "img": "img/g4-114-21.png",
+  "iw": 769,
+  "ih": 394,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What's this?（這是什麼？）this 是指近的東西。",
+   "B 答：It's a lion. It's not a tiger.（它是獅子，不是老虎。）",
+   "圖 (2) 手指著近處的獅子。圖 (3) 的獅子在遠處，要用 that。",
+   "所以選 ② 圖 (2) 指著獅子"
+  ]
+ },
+ {
+  "id": "g4-114-22",
+  "grade": 4,
+  "year": "114",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 鋼筆",
+   "圖 (2) 原子筆",
+   "圖 (3) 水彩筆"
+  ],
+  "answer": 3,
+  "img": "img/g4-114-22.png",
+  "iw": 780,
+  "ih": 352,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Is it a pen?（它是筆嗎？）",
+   "B 答：No, it's not.（不，它不是。）",
+   "pen 是寫字的筆，圖 (1)(2) 都是 pen；圖 (3) 是水彩筆，不是 pen。",
+   "所以選 ③ 圖 (3) 水彩筆"
+  ]
+ },
+ {
+  "id": "g4-114-23",
+  "grade": 4,
+  "year": "114",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's a rabbit.",
+   "It's a pencil.",
+   "It's a marker."
+  ],
+  "answer": 2,
+  "img": "img/g4-114-23.png",
+  "iw": 442,
+  "ih": 273,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖是一枝長頸鹿造型的鉛筆。",
+   "鉛筆是 pencil。rabbit 是兔子，marker 是彩色筆。",
+   "所以選 ② It's a pencil."
+  ]
+ },
+ {
+  "id": "g4-114-24",
+  "grade": 4,
+  "year": "114",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's a lion. It's black.",
+   "It's a dog. It's not black.",
+   "It's a dog. It's not a cat."
+  ],
+  "answer": 3,
+  "img": "img/g4-114-24.png",
+  "iw": 698,
+  "ih": 276,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖是一隻黑色的狗。",
+   "① 說是獅子，不對。② 說「不是黑色」，不對。",
+   "③ It's a dog. It's not a cat.（它是狗，不是貓。）對。",
+   "所以選 ③ It's a dog. It's not a cat."
+  ]
+ },
+ {
+  "id": "g4-114-25",
+  "grade": 4,
+  "year": "114",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "What's this? / It's an apple.",
+   "Is that an apple? / No, it's not.",
+   "What's that? / It's an apple."
+  ],
+  "answer": 3,
+  "img": "img/g4-114-25.png",
+  "iw": 703,
+  "ih": 658,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡的蘋果在遠遠的樹上，遠的東西用 that。",
+   "① 用 this（這個），不對。② 回答 No, it's not.（不是），但它真的是蘋果，不對。",
+   "③ What's that?（那是什麼？）It's an apple.（是蘋果。）對。",
+   "所以選 ③ What's that? / It's an apple."
+  ]
+ },
+ {
+  "id": "g4-113-1",
+  "grade": 4,
+  "year": "113",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "o",
+   "i",
+   "a"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-1.png",
+  "iw": 518,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。中間的音是 a，合起來是 nag。",
+   "所以選 ③ a"
+  ]
+ },
+ {
+  "id": "g4-113-2",
+  "grade": 4,
+  "year": "113",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "um",
+   "im",
+   "en"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-2.png",
+  "iw": 532,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。b 後面接的音是 um。",
+   "所以選 ① um"
+  ]
+ },
+ {
+  "id": "g4-113-3",
+  "grade": 4,
+  "year": "113",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "f",
+   "y",
+   "l"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-3.png",
+  "iw": 511,
+  "ih": 42,
+  "xf": [
+   "L-4-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 y。",
+   "所以選 ② y"
+  ]
+ },
+ {
+  "id": "g4-113-4",
+  "grade": 4,
+  "year": "113",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 牛奶",
+   "圖 (2) 披薩",
+   "圖 (3) 杯子蛋糕"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-4.png",
+  "iw": 704,
+  "ih": 267,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 cake（蛋糕）。",
+   "圖 (1) 是 milk（牛奶），圖 (2) 是 pizza（披薩）。",
+   "所以選 ③ 圖 (3) 杯子蛋糕"
+  ]
+ },
+ {
+  "id": "g4-113-5",
+  "grade": 4,
+  "year": "113",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 老虎",
+   "圖 (2) 獅子",
+   "圖 (3) 豬"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-5.png",
+  "iw": 749,
+  "ih": 254,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 tiger（老虎）。",
+   "圖 (2) 是 lion（獅子），圖 (3) 是 pig（豬）。",
+   "所以選 ① 圖 (1) 老虎"
+  ]
+ },
+ {
+  "id": "g4-113-6",
+  "grade": 4,
+  "year": "113",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 白色",
+   "圖 (2) 黑色",
+   "圖 (3) 灰色"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-6.png",
+  "iw": 750,
+  "ih": 277,
+  "xf": [
+   "L-4-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 black（黑色）。",
+   "圖 (1) 是 white（白色）。",
+   "所以選 ② 圖 (2) 黑色"
+  ]
+ },
+ {
+  "id": "g4-113-7",
+  "grade": 4,
+  "year": "113",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-7.png",
+  "iw": 758,
+  "ih": 286,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：兩個人背著書包互相揮手打招呼。",
+   "所以選 ③ 圖 (3)"
+  ]
+ },
+ {
+  "id": "g4-113-8",
+  "grade": 4,
+  "year": "113",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-8.png",
+  "iw": 775,
+  "ih": 288,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (2)：箭頭向下，把書放進書包（收起來）。",
+   "圖 (1) 箭頭向上是拿出來，圖 (3) 是把書打開。",
+   "所以選 ② 圖 (2)"
+  ]
+ },
+ {
+  "id": "g4-113-9",
+  "grade": 4,
+  "year": "113",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 名牌 Ben Red",
+   "圖 (2) 紅色油漆",
+   "圖 (3) 黃色彩色筆"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-9.png",
+  "iw": 753,
+  "ih": 286,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子在說顏色 red（紅色），配的是圖 (2) 紅色的油漆。",
+   "圖 (1) 的 Red 是名字，不是顏色。",
+   "所以選 ② 圖 (2) 紅色油漆"
+  ]
+ },
+ {
+  "id": "g4-113-10",
+  "grade": 4,
+  "year": "113",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 摸著彩色筆",
+   "圖 (2) 指著遠處的彩色筆",
+   "圖 (3) 指著遠處的叉子"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-10.png",
+  "iw": 763,
+  "ih": 282,
+  "xf": [
+   "L-4-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：手指著遠遠的叉子，遠的東西用 that。",
+   "所以選 ③ 圖 (3) 指著遠處的叉子"
+  ]
+ },
+ {
+  "id": "g4-113-11",
+  "grade": 4,
+  "year": "113",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "egg",
+   "milk",
+   "apple"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-11.png",
+  "iw": 422,
+  "ih": 194,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是盤子裡的蛋。",
+   "蛋是 egg。milk 是牛奶，apple 是蘋果。",
+   "所以選 ① egg"
+  ]
+ },
+ {
+  "id": "g4-113-12",
+  "grade": 4,
+  "year": "113",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "pig",
+   "dog",
+   "tiger"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-12.png",
+  "iw": 395,
+  "ih": 213,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是一隻豬。",
+   "豬是 pig。dog 是狗，tiger 是老虎。",
+   "所以選 ① pig"
+  ]
+ },
+ {
+  "id": "g4-113-13",
+  "grade": 4,
+  "year": "113",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "red",
+   "green",
+   "yellow"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-13.png",
+  "iw": 433,
+  "ih": 209,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "油漆桶上寫「綠色」。",
+   "綠色是 green。red 是紅色，yellow 是黃色。",
+   "所以選 ② green"
+  ]
+ },
+ {
+  "id": "g4-113-14",
+  "grade": 4,
+  "year": "113",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "lion",
+   "ruler",
+   "rabbit"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-14.png",
+  "iw": 434,
+  "ih": 185,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一隻兔子。",
+   "兔子是 rabbit。lion 是獅子，ruler 是尺。",
+   "所以選 ③ rabbit"
+  ]
+ },
+ {
+  "id": "g4-113-15",
+  "grade": 4,
+  "year": "113",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "pen",
+   "pencil",
+   "marker"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-15.png",
+  "iw": 448,
+  "ih": 217,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是筆筒裡的鉛筆。",
+   "鉛筆是 pencil。pen 是原子筆，marker 是彩色筆。",
+   "所以選 ② pencil"
+  ]
+ },
+ {
+  "id": "g4-113-16",
+  "grade": 4,
+  "year": "113",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "color",
+   "name",
+   "marker"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-16.png",
+  "iw": 448,
+  "ih": 211,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "四個格子是紅色、黃色、藍色、綠色，都是「顏色」。",
+   "顏色是 color。name 是名字，marker 是彩色筆。",
+   "所以選 ① color"
+  ]
+ },
+ {
+  "id": "g4-113-17",
+  "grade": 4,
+  "year": "113",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "white cat",
+   "white dog",
+   "black dog"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-17.png",
+  "iw": 421,
+  "ih": 203,
+  "xf": [
+   "R-4-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一隻白色的狗。",
+   "white 是白色，dog 是狗。cat 是貓，black 是黑色。",
+   "所以選 ② white dog"
+  ]
+ },
+ {
+  "id": "g4-113-18",
+  "grade": 4,
+  "year": "113",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 名牌寫 Lion 的男生",
+   "圖 (2) 畫獅子",
+   "圖 (3) 獅子圖案的衣服"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-18.png",
+  "iw": 779,
+  "ih": 392,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What's your name?（你叫什麼名字？）",
+   "B 答：Lion.（我叫 Lion。）",
+   "這是在問「名字」。圖 (1) 的男生指著名牌，上面寫 Lion。",
+   "所以選 ① 圖 (1) 名牌寫 Lion 的男生"
+  ]
+ },
+ {
+  "id": "g4-113-19",
+  "grade": 4,
+  "year": "113",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 黃色的原子筆",
+   "圖 (2) 黃色的鉛筆",
+   "圖 (3) 綠色的原子筆"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-19.png",
+  "iw": 762,
+  "ih": 306,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "It's a pen.（它是原子筆。）It's yellow.（它是黃色的。）",
+   "圖 (2) 是鉛筆（pencil），圖 (3) 是綠色的。",
+   "所以選 ① 圖 (1) 黃色的原子筆"
+  ]
+ },
+ {
+  "id": "g4-113-20",
+  "grade": 4,
+  "year": "113",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 指著遠處的茄子",
+   "圖 (2) 摸著香蕉",
+   "圖 (3) 指著遠處的香蕉"
+  ],
+  "answer": 3,
+  "img": "img/g4-113-20.png",
+  "iw": 794,
+  "ih": 365,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What's that?（那是什麼？）that 是指遠的東西。",
+   "B 答：It's a banana.（是香蕉。）",
+   "圖 (1) 是茄子；圖 (2) 手碰著香蕉，要用 this；圖 (3) 指著遠處的香蕉。",
+   "所以選 ③ 圖 (3) 指著遠處的香蕉"
+  ]
+ },
+ {
+  "id": "g4-113-21",
+  "grade": 4,
+  "year": "113",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 背後藏蘋果",
+   "圖 (2) 背後藏紅色彩色筆",
+   "圖 (3) 背後藏小鳥"
+  ],
+  "answer": 2,
+  "img": "img/g4-113-21.png",
+  "iw": 789,
+  "ih": 348,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "It's red.（它是紅色的。）It's not an apple.（它不是蘋果。）",
+   "圖 (1) 藏的是蘋果，不對。圖 (2) 藏的是紅色的彩色筆，是紅色的，又不是蘋果。",
+   "所以選 ② 圖 (2) 背後藏紅色彩色筆"
+  ]
+ },
+ {
+  "id": "g4-113-22",
+  "grade": 4,
+  "year": "113",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 摸著貓",
+   "圖 (2) 指著遠處的貓",
+   "圖 (3) 摸著狗"
+  ],
+  "answer": 1,
+  "img": "img/g4-113-22.png",
+  "iw": 768,
+  "ih": 365,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Is this a cat?（這是貓嗎？）this 是指近的東西。",
+   "B 答：Yes, it is.（是的。）",
+   "圖 (1) 手碰著貓。圖 (2) 的貓在遠處，圖 (3) 是狗。",
+   "所以選 ① 圖 (1) 摸著貓"
+  ]
+ },
+ {
+  "id": "g4-113-23",
+  "grade": 4,
+  "year": "113",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "What's this? / It's a bird.",
+   "What's that? / It's a bird.",
+   "Is that a cat? / Yes, it is."
+  ],
+  "answer": 1,
+  "img": "img/g4-113-23.png",
+  "iw": 572,
+  "ih": 327,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡的手碰著一隻鳥，東西就在手邊，用 this。",
+   "① What's this?（這是什麼？）It's a bird.（是鳥。）對。",
+   "② 用 that（那個），是指遠的東西。③ 說牠是貓，不對。",
+   "所以選 ① What's this? / It's a bird."
+  ]
+ },
+ {
+  "id": "g4-113-24",
+  "grade": 4,
+  "year": "113",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Is it a cake? / No, it's not.",
+   "Is it a rabbit? / No, it's a lion.",
+   "Is it a rabbit? / No, it's a cake."
+  ],
+  "answer": 3,
+  "img": "img/g4-113-24.png",
+  "iw": 571,
+  "ih": 327,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖是一個蛋糕，上面有兔子耳朵和兔子的臉。",
+   "它看起來像兔子，其實是蛋糕。③ Is it a rabbit?（它是兔子嗎？）No, it's a cake.（不，它是蛋糕。）",
+   "① 說它不是蛋糕，② 說它是獅子，都不對。",
+   "所以選 ③ Is it a rabbit? / No, it's a cake."
+  ]
+ },
+ {
+  "id": "g4-113-25",
+  "grade": 4,
+  "year": "113",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's a fish. It's blue.",
+   "It's red. It's not a fish.",
+   "It's blue. It's not a fish."
+  ],
+  "answer": 3,
+  "img": "img/g4-113-25.png",
+  "iw": 682,
+  "ih": 265,
+  "xf": [
+   "R-4-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖是用藍色的筆幫章魚塗顏色。",
+   "章魚是藍色的，牠不是魚。",
+   "③ It's blue.（它是藍色的。）It's not a fish.（它不是魚。）",
+   "所以選 ③ It's blue. It's not a fish."
+  ]
+ },
+ {
+  "id": "g5-114-1",
+  "grade": 5,
+  "year": "114",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "sk",
+   "ch",
+   "sh"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-1.png",
+  "iw": 534,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 sh。",
+   "所以選 ③ sh"
+  ]
+ },
+ {
+  "id": "g5-114-2",
+  "grade": 5,
+  "year": "114",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "bl",
+   "br",
+   "r"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-2.png",
+  "iw": 517,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 br，合起來是 brook。",
+   "所以選 ② br"
+  ]
+ },
+ {
+  "id": "g5-114-3",
+  "grade": 5,
+  "year": "114",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "th",
+   "ch",
+   "bl"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-3.png",
+  "iw": 529,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 th。",
+   "所以選 ① th"
+  ]
+ },
+ {
+  "id": "g5-114-4",
+  "grade": 5,
+  "year": "114",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 箭頭指著下雨",
+   "圖 (2) 箭頭指著晴時多雲",
+   "圖 (3) 箭頭指著颳風"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-4.png",
+  "iw": 773,
+  "ih": 264,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 rainy（下雨的）。",
+   "圖 (1) 的箭頭指著下雨的那一天。",
+   "所以選 ① 圖 (1) 箭頭指著下雨"
+  ]
+ },
+ {
+  "id": "g5-114-5",
+  "grade": 5,
+  "year": "114",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 男孩",
+   "圖 (2) 女孩",
+   "圖 (3) 老奶奶"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-5.png",
+  "iw": 642,
+  "ih": 270,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 girl（女孩）。",
+   "圖 (1) 是 boy（男孩）。",
+   "所以選 ② 圖 (2) 女孩"
+  ]
+ },
+ {
+  "id": "g5-114-6",
+  "grade": 5,
+  "year": "114",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2) 箭頭指著高大的樹",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-6.png",
+  "iw": 720,
+  "ih": 247,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字配的是圖 (2)：箭頭指著最高大的那棵樹（tall／big）。",
+   "所以選 ② 圖 (2) 箭頭指著高大的樹"
+  ]
+ },
+ {
+  "id": "g5-114-7",
+  "grade": 5,
+  "year": "114",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-7.png",
+  "iw": 784,
+  "ih": 286,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (2)：老師請小朋友排隊。",
+   "所以選 ② 圖 (2)"
+  ]
+ },
+ {
+  "id": "g5-114-8",
+  "grade": 5,
+  "year": "114",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 時鐘 10:00",
+   "圖 (2) 香蕉 10 元",
+   "圖 (3) 10 歲蛋糕"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-8.png",
+  "iw": 720,
+  "ih": 268,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子是在說時間：ten o'clock（十點），配的是時鐘。",
+   "圖 (2) 是 10 元，圖 (3) 是 10 歲。",
+   "所以選 ① 圖 (1) 時鐘 10:00"
+  ]
+ },
+ {
+  "id": "g5-114-9",
+  "grade": 5,
+  "year": "114",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 下雪很冷",
+   "圖 (2) 落葉涼涼的",
+   "圖 (3) 大太陽很熱"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-9.png",
+  "iw": 766,
+  "ih": 270,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (2)：樹葉掉下來，天氣涼涼的（cool）。",
+   "圖 (1) 是 cold（冷），圖 (3) 是 hot（熱）。",
+   "所以選 ② 圖 (2) 落葉涼涼的"
+  ]
+ },
+ {
+  "id": "g5-114-10",
+  "grade": 5,
+  "year": "114",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 會游泳，不會跳舞",
+   "圖 (2) 不會游泳，會跳舞",
+   "圖 (3) 會游泳，不會唱歌"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-10.png",
+  "iw": 764,
+  "ih": 250,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：游泳是 O、跳舞是 X，也就是 I can swim. I can't dance.",
+   "所以選 ① 圖 (1) 會游泳，不會跳舞"
+  ]
+ },
+ {
+  "id": "g5-114-11",
+  "grade": 5,
+  "year": "114",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "three",
+   "thin",
+   "see"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-11.png",
+  "iw": 377,
+  "ih": 189,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是數字 3。",
+   "3 是 three。thin 是瘦的，see 是看見。",
+   "所以選 ① three"
+  ]
+ },
+ {
+  "id": "g5-114-12",
+  "grade": 5,
+  "year": "114",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "write",
+   "read",
+   "sing"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-12.png",
+  "iw": 407,
+  "ih": 214,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "兩個女生拿著麥克風，旁邊有音符，她們在唱歌。",
+   "唱歌是 sing。write 是寫，read 是讀。",
+   "所以選 ③ sing"
+  ]
+ },
+ {
+  "id": "g5-114-13",
+  "grade": 5,
+  "year": "114",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "want",
+   "water",
+   "warm"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-13.png",
+  "iw": 434,
+  "ih": 228,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "外面下雪，女生包著毯子，很暖和。",
+   "暖和是 warm。want 是想要，water 是水。",
+   "所以選 ③ warm"
+  ]
+ },
+ {
+  "id": "g5-114-14",
+  "grade": 5,
+  "year": "114",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "tall",
+   "cold",
+   "short"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-14.png",
+  "iw": 382,
+  "ih": 195,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是比較短的那枝鉛筆。",
+   "短是 short。tall 是高，cold 是冷。",
+   "所以選 ③ short"
+  ]
+ },
+ {
+  "id": "g5-114-15",
+  "grade": 5,
+  "year": "114",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "boy",
+   "girl",
+   "blue"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-15.png",
+  "iw": 350,
+  "ih": 212,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一個男孩。",
+   "男孩是 boy。girl 是女孩，blue 是藍色。",
+   "所以選 ① boy"
+  ]
+ },
+ {
+  "id": "g5-114-16",
+  "grade": 5,
+  "year": "114",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a happy rabbit",
+   "a tired rabbit",
+   "a tired tiger"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-16.png",
+  "iw": 520,
+  "ih": 227,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一隻兔子，看起來很累。",
+   "tired 是累的，rabbit 是兔子。happy 是開心的，tiger 是老虎。",
+   "所以選 ② a tired rabbit"
+  ]
+ },
+ {
+  "id": "g5-114-17",
+  "grade": 5,
+  "year": "114",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "banana pizza",
+   "banana juice",
+   "apple juice"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-17.png",
+  "iw": 482,
+  "ih": 215,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一盒飲料，上面畫著香蕉。",
+   "banana 是香蕉，juice 是果汁。pizza 是披薩，apple 是蘋果。",
+   "所以選 ② banana juice"
+  ]
+ },
+ {
+  "id": "g5-114-18",
+  "grade": 5,
+  "year": "114",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 開心的看著蘋果派",
+   "圖 (2) 不開心的看著蘋果派",
+   "圖 (3) 開心的看著蘋果"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-18.png",
+  "iw": 761,
+  "ih": 377,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What do you like?（你喜歡什麼？）",
+   "B 答：Apple pie.（蘋果派。）",
+   "圖 (1) 女生開心的看著蘋果派。圖 (2) 她不開心，圖 (3) 是蘋果，不是派。",
+   "所以選 ① 圖 (1) 開心的看著蘋果派"
+  ]
+ },
+ {
+  "id": "g5-114-19",
+  "grade": 5,
+  "year": "114",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 女孩看得懂書",
+   "圖 (2) 男孩看不懂書",
+   "圖 (3) 女孩看不懂書"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-19.png",
+  "iw": 761,
+  "ih": 356,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Can your sister read?（你的姐姐／妹妹會讀嗎？）",
+   "B 答：No, she can't.（不，她不會。）",
+   "sister 是女生，而且「不會讀」。圖 (3) 是女孩看不懂書。",
+   "所以選 ③ 圖 (3) 女孩看不懂書"
+  ]
+ },
+ {
+  "id": "g5-114-20",
+  "grade": 5,
+  "year": "114",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 老爺爺在寫字",
+   "圖 (2) 小男孩在畫魚",
+   "圖 (3) 小男孩在寫字"
+  ],
+  "answer": 3,
+  "img": "img/g5-114-20.png",
+  "iw": 747,
+  "ih": 321,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "My brother is five.（我的弟弟五歲。）He can write.（他會寫字。）",
+   "五歲是小男孩，而且在「寫字」。圖 (1) 是老爺爺，圖 (2) 在畫魚。",
+   "所以選 ③ 圖 (3) 小男孩在寫字"
+  ]
+ },
+ {
+  "id": "g5-114-21",
+  "grade": 5,
+  "year": "114",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 下雪，想吃熱飯",
+   "圖 (2) 大太陽，想吃飯",
+   "圖 (3) 下雪，想吃披薩"
+  ],
+  "answer": 1,
+  "img": "img/g5-114-21.png",
+  "iw": 794,
+  "ih": 344,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "It's cold.（天氣很冷。）I want hot rice.（我想要熱熱的飯。）",
+   "要找「下雪」又「想吃飯」的圖。圖 (2) 是大太陽，圖 (3) 想的是披薩。",
+   "所以選 ① 圖 (1) 下雪，想吃熱飯"
+  ]
+ },
+ {
+  "id": "g5-114-22",
+  "grade": 5,
+  "year": "114",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2) 爸爸高、媽媽瘦",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g5-114-22.png",
+  "iw": 787,
+  "ih": 335,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "My father is tall.（我的爸爸很高。）My mother is thin.（我的媽媽很瘦。）",
+   "圖 (2) 的爸爸最高，媽媽瘦瘦的。",
+   "所以選 ② 圖 (2) 爸爸高、媽媽瘦"
+  ]
+ },
+ {
+  "id": "g5-114-23",
+  "grade": 5,
+  "year": "114",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Boy: I want milk.",
+   "Father: I want juice.",
+   "Mother: I want water."
+  ],
+  "answer": 3,
+  "img": "img/g5-114-23.png",
+  "iw": 657,
+  "ih": 265,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "看每個人頭上想的東西：女生想的是果汁，爸爸想的是熱茶，媽媽想的是一杯水。",
+   "③ Mother: I want water.（媽媽：我想要水。）對。",
+   "所以選 ③ Mother: I want water."
+  ]
+ },
+ {
+  "id": "g5-114-24",
+  "grade": 5,
+  "year": "114",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I see a lion. It is not big.",
+   "The lion is big. It is happy.",
+   "The rabbit is big. It can't dance."
+  ],
+  "answer": 1,
+  "img": "img/g5-114-24.png",
+  "iw": 721,
+  "ih": 247,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡有一隻大兔子在跳舞，旁邊有一隻小小的獅子。",
+   "① I see a lion. It is not big.（我看到一隻獅子，牠不大。）對。",
+   "② 說獅子很大，不對。③ 說兔子不會跳舞，可是牠正在跳舞。",
+   "所以選 ① I see a lion. It is not big."
+  ]
+ },
+ {
+  "id": "g5-114-25",
+  "grade": 5,
+  "year": "114",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's sunny. The girl is sad.",
+   "It's eight o'clock. It's rainy.",
+   "It's not rainy. The girl is happy."
+  ],
+  "answer": 3,
+  "img": "img/g5-114-25.png",
+  "iw": 798,
+  "ih": 285,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "窗外有太陽，時鐘是四點，女生在講電話，很開心。",
+   "① 說女生很難過（sad），不對。② 說八點、下雨，都不對。",
+   "③ It's not rainy.（沒有下雨。）The girl is happy.（女生很開心。）對。",
+   "所以選 ③ It's not rainy. The girl is happy."
+  ]
+ },
+ {
+  "id": "g5-113-1",
+  "grade": 5,
+  "year": "113",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "s",
+   "th",
+   "sh"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-1.png",
+  "iw": 534,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 sh，合起來是 sheer。",
+   "所以選 ③ sh"
+  ]
+ },
+ {
+  "id": "g5-113-2",
+  "grade": 5,
+  "year": "113",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "br",
+   "bl",
+   "l"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-2.png",
+  "iw": 512,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 bl，合起來是 block（積木）。",
+   "所以選 ② bl"
+  ]
+ },
+ {
+  "id": "g5-113-3",
+  "grade": 5,
+  "year": "113",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "sh",
+   "sk",
+   "st"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-3.png",
+  "iw": 528,
+  "ih": 42,
+  "xf": [
+   "L-5-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。前面的音是 sk。",
+   "所以選 ② sk"
+  ]
+ },
+ {
+  "id": "g5-113-4",
+  "grade": 5,
+  "year": "113",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 8",
+   "圖 (2) 6",
+   "圖 (3) 10"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-4.png",
+  "iw": 716,
+  "ih": 247,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 eight（8）。",
+   "圖 (2) 是 six（6），圖 (3) 是 ten（10）。",
+   "所以選 ① 圖 (1) 8"
+  ]
+ },
+ {
+  "id": "g5-113-5",
+  "grade": 5,
+  "year": "113",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 牛奶",
+   "圖 (2) 果汁",
+   "圖 (3) 水"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-5.png",
+  "iw": 641,
+  "ih": 274,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 water（水）。",
+   "圖 (1) 是 milk（牛奶），圖 (2) 是 juice（果汁）。",
+   "所以選 ③ 圖 (3) 水"
+  ]
+ },
+ {
+  "id": "g5-113-6",
+  "grade": 5,
+  "year": "113",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-6.png",
+  "iw": 773,
+  "ih": 273,
+  "xf": [
+   "L-5-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的字詞配的是圖 (1)：男孩開心的騎腳踏車，有微風和落葉。",
+   "圖 (2) 是下雪很冷，圖 (3) 是肚子餓想吃漢堡。",
+   "所以選 ① 圖 (1)"
+  ]
+ },
+ {
+  "id": "g5-113-7",
+  "grade": 5,
+  "year": "113",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-7.png",
+  "iw": 789,
+  "ih": 286,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：男孩跑過去，東西掉了。",
+   "所以選 ① 圖 (1)"
+  ]
+ },
+ {
+  "id": "g5-113-8",
+  "grade": 5,
+  "year": "113",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 男孩唱得不開心",
+   "圖 (2) 女孩開心唱歌",
+   "圖 (3) 男孩開心唱歌"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-8.png",
+  "iw": 738,
+  "ih": 270,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：男孩開心的唱歌。",
+   "圖 (1) 的男孩唱得不開心，圖 (2) 是女孩。",
+   "所以選 ③ 圖 (3) 男孩開心唱歌"
+  ]
+ },
+ {
+  "id": "g5-113-9",
+  "grade": 5,
+  "year": "113",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 桌上有兩個披薩",
+   "圖 (2) 桌上有一個披薩",
+   "圖 (3) 想著兩個披薩"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-9.png",
+  "iw": 788,
+  "ih": 286,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：男孩面前有兩個披薩。",
+   "圖 (2) 只有一個，圖 (3) 是用想的。",
+   "所以選 ① 圖 (1) 桌上有兩個披薩"
+  ]
+ },
+ {
+  "id": "g5-113-10",
+  "grade": 5,
+  "year": "113",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 4 歲蛋糕",
+   "圖 (2) 時鐘 4:00",
+   "圖 (3) 時鐘 5:00"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-10.png",
+  "iw": 719,
+  "ih": 256,
+  "xf": [
+   "L-5-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子是在說時間：four o'clock（四點）。",
+   "圖 (1) 是四歲，圖 (3) 的時鐘是五點。",
+   "所以選 ② 圖 (2) 時鐘 4:00"
+  ]
+ },
+ {
+  "id": "g5-113-11",
+  "grade": 5,
+  "year": "113",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "juice",
+   "cake",
+   "rice"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-11.png",
+  "iw": 413,
+  "ih": 194,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一碗飯。",
+   "飯是 rice。juice 是果汁，cake 是蛋糕。",
+   "所以選 ③ rice"
+  ]
+ },
+ {
+  "id": "g5-113-12",
+  "grade": 5,
+  "year": "113",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "pencil",
+   "short",
+   "you"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-12.png",
+  "iw": 405,
+  "ih": 189,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是比較短的那一條。",
+   "短是 short。pencil 是鉛筆，you 是你。",
+   "所以選 ② short"
+  ]
+ },
+ {
+  "id": "g5-113-13",
+  "grade": 5,
+  "year": "113",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "one",
+   "three",
+   "seven"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-13.png",
+  "iw": 415,
+  "ih": 201,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是數字 3。",
+   "3 是 three。one 是 1，seven 是 7。",
+   "所以選 ② three"
+  ]
+ },
+ {
+  "id": "g5-113-14",
+  "grade": 5,
+  "year": "113",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "write",
+   "milk",
+   "like"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-14.png",
+  "iw": 385,
+  "ih": 226,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "男孩抱著小動物，旁邊有愛心，他很喜歡牠。",
+   "喜歡是 like。write 是寫，milk 是牛奶。",
+   "所以選 ③ like"
+  ]
+ },
+ {
+  "id": "g5-113-15",
+  "grade": 5,
+  "year": "113",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "tall",
+   "tea",
+   "five"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-15.png",
+  "iw": 367,
+  "ih": 224,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是比較高的那一棟。",
+   "高是 tall。tea 是茶，five 是 5。",
+   "所以選 ① tall"
+  ]
+ },
+ {
+  "id": "g5-113-16",
+  "grade": 5,
+  "year": "113",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "ten pies",
+   "six pies",
+   "six eggs"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-16.png",
+  "iw": 458,
+  "ih": 219,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "數一數，有 6 個派。",
+   "six 是 6，pie 是派。ten 是 10，egg 是蛋。",
+   "所以選 ② six pies"
+  ]
+ },
+ {
+  "id": "g5-113-17",
+  "grade": 5,
+  "year": "113",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a big dog",
+   "a thin pig",
+   "a thin dog"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-17.png",
+  "iw": 495,
+  "ih": 196,
+  "xf": [
+   "R-5-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是瘦瘦的那隻狗。",
+   "thin 是瘦的，dog 是狗。big 是大的，pig 是豬。",
+   "所以選 ③ a thin dog"
+  ]
+ },
+ {
+  "id": "g5-113-18",
+  "grade": 5,
+  "year": "113",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 男寶寶",
+   "圖 (2) 女寶寶",
+   "圖 (3) 畢業的大哥哥"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-18.png",
+  "iw": 793,
+  "ih": 348,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "My brother is one year old.（我的弟弟一歲。）",
+   "brother 是男生，一歲是小寶寶。圖 (2) 是女寶寶，圖 (3) 是大哥哥。",
+   "所以選 ① 圖 (1) 男寶寶"
+  ]
+ },
+ {
+  "id": "g5-113-19",
+  "grade": 5,
+  "year": "113",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 想著五根香蕉",
+   "圖 (2) 想著三根香蕉",
+   "圖 (3) 吃完香蕉"
+  ],
+  "answer": 1,
+  "img": "img/g5-113-19.png",
+  "iw": 775,
+  "ih": 328,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "I want five bananas.（我想要五根香蕉。）",
+   "want 是「想要」，要找想著香蕉、而且是五根的圖。",
+   "圖 (1) 想著五根。圖 (2) 只有三根，圖 (3) 已經吃完了。",
+   "所以選 ① 圖 (1) 想著五根香蕉"
+  ]
+ },
+ {
+  "id": "g5-113-20",
+  "grade": 5,
+  "year": "113",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2) 鳥跳舞、狗游泳",
+   "圖 (3)"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-20.png",
+  "iw": 795,
+  "ih": 339,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "The bird can dance.（鳥會跳舞。）The dog can swim.（狗會游泳。）",
+   "圖 (2) 的鳥在跳舞，狗在水裡游得很好。",
+   "所以選 ② 圖 (2) 鳥跳舞、狗游泳"
+  ]
+ },
+ {
+  "id": "g5-113-21",
+  "grade": 5,
+  "year": "113",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 吃火鍋流汗",
+   "圖 (2) 坐在公園很舒服",
+   "圖 (3) 吹電風扇很熱"
+  ],
+  "answer": 2,
+  "img": "img/g5-113-21.png",
+  "iw": 794,
+  "ih": 373,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：How's the weather?（天氣怎麼樣？）",
+   "B 答：It's warm. It's not hot.（很暖和，不熱。）",
+   "圖 (1) 和圖 (3) 的人都很熱。圖 (2) 有太陽和雲，男孩坐著很舒服。",
+   "所以選 ② 圖 (2) 坐在公園很舒服"
+  ]
+ },
+ {
+  "id": "g5-113-22",
+  "grade": 5,
+  "year": "113",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 難過的黑魚",
+   "圖 (2) 開心的白魚",
+   "圖 (3) 開心的黑魚"
+  ],
+  "answer": 3,
+  "img": "img/g5-113-22.png",
+  "iw": 764,
+  "ih": 325,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "I see a black fish.（我看到一條黑色的魚。）It's happy.（牠很開心。）",
+   "要「黑色」又「開心」。圖 (1) 是難過的，圖 (2) 是白色的。",
+   "所以選 ③ 圖 (3) 開心的黑魚"
+  ]
+ },
+ {
+  "id": "g5-113-23",
+  "grade": 5,
+  "year": "113",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's cold.",
+   "It's sunny.",
+   "The girl is tall."
+  ],
+  "answer": 1,
+  "img": "img/g5-113-23.png",
+  "iw": 557,
+  "ih": 271,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡在下雪，兩個人都在發抖。",
+   "① It's cold.（天氣很冷。）對。",
+   "② sunny 是晴天。③ 說女孩很高，可是她比較矮。",
+   "所以選 ① It's cold."
+  ]
+ },
+ {
+  "id": "g5-113-24",
+  "grade": 5,
+  "year": "113",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I'm happy. I want pizza.",
+   "It's hot. I want cold water.",
+   "It's twelve o'clock. I'm tired."
+  ],
+  "answer": 3,
+  "img": "img/g5-113-24.png",
+  "iw": 762,
+  "ih": 278,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "時鐘是十二點，男孩流著汗，看起來很累，心裡想著披薩。",
+   "① 他不開心（happy）。② 他想的是披薩，不是冰水。",
+   "③ It's twelve o'clock.（十二點了。）I'm tired.（我很累。）對。",
+   "所以選 ③ It's twelve o'clock. I'm tired."
+  ]
+ },
+ {
+  "id": "g5-113-25",
+  "grade": 5,
+  "year": "113",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I see a boy. He's thin. He can't sing.",
+   "The girl is nine years old. She can't sing. She's sad.",
+   "The girl is my sister. She can read. She's nine years old."
+  ],
+  "answer": 3,
+  "img": "img/g5-113-25.png",
+  "iw": 790,
+  "ih": 334,
+  "xf": [
+   "R-5-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡女孩在看書，蛋糕上的蠟燭是 9，男孩在唱歌。",
+   "① 說男孩不會唱歌，可是他正在唱。② 說女孩很難過，可是她在笑。",
+   "③ 女孩是我的妹妹，她會讀書（can read），她九歲。對。",
+   "所以選 ③ The girl is my sister. She can read. She's nine years old."
+  ]
+ },
+ {
+  "id": "g6-114-1",
+  "grade": 6,
+  "year": "114",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "aze",
+   "oze",
+   "uze"
+  ],
+  "answer": 2,
+  "img": "img/g6-114-1.png",
+  "iw": 550,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。r 後面接的音是 oze。",
+   "所以選 ② oze"
+  ]
+ },
+ {
+  "id": "g6-114-2",
+  "grade": 6,
+  "year": "114",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "ape",
+   "ipe",
+   "eep"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-2.png",
+  "iw": 548,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。m 後面接的音是 eep。",
+   "所以選 ③ eep"
+  ]
+ },
+ {
+  "id": "g6-114-3",
+  "grade": 6,
+  "year": "114",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "ay",
+   "ea",
+   "al"
+  ],
+  "answer": 1,
+  "img": "img/g6-114-3.png",
+  "iw": 527,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。f 後面接的音是 ay。",
+   "所以選 ① ay"
+  ]
+ },
+ {
+  "id": "g6-114-4",
+  "grade": 6,
+  "year": "114",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 音樂",
+   "圖 (2) 數學",
+   "圖 (3) 美術"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-4.png",
+  "iw": 762,
+  "ih": 260,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 art（美術）。",
+   "圖 (1) 是 music（音樂），圖 (2) 是 math（數學）。",
+   "所以選 ③ 圖 (3) 美術"
+  ]
+ },
+ {
+  "id": "g6-114-5",
+  "grade": 6,
+  "year": "114",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 箭頭指著耳朵",
+   "圖 (2) 箭頭指著眼睛",
+   "圖 (3) 箭頭指著鼻子"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-5.png",
+  "iw": 766,
+  "ih": 279,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 nose（鼻子）。",
+   "圖 (2) 的箭頭指著 eye（眼睛）。",
+   "所以選 ③ 圖 (3) 箭頭指著鼻子"
+  ]
+ },
+ {
+  "id": "g6-114-6",
+  "grade": 6,
+  "year": "114",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 客廳",
+   "圖 (2) 浴室",
+   "圖 (3) 臥室"
+  ],
+  "answer": 2,
+  "img": "img/g6-114-6.png",
+  "iw": 790,
+  "ih": 268,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 bathroom（浴室）。",
+   "圖 (1) 是 living room（客廳），圖 (3) 是 bedroom（臥室）。",
+   "所以選 ② 圖 (2) 浴室"
+  ]
+ },
+ {
+  "id": "g6-114-7",
+  "grade": 6,
+  "year": "114",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 1,
+  "img": "img/g6-114-7.png",
+  "iw": 789,
+  "ih": 286,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：女孩走在路上，前面有人在工作，提醒她小心。",
+   "所以選 ① 圖 (1)"
+  ]
+ },
+ {
+  "id": "g6-114-8",
+  "grade": 6,
+  "year": "114",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 國語 O、數學 X",
+   "圖 (2) 國語 X、數學 X",
+   "圖 (3) 國語 X、數學 O"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-8.png",
+  "iw": 790,
+  "ih": 269,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：國語是 X、數學是 O，也就是不喜歡國語（Chinese），喜歡數學（math）。",
+   "所以選 ③ 圖 (3) 國語 X、數學 O"
+  ]
+ },
+ {
+  "id": "g6-114-9",
+  "grade": 6,
+  "year": "114",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 女孩在公園左轉",
+   "圖 (2) 男孩溜滑梯",
+   "圖 (3) 男孩在公園左轉"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-9.png",
+  "iw": 790,
+  "ih": 282,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：男孩（he）在公園旁邊向左轉。",
+   "圖 (1) 是女孩，圖 (2) 是在溜滑梯。",
+   "所以選 ③ 圖 (3) 男孩在公園左轉"
+  ]
+ },
+ {
+  "id": "g6-114-10",
+  "grade": 6,
+  "year": "114",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 在臥室看電視",
+   "圖 (2) 在臥室用望遠鏡看窗外",
+   "圖 (3) 在客廳看電視"
+  ],
+  "answer": 2,
+  "img": "img/g6-114-10.png",
+  "iw": 790,
+  "ih": 285,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (2)：男孩在臥室，看著窗外的鳥。",
+   "圖 (1) 和圖 (3) 都是在看電視。",
+   "所以選 ② 圖 (2) 在臥室用望遠鏡看窗外"
+  ]
+ },
+ {
+  "id": "g6-114-11",
+  "grade": 6,
+  "year": "114",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "fly",
+   "walk",
+   "warm"
+  ],
+  "answer": 2,
+  "img": "img/g6-114-11.png",
+  "iw": 428,
+  "ih": 229,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "兩個人手牽手在走路。",
+   "走路是 walk。fly 是飛，warm 是暖和。",
+   "所以選 ② walk"
+  ]
+ },
+ {
+  "id": "g6-114-12",
+  "grade": 6,
+  "year": "114",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "eat",
+   "ride",
+   "watch"
+  ],
+  "answer": 1,
+  "img": "img/g6-114-12.png",
+  "iw": 428,
+  "ih": 201,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "老鼠正在吃起司。",
+   "吃是 eat。ride 是騎，watch 是看。",
+   "所以選 ① eat"
+  ]
+ },
+ {
+  "id": "g6-114-13",
+  "grade": 6,
+  "year": "114",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "student",
+   "nurse",
+   "cook"
+  ],
+  "answer": 1,
+  "img": "img/g6-114-13.png",
+  "iw": 441,
+  "ih": 236,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "男孩坐在書桌前寫字，他是學生。",
+   "學生是 student。nurse 是護理師，cook 是廚師。",
+   "所以選 ① student"
+  ]
+ },
+ {
+  "id": "g6-114-14",
+  "grade": 6,
+  "year": "114",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Chinese",
+   "music",
+   "math"
+  ],
+  "answer": 2,
+  "img": "img/g6-114-14.png",
+  "iw": 454,
+  "ih": 230,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "兩個人在吹笛子、打鼓，旁邊有音符。",
+   "音樂是 music。Chinese 是國語，math 是數學。",
+   "所以選 ② music"
+  ]
+ },
+ {
+  "id": "g6-114-15",
+  "grade": 6,
+  "year": "114",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "eye",
+   "head",
+   "mouth"
+  ],
+  "answer": 1,
+  "img": "img/g6-114-15.png",
+  "iw": 450,
+  "ih": 148,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是眼睛。",
+   "眼睛是 eye。head 是頭，mouth 是嘴巴。",
+   "所以選 ① eye"
+  ]
+ },
+ {
+  "id": "g6-114-16",
+  "grade": 6,
+  "year": "114",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "shoe",
+   "dress",
+   "jacket"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-16.png",
+  "iw": 427,
+  "ih": 203,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一件外套。",
+   "外套是 jacket。shoe 是鞋子，dress 是洋裝。",
+   "所以選 ③ jacket"
+  ]
+ },
+ {
+  "id": "g6-114-17",
+  "grade": 6,
+  "year": "114",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a small bus",
+   "a long box",
+   "a long bus"
+  ],
+  "answer": 3,
+  "img": "img/g6-114-17.png",
+  "iw": 520,
+  "ih": 198,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是比較長的那輛公車。",
+   "long 是長的，bus 是公車。small 是小的，box 是盒子。",
+   "所以選 ③ a long bus"
+  ]
+ },
+ {
+  "id": "g6-114-18",
+  "grade": 6,
+  "year": "114",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "No, she is a nurse.",
+   "No, she is at school.",
+   "Yes, she is a teacher."
+  ],
+  "answer": 1,
+  "img": "img/g6-114-18.png",
+  "iw": 344,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Is she a cook?（她是廚師嗎？）",
+   "問的是「職業」，回答 No 以後要說她是做什麼的。",
+   "① No, she is a nurse.（不，她是護理師。）對。",
+   "② 回答的是地點。③ 說 Yes，後面卻說是老師，前後不合。",
+   "所以選 ① No, she is a nurse."
+  ]
+ },
+ {
+  "id": "g6-114-19",
+  "grade": 6,
+  "year": "114",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "He's eleven years old.",
+   "He's in the kitchen.",
+   "He's my brother."
+  ],
+  "answer": 2,
+  "img": "img/g6-114-19.png",
+  "iw": 358,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Where is Ben?（Ben 在哪裡？）",
+   "Where 是問「地方」。",
+   "② He's in the kitchen.（他在廚房。）是地方。",
+   "① 是年紀，③ 是他是誰。",
+   "所以選 ② He's in the kitchen."
+  ]
+ },
+ {
+  "id": "g6-114-20",
+  "grade": 6,
+  "year": "114",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "To the supermarket.",
+   "In the bathroom.",
+   "Riding a bike."
+  ],
+  "answer": 1,
+  "img": "img/g6-114-20.png",
+  "iw": 352,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Where are you going?（你要去哪裡？）",
+   "going 是「要去」，回答要說要去的地方，用 To ...。",
+   "① To the supermarket.（去超級市場。）對。",
+   "② In the bathroom. 是「在」浴室裡，不是要去哪裡。③ 是騎腳踏車，不是地方。",
+   "所以選 ① To the supermarket."
+  ]
+ },
+ {
+  "id": "g6-114-21",
+  "grade": 6,
+  "year": "114",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "The girl is at home.",
+   "The dog is not happy.",
+   "The girl is not playing."
+  ],
+  "answer": 3,
+  "img": "img/g6-114-21.png",
+  "iw": 674,
+  "ih": 258,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡女孩坐在公園的椅子上看書，小狗開心的玩球。",
+   "① 她在公園，不是在家。② 小狗很開心。",
+   "③ The girl is not playing.（女孩沒有在玩。）她在看書，對。",
+   "所以選 ③ The girl is not playing."
+  ]
+ },
+ {
+  "id": "g6-114-22",
+  "grade": 6,
+  "year": "114",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I have three long ears. I don't like pies.",
+   "I have two small eyes. I like bananas.",
+   "I have a big mouth. I don't like apples."
+  ],
+  "answer": 1,
+  "img": "img/g6-114-22.png",
+  "iw": 788,
+  "ih": 347,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "先看怪獸的樣子：牠有三隻長耳朵、兩個小眼睛、一張大嘴巴。",
+   "再看表格：蘋果是 ○（喜歡），香蕉和派是 ×（不喜歡）。",
+   "① I have three long ears.（我有三隻長耳朵。）I don't like pies.（我不喜歡派。）兩句都對。",
+   "② 說喜歡香蕉，不對。③ 說不喜歡蘋果，不對。",
+   "所以選 ① I have three long ears. I don't like pies."
+  ]
+ },
+ {
+  "id": "g6-114-23",
+  "grade": 6,
+  "year": "114",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I have a dress. It's in the box.",
+   "I have a skirt. It's on the bed.",
+   "I have a T-shirt. It's under the bed."
+  ],
+  "answer": 2,
+  "img": "img/g6-114-23.png",
+  "iw": 773,
+  "ih": 276,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "看圖：床上有一件 T 恤和一件裙子，還有一個盒子。",
+   "① 洋裝（dress）掛在椅子上，不在盒子裡。",
+   "② I have a skirt. It's on the bed.（我有一件裙子，它在床上。）對。",
+   "③ T 恤在床「上」，不是床「下」（under）。",
+   "所以選 ② I have a skirt. It's on the bed."
+  ]
+ },
+ {
+  "id": "g6-114-24",
+  "grade": 6,
+  "year": "114",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "He is a teacher. He is in the kitchen.",
+   "He is a cook. He is dancing.",
+   "He is Tom. He is a cook."
+  ],
+  "answer": 2,
+  "img": "img/g6-114-24.png",
+  "iw": 747,
+  "ih": 280,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡的人戴著廚師帽，名牌寫 Ken，他在廚房裡開心的跳舞。",
+   "① 他不是老師。③ 他的名字是 Ken，不是 Tom。",
+   "② He is a cook. He is dancing.（他是廚師，他在跳舞。）對。",
+   "所以選 ② He is a cook. He is dancing."
+  ]
+ },
+ {
+  "id": "g6-114-25",
+  "grade": 6,
+  "year": "114",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "She is Ivy. She is a nurse.",
+   "The dog is in Taiwan. It is singing.",
+   "The dog is black. It is under the bed."
+  ],
+  "answer": 1,
+  "img": "img/g6-114-25.png",
+  "iw": 795,
+  "ih": 283,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡的人戴著護士帽，名牌寫 Ivy。",
+   "① She is Ivy. She is a nurse.（她是 Ivy，她是護理師。）對。",
+   "② 狗沒有在唱歌。③ 狗在床的旁邊，不是在床下。",
+   "所以選 ① She is Ivy. She is a nurse."
+  ]
+ },
+ {
+  "id": "g6-113-1",
+  "grade": 6,
+  "year": "113",
+  "no": 1,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "us",
+   "ese",
+   "use"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-1.png",
+  "iw": 548,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。f 後面接的音是 use，合起來是 fuse。",
+   "所以選 ③ use"
+  ]
+ },
+ {
+  "id": "g6-113-2",
+  "grade": 6,
+  "year": "113",
+  "no": 2,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "em",
+   "eam",
+   "ime"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-2.png",
+  "iw": 554,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。sk 後面接的音是 eam。",
+   "所以選 ② eam"
+  ]
+ },
+ {
+  "id": "g6-113-3",
+  "grade": 6,
+  "year": "113",
+  "no": 3,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a",
+   "ea",
+   "ay"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-3.png",
+  "iw": 537,
+  "ih": 42,
+  "xf": [
+   "L-6-1"
+  ],
+  "listen": true,
+  "sec": "聽辨語音",
+  "ex": [
+   "這題要聽音檔。sh 後面接的音是 ay。",
+   "所以選 ③ ay"
+  ]
+ },
+ {
+  "id": "g6-113-4",
+  "grade": 6,
+  "year": "113",
+  "no": 4,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 公園",
+   "圖 (2) 學校",
+   "圖 (3) 動物園"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-4.png",
+  "iw": 790,
+  "ih": 287,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 school（學校）。",
+   "圖 (1) 是 park（公園），圖 (3) 是 zoo（動物園）。",
+   "所以選 ② 圖 (2) 學校"
+  ]
+ },
+ {
+  "id": "g6-113-5",
+  "grade": 6,
+  "year": "113",
+  "no": 5,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 袋子",
+   "圖 (2) 鳥",
+   "圖 (3) 床"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-5.png",
+  "iw": 732,
+  "ih": 264,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 bed（床）。",
+   "圖 (1) 是 bag（袋子），圖 (2) 是 bird（鳥），開頭的音都很像，要聽清楚。",
+   "所以選 ③ 圖 (3) 床"
+  ]
+ },
+ {
+  "id": "g6-113-6",
+  "grade": 6,
+  "year": "113",
+  "no": 6,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 箭頭指著小蘋果",
+   "圖 (2) 箭頭指著胖胖的豬",
+   "圖 (3) 箭頭指著粗粗的筆"
+  ],
+  "answer": 1,
+  "img": "img/g6-113-6.png",
+  "iw": 746,
+  "ih": 258,
+  "xf": [
+   "L-6-2"
+  ],
+  "listen": true,
+  "sec": "聽辨單字",
+  "ex": [
+   "這題要聽音檔。聽到的單字是 small（小的），圖 (1) 的箭頭指著小的蘋果。",
+   "所以選 ① 圖 (1) 箭頭指著小蘋果"
+  ]
+ },
+ {
+  "id": "g6-113-7",
+  "grade": 6,
+  "year": "113",
+  "no": 7,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1)",
+   "圖 (2)",
+   "圖 (3)"
+  ],
+  "answer": 1,
+  "img": "img/g6-113-7.png",
+  "iw": 753,
+  "ih": 286,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：阿姨正在吃熱熱的東西。",
+   "所以選 ① 圖 (1)"
+  ]
+ },
+ {
+  "id": "g6-113-8",
+  "grade": 6,
+  "year": "113",
+  "no": 8,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 爺爺在刷牙",
+   "圖 (2) 奶奶在買東西",
+   "圖 (3) 奶奶在刷牙"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-8.png",
+  "iw": 790,
+  "ih": 288,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：奶奶（she）正在刷牙。",
+   "圖 (1) 刷牙的是爺爺，圖 (2) 奶奶在買東西。",
+   "所以選 ③ 圖 (3) 奶奶在刷牙"
+  ]
+ },
+ {
+  "id": "g6-113-9",
+  "grade": 6,
+  "year": "113",
+  "no": 9,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 盒子在外套上",
+   "圖 (2) 袋子在 T 恤上",
+   "圖 (3) 袋子在外套上"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-9.png",
+  "iw": 745,
+  "ih": 253,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (3)：袋子（bag）在外套（jacket）上面。",
+   "圖 (1) 是盒子（box），圖 (2) 下面是 T 恤。",
+   "所以選 ③ 圖 (3) 袋子在外套上"
+  ]
+ },
+ {
+  "id": "g6-113-10",
+  "grade": 6,
+  "year": "113",
+  "no": 10,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "圖 (1) 在公園椅子上睡覺",
+   "圖 (2) 在床上睡覺",
+   "圖 (3) 在公園溜滑梯"
+  ],
+  "answer": 1,
+  "img": "img/g6-113-10.png",
+  "iw": 790,
+  "ih": 277,
+  "xf": [
+   "L-6-3"
+  ],
+  "listen": true,
+  "sec": "聽辨常用語或句子",
+  "ex": [
+   "這題要聽音檔，聽到的句子配的是圖 (1)：男孩在公園裡睡覺。",
+   "圖 (2) 是在臥室睡覺，圖 (3) 是在公園玩。",
+   "所以選 ① 圖 (1) 在公園椅子上睡覺"
+  ]
+ },
+ {
+  "id": "g6-113-11",
+  "grade": 6,
+  "year": "113",
+  "no": 11,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "name",
+   "nurse",
+   "doctor"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-11.png",
+  "iw": 389,
+  "ih": 226,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一位戴護士帽的護理師。",
+   "護理師是 nurse。name 是名字，doctor 是醫生。",
+   "所以選 ② nurse"
+  ]
+ },
+ {
+  "id": "g6-113-12",
+  "grade": 6,
+  "year": "113",
+  "no": 12,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "play",
+   "sleep",
+   "dance"
+  ],
+  "answer": 1,
+  "img": "img/g6-113-12.png",
+  "iw": 434,
+  "ih": 209,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "男孩在充氣水池裡玩。",
+   "玩是 play。sleep 是睡覺，dance 是跳舞。",
+   "所以選 ① play"
+  ]
+ },
+ {
+  "id": "g6-113-13",
+  "grade": 6,
+  "year": "113",
+  "no": 13,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "ten",
+   "music",
+   "English"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-13.png",
+  "iw": 439,
+  "ih": 212,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖裡有小提琴、喇叭、鼓和音符，都和音樂有關。",
+   "音樂是 music。ten 是 10，English 是英語。",
+   "所以選 ② music"
+  ]
+ },
+ {
+  "id": "g6-113-14",
+  "grade": 6,
+  "year": "113",
+  "no": 14,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "school",
+   "bedroom",
+   "living room"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-14.png",
+  "iw": 523,
+  "ih": 232,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖裡有電視、沙發、茶几，是客廳。",
+   "客廳是 living room。school 是學校，bedroom 是臥室。",
+   "所以選 ③ living room"
+  ]
+ },
+ {
+  "id": "g6-113-15",
+  "grade": 6,
+  "year": "113",
+  "no": 15,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "draw",
+   "dress",
+   "jacket"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-15.png",
+  "iw": 381,
+  "ih": 201,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一件洋裝。",
+   "洋裝是 dress。draw 是畫畫，jacket 是外套。",
+   "所以選 ② dress"
+  ]
+ },
+ {
+  "id": "g6-113-16",
+  "grade": 6,
+  "year": "113",
+  "no": 16,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "shoe",
+   "short",
+   "skirt"
+  ],
+  "answer": 3,
+  "img": "img/g6-113-16.png",
+  "iw": 367,
+  "ih": 208,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "圖是一件裙子。",
+   "裙子是 skirt。shoe 是鞋子，short 是短的。",
+   "所以選 ③ skirt"
+  ]
+ },
+ {
+  "id": "g6-113-17",
+  "grade": 6,
+  "year": "113",
+  "no": 17,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "a red nose",
+   "a long ear",
+   "a big egg"
+  ],
+  "answer": 2,
+  "img": "img/g6-113-17.png",
+  "iw": 483,
+  "ih": 209,
+  "xf": [
+   "R-6-1"
+  ],
+  "listen": false,
+  "sec": "辨識單字",
+  "ex": [
+   "箭頭指的是兔子長長的耳朵。",
+   "long 是長的，ear 是耳朵。nose 是鼻子，egg 是蛋。",
+   "所以選 ② a long ear"
+  ]
+ },
+ {
+  "id": "g6-113-18",
+  "grade": 6,
+  "year": "113",
+  "no": 18,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Writing a book.",
+   "He's a cook.",
+   "He's short."
+  ],
+  "answer": 1,
+  "img": "img/g6-113-18.png",
+  "iw": 297,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：What is he doing?（他正在做什麼？）",
+   "問「正在做什麼」，要回答動作，用 -ing。",
+   "① Writing a book.（在寫書。）對。",
+   "② 是職業，③ 是身高，都不是動作。",
+   "所以選 ① Writing a book."
+  ]
+ },
+ {
+  "id": "g6-113-19",
+  "grade": 6,
+  "year": "113",
+  "no": 19,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Yes. I like water.",
+   "Yes. I can eat.",
+   "No. I like milk."
+  ],
+  "answer": 3,
+  "img": "img/g6-113-19.png",
+  "iw": 299,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Do you like juice?（你喜歡果汁嗎？）",
+   "① 回答 Yes，後面卻說喜歡水，前後不合。② can eat 是「會吃」，沒有回答喜不喜歡。",
+   "③ No. I like milk.（不，我喜歡牛奶。）前後合理。",
+   "所以選 ③ No. I like milk."
+  ]
+ },
+ {
+  "id": "g6-113-20",
+  "grade": 6,
+  "year": "113",
+  "no": 20,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "To the zoo.",
+   "In the bedroom.",
+   "I'm having lunch."
+  ],
+  "answer": 1,
+  "img": "img/g6-113-20.png",
+  "iw": 352,
+  "ih": 253,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "A 問：Where are you going?（你要去哪裡？）",
+   "回答要說要去的地方，用 To ...。",
+   "① To the zoo.（去動物園。）對。",
+   "② 是「在」臥室裡，③ 是正在吃午餐，都不是要去哪裡。",
+   "所以選 ① To the zoo."
+  ]
+ },
+ {
+  "id": "g6-113-21",
+  "grade": 6,
+  "year": "113",
+  "no": 21,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I have two big mouths.",
+   "I have three big heads.",
+   "I have a small eye."
+  ],
+  "answer": 1,
+  "img": "img/g6-113-21.png",
+  "iw": 632,
+  "ih": 234,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖是一條有兩個頭的蛇，兩張嘴巴都張得大大的。",
+   "① I have two big mouths.（我有兩張大嘴巴。）對。",
+   "② 牠只有兩個頭，不是三個。③ 牠不只一個眼睛。",
+   "所以選 ① I have two big mouths."
+  ]
+ },
+ {
+  "id": "g6-113-22",
+  "grade": 6,
+  "year": "113",
+  "no": 22,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "Mary is in the bedroom. She is reading.",
+   "Mary is in the bedroom. She is drawing.",
+   "Mary is in the bathroom. She is reading."
+  ],
+  "answer": 1,
+  "img": "img/g6-113-22.png",
+  "iw": 793,
+  "ih": 330,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "圖裡有床，是臥室（bedroom）。女孩在看書，男孩在畫畫。",
+   "Mary 是女生的名字，她在 reading（看書）。",
+   "② 畫畫的是男孩。③ 這裡不是浴室。",
+   "所以選 ① Mary is in the bedroom. She is reading."
+  ]
+ },
+ {
+  "id": "g6-113-23",
+  "grade": 6,
+  "year": "113",
+  "no": 23,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's three o'clock. The boy is going to the supermarket.",
+   "It's five o'clock. The boy is going to the supermarket.",
+   "It's five o'clock. The boy is in the supermarket."
+  ],
+  "answer": 2,
+  "img": "img/g6-113-23.png",
+  "iw": 773,
+  "ih": 338,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "時鐘指著五點，男孩正走向超市，還沒進去。",
+   "① 時間不對。③ in the supermarket 是已經「在」超市裡面，不對。",
+   "② It's five o'clock. The boy is going to the supermarket.（五點了，男孩正要去超市。）對。",
+   "所以選 ② It's five o'clock. The boy is going to the supermarket."
+  ]
+ },
+ {
+  "id": "g6-113-24",
+  "grade": 6,
+  "year": "113",
+  "no": 24,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "It's rainy. The boy is riding a bike.",
+   "The boy is riding a big bike. He is tired.",
+   "It's sunny. The boy is riding a small bike."
+  ],
+  "answer": 3,
+  "img": "img/g6-113-24.png",
+  "iw": 751,
+  "ih": 343,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "有大太陽，男孩騎著一輛很小的腳踏車，流了很多汗。",
+   "① 沒有下雨。② 腳踏車是小的，不是大的。",
+   "③ It's sunny. The boy is riding a small bike.（晴天，男孩騎著小腳踏車。）對。",
+   "所以選 ③ It's sunny. The boy is riding a small bike."
+  ]
+ },
+ {
+  "id": "g6-113-25",
+  "grade": 6,
+  "year": "113",
+  "no": 25,
+  "type": "choice",
+  "stem": "",
+  "options": [
+   "I like English. I don't like art.",
+   "I like math. I don't like English.",
+   "I don't like Chinese. I like math."
+  ],
+  "answer": 2,
+  "img": "img/g6-113-25.png",
+  "iw": 850,
+  "ih": 276,
+  "xf": [
+   "R-6-2"
+  ],
+  "listen": false,
+  "sec": "辨識句子",
+  "ex": [
+   "看表格：國語、數學下面是笑臉（喜歡），美術、英語下面是不開心的臉（不喜歡）。",
+   "① 說喜歡英語，不對。③ 說不喜歡國語，不對。",
+   "② I like math. I don't like English.（我喜歡數學，不喜歡英語。）對。",
+   "所以選 ② I like math. I don't like English."
+  ]
+ }
+]
