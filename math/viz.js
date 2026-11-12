@@ -83,6 +83,25 @@ function mulFrames(a,m){
   F.push({h:draw(-1),c:`${a} × ${m} ＝ ${prod}`,end:1});
   return F;
 }
+function mul2Frames(a,b){
+  const B=dg(b),prod=a*b,W=String(prod).length,F=[],parts=[];
+  const put=(n,end)=>{const s=String(n),c=Array(W).fill(null);for(let k=0;k<s.length;k++){const ci=end-(s.length-1)+k;if(ci>=0)c[ci]=s[k]}return c};
+  const draw=(hiB,sum)=>{const rows=[
+    {cells:[{}].concat(put(a,W-1).map(t=>({t})))},
+    {cls:'line',cells:[{t:'×',cls:'op'}].concat(put(b,W-1).map((t,i)=>({t,cls:i===hiB?'hi2':''})))}];
+    parts.forEach((pt,k)=>rows.push({cls:k===parts.length-1&&parts.length>1&&sum!=null?'line':'',cells:[{}].concat(put(pt.n,pt.end).map(t=>({t,cls:pt.hi?'hi':''})))}));
+    if(sum!=null)rows.push({cells:[{}].concat(put(sum,W-1).map(t=>({t,cls:'res'})))});
+    return grid(rows)};
+  F.push({h:draw(-1),c:`${a} × ${b}：用下面的數一位一位去乘上面的數。`});
+  for(let j=B.length-1;j>=0;j--){const p=B.length-1-j,col=W-1-p;parts.forEach(x=>x.hi=0);
+    if(B[j]===0){F.push({h:draw(col),c:`${PL[p]}是 0，0 乘以任何數都是 0，這一列不用寫。`});continue}
+    parts.push({n:a*B[j],end:col,hi:1});
+    F.push({h:draw(col),c:`用${PL[p]}的 ${B[j]} 去乘：${a} × ${B[j]} ＝ ${a*B[j]}`+(p?`，從${PL[p]}開始寫。`:'。'),warn:p>0});}
+  parts.forEach(x=>x.hi=0);
+  if(parts.length>1)F.push({h:draw(-1,prod),c:`把每一列加起來：${parts.map(x=>x.n+'0'.repeat(W-1-x.end)).join(' ＋ ')} ＝ ${prod}。`});
+  F.push({h:draw(-1,parts.length>1?prod:null),c:`${a} × ${b} ＝ ${prod}`,end:1});
+  return F;
+}
 function divFrames(a,d){
   const D=dg(a),W=D.length,q=Array(W).fill(null),work=[],F=[];
   const draw=(hi)=>{
@@ -98,7 +117,7 @@ function divFrames(a,d){
   for(let i=0;i<W;i++){
     cur=cur*10+D[i];const p=W-1-i;
     work.forEach(w=>w.hi=0);
-    if(!started&&cur<d&&i<W-1){F.push({h:draw(i),c:`${PL[p]}的 ${cur} 比 ${d} 小，不夠除，和下一位合起來看。`});continue}
+    if(!started&&cur<d&&i<W-1){F.push({h:draw(i),c:`${cur<10?PL[p]+'的':'前面的'} ${cur} 比 ${d} 小，不夠除，和下一位合起來看。`});continue}
     const qd=Math.floor(cur/d),pr=qd*d,rem=cur-pr;
     if(qd===0&&started){
       q[i]=0;
@@ -184,7 +203,7 @@ function frFrames(s){
   const f=n=>`${n}/${den}`;
   F.push({h:draw(0,0),c:`1 ${u}平分成 ${den} 份，1 份是 ${f(1)} ${u}${s.per?`，也就是 ${s.per} ${s.item}`:''}。`});
   if(op==='show'){
-    F.push({h:draw(a,0),c:s.rev?`${a*s.per} ${s.item}是 ${a} 份，${a} 份就是 ${f(a)} ${u}。`:`${f(a)} ${u}是 ${a} 份${s.per?`，${a} 份是 ${a*s.per} ${s.item}`:''}。`});
+    F.push({h:draw(a,0),c:s.c1?s.c1:s.rev?`${a*s.per} ${s.item}是 ${a} 份，${a} 份就是 ${f(a)} ${u}。`:`${f(a)} ${u}是 ${a} 份${s.per?`，${a} 份是 ${a*s.per} ${s.item}`:''}。`});
   }else if(op==='+'){
     F.push({h:draw(a,0),c:`${f(a)} ${u}是 ${a} 份，先塗 ${a} 份。`});
     F.push({h:draw(a,b),c:`${f(b)} ${u}是 ${b} 份，再塗 ${b} 份。${a+b>den?`第 1 個塗滿了，就塗到第 2 個。`:''}`});
@@ -247,16 +266,34 @@ function cuFrames(s){
     res[1]=a-b;F.push({h:draw(1),c:`先算${u}：${a} − ${b} ＝ ${a-b}。`});
     res[0]=A-B;F.push({h:draw(0),c:`再算${U}：${A} − ${B} ＝ ${A-B}。`});
   }
-  F.push({h:draw(-1),c:`答案是 ${res[0]?`${res[0]} ${U}`:''}${res[1]?` ${res[1]} ${u}`:''}`.replace('是  ','是 '),end:1});
+  F.push({h:draw(-1),c:s.ans||`答案是 ${res[0]?`${res[0]} ${U}`:''}${res[1]?` ${res[1]} ${u}`:''}`.replace('是  ','是 '),end:1});
   return F;
 }
 
+/* 分數（小數）數線：{t:'nf',from:3,to:6,den:3,start:4,hops:2,dec:true(小數)} */
+function nfFrames(s){
+  const W=600,H=150,L=40,R=560,n=(s.to-s.from)*s.den,X=i=>L+i/n*(R-L),F=[],N=Math.abs(s.hops),dir=s.hops<0?-1:1,i0=(s.start-s.from)*s.den;
+  const val=k=>{const i=i0+dir*k,w=Math.floor(i/s.den)+s.from,r=((i%s.den)+s.den)%s.den;
+    if(s.dec)return String(Math.round((w+r/s.den)*100)/100);return r===0?String(w):(w?`${w}又${r}/${s.den}`:`${r}/${s.den}`)};
+  const draw=k=>{let b=`<line x1="${L-18}" y1="96" x2="${R+18}" y2="96" class="ax"/>`;
+    for(let i=0;i<=n;i++){const big=i%s.den===0;b+=`<line x1="${X(i)}" y1="${big?80:88}" x2="${X(i)}" y2="${big?112:104}" class="tk"/>`;if(big)b+=tx(X(i),134,s.from+i/s.den,'nlab')}
+    for(let j=1;j<=k;j++){const x1=X(i0+dir*(j-1)),x2=X(i0+dir*j),mx=(x1+x2)/2,hh=Math.min(40,Math.abs(x2-x1)*.9);b+=`<path d="M${x1} 78 Q${mx} ${78-hh} ${x2} 78" class="hop${j===k?' hi':''}"/>`+tx(mx,78-hh/2-10,j,'hopn')}
+    b+=`<circle cx="${X(i0)}" cy="96" r="7" class="pt0"/><circle cx="${X(i0+dir*k)}" cy="96" r="9" class="pt"/>`;return svg(W,H,b,'數線')};
+  const unit=s.dec?String(1/s.den):`1/${s.den}`;
+  F.push({h:draw(0),c:`${s.from} 到 ${s.from+1} 中間平分成 ${s.den} 小格，1 小格是 ${unit}。從 ${s.start} 開始數。`});
+  for(let k=1;k<=N;k++)F.push({h:draw(k),c:`往${dir>0?'右':'左'} ${k} 小格，是 ${val(k)}。`});
+  F.push({h:draw(N),c:s.end||`箭頭的位置是 ${val(N)}。`,end:1});return F;
+}
+/* 算式一步一步變：{t:'eq',f:[['21 ＋ [9 × 3]','先算乘法'],…]}，[ ] 裡是這一步要看的地方 */
+function eqFrames(s){
+  return s.f.map((x,i)=>({h:`<div class="veq" role="img" aria-label="算式">${((typeof window!=='undefined'&&window.XFfrac)?window.XFfrac(esc(x[0])):esc(x[0])).replace(/\[/g,'<b>').replace(/\]/g,'</b>')}</div>`,c:x[1],end:i===s.f.length-1?1:0,warn:x[2]?1:0}));
+}
 function frames(s){
   try{
     if(s.t==='v'){const a=s.a,b=s.b;
       if(s.op==='+')return addFrames(a,b);
       if(s.op==='-')return subFrames(a,b);
-      if(s.op==='x')return mulFrames(a,b);
+      if(s.op==='x')return b>=10?mul2Frames(a,b):mulFrames(a,b);
       if(s.op==='/')return divFrames(a,b);}
     if(s.t==='nl')return nlFrames(s);
     if(s.t==='rd')return rdFrames(s);
@@ -264,13 +301,15 @@ function frames(s){
     if(s.t==='pv')return pvFrames(s);
     if(s.t==='uc')return ucFrames(s);
     if(s.t==='cu')return cuFrames(s);
+    if(s.t==='nf')return nfFrames(s);
+    if(s.t==='eq')return eqFrames(s);
   }catch(e){console.warn('viz',e)}
   return [];
 }
 function title(s){
   if(s.title)return s.title;
   if(s.t==='v')return `直式：${s.a} ${OPS[s.op]} ${s.b}`;
-  return {nl:'在數線上跳跳看',rd:'在數線上看接近誰',fr:'用圖看分數',pv:'用定位板看',uc:'用換算表看',cu:'單位分開算'}[s.t]||'圖解';
+  return {nf:'在數線上數數看',eq:'算式一步一步算',nl:'在數線上跳跳看',rd:'在數線上看接近誰',fr:'用圖看分數',pv:'用定位板看',uc:'用換算表看',cu:'單位分開算'}[s.t]||'圖解';
 }
 function mount(el,spec){
   const F=frames(spec);if(!F.length){el.hidden=true;return}
@@ -336,6 +375,9 @@ table.vpv td.zero{color:#c2410c}
 table.vpv.vcu td.op,table.vpv.vcu th:first-child,table.vpv.vcu td:first-child{border:none;background:none;min-width:36px}
 table.vpv.vcu tr.line td{border-bottom:4px solid var(--ink,#111)}
 table.vpv.vcu td.res{color:var(--pen,#1d4ed8)}
+.veq{font-family:var(--f-num,sans-serif);font-size:32px;padding:26px 8px;text-align:center;color:var(--ink,#111);letter-spacing:1px}
+.veq b{background:#fde68a;color:#111;border-radius:8px;padding:2px 8px}
+table.vz td.dsr{white-space:nowrap;width:auto;padding-right:4px}
 @media print{.vizbox{display:none}}
 `;
 if(typeof document!=='undefined'){const st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st)}
