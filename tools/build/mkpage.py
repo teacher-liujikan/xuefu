@@ -15,7 +15,7 @@ rep('學習扶助篩選測驗數學考古題：依年度整卷線上作答，或
 rep('</a>・數學</div>','</a>・國語</div>')
 rep('<script src="viz.js?v=7"></script>\n','')
 s=s.replace('數學　共','國語　共')
-rep("const YEARS=['115','114','113','112','111','mA'];","const YEARS=['114','113','112','111'];")
+rep("const YEARS=['115','114','113','112','111','mA'];","const YEARS=['114','113','112','111','mA'];")
 rep("const NS='xuefu-kaoti:';","const NS='xuefu-zh:';")
 rep("const GROUPS=[['NC','數與量'],['SC','空間與形狀'],['RC','關係'],['DC','資料與不確定性']];","const GROUPS=[['A','字音字形'],['B','詞語'],['C','句子與標點'],['D','閱讀理解']];")
 rep("let PK=Object.assign({mode:'unit',","let PK=Object.assign({mode:'code',")
@@ -71,7 +71,7 @@ rep("t.innerHTML=[1,2,3,4,5,6].map(","t.innerHTML=[1,2,3,4,5,6].filter(g=>QS.som
 rep("function bpmfOn(g){return g in pref.bpmf?!!pref.bpmf[g]:g<=2}","function bpmfOn(g){return false}")
 rep('var P=["/xuefu/","/xuefu/math/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]')
 rep("<p>115 年三～六年級官方未公布答案，答案為自行解題，如有疑義請以官方為準。</p>","<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>")
-rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。</p>")
+rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題（三年級模擬卷沒有注音）。</p>")
 rep("const body=pic?","const ttl=p.title?`<p class=\"psgt\">${esc(p.title)}</p>`:'';\n  const body=ttl+(pic?")
 rep(".join('');\n  return `<div class=\"psg${pic?' pic':''}\">",".join(''));\n  return `<div class=\"psg${pic?' pic':''}\">")
 css='''

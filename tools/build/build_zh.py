@@ -112,6 +112,26 @@ def main(only=None):
             QS.append(q)
         nq=len([b for b in blocks if b['kind']=='q'])
         print(name,'questions',nq,'passages',len([b for b in blocks if b['kind']=='p']))
+    # 模擬卷 A（自編，文字題）
+    for g in (3,4,5,6):
+        p=f'src/mock_g{g}.py'
+        if not os.path.exists(p): continue
+        spec=importlib.util.spec_from_file_location(f'mock{g}',p); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+        assert len(m.Q)==25,(g,len(m.Q))
+        psg_of={}
+        for a,o in m.P.items():
+            pid=f'g{g}-mA-p{a}'
+            P_=dict(id=pid,a=a,b=o['b'],intro=o.get('intro',f'請閱讀以下文章，並回答 {a}～{o["b"]} 題：'),text=o['text'])
+            if o.get('title'): P_['title']=o['title']
+            PS[pid]=P_
+            for n in range(a,o['b']+1): psg_of[n]=pid
+        for n,(tag,stem,opts,ans,ex) in enumerate(m.Q,1):
+            assert len(opts)==4 and len(set(opts))==4 and ans in (1,2,3,4),(g,n)
+            q=dict(id=f'g{g}-mA-{n}',grade=g,year='mA',no=n,type='choice',stem=stem,options=opts,answer=ans,xf=[f'{tag[0]}-{g}-{tag[1:]}'],
+                   ex=ex+[f"所以選 {'①②③④'[ans-1]} {re.sub('<[^>]+>','',opts[ans-1])}"])
+            if n in psg_of: q['psg']=psg_of[n]
+            QS.append(q)
+        print(f'mock g{g}: 25')
     json.dump(QS,open(OUT+'data/questions.json','w'),ensure_ascii=False,indent=1)
     json.dump(PS,open(OUT+'data/passages.json','w'),ensure_ascii=False,indent=1)
     LAB={'A1':'字音','A2':'字形（國字）','A3':'部首','B1':'詞義','B2':'詞語運用','C1':'句意理解','C2':'段落重點','C3':'語句銜接與排序','C4':'刪除多餘語詞','C5':'標點符號','D1':'閱讀：故事','D2':'閱讀：說明文與圖表'}

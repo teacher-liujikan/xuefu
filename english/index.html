@@ -421,7 +421,7 @@ body.printing #printArea{color:#000}
   <main id="main"><p class="loading">題目載入中⋯⋯</p></main>
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
-    <p>四～六年級、113 和 114 年，答案用官方答案卷。這裡只放閱讀題（原卷第 11～25 題）；聽力題（第 1～10 題）要搭配音檔，目前還沒有放。</p>
+    <p>四～六年級、113 和 114 年，答案用官方答案卷。這裡只放閱讀題（原卷第 11～25 題）；聽力題（第 1～10 題）要搭配音檔，目前還沒有放。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>
     <p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
@@ -459,7 +459,7 @@ body.printing #printArea{color:#000}
 const $=s=>document.querySelector(s);
 const CN=['','一','二','三','四','五','六'];
 const CIRC=['①','②','③','④','⑤'];
-const YEARS=['114','113'];
+const YEARS=['114','113','mA'];
 const isMock=y=>y==='mA';
 const yl=y=>isMock(y)?'模擬卷 A':y+' 年';
 const yv=y=>isMock(y)?0:+y;
@@ -878,7 +878,7 @@ function cardHTML(q,k,one){
   if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
   else if(q.paperOnly)R+=`<p class="paperbox">✏️ 這題要用尺量圖，請在紙上作答，不計分。</p>`;
   const body=one?`<div class="qgrid${R?' split':''}"><div class="qL">${L}</div>${R?`<div class="qR">${R}</div>`:''}</div>`:L+R;
-  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${true?`<p class="srctag">原卷 ${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
+  return `<article class="q${one?' one':''}" id="q${k}" data-k="${k}" data-id="${q.id}"><span class="mark" aria-hidden="true"></span>${!isMock(q.year)?`<p class="srctag">原卷 ${srcOf(q,SET.mixed)}</p>`:''}${body}<div class="ansbox"></div></article>`;
 }
 function restoreCard(card,q){
   const v=STATE.v[q.id];
