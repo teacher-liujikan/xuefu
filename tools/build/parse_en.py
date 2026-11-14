@@ -9,8 +9,9 @@ def parse(name):
     ls.sort(key=lambda L:(L['pg'],L['col'],L['yc']))
     isred=lambda c:(c['col']>>16)>150 and ((c['col']>>8)&255)<110
     items=[]; nextq=1; part=''; secs=[]
+    import unicodedata
     for L in ls:
-        t=L['txt']; real=L['real']
+        t=unicodedata.normalize('NFKC',L['txt']); real=L['real']
         if '評量' in t and '試卷' in t and L['y0']>1000 or re.search(r'第\s*\d+\s*頁',t): items.append(('foot',L)); continue
         m=re.match(r'^第([一二])部分：(\S+)',t)
         if m: part=m.group(2); items.append(('hdr',L)); continue
