@@ -12,7 +12,7 @@ rep("const GROUPS=[['A','字音字形'],['B','詞語'],['C','句子與標點'],[
 rep("const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;","const numOf=(q,k)=>k+1;")
 rep("${SET.kind==='p'?`<p class=\"srctag\">","${!isMock(q.year)?`<p class=\"srctag\">原卷 ")
 rep("<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>","<p>四～六年級、113 和 114 年，答案用官方答案卷。這裡只放閱讀題（原卷第 11～25 題）；聽力題（第 1～10 題）要搭配音檔，目前還沒有放。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>")
-rep("<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題（三年級模擬卷沒有注音）。</p>","<p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>")
+rep("<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>")
 rep('var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/","/xuefu/english/"]')
 rep(".opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}",".opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}")
 rep('<div class="exbox${q.grade===3?\' bp\':\'\'}"','<div class="exbox"')

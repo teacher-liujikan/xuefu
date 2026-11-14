@@ -71,9 +71,16 @@ rep("t.innerHTML=[1,2,3,4,5,6].map(","t.innerHTML=[1,2,3,4,5,6].filter(g=>QS.som
 rep("function bpmfOn(g){return g in pref.bpmf?!!pref.bpmf[g]:g<=2}","function bpmfOn(g){return false}")
 rep('var P=["/xuefu/","/xuefu/math/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]')
 rep("<p>115 年三～六年級官方未公布答案，答案為自行解題，如有疑義請以官方為準。</p>","<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>")
-rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題（三年級模擬卷沒有注音）。</p>")
+rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>")
 rep("const body=pic?","const ttl=p.title?`<p class=\"psgt\">${esc(p.title)}</p>`:'';\n  const body=ttl+(pic?")
 rep(".join('');\n  return `<div class=\"psg${pic?' pic':''}\">",".join(''));\n  return `<div class=\"psg${pic?' pic':''}\">")
+rep("const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'');","const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'').replace(/[\\u{E0100}-\\u{E01EF}]/gu,'');")
+rep("const hasImg=im.some(Boolean);const long=texts.some(t=>String(t).length>14);const tiny=!hasImg&&texts.every(t=>String(t).length<=6);","const hasImg=im.some(Boolean);const long=texts.some(t=>plain(t).length>14);const tiny=!hasImg&&texts.every(t=>plain(t).length<=6);")
+rep("return `<div class=\"opts${long?' one':''}","return `<div class=\"opts${q.bp?' bpz':''}${long?' one':''}")
+rep("const stemBox=`<div class=\"stem${q.img?' hasimg':''}\">","const stemBox=`<div class=\"stem${q.img?' hasimg':''}${q.bp?' bpz':''}\">")
+rep("return `<div class=\"psg${pic?' pic':''}\">","return `<div class=\"psg${pic?' pic':''}${p.bp?' bpz':''}${p.plain?' plain':''}\">")
+rep("return `${pg}<div class=\"pq\">","return `${pg}<div class=\"pq${q.bp?' bpz':''}\">")
+rep("const T=(text,x)=>new D.TextRun(Object.assign({text,","const T=(text,x)=>new D.TextRun(Object.assign({text:String(text).replace(/[\\u{E0100}-\\u{E01EF}]/gu,''),")
 css='''
 /* ---- 國語 ---- */
 #padBtn,[data-bpmf],.tools{display:none!important}
@@ -89,6 +96,10 @@ css='''
 .psg p{margin:0 0 .35em;text-indent:2em}
 .psg p.psgi{text-indent:0;font-weight:700;color:var(--main);font-size:.92em;margin-bottom:.5em}
 .psg.pic{padding:8px}
+.psg.plain p{text-indent:0}
+.bpz{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.35}
+.bpz .psgi,.bpz .psgt{font-family:var(--f-body)}
+.opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .opts.numonly .opt{justify-content:center;min-height:64px}

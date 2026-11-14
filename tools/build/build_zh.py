@@ -125,10 +125,25 @@ def main(only=None):
             if o.get('title'): P_['title']=o['title']
             PS[pid]=P_
             for n in range(a,o['b']+1): psg_of[n]=pid
+        ZYO=getattr(m,'ZY_OVER',None); ZYF=getattr(m,'ZY_FORCE',None); dozy=ZYO is not None
+        if dozy:
+            import zy
+            def Z(t,tag=''):
+                if tag.startswith('A'):
+                    t=re.sub(r'「([\u4e00-\u9fff])」',r'「{\1}」',t)          # 被考的字不加注音
+                    if re.fullmatch(r'[\u4e00-\u9fff]([／╱][\u4e00-\u9fff])*',t): t=re.sub(r'([\u4e00-\u9fff])',r'{\1}',t)
+                return zy.annotate(t,ZYO,None,ZYF)
+            for a in m.P:
+                PS[f'g{g}-mA-p{a}']['text']=Z(PS[f'g{g}-mA-p{a}']['text']); PS[f'g{g}-mA-p{a}']['bp']=1
+        for a,o in m.P.items():
+            if o.get('plain'): PS[f'g{g}-mA-p{a}']['plain']=1
         for n,(tag,stem,opts,ans,ex) in enumerate(m.Q,1):
             assert len(opts)==4 and len(set(opts))==4 and ans in (1,2,3,4),(g,n)
+            plainopt=opts[ans-1]
+            if dozy: stem=Z(stem,tag); opts=[Z(t,tag) for t in opts]
             q=dict(id=f'g{g}-mA-{n}',grade=g,year='mA',no=n,type='choice',stem=stem,options=opts,answer=ans,xf=[f'{tag[0]}-{g}-{tag[1:]}'],
-                   ex=ex+[f"所以選 {'①②③④'[ans-1]} {re.sub('<[^>]+>','',opts[ans-1])}"])
+                   ex=ex+[f"所以選 {'①②③④'[ans-1]} {re.sub('<[^>]+>','',plainopt)}"])
+            if dozy: q['bp']=1
             if n in psg_of: q['psg']=psg_of[n]
             QS.append(q)
         print(f'mock g{g}: 25')

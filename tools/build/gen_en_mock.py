@@ -29,7 +29,7 @@ S1(['A: What color is it?',"B: It's green."],[sw('#e03a2f'),sw('#2fa84f'),sw('#2
 S1(["It's a book. It's blue."],[box(E('📕')),box(E('🐟')),box(E('📘'))],['圖 (1) 紅色的書','圖 (2) 藍色的魚','圖 (3) 藍色的書'],3,["It's a book.（它是書。）It's blue.（它是藍色的。）",'要找「藍色的書」。圖 (1) 是紅色的；圖 (2) 是藍色的，可是牠是魚。']),
 S1(["A: What's that?","B: It's an apple."],[near('🍎'),far('🍎'),far('🍌')],['圖 (1) 摸著蘋果','圖 (2) 指著遠處的蘋果','圖 (3) 指著遠處的香蕉'],2,["A 問：What's that?（那是什麼？）that 是指遠的東西。","B 答：It's an apple.（是蘋果。）",'圖 (1) 手碰著蘋果，要用 this；圖 (3) 是香蕉。']),
 S1(['A: Is this a tiger?',"B: No, it's not."],[near('🐯'),near('🦁'),far('🐯')],['圖 (1) 摸著老虎','圖 (2) 摸著獅子','圖 (3) 指著遠處的老虎'],2,['A 問：Is this a tiger?（這是老虎嗎？）this 是指近的東西。',"B 答：No, it's not.（不，牠不是。）",'要找「在手邊」而且「不是老虎」的圖。圖 (2) 手碰著的是獅子。']),
-S2(box(E('🥚')),["It's an egg.","It's a cake.","It's a ruler."],1,['圖是一顆蛋。','蛋是 egg。cake 是蛋糕，ruler 是尺。']),
+S2(box(E('🦁')),["It's a lion.","It's a tiger.","It's a rabbit."],1,['圖是一隻獅子，臉的四周有一圈毛。','獅子是 lion。tiger 是老虎，rabbit 是兔子。']),
 S2(near('🐶'),["A: What's this?<br>B: It's a dog.","A: What's that?<br>B: It's a dog.","A: Is this a cat?<br>B: Yes, it is."],1,['圖裡的手碰著一隻狗，東西就在手邊，用 this。',"① What's this?（這是什麼？）It's a dog.（是狗。）對。",'② 用 that（那個），是指遠的東西。③ 說牠是貓，不對。']),
 S2(box(E('📕')),["It's a book. It's blue.","It's red. It's not a book.","It's red. It's not an apple."],3,['圖是一本紅色的書。','① 說它是藍色的，不對。② 說它不是書，不對。',"③ It's red.（它是紅色的。）It's not an apple.（它不是蘋果。）兩句都對。"]),
 ]
@@ -51,7 +51,7 @@ S1(["A: How's the weather?","B: It's rainy."],[box(E('🌧️')),box(E('☀️')
 S1(["My sister can dance. She can't swim."],[tbl([('💃','✕'),('🏊','○')]),tbl([('🎤','○'),('🏊','✕')]),tbl([('💃','○'),('🏊','✕')])],['圖 (1) 跳舞 ✕、游泳 ○','圖 (2) 唱歌 ○、游泳 ✕','圖 (3) 跳舞 ○、游泳 ✕'],3,['My sister can dance.（我的姐姐／妹妹會跳舞。）','She can\'t swim.（她不會游泳。）','can 是「會」，畫 ○；can\'t 是「不會」，畫 ✕。要找跳舞 ○、游泳 ✕。']),
 S1(['I see three big dogs.'],[many('🐕',2,70),many('🐕',3,36),many('🐕',3,64)],['圖 (1) 兩隻大狗','圖 (2) 三隻小狗','圖 (3) 三隻大狗'],3,['I see three big dogs.（我看到三隻大狗。）','three 是 3，big 是大的。圖 (1) 只有兩隻，圖 (2) 是小狗。']),
 S2(box(E('❄️',80)+E('🥶',100)),["It's hot.","It's cold.","It's sunny."],2,['圖裡在下雪，臉都凍僵了。',"② It's cold.（天氣很冷。）對。",'hot 是熱，sunny 是晴天。']),
-S2(box('<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div>'+E('👦',84)+E('📖',64)+'</div><span class="cake">'+E('🎂',60)+'<b>8 歲</b></span></div>',230,200),['The boy is eight years old. He can read.','The girl is eight years old. She can read.','The boy is ten years old. He can sing.'],1,['圖裡是一個男孩在看書，蛋糕旁邊的數字是 8，表示他八歲。','② 說的是女孩（girl），不對。③ 說十歲、會唱歌，不對。','① The boy is eight years old.（男孩八歲。）He can read.（他會讀書。）對。']),
+S2(box('<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div>'+E('👦',84)+E('📖',64)+'</div><span class="cake"><b>8</b>'+E('🎂',60)+'</span></div>',230,225),['The boy is eight years old. He can read.','The girl is eight years old. She can read.','The boy is ten years old. He can sing.'],1,['圖裡是一個男孩在看書，生日蛋糕上面的數字是 8，表示他八歲。','② 說的是女孩（girl），不對。③ 說十歲、會唱歌，不對。','① The boy is eight years old.（男孩八歲。）He can read.（他會讀書。）對。']),
 S2(box(E('☀️',64)+E('🕙',64)+E('👧',76)+E('😀',56),230,200,'flex-wrap:wrap'),["It's rainy. The girl is happy.","It's ten o'clock. The girl is sad.","It's sunny. The girl is happy."],3,['圖裡有太陽，時鐘是十點，女孩很開心。','① 說下雨（rainy），不對。② 說女孩很難過（sad），不對。',"③ It's sunny.（晴天。）The girl is happy.（女孩很開心。）對。"]),
 ]
 def stack(top,mid,bot,ts=64,ms=110,bs=56):
@@ -86,7 +86,7 @@ CSS='''*{box-sizing:border-box}body{margin:0;background:#fff;font-family:"DejaVu
 .num{font-size:150px;font-family:"DejaVu Serif",serif;line-height:1}
 .ar{font-size:46px;color:#111;font-family:"DejaVu Sans"}
 table.ox{border-collapse:collapse}table.ox td{border:2.5px solid #222;padding:2px 14px;text-align:center}table.ox td.m{font-size:38px;font-weight:700;font-family:"DejaVu Sans"}
-.cake{position:relative;display:inline-flex;align-items:center}.cake b{font-size:34px;font-family:"Noto Sans CJK TC",sans-serif;margin-left:8px}
+.cake{position:relative;display:inline-flex;align-items:center}.cake{flex-direction:column}.cake b{font-size:40px;font-family:"DejaVu Serif",serif;line-height:1;color:#c62a1f;margin:0}
 .tag{border:2px solid #222;border-radius:6px;padding:0 10px;font-size:22px;margin-top:-6px;background:#fff}'''
 def html(q):
     o=lambda sm='':'<div class="opts'+sm+'">'+''.join(f'<div><i>({i+1})</i><span>{t}</span></div>' for i,t in enumerate(q['opts']))+'</div>'

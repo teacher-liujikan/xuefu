@@ -399,6 +399,10 @@ body.printing #printArea{color:#000}
 .psg p{margin:0 0 .35em;text-indent:2em}
 .psg p.psgi{text-indent:0;font-weight:700;color:var(--main);font-size:.92em;margin-bottom:.5em}
 .psg.pic{padding:8px}
+.psg.plain p{text-indent:0}
+.bpz{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.35}
+.bpz .psgi,.bpz .psgt{font-family:var(--f-body)}
+.opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .opts.numonly .opt{justify-content:center;min-height:64px}
@@ -535,7 +539,7 @@ function figPlan(q){
 const fracify=h=>h.replace(/(\d+)\/(\d+)/g,'<span class="frac" aria-label="$2分之$1"><i>$1</i><i>$2</i></span>');window.XFfrac=fracify;
 /* 詳解（欄位 ex：逐步說明；「小心：」開頭的是提醒）。沒有 ex 的題目什麼都不顯示 */
 const rich=s=>esc(s).replace(/&lt;(\/?[ub])&gt;/g,'<$1>');
-const plain=s=>String(s==null?'':s).replace(/<\/?[ub]>/g,'');
+const plain=s=>String(s==null?'':s).replace(/<\/?[ub]>/g,'').replace(/[\u{E0100}-\u{E01EF}]/gu,'');
 const WARN=/^小心[：:]\s*/;
 const exList=q=>Array.isArray(q.ex)?q.ex.map(s=>String(s==null?'':s).trim()).filter(Boolean):[];
 const hasEx=q=>exList(q).length>0;
@@ -572,7 +576,7 @@ function psgHTML(q,prev,always){
   const pic=!!p.img;
   const ttl=p.title?`<p class="psgt">${esc(p.title)}</p>`:'';
   const body=ttl+(pic?`<img class="pimg" src="${esc(p.img)}" width="${p.w}" height="${p.h}" style="max-width:min(100%,${Math.round(p.w/1.55)}px)" alt="${esc(plain(p.text))}" decoding="async">`:p.text.split('\n').map(t=>`<p>${rich(t)}</p>`).join(''));
-  return `<div class="psg${pic?' pic':''}"><p class="psgi">📖 請先閱讀下面的${/圖文/.test(p.intro)?'圖文':'文章'}，再回答問題：</p>${body}</div>`;
+  return `<div class="psg${pic?' pic':''}${p.bp?' bpz':''}${p.plain?' plain':''}"><p class="psgi">📖 請先閱讀下面的${/圖文/.test(p.intro)?'圖文':'文章'}，再回答問題：</p>${body}</div>`;
 }
 function fillMode(q){
   if(q.type!=='fill'&&q.type!=='calc')return 'none';
@@ -856,17 +860,17 @@ function openSet(s){
 }
 function optsHTML(q,num){
   const im=q.optImgs||[];const texts=q.options||[];
-  const hasImg=im.some(Boolean);const long=texts.some(t=>String(t).length>14);const tiny=!hasImg&&texts.every(t=>String(t).length<=6);
+  const hasImg=im.some(Boolean);const long=texts.some(t=>plain(t).length>14);const tiny=!hasImg&&texts.every(t=>plain(t).length<=6);
   const dis=isPaper(q)?'disabled':'';
   if(q.img)return `<div class="opts numonly" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
-  return `<div class="opts${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${rich((t))}</span>`:''}</span></button>`).join('')}</div>`;
+  return `<div class="opts${q.bp?' bpz':''}${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${rich((t))}</span>`:''}</span></button>`).join('')}</div>`;
 }
 /* one=true：作答時一次一題（左：題幹和圖；右：選項或填答區）；one=false：交卷後的整份列表 */
 function cardHTML(q,k,one){
   const num=numOf(q,k);
   const st=stemHTML(q,'screen');const fm=fillMode(q);
   const pg=psgHTML(q,k>0?SET.qs[k-1]:null,one);
-  const stemBox=`<div class="stem${q.img?' hasimg':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
+  const stemBox=`<div class="stem${q.img?' hasimg':''}${q.bp?' bpz':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
   let L=one&&pg?pg:pg+stemBox,R=one&&pg?stemBox:'';
   if(q.type==='choice')R+=optsHTML(q,num);
   if((q.type==='fill'||q.type==='calc')){
@@ -1165,7 +1169,7 @@ function sheetHTML(ids,title,o){
     if(q.type==='choice'&&!q.img){const im=q.optImgs||[];const ts=q.options||[];const hasImg=im.some(Boolean);const short=!hasImg&&ts.every(t=>plain(String(t)).length<=4);const long=ts.some(t=>String(t).length>16);
       opts=`<ol class="popts${short?' row':long?' one':''}">${ts.map((t,j)=>`<li><span>${CIRC[j]}</span>${im[j]?`<img src="${esc(im[j])}" alt="">`:''}${t?` ${rich((t))}`:''}</li>`).join('')}</ol>`}
     const work=q.type==='calc'?'<div class="pwork"></div>':'';
-    return `${pg}<div class="pq"><p class="pstem"><b>${k+1}.</b> ${st.html} <span class="psrc">（${srcOf(q,mixed)}）</span></p>${figsHTML(st.rest)}${opts}${work}</div>`;
+    return `${pg}<div class="pq${q.bp?' bpz':''}"><p class="pstem"><b>${k+1}.</b> ${st.html} <span class="psrc">（${srcOf(q,mixed)}）</span></p>${figsHTML(st.rest)}${opts}${work}</div>`;
   }).join('');
   let ans='';
   if(o.ans){ans=`<div class="pbreak"></div><h2 class="ph2">${o.ex&&qs.some(hasEx)?'答案與詳解':'答案'}</h2><ol class="pans">${qs.map((q,k)=>`<li><b>${k+1}.</b> ${rich((ansText(q)))}${q.ansSrc==='self'?' <span class="nc">（非官方答案）</span>':''}${q.type==='paper'&&q.ansFig?`<img src="${esc(q.ansFig)}" alt="">`:''}${o.ex&&hasEx(q)?exSteps(q,'pex'):''}</li>`).join('')}</ol>`}
@@ -1191,7 +1195,7 @@ async function exportWord(ids,title,o,msg){
   msg('準備中⋯⋯');
   await loadLib('docx');const D=window.docx;
   const FONT='標楷體';const MAXW=600;
-  const T=(text,x)=>new D.TextRun(Object.assign({text,font:{name:FONT,eastAsia:FONT},size:26},x||{}));
+  const T=(text,x)=>new D.TextRun(Object.assign({text:String(text).replace(/[\u{E0100}-\u{E01EF}]/gu,''),font:{name:FONT,eastAsia:FONT},size:26},x||{}));
   const IMG=async(src,maxw)=>{const m=await getImg(src);let w=m.w,h=m.h;const mw=maxw||MAXW;if(w>mw){h=h*mw/w;w=mw}return new D.ImageRun({data:m.data,transformation:{width:Math.round(w),height:Math.round(h)}})};
   const RUNS=(text,x)=>String(text).split(/(<u>.*?<\/u>|<b>.*?<\/b>)/).filter(Boolean).map(t=>/^<u>/.test(t)?T(plain(t),Object.assign({underline:{}},x||{})):/^<b>/.test(t)?T(plain(t),Object.assign({bold:true,underline:{type:'double'}},x||{})):T(t,x));
   const isSmall=async src=>{const m=await getImg(src);return m.h<=110&&m.w<=260};

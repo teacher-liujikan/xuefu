@@ -2806,9 +2806,9 @@
   "type": "choice",
   "stem": "",
   "options": [
-   "It's an egg.",
-   "It's a cake.",
-   "It's a ruler."
+   "It's a lion.",
+   "It's a tiger.",
+   "It's a rabbit."
   ],
   "answer": 1,
   "img": "img/g4-mA-13.png",
@@ -2820,9 +2820,9 @@
   "listen": false,
   "sec": "辨識句子",
   "ex": [
-   "圖是一顆蛋。",
-   "蛋是 egg。cake 是蛋糕，ruler 是尺。",
-   "所以選 ① It's an egg."
+   "圖是一隻獅子，臉的四周有一圈毛。",
+   "獅子是 lion。tiger 是老虎，rabbit 是兔子。",
+   "所以選 ① It's a lion."
   ]
  },
  {
@@ -3251,14 +3251,14 @@
   "answer": 1,
   "img": "img/g5-mA-14.png",
   "iw": 1088,
-  "ih": 352,
+  "ih": 392,
   "xf": [
    "R-5-2"
   ],
   "listen": false,
   "sec": "辨識句子",
   "ex": [
-   "圖裡是一個男孩在看書，蛋糕旁邊的數字是 8，表示他八歲。",
+   "圖裡是一個男孩在看書，生日蛋糕上面的數字是 8，表示他八歲。",
    "② 說的是女孩（girl），不對。③ 說十歲、會唱歌，不對。",
    "① The boy is eight years old.（男孩八歲。）He can read.（他會讀書。）對。",
    "所以選 ① The boy is eight years old. He can read."
