@@ -405,6 +405,11 @@ body.printing #printArea{color:#000}
 .opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.aud{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px;padding:8px 12px;border-radius:12px;background:var(--main-soft)}
+.aud span{font-weight:700;color:var(--main)}
+.aud audio{height:40px;max-width:100%}
+.pbl{margin:6px 0 0 1.5em}
+.q.one input.blank{width:3em;text-align:center;font-size:26px}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
 .exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
@@ -425,8 +430,8 @@ body.printing #printArea{color:#000}
   <main id="main"><p class="loading">題目載入中⋯⋯</p></main>
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
-    <p>四～六年級、113 和 114 年，答案用官方答案卷。這裡只放閱讀題（原卷第 11～25 題）；聽力題（第 1～10 題）要搭配音檔，目前還沒有放。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>
-    <p>題目直接用原卷的畫面。三年級整份都是聽寫和聽力，目前還沒有放。</p>
+    <p>三～六年級、113 和 114 年，答案用官方答案卷。聽力題每題都附音檔（取自官方公布的聽力檔），按播放鍵就能聽。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>
+    <p>題目直接用原卷的畫面。三年級第 1～15 題是字母聽寫，請在格子裡打出聽到的大寫和小寫字母。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
   <div class="credit">
@@ -500,7 +505,7 @@ function normAns(s){
   s=s.replace(/[﹤〈‹]/g,'<').replace(/[﹥〉›]/g,'>').replace(/[﹦]/g,'=').replace(/[−–—‐]/g,'-');
   s=s.replace(/(\d+)分之(\d+)/g,'$2/$1');
   s=s.replace(/(\d),(?=\d{3}(?!\d))/g,'$1');
-  return s.toLowerCase();
+  return s;
 }
 function blankOk(input,spec){
   const a=normAns(input);if(!a)return false;
@@ -740,7 +745,7 @@ document.addEventListener('click',e=>{
 /* ---------- 老師挑題 ---------- */
 let PK=Object.assign({mode:'code',ver:'南一',units:[],codes:[],prev:false,years:null,limit:0,shuffle:false},pref.PK||{});delete PK.noPaper;PK.mode='code';
 const savePick=()=>{pref.PK=PK;savePref()};
-const GROUPS=[['R','閱讀']];
+const GROUPS=[['L','聽力'],['R','閱讀']];
 const semsOf=g=>g>=1?[CN[g]+'上',CN[g]+'下']:[];
 const pkGrades=()=>PK.prev&&GRADE>1?[GRADE-1,GRADE]:[GRADE];
 const pkYears=()=>{const avail=YEARS.filter(y=>QS.some(q=>pkGrades().includes(q.grade)&&q.year===y));const s=PK.years&&PK.years.length?PK.years.filter(y=>avail.includes(y)):avail;return s.length?s:avail};
@@ -870,13 +875,13 @@ function cardHTML(q,k,one){
   const num=numOf(q,k);
   const st=stemHTML(q,'screen');const fm=fillMode(q);
   const pg=psgHTML(q,k>0?SET.qs[k-1]:null,one);
-  const stemBox=`<div class="stem${q.img?' hasimg':''}${q.bp?' bpz':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
+  const stemBox=`${q.audio?`<div class="aud"><span>🔊 先聽音檔再作答</span><audio controls preload="none" src="${esc(q.audio)}"></audio></div>`:''}<div class="stem${q.img?' hasimg':''}${q.bp?' bpz':''}"><span class="qn">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;
   let L=one&&pg?pg:pg+stemBox,R=one&&pg?stemBox:'';
   if(q.type==='choice')R+=optsHTML(q,num);
   if((q.type==='fill'||q.type==='calc')){
     const sym=isSym(q)?`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`:'';
     if(q.type==='calc')L+=`<p class="hintline">✏️ 把算式寫在${one?'計算紙':'紙'}上，這裡填答案</p>`;
-    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
+    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blabels?q.blabels[i]:(q.blanks.length>1?`第 ${i+1} 格`:'答案')} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
     else L+=sym;
   }
   if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
@@ -1168,7 +1173,7 @@ function sheetHTML(ids,title,o){
     let opts='';const pg=psgHTML(q,k>0?qs[k-1]:null,false);
     if(q.type==='choice'&&!q.img){const im=q.optImgs||[];const ts=q.options||[];const hasImg=im.some(Boolean);const short=!hasImg&&ts.every(t=>plain(String(t)).length<=4);const long=ts.some(t=>String(t).length>16);
       opts=`<ol class="popts${short?' row':long?' one':''}">${ts.map((t,j)=>`<li><span>${CIRC[j]}</span>${im[j]?`<img src="${esc(im[j])}" alt="">`:''}${t?` ${rich((t))}`:''}</li>`).join('')}</ol>`}
-    const work=q.type==='calc'?'<div class="pwork"></div>':'';
+    const work=q.type==='calc'?'<div class="pwork"></div>':(q.blabels?`<p class="pbl">${q.blabels.map(l=>l+'：＿＿＿＿').join('　　　')}</p>`:'');
     return `${pg}<div class="pq${q.bp?' bpz':''}"><p class="pstem"><b>${k+1}.</b> ${st.html} <span class="psrc">（${srcOf(q,mixed)}）</span></p>${figsHTML(st.rest)}${opts}${work}</div>`;
   }).join('');
   let ans='';
@@ -1229,6 +1234,7 @@ async function exportWord(ids,title,o,msg){
       else for(let j=0;j<ts.length;j++){const runs=[T(CIRC[j]+' ')];if(im[j])runs.push(await IMG(im[j],420));if(ts[j])runs.push(T((im[j]?' ':'')+ts[j]));out.push(para(runs,{indent:{left:360}}))}
     }
     if(q.type==='calc')out.push(para([T('')]),para([T('')]));
+    if(q.blabels)out.push(para([T('　'+q.blabels.map(l=>l+'：＿＿＿＿').join('　　　'))]));
     out.forEach(p=>children.push(p));
     // 題與題之間空一點
     children.push(new D.Paragraph({spacing:{after:120},children:[]}));

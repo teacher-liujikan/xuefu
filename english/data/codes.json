@@ -1,5 +1,45 @@
 {
  "xuefu": {
+  "L-3-0": {
+   "label": "字母聽寫",
+   "summary": ""
+  },
+  "L-3-1": {
+   "label": "聽辨語音",
+   "summary": ""
+  },
+  "L-3-2": {
+   "label": "聽辨單字",
+   "summary": ""
+  },
+  "L-3-3": {
+   "label": "聽辨常用語或句子",
+   "summary": ""
+  },
+  "R-3-1": {
+   "label": "辨識單字",
+   "summary": ""
+  },
+  "R-3-2": {
+   "label": "辨識句子",
+   "summary": ""
+  },
+  "L-4-0": {
+   "label": "字母聽寫",
+   "summary": ""
+  },
+  "L-4-1": {
+   "label": "聽辨語音",
+   "summary": ""
+  },
+  "L-4-2": {
+   "label": "聽辨單字",
+   "summary": ""
+  },
+  "L-4-3": {
+   "label": "聽辨常用語或句子",
+   "summary": ""
+  },
   "R-4-1": {
    "label": "辨識單字",
    "summary": ""
@@ -8,12 +48,44 @@
    "label": "辨識句子",
    "summary": ""
   },
+  "L-5-0": {
+   "label": "字母聽寫",
+   "summary": ""
+  },
+  "L-5-1": {
+   "label": "聽辨語音",
+   "summary": ""
+  },
+  "L-5-2": {
+   "label": "聽辨單字",
+   "summary": ""
+  },
+  "L-5-3": {
+   "label": "聽辨常用語或句子",
+   "summary": ""
+  },
   "R-5-1": {
    "label": "辨識單字",
    "summary": ""
   },
   "R-5-2": {
    "label": "辨識句子",
+   "summary": ""
+  },
+  "L-6-0": {
+   "label": "字母聽寫",
+   "summary": ""
+  },
+  "L-6-1": {
+   "label": "聽辨語音",
+   "summary": ""
+  },
+  "L-6-2": {
+   "label": "聽辨單字",
+   "summary": ""
+  },
+  "L-6-3": {
+   "label": "聽辨常用語或句子",
    "summary": ""
   },
   "R-6-1": {
