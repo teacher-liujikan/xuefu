@@ -15,7 +15,7 @@ rep("const work=q.type==='calc'?'<div class=\"pwork\"></div>':'';","const work=q
 rep("    if(q.type==='calc')out.push(para([T('')]),para([T('')]));","    if(q.type==='calc')out.push(para([T('')]),para([T('')]));\n    if(q.blabels)out.push(para([T('　'+q.blabels.map(l=>l+'：＿＿＿＿').join('　　　'))]));")
 rep("const numOf=(q,k)=>SET.kind==='exam'?q.no:k+1;","const numOf=(q,k)=>k+1;")
 rep("${SET.kind==='p'?`<p class=\"srctag\">","${!isMock(q.year)?`<p class=\"srctag\">原卷 ")
-rep("<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>","<p>三～六年級、111～114 年。113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案是自行解題（題目旁標「非官方答案」），如有疑義請以官方為準。聽力題每題都附音檔（取自官方公布的聽力檔），按播放鍵就能聽；還沒取得聽力檔的卷（112 年四～六年級、113 和 114 年五、六年級）目前只放閱讀題。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>")
+rep("<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>","<p>三～六年級、111～114 年。113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案是自行解題（題目旁標「非官方答案」），如有疑義請以官方為準。聽力題每題都附音檔（取自官方公布的聽力檔），按播放鍵就能聽。「模擬卷」是照考古題閱讀題的題型自編的題目，不是官方試題。</p>")
 rep("<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>題目直接用原卷的畫面。三年級第 1～15 題是字母聽寫，請在格子裡打出聽到的大寫和小寫字母。</p>")
 rep('var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/","/xuefu/english/"]')
 rep(".opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}",".opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}\n.aud{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px;padding:8px 12px;border-radius:12px;background:var(--main-soft)}\n.aud span{font-weight:700;color:var(--main)}\n.aud audio{height:40px;max-width:100%}\n.pbl{margin:6px 0 0 1.5em}\n.q.one input.blank{width:3em;text-align:center;font-size:26px}")
