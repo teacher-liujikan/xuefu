@@ -10,8 +10,8 @@ PIC={'111':[3,2,1],'112':[2,3,1,1],'113':[2,3,2,1],'114':[3,1,3,3]}
 # 16–21：兩個字開頭的音（依音檔整理）
 OXEX={'111':[('b','v','buff、vet'),('w','w','wet、weed'),('th','t','theme、tell'),('m','m','mill、mug'),('p','p','pit、pun')],
       '112':[('b','b','bam、boot'),('h','n','hug、nod'),('l','j','lap、jug'),('th','th','thin、thought'),('y','y','yem、yoke'),('sh','th','shell、thick')],
-      '114':[('j','j',''),('sh','sh',''),('d','l',''),('h','h',''),('z','d',''),('th','th','')],
-      '113':[('g','d',''),('m','m',''),('sh','sh',''),('f','v',''),('h','h',''),('s','ch','')]}
+      '114':[('j','j','jab、jeep'),('sh','sh','shore、shade'),('d','l','don、loaf'),('h','h','height、hose'),('z','d','zeb、dam'),('th','th','thud、then')],
+      '113':[('g','d','gol、dot'),('m','m','mock、mass'),('sh','sh','shag、shoom'),('f','v','fog、vat'),('h','h','hum、heap'),('s','ch','sin、chop')]}
 PICEX={'111':[('Close your book.','把書闔上。','圖 (3) 對話框裡的箭頭表示把書闔起來。','(1) 是舉手，(2) 是把書打開。'),
               ('Look!','你看！','圖 (2) 女孩拿著望遠鏡在看。','(1) 是在聽，(3) 是比讚。'),
               ('Stand up.','站起來。','圖 (1) 箭頭往上，男孩從椅子上站起來。','(2) 是坐下，(3) 是把書打開。')],
@@ -64,7 +64,8 @@ def build(y,extra=None):
             ans=OX[y][i]; info=(OXEX.get(y) or [None]*6)[i]
             if info:
                 p,q,eg=info
-                ex=[f'音檔唸了兩個字{"（"+eg+"）" if eg else ""}。', f'第一個字開頭的音是 {p}，第二個字開頭的音是 {q}。' if p!=q else f'兩個字開頭的音都是 {p}。', '開頭的音一樣選 O，不一樣選 X。']
+                w1,w2=eg.split('、')
+                ex=[f'音檔唸了兩個字：{w1} 和 {w2}。', f'{w1} 開頭的音是 {p}，{w2} 開頭的音是 {q}，不一樣。' if p!=q else f'{w1} 和 {w2} 開頭的音都是 {p}，一樣。', '開頭的音一樣選 O，不一樣選 X。']
             else: ex=['音檔唸了兩個字，仔細聽兩個字開頭的音。','開頭的音一樣選 O，不一樣選 X。']
             QS.append(dict(base,type='choice',stem='聽兩個字：開頭的音一樣選 O，不一樣選 X。',options=['O','X'],answer=ans,xf=['L-3-1'],sec='聽辨語音',
                 ex=ex+[f"所以選 {'①②'[ans-1]} {'OX'[ans-1]}"]))
