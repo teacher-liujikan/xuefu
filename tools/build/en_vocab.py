@@ -21,7 +21,7 @@ ball:球 kite:風箏 doll:娃娃 robot:機器人 brown:咖啡色 pink:粉紅色 
 basketball:籃球 baseball:棒球 jog:慢跑 cut:剪；切 wash:洗 clean:乾淨的；打掃 nice:好的 fine:很好的 great:很棒的 hello:哈囉 hi:嗨 bye:再見 goodbye:再見 please:請 meet:見面
 sit-down:坐下 stand-up:站起來 there:那裡 who:誰 old-:老 eraser:橡皮擦 crayon:蠟筆 notebook:筆記本 lamp:燈 sofa:沙發 table:桌子 clock:時鐘 phone:電話 computer:電腦 cap:帽子
 sweater:毛衣 shorts:短褲 pants:長褲 socks:襪子 coat:大衣 umbrella:雨傘 hospital:醫院 library:圖書館 store:商店 restaurant:餐廳 police:警察 farmer:農夫 driver:司機 singer:歌手
-dancer:舞者 cook-:廚師 hen:母雞 frog:青蛙 ant:螞蟻 bee:蜜蜂 sheep:羊 goat:山羊 mouse:老鼠 panda:貓熊 koala:無尾熊 zebra:斑馬 giraffe:長頸鹿 away:離開（put-away＝收起來） having:吃；有""".split())
+dancer:舞者 cook-:廚師 hen:母雞 frog:青蛙 ant:螞蟻 bee:蜜蜂 sheep:羊 goat:山羊 mouse:老鼠 panda:貓熊 koala:無尾熊 zebra:斑馬 giraffe:長頸鹿 away:離開（put-away＝收起來） having:吃；有 birthday:生日 raise:舉起 bow:鞠躬 shout:大叫""".split())
 STOP=set('a an the is are am it it\'s i i\'m you you\'re he\'s she\'s that\'s what\'s how\'s let\'s do to and but me his her its they we our of for at with be not'.split())-{'not'}
 STOP|={'not','o\'clock','my','your','ing'}
 EXP={"it's":[],"what's":['what'],"that's":['that'],"he's":['he'],"she's":['she'],"i'm":[],"you're":[],"how's":['how'],"let's":["let's"],"can't":["can't"],"don't":["don't"]}
