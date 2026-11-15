@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>扶搖直上小組擂台</title>
+<meta name="description" content="學習扶助篩選測驗考古題：依學扶細目出題，在教室電視上小組比賽，平板可連線作答。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Iansui&family=Noto+Sans+TC:wght@500;700;900&display=swap">
+<style>
+/* Layout: classroom TV stage — question on the left, team scoreboard rail on the right; stacks on phones.
+   Single deliberate light look (graph-paper green like the 學扶考古題 site). */
+:root{
+  --paper:#fbfdfb; --paper-2:#eef5f0; --grid:#e3eee6; --ink:#0f1a14; --ink-soft:#4d5b52;
+  --main:#1d6b47; --main-soft:#dff0e6; --coral:#e8735a; --gold:#f2b632; --berry:#d23b3b; --line:#c8d8cd;
+  --f-display:"Iansui","Huninn","Noto Sans TC",sans-serif;
+  --f-body:"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color-scheme:light;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--f-body);font-size:16px;overflow:hidden}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.app{height:100%;display:grid;grid-template-columns:1fr minmax(230px,21vw);grid-template-rows:auto 1fr auto;gap:10px;padding-block:10px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.top{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-size:1.35rem;color:var(--main);white-space:nowrap}
+.brand small{color:var(--ink);font-family:var(--f-body);font-size:.85rem;margin-left:6px}
+.chip{border:2px solid var(--main);color:var(--main);background:#fff;border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:700}
+.chip.on{background:var(--main);color:#fff}
+.count{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--ink-soft);font-size:.95rem}
+.stage{position:relative;background:#fff;border:2px solid var(--line);border-radius:18px;overflow:hidden;min-width:0;min-height:0;display:flex;flex-direction:column}
+.pane{flex:1;overflow:auto;padding:2.5vh 2.5vw;min-height:0}
+.bar{grid-column:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nav{border:none;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;font-size:1.05rem;font-weight:700}
+.nav:disabled{opacity:.3;cursor:default}
+.spacer{flex:1}
+.tool{border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:12px;padding:8px 12px;font-size:1rem;font-weight:700}
+.tool.hot{background:var(--main);border-color:var(--main);color:#fff}
+.timer{display:flex;align-items:center;gap:6px}
+.clock{font-family:var(--f-display);font-variant-numeric:tabular-nums;font-size:1.9rem;min-width:4.2ch;text-align:center;background:var(--paper-2);border-radius:12px;padding:0 10px}
+.clock.low{color:var(--berry)}
+.clock.done{background:var(--berry);color:#fff;animation:pulse .6s ease-in-out 4}
+@keyframes pulse{50%{transform:scale(1.08)}}
+/* setup */
+.setup{display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center}
+.setup h1{font-family:var(--f-display);font-weight:400;color:var(--main);font-size:clamp(2rem,7vh,4.2rem);margin:0;letter-spacing:.08em}
+.setup h1 em{font-style:normal;color:var(--coral)}
+.setup .sub{font-weight:700;color:var(--ink-soft)}
+.pick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.pick .lab{font-weight:900;color:var(--ink-soft);min-width:3em}
+.opt{border:3px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;padding:.3em .9em;font-weight:900;font-size:clamp(1.05rem,3vh,1.6rem)}
+.opt.on{border-color:var(--main);background:var(--main);color:#fff}
+.opt:disabled{opacity:.35;cursor:default}
+select.sel{font-family:var(--f-body);font-size:clamp(1rem,2.6vh,1.3rem);padding:8px 10px;border:3px solid var(--main);border-radius:12px;background:#fff;color:var(--ink);max-width:min(640px,80vw)}
+.chosen{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px}
+.chosen button{border:2px solid var(--main);background:var(--main-soft);border-radius:999px;padding:4px 12px;font-weight:700;color:var(--ink)}
+.chosen button::after{content:" ×";color:var(--ink-soft)}
+.go{border:none;background:var(--coral);color:#fff;border-radius:999px;padding:.35em 1.6em;font-family:var(--f-display);font-size:clamp(1.3rem,4vh,2.2rem);letter-spacing:.08em}
+.go:disabled{opacity:.35;cursor:default}
+.note{color:var(--ink-soft);font-size:.92rem;max-width:44em}
+.credit{font-size:.8rem;color:var(--ink-soft);text-align:center;line-height:1.6}
+.credit b{color:var(--main)}
+.credit a{color:inherit}
+.linkbtn{border:none;background:none;color:var(--main);text-decoration:underline;font-weight:700;font-size:.92rem}
+/* guide */
+.guide{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
+.guide h1{font-family:var(--f-display);font-weight:400;color:var(--main);font-size:clamp(1.8rem,5vh,2.6rem);margin:0}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;width:100%;max-width:1000px}
+.g-card{background:var(--paper-2);border-radius:14px;padding:12px 16px}
+.g-card h3{margin:0 0 6px;font-size:1.05rem}
+.g-card ul{margin:0;padding-left:1.2em;line-height:1.65;font-size:.95rem}
+.g-skip{position:absolute;top:0;right:0;border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 14px;font-weight:700;color:var(--ink-soft)}
+.tip{color:var(--main);font-weight:700;text-align:center}
+/* question */
+.q-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:1.2vh}
+.tag{background:var(--main-soft);color:var(--main);border-radius:999px;padding:3px 12px;font-weight:700;font-size:.95rem}
+.tag.y{background:#fff3d6;color:#8a5a00}
+.q-wrap{display:flex;gap:2vw;min-height:0}
+.psg{flex:1 1 45%;min-width:0;background:var(--paper-2);border-radius:12px;padding:12px 16px;font-size:clamp(1rem,2.5vh,1.35rem);line-height:1.8;white-space:pre-wrap;max-height:68vh;overflow:auto}
+.psg img{max-width:100%;display:block}
+.q-main{flex:1 1 55%;min-width:0;display:flex;flex-direction:column;gap:1.4vh}
+.stem b,.op b,.psg b{font-weight:900;text-decoration:underline double}
+.stem u,.op u,.psg u{text-decoration:underline;text-underline-offset:.15em}
+.stem{font-size:clamp(1.3rem,4vh,2.4rem);font-weight:700;line-height:1.55;white-space:pre-wrap}
+.figs{display:flex;gap:12px;flex-wrap:wrap}
+.figs img{max-height:30vh;max-width:100%;background:#fff;border:1px solid var(--line);border-radius:8px}
+.qimg{max-width:100%;max-height:52vh;object-fit:contain;align-self:flex-start;background:#fff;border-radius:8px;border:1px solid var(--line)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2vh 1.5vw}
+.op{display:flex;gap:.5em;align-items:center;border:3px solid var(--line);border-radius:14px;padding:.35em .6em;font-size:clamp(1.15rem,3.4vh,2rem);font-weight:700;background:#fff;min-width:0}
+.op .n{flex:none;width:1.6em;height:1.6em;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.8em}
+.op img{max-height:18vh;max-width:100%}
+.op.ok{border-color:var(--main);background:var(--main-soft)}
+.op.ok .n{background:var(--main)}
+.op.dim{opacity:.45}
+.ans{background:#fff8e6;border:2px solid var(--gold);border-radius:14px;padding:10px 16px;font-size:clamp(1rem,2.6vh,1.4rem);line-height:1.7}
+.ans b{color:var(--main)}
+.ans ol{margin:4px 0 0;padding-left:1.3em}
+/* title/end */
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2vh;text-align:center;height:100%}
+.big{font-family:var(--f-display);color:var(--main);font-size:clamp(2.4rem,10vh,6rem);line-height:1.1;letter-spacing:.06em}
+.big em{font-style:normal;color:var(--coral)}
+.codes{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px}
+.codes span{background:var(--paper-2);border-radius:10px;padding:4px 12px;font-weight:700;font-size:clamp(.95rem,2.4vh,1.3rem)}
+.rank{display:flex;flex-direction:column;gap:1vh;width:min(620px,100%)}
+.rank div{display:grid;grid-template-columns:3ch 1fr auto;gap:1em;align-items:center;background:var(--paper-2);border-radius:14px;padding:.4em 1em;font-weight:900;font-size:clamp(1.1rem,3.4vh,1.9rem)}
+.rank div.first{background:#fff3d6;border:3px solid var(--gold)}
+.rank .pos{color:var(--coral);font-family:var(--f-display)}
+/* scoreboard */
+.board{grid-column:2;grid-row:2/4;display:flex;flex-direction:column;gap:8px;min-height:0}
+.board h2{font-family:var(--f-display);font-weight:400;font-size:1.3rem;display:flex;align-items:center;gap:8px;margin:0}
+.board h2 .mini{margin-left:auto;font-family:var(--f-body);font-size:.8rem;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:3px 8px;color:var(--ink-soft)}
+.teams{display:flex;flex-direction:column;gap:6px;overflow:auto;min-height:0;flex:1}
+.team{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:6px 8px}
+.team.lead{border-color:var(--gold);background:#fff8e6}
+.tname{font-weight:700}
+.tscore{font-family:var(--f-display);font-variant-numeric:tabular-nums;font-size:2rem;line-height:1;text-align:right}
+.tbtns{grid-column:1/-1;display:flex;gap:4px}
+.tbtns button{flex:1;border:none;border-radius:8px;padding:5px 0;font-weight:900;background:var(--main);color:#fff}
+.tbtns button.p2{background:var(--gold);color:var(--ink)}
+.tbtns button.m{background:#fff;color:var(--ink-soft);border:1.5px solid var(--line)}
+.bump{animation:bump .3s}@keyframes bump{50%{transform:scale(1.25)}}
+.board-foot{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:.85rem;color:var(--ink-soft)}
+.board-foot button{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:.85rem}
+.confirm{background:#fde3dc;border-radius:10px;padding:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:.9rem}
+.confirm button{border:none;border-radius:8px;padding:4px 10px;font-weight:700}
+.confirm .yes{background:var(--berry);color:#fff}
+/* room overlay */
+.ovl{position:fixed;inset:0;background:rgba(15,26,20,.55);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.ovl-card{background:#fff;border-radius:22px;padding:22px 26px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:center;max-width:min(900px,100%);max-height:100%;overflow:auto}
+.qr{background:#fff;padding:12px;border-radius:14px;border:2px solid var(--line);width:min(300px,70vw);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.qr img,.qr canvas{width:100%!important;height:auto!important}
+.ovl-info{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1 1 280px}
+.ovl-info h3{font-family:var(--f-display);font-weight:400;font-size:1.6rem;margin:0;color:var(--main)}
+.code{font-family:var(--f-display);font-size:3rem;letter-spacing:.2em}
+.url{font-size:.85rem;color:var(--ink-soft);word-break:break-all;user-select:all}
+.ovl-status{font-weight:700;color:var(--main)}.ovl-status.bad{color:var(--berry)}
+.on-teams{display:flex;gap:6px;flex-wrap:wrap}
+.on-teams span{border-radius:999px;padding:3px 12px;font-weight:700;border:2px solid var(--line);color:var(--ink-soft)}
+.on-teams span.in{background:var(--main);border-color:var(--main);color:#fff}
+.modes{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700}
+.modes button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 14px;font-weight:700}
+.modes button.on{background:var(--coral);border-color:var(--coral);color:#fff}
+/* answer wall */
+.w-head{font-weight:900;font-size:clamp(1.2rem,3.6vh,2rem);display:flex;gap:1em;align-items:baseline;flex-wrap:wrap;justify-content:center;margin-bottom:1.2vh}
+.hint{color:var(--ink-soft);font-size:.9rem;font-weight:700}
+.walls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wc{background:var(--paper-2);border-radius:14px;padding:8px 10px;display:flex;flex-direction:column;gap:6px;min-width:0;border:3px solid transparent}
+.wc.ok{border-color:var(--main);background:var(--main-soft)}
+.wc.no{border-color:#f0b8b0}
+.wc .hd{display:flex;align-items:center;gap:6px;font-weight:900}
+.wc .hd span{margin-left:auto;font-size:.9rem;color:var(--ink-soft);font-weight:700}
+.wc .pickc{font-family:var(--f-display);font-size:clamp(2rem,6vh,3.4rem);text-align:center;line-height:1.1}
+.wc .fills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.wc .fills b{background:#fff;border:2px solid var(--line);border-radius:8px;padding:0 .5em;font-size:clamp(1.1rem,3vh,1.6rem)}
+.wc .fills b.ok{border-color:var(--main)}.wc .fills b.no{border-color:var(--berry);color:var(--berry)}
+.wc canvas{width:100%;aspect-ratio:1000/560;background:#fff;border-radius:8px;border:2px solid var(--line);display:block}
+.wc .bt{display:flex;gap:6px}
+.wc .bt button{flex:1;border:none;border-radius:8px;padding:5px 0;font-weight:900;background:var(--main);color:#fff}
+.wc .bt button.p2{background:var(--gold);color:var(--ink)}
+.wc .bt button.m{background:#fff;color:var(--ink-soft);border:1.5px solid var(--line)}
+.wc .added{font-size:.85rem;color:var(--main);font-weight:900;text-align:center;min-height:1.1em}
+.apply{margin:1.4vh auto 0;display:block;font-size:clamp(1rem,3vh,1.5rem)}
+/* student */
+.stu{height:100%;overflow:auto;display:flex;flex-direction:column;gap:14px;padding-block:14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));align-items:center}
+.s-top{display:flex;gap:10px;align-items:center;width:100%;max-width:900px}
+.s-team{border:none;background:var(--main);color:#fff;border-radius:999px;padding:6px 16px;font-weight:900;font-size:1.1rem}
+.s-score{font-weight:700;color:var(--ink-soft)}
+.s-clock{margin-left:auto;font-family:var(--f-display);font-size:1.8rem;background:var(--paper-2);border-radius:12px;padding:0 12px;font-variant-numeric:tabular-nums}
+.s-clock.low{color:var(--berry)}
+.s-main{flex:1;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;width:100%;max-width:980px;text-align:center}
+.s-big{font-family:var(--f-display);font-size:clamp(1.6rem,6vw,2.6rem);color:var(--main)}
+.s-msg{font-size:1.15rem;font-weight:700;color:var(--ink-soft)}
+.s-teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;width:100%}
+.s-teams button{border:3px solid var(--line);background:#fff;border-radius:16px;padding:18px 0;font-size:1.5rem;font-weight:900}
+.s-ch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
+.s-ch button{border:4px solid var(--line);background:#fff;border-radius:18px;padding:14px 12px;font-size:1.5rem;font-weight:900;color:var(--ink);display:flex;gap:10px;align-items:center;text-align:left;min-height:84px}
+.s-ch button .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.85em}
+.s-ch button.on{border-color:var(--coral);background:#fff1ec}
+.s-ch button.on .n{background:var(--coral)}
+.s-ch button.right{border-color:var(--main);background:var(--main-soft)}
+.s-fill{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%}
+.s-fill label{display:flex;align-items:center;gap:6px;font-weight:900;font-size:1.2rem}
+.s-fill input{width:9em;font-size:1.6rem;padding:8px 10px;border:3px solid var(--ink);border-radius:12px;font-family:var(--f-body);text-align:center;background:#fff;color:var(--ink)}
+.s-pad{width:100%;aspect-ratio:1000/560;background:#fff;border:4px dashed #b9cbbf;border-radius:16px;touch-action:none;display:block}
+.s-pad.lock{opacity:.6}
+.s-tools{display:flex;gap:10px;justify-content:center}
+.s-tools button{border:2px solid var(--ink);background:#fff;border-radius:12px;padding:6px 18px;font-size:1.1rem;font-weight:900}
+.s-res{font-size:1.5rem;font-weight:900}
+.s-res.ok{color:var(--main)}.s-res.no{color:var(--berry)}
+@media (max-width:820px){
+  body{overflow:auto}
+  .app{grid-template-columns:1fr;grid-template-rows:auto minmax(440px,64vh) auto auto;height:auto;min-height:100%}
+  .board{grid-column:1;grid-row:auto}
+  .teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .q-wrap{flex-direction:column}
+  .walls{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">「扶」搖直上<small>學扶小組擂台</small></div>
+    <button class="chip" id="setChip" hidden></button>
+    <button class="chip" id="roomBtn">平板連線</button>
+    <div class="count" id="count"></div>
+  </header>
+  <main class="stage">
+    <section class="pane" id="pane"></section>
+  </main>
+  <div class="bar" id="bar">
+    <button class="nav" id="prev">← 上一題</button>
+    <button class="nav" id="next">下一題 →</button>
+    <div class="spacer"></div>
+    <div id="extra" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    <div class="timer" id="timerBox" hidden>
+      <div class="clock" id="clock">1:00</div>
+      <button class="tool" id="tStart">開始</button>
+      <button class="tool" id="tReset">重來</button>
+      <button class="tool" id="tPlus30">+30 秒</button>
+    </div>
+  </div>
+  <aside class="board">
+    <h2>計分板 <button class="mini" id="fs">全螢幕</button></h2>
+    <div class="teams" id="teams"></div>
+    <div class="credit">製作：<b>老師媽咪／范范老師</b></div>
+    <div class="board-foot">組數 <button id="tMinus">−</button><b id="tn">6</b><button id="tPlus">＋</button><span class="spacer"></span><button id="resetBtn">分數歸零</button></div>
+    <div class="confirm" id="confirm" hidden>確定把所有分數歸零？<button class="yes" id="cYes">歸零</button><button id="cNo">取消</button></div>
+  </aside>
+</div>
+<div class="ovl" id="ovl" hidden><div class="ovl-card">
+  <div class="qr" id="qr"></div>
+  <div class="ovl-info"><h3>平板掃這裡加入</h3><div class="code" id="ovlCode"></div><div class="url" id="ovlUrl"></div>
+    <div class="ovl-status" id="ovlStatus"></div><div class="on-teams" id="ovlTeams"></div>
+    <div class="modes" id="ovlModes">作答方式：<button data-mode="type">點選／打字</button><button data-mode="wb">加開手寫白板</button></div>
+    <div class="note" style="text-align:left">一組一臺平板。選擇題直接點 ①②③④；手寫白板可以當計算紙，也能寫答案給老師看。連線要看學校網路，擔心的話用小白板也可以。</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tool hot" id="ovlClose">開始比賽</button><button class="tool" id="ovlEnd">結束連線</button></div></div>
+</div></div>
+<div class="stu" id="stu" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ================= 基本 ================= */
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem('xfg-'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('xfg-'+k,JSON.stringify(v))}catch(e){}}};
+const escH=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const NUMS='①②③④⑤';
+const GN='一二三四五六';
+const QS=new URLSearchParams(location.search);
+const API=QS.get('api')||'wss://yizi-room.tina12345920.workers.dev';
+const JOIN=(QS.get('room')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);
+const PUBLIC='https://teacher-liujikan.github.io/xuefu/game/';
+const LOCAL=/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(location.origin);
+const ONLINE_OK=/^https:\/\/teacher-liujikan\.github\.io$/.test(location.origin)||LOCAL;
+const HAN=/\p{Script=Han}/u;
+const TIME={choice:60,fill:90,calc:120,paper:120};
+const yearName=y=>y==='mA'?'模擬卷':y+' 年';
+
+/* ================= 資料 ================= */
+const SUBJ={math:{n:'數學',base:'../math/',grades:[1,2,3,4,5,6]},chinese:{n:'國語',base:'../chinese/',grades:[3,4,5,6]}};
+const DATA={};
+async function load(sub){
+  if(DATA[sub]) return DATA[sub];
+  const b=SUBJ[sub].base;
+  const get=n=>fetch(b+'data/'+n+'.json').then(r=>{if(!r.ok)throw new Error(n);return r.json()});
+  if(sub==='math'){const [q,c]=await Promise.all([get('questions'),get('codes')]);DATA[sub]={q,codes:c.xuefu,psg:{}}}
+  else{const [q,c,p]=await Promise.all([get('questions'),get('codes'),get('passages')]);DATA[sub]={q,codes:c.xuefu,psg:p}}
+  return DATA[sub];
+}
+const codesOf=q=>q.xuefu||q.xf||[];
+const fixImg=(sub,src)=>src?SUBJ[sub].base+src:'';
+const stripZ=s=>String(s||'').replace(/[{}]/g,'');
+const rich=s=>escH(s).replace(/&lt;(\/?[ub])&gt;/g,'<$1>');
+const plain=s=>String(s||'').replace(/<\/?[a-z]+[^>]*>/g,'');
+
+/* ================= 狀態 ================= */
+let pick=store.get('pick',{sub:'math',g:3,codes:[],src:{old:true,mock:true},n:10});
+let S=store.get('slides',null), idx=store.get('idx',0);
+let nTeams=store.get('n',6), scores=store.get('scores',Array(8).fill(0));
+let mode=S?'game':(store.get('skipGuide',false)?'setup':'guide');
+let reveal=false, wall=false;
+let room=store.get('room',null), hws=null, hRetry=0, roomErr=false, answers={}, online=[], lastSig='';
+let applied=store.get('applied',{}), wbAdded=store.get('wbAdded',{});
+
+/* ================= 使用方法 ================= */
+const GUIDE=`<div class="guide"><button class="g-skip" data-g="skip">跳過 →</button>
+ <h1>給老師的使用方法</h1>
+ <div class="tip">💡 依學扶細目挑題，學習扶助課、補救教學、小組複習都能用</div>
+ <div class="g-grid">
+  <div class="g-card"><h3>1. 選題目</h3><ul><li>選科目、年級</li><li>從下拉選單挑細目，按「加入」，可以加好幾條</li><li>選考古題或模擬卷、要幾題，按「開始擂台」</li></ul></div>
+  <div class="g-card"><h3>2. 上課時</h3><ul><li>「下一題」換題（鍵盤 <b>←</b> <b>→</b>）</li><li>按「開始」計時（<b>空白鍵</b>），可以「+30 秒」</li><li>「公布答案」會標出正確答案和詳解（鍵盤 <b>A</b>）</li><li>不想要這題就按「換一題」</li></ul></div>
+  <div class="g-card"><h3>3. 計分</h3><ul><li>右邊每組有 +1、+2、−1</li><li>沒有平板：各組寫在小白板上舉起來，老師加分</li><li>最後一頁自動排名</li></ul></div>
+  <div class="g-card"><h3>4. 平板連線（選用）</h3><ul><li>按「平板連線」，各組掃 QR code 選組別</li><li>選擇題直接點 ①②③④，填充題打字，電腦自動對答案</li><li>「加開手寫白板」可以當計算紙，老師看各組寫的再加分</li><li>連線要看學校網路，上課前先試一次</li></ul></div>
+ </div>
+ <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center"><button class="go" data-g="go">開始選題目</button><label class="note"><input type="checkbox" id="gNo"> 下次直接跳過</label></div>
+ <div class="credit">© 老師媽咪／范范老師 製作・題目取自學習扶助篩選測驗公告試題，僅供教學練習</div></div>`;
+
+/* ================= 選題 ================= */
+async function renderSetup(){
+  const sub=pick.sub, sj=SUBJ[sub];
+  if(!sj.grades.includes(pick.g)) pick.g=sj.grades[0];
+  $('pane').innerHTML=`<div class="setup"><h1>「<em>扶</em>」搖直上</h1><div class="sub">學扶細目小組擂台・載入題目中…</div></div>`;
+  let D; try{D=await load(sub)}catch(e){$('pane').innerHTML=`<div class="setup"><h1>載入失敗</h1><div class="sub">題目資料讀不到，請確認網路，或從「學扶考古題」網站打開這一頁。</div></div>`;return}
+  const pool=D.q.filter(q=>q.grade===pick.g&&q.type!=='paper');
+  const cnt={}; pool.forEach(q=>codesOf(q).forEach(c=>{cnt[c]=(cnt[c]||0)+1}));
+  const codes=Object.keys(cnt).sort((a,b)=>a.localeCompare(b,'en',{numeric:true}));
+  pick.codes=pick.codes.filter(c=>cnt[c]);
+  const lab=c=>(D.codes[c]&&D.codes[c].label)||c;
+  const avail=countPool(D).length;
+  $('pane').innerHTML=`<div class="setup">
+   <h1>「<em>扶</em>」搖直上</h1><div class="sub">學扶細目小組擂台</div>
+   <div class="pick"><span class="lab">科目</span>${Object.entries(SUBJ).map(([k,v])=>`<button class="opt ${sub===k?'on':''}" data-sub="${k}">${v.n}</button>`).join('')}</div>
+   <div class="pick"><span class="lab">年級</span>${[1,2,3,4,5,6].map(g=>`<button class="opt ${pick.g===g?'on':''}" data-g="${g}" ${sj.grades.includes(g)?'':'disabled'}>${GN[g-1]}年級</button>`).join('')}</div>
+   <div class="pick"><span class="lab">細目</span><select class="sel" id="codeSel"><option value="">— 選一條細目 —</option>${codes.map(c=>`<option value="${c}" ${pick.codes.includes(c)?'disabled':''}>${c}　${escH(lab(c))}（${cnt[c]} 題）</option>`).join('')}</select><button class="tool" id="addCode">加入</button><button class="tool" id="allCode">全部細目</button></div>
+   <div class="chosen">${pick.codes.length?pick.codes.map(c=>`<button data-del="${c}">${c} ${escH(lab(c))}</button>`).join(''):'<span class="note">還沒選細目，或按「全部細目」整個年級一起出</span>'}</div>
+   <div class="pick"><span class="lab">來源</span><label class="opt ${pick.src.old?'on':''}"><input type="checkbox" id="srcOld" ${pick.src.old?'checked':''} hidden>考古題</label><label class="opt ${pick.src.mock?'on':''}"><input type="checkbox" id="srcMock" ${pick.src.mock?'checked':''} hidden>模擬卷</label>
+     <span class="lab" style="margin-left:1em">題數</span>${[5,10,15,0].map(n=>`<button class="opt ${pick.n===n?'on':''}" data-n="${n}">${n||'全部'}</button>`).join('')}</div>
+   <button class="go" id="go" ${avail?'':'disabled'}>開始擂台（${pick.n&&pick.n<avail?pick.n:avail} 題）</button>
+   <div class="note">題目從選到的細目裡隨機抽。手寫、量尺這類只能在紙上做的題目不會出現。</div>
+   <div class="credit">© 老師媽咪／范范老師 製作・題目取自學習扶助篩選測驗公告試題；部分年度沒有官方答案卷，答案為老師媽咪自行解題・<button class="linkbtn" id="openGuide">看使用方法</button></div>
+  </div>`;
+}
+function countPool(D){
+  return D.q.filter(q=>q.grade===pick.g&&q.type!=='paper'&&(q.year==='mA'?pick.src.mock:pick.src.old)&&(!pick.codes.length||codesOf(q).some(c=>pick.codes.includes(c))));
+}
+$('pane').addEventListener('click',async e=>{
+  if(mode==='guide'){const b=e.target.closest('[data-g]');if(!b)return;try{if($('gNo')&&$('gNo').checked)store.set('skipGuide',true)}catch(_){}mode=S?'game':'setup';return render()}
+  if(mode==='setup'){
+    const b=e.target.closest('button,label'); if(!b)return;
+    if(b.dataset.sub){pick.sub=b.dataset.sub;pick.codes=[]}
+    else if(b.dataset.g){pick.g=+b.dataset.g;pick.codes=[]}
+    else if(b.dataset.del){pick.codes=pick.codes.filter(c=>c!==b.dataset.del)}
+    else if(b.dataset.n!==undefined){pick.n=+b.dataset.n}
+    else if(b.id==='addCode'){const v=$('codeSel').value;if(v&&!pick.codes.includes(v))pick.codes.push(v)}
+    else if(b.id==='allCode'){pick.codes=[]}
+    else if(b.tagName==='LABEL'){e.preventDefault();if(b.querySelector('#srcOld'))pick.src.old=!pick.src.old;else pick.src.mock=!pick.src.mock;if(!pick.src.old&&!pick.src.mock)pick.src.old=true}
+    else if(b.id==='openGuide'){mode='guide';return render()}
+    else if(b.id==='go'){const D=await load(pick.sub);store.set('pick',pick);S=buildSlides(D);applied={};wbAdded={};store.set('applied',applied);store.set('wbAdded',wbAdded);store.set('slides',S);mode='game';idx=1;reveal=false;wall=false;timerFor=-1;return render()}
+    else return;
+    store.set('pick',pick); renderSetup(); return;
+  }
+  if(mode==='game'){
+    if(e.target.closest('[data-act="apply"]')) return applyScores();
+    const wa=e.target.closest('[data-wbadd]'); if(wa){const s=S[idx],t=+wa.dataset.wbadd,v=+wa.dataset.v;scores[t-1]=Math.max(0,scores[t-1]+v);const a=(wbAdded[s.qid]=wbAdded[s.qid]||{});a[t]=(a[t]||0)+v;store.set('wbAdded',wbAdded);renderTeams(t-1);return render(true)}
+  }
+});
+function buildSlides(D){
+  let pool=countPool(D); pool=shuffle(pool); if(pick.n) pool=pool.slice(0,pick.n);
+  const out=[{t:'title',sub:pick.sub,g:pick.g,codes:pick.codes.slice()}];
+  pool.forEach(q=>out.push({t:'q',sub:pick.sub,qid:q.id}));
+  out.push({t:'end'}); return out;
+}
+function swapQuestion(){
+  const s=S[idx]; if(s.t!=='q')return; const D=DATA[s.sub]; if(!D)return;
+  const used=new Set(S.filter(x=>x.t==='q').map(x=>x.qid));
+  const cand=shuffle(countPool(D)).find(q=>!used.has(q.id));
+  if(!cand) return; S[idx]={t:'q',sub:s.sub,qid:cand.id}; store.set('slides',S); reveal=false; wall=false; timerFor=-1; render();
+}
+const getQ=s=>DATA[s.sub]&&DATA[s.sub].q.find(q=>q.id===s.qid);
+
+/* ================= 題目畫面 ================= */
+function qHTML(s,q){
+  const D=DATA[s.sub], sub=s.sub, lab=c=>(D.codes[c]&&D.codes[c].label)||'';
+  const tags=codesOf(q).map(c=>`<span class="tag">${c} ${escH(lab(c))}</span>`).join('')+`<span class="tag y">${GN[q.grade-1]}年級・${yearName(q.year)}${q.year==='mA'?'':' 第 '+q.no+' 題'}</span>`;
+  let psg='';
+  if(q.psg&&D.psg[q.psg]){const p=D.psg[q.psg]; psg=`<div class="psg">${q.grade===3&&p.img?`<img src="${fixImg(sub,p.img)}" alt="">`:rich(p.text||'')}</div>`}
+  let body='';
+  const useImg=sub==='chinese'&&q.img&&q.grade===3;
+  if(useImg) body=`<img class="qimg" src="${fixImg(sub,q.img)}" alt="">`;
+  else body=`<div class="stem">${rich(q.stem)}</div>${(q.fig&&q.fig.length)?`<div class="figs">${q.fig.map(f=>`<img src="${fixImg(sub,f)}" alt="">`).join('')}</div>`:''}`;
+  let opts='';
+  if(q.type==='choice'){
+    const ok=reveal?q.answer:0;
+    opts=`<div class="opts">${(q.options||[]).map((o,i)=>{const img=q.optImgs&&q.optImgs[i];
+      return `<div class="op ${ok?(ok===i+1?'ok':'dim'):''}"><span class="n">${i+1}</span>${useImg?'':(img?`<img src="${fixImg(sub,img)}" alt="">`:'')}${useImg?'':rich(o)}</div>`}).join('')}</div>`;
+  }
+  let ans='';
+  if(reveal){
+    const ex=(q.ex||[]).map(stripZ);
+    const a=q.type==='choice'?`答案：<b>${NUMS[q.answer-1]}</b>`:`答案：<b>${(q.blanks||[]).map(b=>escH(b.split('|')[0])).join('、')}</b>${q.work?`　算式：${q.work.map(escH).join('；')}`:''}`;
+    ans=`<div class="ans">${a}${q.ansSrc==='self'?'（非官方答案）':''}${ex.length?`<ol>${ex.map(x=>`<li>${rich(x)}</li>`).join('')}</ol>`:(q.why?`<div>${escH(q.why)}</div>`:'')}</div>`;
+  }
+  return `<div class="q-head">${tags}</div><div class="q-wrap">${psg}<div class="q-main">${body}${opts}${ans}</div></div>`;
+}
+
+/* ================= 畫面 ================= */
+function render(noPush){
+  const app=$('app');
+  if(mode==='guide'){$('pane').innerHTML=GUIDE;barHide(true);$('setChip').hidden=true;$('count').textContent='';return}
+  if(mode==='setup'){barHide(true);$('setChip').hidden=true;$('count').textContent='';$('extra').innerHTML=S?'<button class="tool" data-act="back">回到比賽</button>':'';$('bar').hidden=!S;renderSetup();if(!noPush)pushState();return}
+  $('bar').hidden=false; barHide(false);
+  idx=Math.max(0,Math.min(idx,S.length-1));
+  const s=S[idx]; let h='', extra='';
+  $('setChip').hidden=false; $('setChip').textContent=`${SUBJ[pick.sub].n}・${GN[pick.g-1]}年級　換題目`;
+  $('count').textContent=`${idx+1} / ${S.length}`;
+  if(s.t==='title'){
+    const D=DATA[s.sub], lab=c=>(D&&D.codes[c]&&D.codes[c].label)||'';
+    h=`<div class="center"><div class="big">「<em>扶</em>」搖直上</div><div style="font-size:clamp(1.2rem,3.6vh,2rem);font-weight:900">${SUBJ[s.sub].n}・${GN[s.g-1]}年級・${S.length-2} 題</div>
+       <div class="codes">${s.codes.length?s.codes.map(c=>`<span>${c} ${escH(lab(c))}</span>`).join(''):'<span>全部細目</span>'}</div><div class="note">按「下一題」開始</div></div>`;
+  } else if(s.t==='q'){
+    const q=getQ(s);
+    if(!q){h='<div class="center">題目載入中…</div>';load(s.sub).then(()=>render())}
+    else{
+      h=(room&&wall)?wallHTML(s,q):qHTML(s,q);
+      extra=`${room?`<button class="tool ${wall?'hot':''}" data-act="wall">各組答案 ${Object.keys(answers[s.qid]||{}).length}/${nTeams}</button>`:''}<button class="tool" data-act="swap">換一題</button><button class="tool ${reveal?'hot':''}" data-act="rev">${reveal?'收起答案':'公布答案'}</button>`;
+    }
+  } else if(s.t==='end'){
+    const list=scores.slice(0,nTeams).map((v,i)=>({i,v})).sort((a,b)=>b.v-a.v); const top=list[0]&&list[0].v; let pos=0,last=null;
+    h=`<div class="center"><div class="big">擂台結束！</div><div class="rank">${list.map((t,k)=>{if(t.v!==last){pos=k+1;last=t.v}return `<div class="${t.v===top&&top>0?'first':''}"><span class="pos">${pos}</span><span>第 ${t.i+1} 組</span><span>${t.v} 分</span></div>`}).join('')}</div></div>`;
+    extra='<button class="tool" data-act="again">同樣的細目再抽一次</button>';
+  }
+  $('pane').innerHTML=h; $('extra').innerHTML=extra;
+  if(s.t==='q'&&room&&wall) paintWb();
+  $('prev').disabled=idx===0; $('next').disabled=idx===S.length-1;
+  const q=s.t==='q'?getQ(s):null;
+  if(q){$('timerBox').hidden=false; if(timerFor!==idx) setTimer(TIME[q.type]||60)} else {$('timerBox').hidden=true; stopTimer()}
+  store.set('idx',idx); if(!noPush) pushState();
+}
+function barHide(h){$('prev').hidden=$('next').hidden=h;if(h){$('timerBox').hidden=true;stopTimer()}}
+function go(i){ if(mode!=='game'||i<0||i>=S.length) return; idx=i; reveal=false; wall=false; stopTimer(); timerFor=-1; render() }
+$('prev').onclick=()=>go(idx-1); $('next').onclick=()=>go(idx+1);
+$('setChip').onclick=()=>{mode='setup';render()};
+$('extra').onclick=e=>{const a=e.target.dataset.act;
+  if(a==='rev'){reveal=!reveal;wall=false;render()}
+  else if(a==='wall'){wall=!wall;render(true)}
+  else if(a==='swap') swapQuestion();
+  else if(a==='back'){mode='game';render()}
+  else if(a==='again'){load(pick.sub).then(D=>{S=buildSlides(D);store.set('slides',S);go(1)})}};
+document.addEventListener('keydown',e=>{
+  if(mode!=='game'||JOIN||!$('ovl').hidden||e.target.tagName==='SELECT')return;
+  if(e.key==='ArrowRight'){go(idx+1);e.preventDefault()}
+  else if(e.key==='ArrowLeft'){go(idx-1);e.preventDefault()}
+  else if(e.key===' '&&!$('timerBox').hidden){toggleTimer();e.preventDefault()}
+  else if((e.key==='a'||e.key==='A')&&S[idx].t==='q'){reveal=!reveal;wall=false;render()}
+});
+
+/* ================= 計時 ================= */
+let left=0,total=0,tick=null,timerFor=-1,actx=null,doneFlag=false;
+const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function drawClock(){const c=$('clock');c.textContent=fmt(left);c.classList.toggle('low',left<=10&&left>0);c.classList.toggle('done',left===0&&total>0&&!tick&&doneFlag)}
+function setTimer(sec){stopTimer();total=sec;left=sec;timerFor=idx;doneFlag=false;drawClock();$('tStart').textContent='開始'}
+function stopTimer(){clearInterval(tick);tick=null;$('tStart').textContent=left>0&&left<total?'繼續':'開始'}
+function toggleTimer(){
+  if(tick){stopTimer();pushState();return}
+  if(left===0) setTimer(total);
+  ensureAudio(); $('tStart').textContent='暫停';
+  tick=setInterval(()=>{left--; if(left<=5&&left>0) beep(660,.12); if(left<=0){left=0;clearInterval(tick);tick=null;doneFlag=true;beep(880,.6);$('tStart').textContent='開始'} drawClock(); if(left%5===0) pushState()},1000);
+  pushState();
+}
+$('tStart').onclick=toggleTimer; $('tReset').onclick=()=>{setTimer(total);pushState()};
+$('tPlus30').onclick=()=>{left+=30;total=Math.max(total,left);doneFlag=false;drawClock();pushState()};
+function ensureAudio(){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();actx.resume()}catch(e){}}
+function beep(f,d){if(!actx)return;try{const o=actx.createOscillator(),g=actx.createGain();o.frequency.value=f;o.type='triangle';g.gain.setValueAtTime(.25,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.connect(g).connect(actx.destination);o.start();o.stop(actx.currentTime+d)}catch(e){}}
+
+/* ================= 計分板 ================= */
+function renderTeams(bumpI){
+  const max=Math.max(...scores.slice(0,nTeams));
+  $('teams').innerHTML=scores.slice(0,nTeams).map((v,i)=>`<div class="team ${v===max&&max>0?'lead':''}"><span class="tname">第 ${i+1} 組</span><span></span><span class="tscore ${bumpI===i?'bump':''}">${v}</span>
+    <div class="tbtns"><button data-t="${i}" data-d="1">+1</button><button class="p2" data-t="${i}" data-d="2">+2</button><button class="m" data-t="${i}" data-d="-1">−1</button></div></div>`).join('');
+  $('tn').textContent=nTeams; store.set('scores',scores); store.set('n',nTeams); pushState(); drawOvl();
+  if(mode==='game'&&S&&S[idx].t==='end') render(true);
+}
+$('teams').onclick=e=>{const b=e.target.closest('button[data-t]');if(!b)return;const i=+b.dataset.t;scores[i]=Math.max(0,scores[i]+ +b.dataset.d);renderTeams(i)};
+$('tMinus').onclick=()=>{nTeams=Math.max(2,nTeams-1);renderTeams()};
+$('tPlus').onclick=()=>{nTeams=Math.min(8,nTeams+1);renderTeams()};
+$('resetBtn').onclick=()=>{$('confirm').hidden=false}; $('cNo').onclick=()=>{$('confirm').hidden=true};
+$('cYes').onclick=()=>{scores=Array(8).fill(0);$('confirm').hidden=true;renderTeams()};
+$('fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}};
+
+/* ================= 連線：老師端 ================= */
+const rnd=(n,abc)=>Array.from({length:n},()=>abc[Math.random()*abc.length|0]).join('');
+const isWb=()=>room&&room.mode==='wb';
+function pubState(){
+  const base={n:nTeams,scores:scores.slice(0,nTeams),q:null,mode:isWb()?'wb':'type',title:''};
+  if(mode!=='game'||!S) return base;
+  const s=S[idx]; if(s.t!=='q') return base; const q=getQ(s); if(!q) return base;
+  base.q={id:s.qid,t:q.type,no:idx,nb:(q.blanks||[]).length,opts:q.type==='choice'?(q.optImgs&&q.optImgs.some(Boolean)||(s.sub==='chinese'&&q.grade===3)?(q.options||[]).map(()=>''):(q.options||[]).map(o=>{o=plain(o);return o.length<=24?o:o.slice(0,22)+'…'})):null,
+    phase:tick?'open':(doneFlag?'closed':(left<total?'pause':'wait')),left,total};
+  if(reveal) base.q.rv=q.type==='choice'?{a:q.answer}:{b:(q.blanks||[]).map(b=>b.split('|')[0])};
+  return base;
+}
+function pushState(force){
+  if(!hws||hws.readyState!==1) return;
+  const st=pubState(), sig=JSON.stringify([st.q&&[st.q.id,st.q.phase,!!st.q.rv],st.n,st.scores,st.mode]);
+  const save=!!force||sig!==lastSig; lastSig=sig;
+  try{hws.send(JSON.stringify({t:'state',state:st,save}))}catch(e){}
+}
+function hostConnect(){
+  if(!room||hws) return;
+  try{hws=new WebSocket(`${API}/room/${room.code}?role=host&key=${room.key}`)}catch(e){hws=null;roomErr=true;drawOvl();return}
+  const me=hws;
+  me.onopen=()=>{roomErr=false;hRetry=0;pushState(true);drawOvl()};
+  me.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch(_){return}
+    if(m.t==='sync'){answers=m.answers||{};online=m.teams||[]} else if(m.t==='teams'){online=m.teams||[]} else if(m.t==='ans'){(answers[m.qid]=answers[m.qid]||{})[m.team]=m.data}
+    drawOvl(); if(mode==='game'&&S&&S[idx].t==='q') render(true)};
+  me.onclose=()=>{if(hws===me)hws=null; drawOvl(); if(!room)return; hRetry++; if(hRetry>=3){roomErr=true;drawOvl()} if(hRetry<8) setTimeout(hostConnect,Math.min(8000,1200*hRetry))};
+  me.onerror=()=>{};
+}
+function joinUrl(){return (LOCAL?location.origin+location.pathname:PUBLIC)+'?room='+room.code+(QS.get('api')?'&api='+encodeURIComponent(QS.get('api')):'')}
+let qrFor='';
+function drawOvl(){
+  $('roomBtn').textContent=room?`平板連線中・${online.length} 組`:'平板連線'; $('roomBtn').classList.toggle('on',!!room);
+  if($('ovl').hidden||!room) return;
+  const url=joinUrl();
+  if(qrFor!==url){qrFor=url;$('qr').innerHTML='';try{new QRCode($('qr'),{text:url,width:512,height:512,correctLevel:QRCode.CorrectLevel.M})}catch(e){$('qr').textContent='QR code 載入失敗，請讓學生輸入下面的網址'}}
+  $('ovlCode').textContent=room.code; $('ovlUrl').textContent=url;
+  const ok=hws&&hws.readyState===1;
+  $('ovlStatus').className='ovl-status'+(ok?'':' bad');
+  $('ovlStatus').textContent=ok?`已連線，${online.length} 組加入`:(roomErr?'連不上連線伺服器，請確認網路。':'連線中…');
+  for(const b of $('ovlModes').querySelectorAll('button')) b.classList.toggle('on',(room.mode||'type')===b.dataset.mode);
+  $('ovlTeams').innerHTML=Array.from({length:nTeams},(_,i)=>`<span class="${online.includes(i+1)?'in':''}">第 ${i+1} 組</span>`).join('');
+}
+$('roomBtn').onclick=()=>{
+  if(!ONLINE_OK){$('ovl').hidden=false;$('qr').innerHTML='';$('ovlCode').textContent='';$('ovlStatus').className='ovl-status bad';$('ovlStatus').textContent='這個預覽頁沒辦法開平板連線，請用下面的網址打開。';$('ovlUrl').innerHTML=`<a href="${PUBLIC}" target="_blank" rel="noopener">${PUBLIC}</a>`;$('ovlEnd').hidden=true;return}
+  $('ovlEnd').hidden=false;
+  if(!room){room={code:rnd(5,'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'),key:rnd(20,'abcdefghijklmnopqrstuvwxyz0123456789'),mode:'type'};store.set('room',room);answers={};timerFor=-1}
+  hRetry=0;roomErr=false;hostConnect();$('ovl').hidden=false;drawOvl();if(mode==='game')render(true)};
+$('ovlClose').onclick=()=>{$('ovl').hidden=true};
+$('ovlModes').onclick=e=>{const b=e.target.closest('button[data-mode]');if(!b||!room)return;room.mode=b.dataset.mode;store.set('room',room);pushState(true);drawOvl();if(mode==='game')render(true)};
+$('ovlEnd').onclick=()=>{room=null;store.set('room',null);answers={};online=[];wall=false;if(hws){try{hws.close()}catch(e){}}hws=null;$('ovl').hidden=true;timerFor=-1;drawOvl();if(mode==='game')render(true)};
+const norm=s=>String(s||'').replace(/\s+/g,'').replace(/[，,]/g,'').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[／]/g,'/');
+function judge(q,team){
+  const d=(answers[q.id]||{})[team]; const out={none:!d};
+  if(!d||typeof d!=='object') return out;
+  if(Array.isArray(d.s)) out.wb=d.s.slice(0,200).filter(Array.isArray).map(a=>a.slice(0,4000).map(v=>Math.max(0,Math.min(1000,v|0))));
+  if(q.type==='choice'&&d.c){out.c=Math.max(1,Math.min(5,d.c|0)); out.ok=out.c===q.answer}
+  if(q.blanks&&Array.isArray(d.b)&&d.b.some(x=>x)){out.b=q.blanks.map((bl,i)=>{const v=String(d.b[i]||'').slice(0,20);return {v,ok:bl.split('|').some(a=>norm(a)===norm(v))&&v!==''}}); out.ok=out.b.every(x=>x.ok)}
+  return out;
+}
+function wallHTML(s,q){
+  const cards=Array.from({length:nTeams},(_,i)=>{const t=i+1,j=judge(q,t),ad=(wbAdded[s.qid]||{})[t];
+    let body='';
+    if(j.c) body+=`<div class="pickc">${NUMS[j.c-1]}</div>`;
+    if(j.b) body+=`<div class="fills">${j.b.map(x=>`<b class="${reveal||1?(x.ok?'ok':'no'):''}">${escH(x.v||'？')}</b>`).join('')}</div>`;
+    if(j.wb||isWb()) body+=`<canvas width="500" height="280" data-wbteam="${t}"></canvas>`;
+    const st=j.none?'還沒作答':(j.ok===true?'答對':(j.ok===false?'答錯':''));
+    return `<div class="wc ${j.ok===true?'ok':(j.ok===false?'no':'')}"><div class="hd">第 ${t} 組<span>${st}</span></div>${body}
+      <div class="bt"><button data-wbadd="${t}" data-v="1">+1</button><button class="p2" data-wbadd="${t}" data-v="2">+2</button><button class="m" data-wbadd="${t}" data-v="-1">−1</button></div><div class="added">${ad?(ad>0?'+':'')+ad+' 分':''}</div></div>`}).join('');
+  const auto=q.type==='choice'||(q.blanks&&q.blanks.length);
+  const done=applied[s.qid];
+  return `<div class="w-head"><span>各組答案</span><span class="hint">${auto?'綠框是答對的組；也可以自己按 +1／+2':'看完各組寫的，直接按 +1／+2 加分'}</span></div><div class="walls">${cards}</div>
+    ${auto?`<button class="go apply" data-act="apply" ${done?'disabled':''}>${done?'這一題已經加過分了':'答對的組 +1 分'}</button>`:''}`;
+}
+function paintWb(){
+  const s=S[idx],q=getQ(s); for(const c of document.querySelectorAll('canvas[data-wbteam]')){const j=judge(q,+c.dataset.wbteam);const x=c.getContext('2d');x.clearRect(0,0,500,280);
+    x.lineCap='round';x.lineJoin='round';x.strokeStyle='#0f1a14';x.lineWidth=5;
+    for(const st of (j.wb||[])){if(st.length<2)continue;x.beginPath();x.moveTo(st[0]/2,st[1]/2);if(st.length===2)x.lineTo(st[0]/2+.5,st[1]/2);for(let k=2;k<st.length;k+=2)x.lineTo(st[k]/2,st[k+1]/2);x.stroke()}}
+}
+function applyScores(){
+  const s=S[idx],q=getQ(s); if(applied[s.qid]) return;
+  for(let t=1;t<=nTeams;t++){if(judge(q,t).ok===true) scores[t-1]+=1}
+  applied[s.qid]=true; store.set('applied',applied); renderTeams(); render(true);
+}
+
+/* ================= 連線：學生平板 ================= */
+function studentApp(){
+  $('app').hidden=true; const root=$('stu'); root.hidden=false;
+  const ss={get(k){try{return sessionStorage.getItem('xf-'+JOIN+'-'+k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem('xf-'+JOIN+'-'+k,v)}catch(e){}}};
+  let team=+(ss.get('team')||0), st=null, ws=null, opened=false, retry=0, dead=false, localLeft=0, sig='', sendT=null;
+  let drafts={}; try{drafts=JSON.parse(ss.get('d')||'{}')}catch(e){}
+  const wbOn=()=>st&&st.mode==='wb';
+  const draft=q=>drafts[q.id]||(drafts[q.id]={c:0,b:Array(q.nb||0).fill(''),s:[]});
+  function connect(){
+    try{ws=new WebSocket(`${API}/room/${JOIN}?role=team&team=${team}`)}catch(e){dead=true;draw(true);return}
+    const me=ws;
+    me.onopen=()=>{opened=true;retry=0;draw(true); if(st&&st.q&&drafts[st.q.id]) send(st.q,true)};
+    me.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch(_){return} if(m.t!=='state')return; st=m.state; if(st&&st.q)localLeft=st.q.left; draw()};
+    me.onclose=()=>{if(ws!==me)return; ws=null; retry++; if(!opened&&retry>=3){dead=true;draw(true);return} draw(true); setTimeout(connect,Math.min(6000,1000*retry))};
+    me.onerror=()=>{};
+  }
+  function send(q,now){clearTimeout(sendT); const go=()=>{ss.set('d',JSON.stringify(drafts)); if(team&&ws&&ws.readyState===1){const d=drafts[q.id];const out={c:d.c,b:d.b};if(wbOn())out.s=d.s;try{ws.send(JSON.stringify({t:'ans',qid:q.id,data:out}))}catch(e){}}}; now?go():(sendT=setTimeout(go,600))}
+  setInterval(()=>{if(st&&st.q&&st.q.phase==='open'&&localLeft>0){localLeft--;const c=root.querySelector('.s-clock');if(c){c.textContent=fmt(localLeft);c.classList.toggle('low',localLeft<=10)}}},1000);
+  function draw(force){
+    const q=st&&st.q, n=st?st.n:0; if(team>n&&n) team=0;
+    const ns=JSON.stringify([team,n,q&&[q.id,q.phase,!!q.rv],st&&st.scores,!!ws,dead,st&&st.mode]);
+    if(!force&&ns===sig) return; sig=ns;
+    if(dead){root.innerHTML=`<div class="s-main"><div class="s-big">連不上房間</div><div class="s-msg">請再掃一次老師螢幕上的 QR code。</div></div>`;return}
+    if(!st&&!(ws&&opened)){root.innerHTML=`<div class="s-main"><div class="s-big">「扶」搖直上</div><div class="s-msg">連線中…</div></div>`;return}
+    const view=st||{n:6,scores:[]};
+    if(!team){root.innerHTML=`<div class="s-main"><div class="s-big">你們是第幾組？</div><div class="s-teams">${Array.from({length:view.n||6},(_,i)=>`<button data-team="${i+1}">第 ${i+1} 組</button>`).join('')}</div></div>`;return}
+    if(!st){root.innerHTML=`<div class="s-main"><div class="s-big">第 ${team} 組</div><div class="s-msg">已加入，請看電視，等老師出題</div></div>`;return}
+    const top=`<div class="s-top"><button class="s-team" data-change="1">第 ${team} 組</button><span class="s-score">目前 ${st.scores[team-1]||0} 分</span>${q?`<span class="s-clock">${fmt(localLeft)}</span>`:''}</div>`;
+    let main='';
+    if(!q) main=`<div class="s-big">請看電視</div><div class="s-msg">等老師出題</div>`;
+    else{
+      const open=q.phase==='open', d=draft(q), dis=open?'':'disabled';
+      const note=q.phase==='wait'?'看電視上的題目，等老師按開始':q.phase==='pause'?'暫停中':q.phase==='closed'?'時間到！':'';
+      main=`<div class="s-msg">${note||'看電視上的題目，在這裡作答'}</div>`;
+      if(q.t==='choice'){
+        const a=q.rv&&q.rv.a;
+        main+=`<div class="s-ch">${(q.opts||[]).map((o,i)=>`<button data-c="${i+1}" class="${d.c===i+1?'on':''} ${a===i+1?'right':''}" ${dis}><span class="n">${i+1}</span>${escH(o)}</button>`).join('')}</div>`;
+        if(a&&d.c) main+=`<div class="s-res ${d.c===a?'ok':'no'}">${d.c===a?'答對了！':'正確答案是 '+NUMS[a-1]}</div>`;
+      } else if(q.nb&&!wbOn()){
+        main+=`<div class="s-fill">${Array.from({length:q.nb},(_,i)=>`<label>${q.nb>1?'第 '+(i+1)+' 格':'答案'}<input data-b="${i}" value="${escH(d.b[i]||'')}" ${dis} autocomplete="off"></label>`).join('')}</div>`;
+        if(q.rv&&q.rv.b) main+=`<div class="s-res ok">答案：${q.rv.b.map(escH).join('、')}</div>`;
+      }
+      if(wbOn()||(q.t!=='choice'&&!q.nb)){
+        main+=`<canvas class="s-pad ${open?'':'lock'}" id="sPad" width="1000" height="560"></canvas><div class="s-tools"><button data-wb="undo" ${dis}>↶ 復原</button><button data-wb="clear" ${dis}>清除全部</button></div><div class="s-msg" id="sCount" style="font-size:.95rem"></div>`;
+        if(q.rv&&q.rv.b&&wbOn()) main+=`<div class="s-res ok">答案：${q.rv.b.map(escH).join('、')}</div>`;
+      }
+    }
+    root.innerHTML=top+`<div class="s-main">${main}</div><div class="credit">© 老師媽咪／范范老師 製作</div>`;
+    if(q&&$('sPad')) setupPad(q);
+  }
+  function padDraw(c,d){const x=c.getContext('2d');x.clearRect(0,0,1000,560);x.lineCap='round';x.lineJoin='round';x.strokeStyle='#0f1a14';x.lineWidth=8;
+    for(const s of d.s){if(s.length<2)continue;x.beginPath();x.moveTo(s[0],s[1]);if(s.length===2)x.lineTo(s[0]+.5,s[1]);for(let k=2;k<s.length;k+=2)x.lineTo(s[k],s[k+1]);x.stroke()}}
+  function setupPad(q){const c=$('sPad');const d=draft(q);padDraw(c,d);
+    const size=()=>JSON.stringify(d.s).length; const msg=()=>{$('sCount').textContent=size()>5000?'寫滿了！按「清除全部」或「復原」再寫':''};msg();
+    let cur=null; const pt=e=>{const r=c.getBoundingClientRect();return [Math.round((e.clientX-r.left)/r.width*1000),Math.round((e.clientY-r.top)/r.height*560)]};
+    c.onpointerdown=e=>{if(!st.q||st.q.phase!=='open'||size()>5000)return;e.preventDefault();c.setPointerCapture(e.pointerId);cur=pt(e);d.s.push(cur);padDraw(c,d)};
+    c.onpointermove=e=>{if(!cur)return;const [x,y]=pt(e),lx=cur[cur.length-2],ly=cur[cur.length-1];if(Math.abs(x-lx)+Math.abs(y-ly)<6)return;cur.push(x,y);const g=c.getContext('2d');g.lineCap='round';g.strokeStyle='#0f1a14';g.lineWidth=8;g.beginPath();g.moveTo(lx,ly);g.lineTo(x,y);g.stroke()};
+    const up=()=>{if(!cur)return;cur=null;msg();send(q)};c.onpointerup=up;c.onpointercancel=up;c.onpointerleave=up;}
+  root.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b)return; const q=st&&st.q;
+    if(b.dataset.team){team=+b.dataset.team;ss.set('team',team);if(ws){const o=ws;ws=null;try{o.close()}catch(_){}}opened=false;connect();draw(true);return}
+    if(b.dataset.change){team=0;ss.set('team',0);draw(true);return}
+    if(!q||q.phase!=='open')return; const d=draft(q);
+    if(b.dataset.c){d.c=+b.dataset.c;send(q,true);draw(true);return}
+    if(b.dataset.wb){if(b.dataset.wb==='undo')d.s.pop();else d.s.length=0;const c=$('sPad');if(c)padDraw(c,d);send(q,true)}
+  });
+  root.addEventListener('input',e=>{const t=e.target,q=st&&st.q;if(!q||t.dataset.b===undefined)return;draft(q).b[+t.dataset.b]=t.value.slice(0,20);send(q)});
+  connect(); draw(true);
+}
+
+/* ================= 開始 ================= */
+if(JOIN){studentApp()}
+else{
+  renderTeams(); drawOvl();
+  if(S&&S.length){load(pick.sub).then(()=>render()).catch(()=>{mode='setup';render()})} else render();
+  if(room) hostConnect();
+}
+</script>
+</body>
+</html>
