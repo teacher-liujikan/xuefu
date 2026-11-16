@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>body{margin:0}img{max-width:100%}</style>
+<style>body{margin:0}img{max-width:100%}.s-crosswrap{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:center}
+.cross.s-cr{--c:min(25vw,118px)}
+.cross.s-cr .cell.inp{padding:0;background:var(--paper)}
+.cross.s-cr .cell.inp input{width:100%;height:100%;border:none;border-radius:0;background:transparent;font-size:calc(var(--c)*.58);font-weight:900;text-align:center;padding:0;color:var(--ink);font-family:var(--f-body)}
+.cross.s-cr .cell.inp input:focus{outline:3px solid var(--coral);outline-offset:-3px;background:rgba(232,115,90,.08)}
+.cross.s-cr svg{z-index:2}
+.s-crosswrap .legend{font-size:1rem}
+</style>
 <title>一字千金學扶同樂版</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -690,8 +697,8 @@ function studentApp(){
         main=`<div class="s-q">點出錯字，在下面寫上正確的字</div><div class="s-fix">${[...q.shown].map((c,i)=>`<div class="col"><button class="c ${d.pick[i]!==undefined?'sel':''}" data-i="${i}" ${dis}>${escH(c)}</button>${d.pick[i]!==undefined?`<input data-fi="${i}" value="${escH(d.pick[i])}" ${dis} autocomplete="off">`:''}${q.fix&&q.fix.f[i]?`<span class="right">${escH(q.fix.f[i])}</span>`:''}</div>`).join('')}</div>${q.fix?`<div class="s-count">正確：${escH(q.fix.full)}</div>`:''}`;
       } else if(q.t==='cross'){
         const inp=i=>`<input data-ci="${i}" value="${escH(d.c[i])}" ${dis} autocomplete="off">`;
-        main=`<div class="s-q">在四個格子各填一個字，接成語詞</div><div class="s-cross"><span></span>${inp(0)}<span></span>${inp(1)}<div class="mid">${escH(q.g)}</div>${inp(2)}<span></span>${inp(3)}<span></span></div>
-          <div class="s-msg" style="font-size:1rem">上、左的字接在前面；右、下的字接在後面</div>`;
+        main=`<div class="s-q">照著箭頭的方向，在四個格子各填一個字</div><div class="s-crosswrap">${crossHTML(q.g,[inp(0),inp(1),inp(2),inp(3)],true,true)}${LEGEND}</div>
+          <div class="s-msg" style="font-size:1rem">四個語詞要不一樣喔</div>`;
       }
       if(note) main=`<div class="s-msg">${note}</div>`+main;
     }
@@ -734,16 +741,16 @@ function star(n){return `<svg class="star" viewBox="0 0 100 100" aria-hidden="tr
  <path d="M50 6 L62 35 L94 37 L69 57 L78 89 L50 71 L22 89 L31 57 L6 37 L38 35 Z" fill="#fbd34d" stroke="#f0a91d" stroke-width="4" stroke-linejoin="round"/>
  <path d="M50 6 L62 35 L94 37 L69 57 L78 89 L50 71 Z" fill="#f7b02a" opacity=".55"/>
  <text x="50" y="66" text-anchor="middle" font-family="Huninn,Noto Sans TC,sans-serif" font-size="40" font-weight="900" fill="#4a2c0a" stroke="#fff" stroke-width="5" paint-order="stroke">${n}</text></svg>`}
-function crossHTML(center,fill,show){
+function crossHTML(center,fill,show,stu){
   const pos={top:[0,1],left:[1,0],c:[1,1],right:[1,2],bot:[2,1]};
   const val={top:fill[0],left:fill[1],c:center,right:fill[2],bot:fill[3]};
   let cells='';
   for(const k in pos){const [r,c]=pos[k];const filled=k!=='c'&&show;
-    cells+=`<div class="cell ${k==='c'?'center':''} ${filled?'filled':''}" style="grid-row:${r+1};grid-column:${c+1}">${k==='c'?center:(show?val[k]:'')}</div>`}
+    cells+=`<div class="cell ${k==='c'?'center':''} ${filled&&!stu?'filled':''} ${stu&&k!=='c'?'inp':''}" style="grid-row:${r+1};grid-column:${c+1}">${k==='c'?center:(show?val[k]:'')}</div>`}
   const A=(x1,y1,x2,y2,col)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="7" stroke-linecap="round" marker-end="url(#h${col.slice(1)})"/>`;
   const cols=['#e53935','#1e56b3','#9bc75a','#f5c542'];
   const markers=cols.map(c=>`<marker id="h${c.slice(1)}" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.4" markerHeight="3.4" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="${c}"/></marker>`).join('');
-  return `<div class="cross">${cells}<svg viewBox="0 0 300 300" aria-hidden="true"><defs>${markers}</defs>
+  return `<div class="cross ${stu?'s-cr':''}">${cells}<svg viewBox="0 0 300 300" aria-hidden="true"><defs>${markers}</defs>
    ${A(118,20,118,140,cols[0])}${A(130,118,268,118,cols[1])}${A(15,180,138,180,cols[2])}${A(180,135,180,280,cols[3])}</svg></div>`;
 }
 const LEGEND=`<div class="legend"><span><i style="background:#e53935"></i>上 → 中</span><span><i style="background:#9bc75a"></i>左 → 中</span>
