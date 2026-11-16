@@ -323,6 +323,8 @@ body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:0;o
 .rchip{background:#1d185a;border-color:var(--line);color:var(--ink-soft)}
 .rchip.on{background:var(--gold);border-color:var(--gold);color:#17134a;box-shadow:0 0 14px rgba(255,210,63,.6)}
 .bookchip{background:#1d185a;border-color:var(--pine);color:var(--pine)}
+#musBtn{border-color:var(--gold);color:var(--gold)}
+#musBtn.off{border-color:var(--line);color:var(--ink-soft)}
 .count{color:var(--ink-soft)}
 .board h2{color:var(--gold)}
 .board h2 .mini,.board-foot button{background:#1d185a;color:#fff;border-color:var(--line)}
@@ -386,6 +388,7 @@ body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:0;o
     <div class="brand">一字千金<small>同樂版</small></div>
     <button class="bookchip" id="bookchip" hidden></button>
     <button class="bookchip" id="roomBtn">平板連線</button>
+    <button class="bookchip" id="musBtn" aria-pressed="true">🎵 音樂開</button>
     <nav class="rounds" id="rounds"></nav>
     <div class="count" id="count"></div>
   </header>
@@ -819,7 +822,7 @@ const GUIDE=`<button class="g-skip" data-g="skip">跳過 →</button>
    <li>連線要看學校的網路，建議上課前先用一臺平板試試看</li>
    <li>擔心網路不穩的話，改用小白板也很好玩：各組寫好舉起來，老師用右邊計分板加分</li></ul></div>
   <div class="g-card"><h3><span>6</span>小提醒</h3><ul>
-   <li>按「全螢幕」投影比較清楚</li>
+   <li>按「全螢幕」投影比較清楚；上方「🎵 音樂」可以開關背景音樂（計時中會播，最後 10 秒會加快）</li>
    <li>分數和進度會記在這臺電腦的瀏覽器裡，不小心重新整理也不會不見</li>
    <li>題目是程式從各課生字和成語整理出來的，看到不適合的題目就按「換一題」</li></ul></div>
  </div>
@@ -828,6 +831,7 @@ const GUIDE=`<button class="g-skip" data-g="skip">跳過 →</button>
 function leaveGuide(){try{if($('gNo')&&$('gNo').checked)store.set('skipGuide',true)}catch(e){} mode=S?'game':'setup'; if(S&&mode==='game'){} render()}
 $('guide').onclick=e=>{const b=e.target.closest('[data-g]');if(!b)return;leaveGuide()};
 function render(noPush){
+  setTimeout(musUpdate);
   const guide=mode==='guide'; $('guide').hidden=!guide;
   if(guide){$('setup').hidden=true;$('slide').hidden=true;$('prev').hidden=$('next').hidden=true;$('rounds').hidden=true;$('count').hidden=true;$('bookchip').hidden=true;$('src').hidden=true;$('extra').innerHTML='';$('timerBox').hidden=true;snowOn=false;if(!$('guide').innerHTML)$('guide').innerHTML=GUIDE;return}
   const setup=mode==='setup';
@@ -921,16 +925,17 @@ document.addEventListener('keydown',e=>{
 /* ---------- timer ---------- */
 let left=0,total=0,tick=null,timerFor=-1,actx=null;
 function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
-function drawClock(){const c=$('clock');c.textContent=fmt(left);c.classList.toggle('low',left<=10&&left>0);c.classList.toggle('done',left===0&&total>0&&!tick&&doneFlag)}
+function drawClock(){const c=$('clock');c.textContent=fmt(left);musUpdate();c.classList.toggle('low',left<=10&&left>0);c.classList.toggle('done',left===0&&total>0&&!tick&&doneFlag)}
 let doneFlag=false;
 function setTimer(sec){stopTimer();total=sec;left=sec;timerFor=idx;doneFlag=false;drawClock();$('tStart').textContent='開始'}
-function stopTimer(){clearInterval(tick);tick=null;$('tStart').textContent=left>0&&left<total?'繼續':'開始'}
+function stopTimer(){clearInterval(tick);tick=null;setTimeout(musUpdate);$('tStart').textContent=left>0&&left<total?'繼續':'開始'}
 function toggleTimer(){
   if(tick){stopTimer();pushState();return}
   if(left===0) setTimer(total);
   ensureAudio();
   $('tStart').textContent='暫停';
   tick=setInterval(()=>{left--; if(left<=10&&left>5) sfx('tick'); if(left<=5&&left>0) beep(660,.12); if(left<=0){left=0;clearInterval(tick);tick=null;doneFlag=true;sfx('buzz');$('tStart').textContent='開始'} drawClock(); if(left%5===0) pushState()},1000);
+  musUpdate();
   pushState();
 }
 $('tPlus30').onclick=()=>{left+=30;total=Math.max(total,left);doneFlag=false;drawClock();pushState()};
@@ -948,7 +953,45 @@ function sfx(k){if(!actx)return;
   else if(k==='win'){[523,659,784,1047,1319].forEach((f,i)=>tone(f,.3,'triangle',.16,i*.12));tone(1568,.9,'triangle',.2,.6);flash()}}
 function flash(){const f=$('flash');if(!f)return;f.classList.remove('on');void f.offsetWidth;f.classList.add('on')}
 let lastSfx=-1;function sfxFor(s){if(lastSfx===idx)return;lastSfx=idx;if(s.t==='round')sfx('round');else if(s.t==='end')sfx('win');else if(s.time)sfx('q')}
-document.addEventListener('pointerdown',()=>ensureAudio(),{once:false});
+document.addEventListener('pointerdown',()=>{ensureAudio();musUpdate()},{once:false});
+/* ---------- 背景音樂（像 Kahoot：等待時輕音樂，計時中節奏音樂，最後 10 秒加快） ---------- */
+var MUS={on:store.get('music',true),timer:null,next:0,step:0,mode:null,out:null,nb:null};
+function musOut(){if(!MUS.out){MUS.out=actx.createGain();MUS.out.gain.value=.55;MUS.out.connect(actx.destination)}return MUS.out}
+function mnote(f,t,d,type,vol){const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.008);g.gain.exponentialRampToValueAtTime(.0005,t+d);o.connect(g).connect(musOut());o.start(t);o.stop(t+d+.03)}
+function mkick(t,v){const o=actx.createOscillator(),g=actx.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(45,t+.12);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g).connect(musOut());o.start(t);o.stop(t+.27)}
+function mnoise(t,d,v,hp){if(!MUS.nb){const n=actx.sampleRate*.5,b=actx.createBuffer(1,n,actx.sampleRate),a=b.getChannelData(0);for(let i=0;i<n;i++)a[i]=Math.random()*2-1;MUS.nb=b}
+  const s=actx.createBufferSource(),f=actx.createBiquadFilter(),g=actx.createGain();s.buffer=MUS.nb;f.type='highpass';f.frequency.value=hp;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0008,t+d);s.connect(f).connect(g).connect(musOut());s.start(t);s.stop(t+d+.02)}
+const MF=m=>440*Math.pow(2,(m-69)/12);
+const PROG=[[57,60,64],[53,57,60],[48,52,55],[55,59,62]];
+const HOOKM=[76,0,74,72,0,72,74,76, 79,0,76,0,74,72,74,0];
+function musStep(st,t){const m=MUS.mode,bar=Math.floor(st/16)%4,s=st%16,ch=PROG[bar];
+  if(m==='lobby'){
+    if(s%4===0) mnote(MF(ch[0]-12),t,.5,'triangle',.11);
+    if(s%2===0) mnote(MF(ch[(s/2)%3]+12),t,.28,'sine',.06);
+    if(s%4===2) mnoise(t,.03,.03,8000);
+    if(bar%2===1&&HOOKM[s]) mnote(MF(HOOKM[s]),t,.22,'triangle',.045);
+    return}
+  const hurry=m==='hurry';
+  if(s%4===0) mkick(t,hurry?.5:.42);
+  if(s===4||s===12) mnoise(t,.12,.16,1500);
+  if(hurry||s%2===0) mnoise(t,.03,hurry?.06:.05,7000);
+  if([0,3,6,8,11,14].includes(s)) mnote(MF(ch[0]-24),t,.18,'square',.07);
+  mnote(MF(ch[s%3]+(hurry?24:12)),t,.12,'triangle',hurry?.06:.05);
+  if(HOOKM[s]&&(hurry||bar%2===0)) mnote(MF(HOOKM[s]+(hurry?12:0)),t,.16,'square',.025)}
+function musTick(){const sp=(MUS.mode==='hurry'?60/150:MUS.mode==='lobby'?60/100:60/122)/4;
+  while(MUS.next<actx.currentTime+.15){musStep(MUS.step,Math.max(MUS.next,actx.currentTime));MUS.step++;MUS.next+=sp}}
+function musSet(m){if(!MUS.on||!actx||actx.state!=='running')m=null;if(m===MUS.mode)return;MUS.mode=m;
+  if(!m){clearInterval(MUS.timer);MUS.timer=null;return}
+  if(!MUS.timer){MUS.next=actx.currentTime+.05;MUS.step=0;MUS.timer=setInterval(musTick,40)}}
+function musUpdate(){if(!MUS)return;let m=null;
+  if(mode==='setup') m='lobby';
+  else if(mode==='game'&&S){const s=S[idx];
+    if(s.time) m=tick?(left<=10?'hurry':'think'):null;
+    else if(s.t==='title'||s.t==='round'||s.t==='demo') m='lobby'}
+  musSet(m)}
+function musBtnDraw(){const b=$('musBtn');if(!b)return;b.textContent=MUS.on?'🎵 音樂開':'🔇 音樂關';b.setAttribute('aria-pressed',MUS.on);b.classList.toggle('off',!MUS.on)}
+$('musBtn').onclick=()=>{MUS.on=!MUS.on;store.set('music',MUS.on);ensureAudio();if(!MUS.on)musSet(null);setTimeout(musUpdate,30);musBtnDraw()};
+musBtnDraw();
 function beep(f,d){if(!actx)return;try{const o=actx.createOscillator(),g=actx.createGain();o.frequency.value=f;o.type='triangle';
   g.gain.setValueAtTime(.25,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.connect(g).connect(actx.destination);o.start();o.stop(actx.currentTime+d)}catch(e){}}
 
