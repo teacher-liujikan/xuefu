@@ -264,7 +264,13 @@ input:disabled{opacity:.6}
 .wb-card .added{font-size:.85rem;color:var(--pine);font-weight:900;text-align:center;min-height:1.2em}
 .s-pad{width:100%;max-width:980px;aspect-ratio:1000/560;background:#fff;border:4px dashed #c9c1a8;border-radius:16px;touch-action:none;display:block}
 .s-pad.lock{opacity:.6}
-.s-tools{display:flex;gap:10px;justify-content:center}
+.s-tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.stu{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.stu input{-webkit-user-select:text;user-select:text}
+.s-pad{touch-action:pinch-zoom}
+.s-pad.erasing{cursor:cell;border-color:var(--coral)}
+.s-tools button.on{background:var(--coral)!important;border-color:var(--coral)!important;color:#fff!important}
+.s-tools button.weak{opacity:.75;font-size:.95rem}
 .s-tools button{border:2px solid var(--ink);background:var(--paper);border-radius:12px;padding:6px 18px;font-size:1.1rem;font-weight:900;color:var(--ink)}
 .s-mini{display:flex;gap:6px;justify-content:center;font-weight:900;font-size:1.8rem;letter-spacing:.1em}
 
@@ -721,8 +727,8 @@ function studentApp(){
       if(wbOn()){
         const pr=q.t==='char'?`寫出有<span class="key">${escH(q.g)}</span>這個部件的字`:q.t==='word'?`寫出有<span class="key">${escH(q.g)}</span>的語詞`:q.t==='fix'?'找出錯字，寫出正確的成語':`接出四個有<span class="key">${escH(q.g)}</span>的語詞`;
         main=`<div class="s-q">${pr}</div>${q.t==='fix'?`<div class="s-mini">${escH(q.shown)}</div>`:''}
-          <canvas class="s-pad ${open?'':'lock'}" id="sPad" width="1000" height="560"></canvas>
-          <div class="s-tools"><button data-wb="undo" ${dis}>↶ 復原</button><button data-wb="clear" ${dis}>清除全部</button></div><div class="s-count" id="sCount"></div>
+          <canvas class="s-pad ${open?'':'lock'} ${padMode==='eraser'?'erasing':''}" id="sPad" width="1000" height="560"></canvas>
+          <div class="s-tools"><button data-wb="pen" class="${padMode==="pen"?"on":""}" ${dis}>✏️ 寫字</button><button data-wb="eraser" class="${padMode==="eraser"?"on":""}" ${dis}>🧽 擦子</button><button data-wb="undo" ${dis}>↶ 復原</button><button data-wb="clear" class="weak" ${dis}>清除全部</button></div><div class="s-count" id="sCount"></div>
           ${q.fix?`<div class="s-count">正確：${escH(q.fix.full)}</div>`:''}`;
       } else if(q.t==='char'||q.t==='word'){
         main=`<div class="s-q">${q.t==='char'?`寫出有<span class="key">${escH(q.g)}</span>這個部件的字`:`寫出有<span class="key">${escH(q.g)}</span>的語詞`}</div>
@@ -740,23 +746,40 @@ function studentApp(){
     root.innerHTML=top+`<div class="s-main">${main}</div><div class="credit">© 老師媽咪／范范老師 製作</div>`;
     if(q&&wbOn()) setupPad(q); else if(q&&(q.t==='char'||q.t==='word')) drawList(q);
   }
+  let padMode='pen',penSeen=false;const padHist={};
   function padDraw(c,d){const x=c.getContext('2d');x.clearRect(0,0,1000,560);x.lineCap='round';x.lineJoin='round';x.strokeStyle='#262340';x.lineWidth=9;
     for(const s of d.s){if(s.length<2)continue;x.beginPath();x.moveTo(s[0],s[1]);if(s.length===2)x.lineTo(s[0]+.5,s[1]);for(let k=2;k<s.length;k+=2)x.lineTo(s[k],s[k+1]);x.stroke()}}
+  function snap(q,d){const k=dkey(q);(padHist[k]=padHist[k]||[]).push(JSON.stringify(d.s));if(padHist[k].length>40)padHist[k].shift()}
+  function eraseAt(d,x,y){const R=26;let hit=false;d.s=d.s.filter(s=>{for(let k=0;k<s.length;k+=2){if(Math.abs(s[k]-x)<R&&Math.abs(s[k+1]-y)<R){hit=true;return false}}return true});return hit}
   function setupPad(q){const c=$('sPad');if(!c)return;const d=draft(q);padDraw(c,d);
-    const size=()=>JSON.stringify(d.s).length; const msg=()=>{$('sCount').textContent=size()>5000?'寫滿了！按「清除全部」或「復原」再寫':''};msg();
-    let cur=null;
+    const size=()=>JSON.stringify(d.s).length; const msg=()=>{$('sCount').textContent=size()>5000?'寫滿了！用「擦子」擦掉一些，或按「復原」再寫':''};msg();
+    let cur=null,erasing=false,snapped=false;const touches=new Set();
     const pt=e=>{const r=c.getBoundingClientRect();return [Math.round((e.clientX-r.left)/r.width*1000),Math.round((e.clientY-r.top)/r.height*560)]};
-    c.onpointerdown=e=>{if(!st.q||st.q.phase!=='open'||size()>5000)return;e.preventDefault();c.setPointerCapture(e.pointerId);cur=pt(e);d.s.push(cur);padDraw(c,d)};
-    c.onpointermove=e=>{if(!cur)return;const [x,y]=pt(e),lx=cur[cur.length-2],ly=cur[cur.length-1];if(Math.abs(x-lx)+Math.abs(y-ly)<6)return;cur.push(x,y);
+    const cancelCur=()=>{if(cur){const i=d.s.indexOf(cur);if(i>=0)d.s.splice(i,1);cur=null;padDraw(c,d)}erasing=false};
+    c.onpointerdown=e=>{
+      if(e.pointerType==='pen') penSeen=true;
+      if(e.pointerType==='touch'){ if(penSeen) return; touches.add(e.pointerId); if(touches.size>1){cancelCur();return} }
+      if(!st.q||st.q.phase!=='open')return;e.preventDefault();
+      if(padMode==='eraser'){snapped=false;erasing=true;try{c.setPointerCapture(e.pointerId)}catch(_){};const [x,y]=pt(e);const before=JSON.stringify(d.s);if(eraseAt(d,x,y)){(padHist[dkey(q)]=padHist[dkey(q)]||[]).push(before);snapped=true;padDraw(c,d)}return}
+      if(size()>5000)return;snap(q,d);try{c.setPointerCapture(e.pointerId)}catch(_){};cur=pt(e);d.s.push(cur);padDraw(c,d)};
+    c.onpointermove=e=>{
+      if(e.pointerType==='touch'&&(penSeen||touches.size>1))return;
+      if(erasing){const [x,y]=pt(e);const before=JSON.stringify(d.s);if(eraseAt(d,x,y)){if(!snapped){(padHist[dkey(q)]=padHist[dkey(q)]||[]).push(before);snapped=true}padDraw(c,d)}return}
+      if(!cur)return;const [x,y]=pt(e),lx=cur[cur.length-2],ly=cur[cur.length-1];if(Math.abs(x-lx)+Math.abs(y-ly)<6)return;cur.push(x,y);
       const g=c.getContext('2d');g.lineCap='round';g.strokeStyle='#262340';g.lineWidth=9;g.beginPath();g.moveTo(lx,ly);g.lineTo(x,y);g.stroke()};
-    const up=()=>{if(!cur)return;cur=null;msg();send(q)};c.onpointerup=up;c.onpointercancel=up;c.onpointerleave=up;}
+    const up=e=>{if(e&&e.pointerType==='touch')touches.delete(e.pointerId);if(erasing){erasing=false;msg();send(q);return}if(!cur)return;cur=null;msg();send(q)};
+    c.onpointerup=up;c.onpointercancel=up;c.onpointerleave=up;}
   function drawList(q){const d=draft(q), l=$('sList'); if(!l)return; l.innerHTML=d.list.map((w,i)=>`<button data-del="${i}">${escH(w)}</button>`).join(''); $('sCount').textContent=d.list.length?`已經寫了 ${d.list.length} 個`:''}
   root.addEventListener('click',e=>{
     const b=e.target.closest('button'); if(!b)return; const q=st&&st.q;
     if(b.dataset.team){team=+b.dataset.team;ss.set('team',team);if(ws){const o=ws;ws=null;try{o.close()}catch(_){}}opened=false;connect();draw(true);return}
     if(b.dataset.change){team=0;ss.set('team',0);draw(true);return}
     if(!q||q.phase!=='open')return; const d=draft(q);
-    if(b.dataset.wb){if(b.dataset.wb==='undo')d.s.pop();else d.s.length=0;const c=$('sPad');if(c)padDraw(c,d);$('sCount').textContent='';send(q,true);return}
+    if(b.dataset.wb){const w=b.dataset.wb,k=dkey(q);
+      if(w==='pen'||w==='eraser'){padMode=w;root.querySelectorAll('[data-wb="pen"],[data-wb="eraser"]').forEach(x=>x.classList.toggle('on',x.dataset.wb===w));const c=$('sPad');if(c)c.classList.toggle('erasing',w==='eraser');return}
+      if(w==='undo'){const hs=padHist[k];if(hs&&hs.length)d.s=JSON.parse(hs.pop());else d.s.pop()}
+      else {snap(q,d);d.s.length=0}
+      const c=$('sPad');if(c)padDraw(c,d);$('sCount').textContent='';send(q,true);return}
     if(b.dataset.del!==undefined){d.list.splice(+b.dataset.del,1);drawList(q);send(q)}
     else if(b.dataset.i!==undefined){const i=b.dataset.i; if(d.pick[i]!==undefined) delete d.pick[i]; else d.pick[i]=''; send(q); draw(true); const f=root.querySelector(`input[data-fi="${i}"]`); if(f)f.focus()}
   });
