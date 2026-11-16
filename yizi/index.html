@@ -21,7 +21,7 @@
 .setup.compact .title-note{font-size:clamp(.75rem,1.9vh,1rem)}
 .modepick .opt small{font-size:.62em;font-weight:700;opacity:.8}
 </style>
-<title>一字千金學扶同樂版</title>
+<title>一字千金同樂版</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Bungee&family=Noto+Sans+TC:wght@500;700;900&display=swap">
@@ -383,7 +383,7 @@ body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:0;o
 
 <div class="app">
   <header class="top">
-    <div class="brand">一字千金<small>學扶同樂版</small></div>
+    <div class="brand">一字千金<small>同樂版</small></div>
     <button class="bookchip" id="bookchip" hidden></button>
     <button class="bookchip" id="roomBtn">平板連線</button>
     <nav class="rounds" id="rounds"></nav>
@@ -535,7 +535,7 @@ function renderSetup(){
     note='不分版本、不分課：生字取自南一、康軒、翰林這個年級的生字表；一、二年級的「錯字」關用常用語詞，三年級以上也會出成語。';
   }
   $('setup').classList.toggle('compact',book);
-  $('setup').innerHTML=`<h1>一字千金</h1><div class="sub">學扶同樂版・不限節日隨時玩</div>
+  $('setup').innerHTML=`<h1>一字千金</h1><div class="sub">同樂版・不限節日隨時玩</div>
    <div class="modepick"><button class="opt ${!book?'on':''}" data-m="mix">年段混合<small>不分版本、不分課</small></button><button class="opt ${book?'on':''}" data-m="book">照課本<small>選版本、年級、課次</small></button></div>
    ${body}
    <button class="go" id="go" ${ok?'':'disabled'}>開始同樂</button>
@@ -792,7 +792,7 @@ const LEGEND=`<div class="legend"><span><i style="background:#e53935"></i>上 �
 const GUIDE=`<button class="g-skip" data-g="skip">跳過 →</button>
  <h1>給老師的使用方法</h1>
  <div class="lead">四個關卡的國字小組競賽，投影在教室電視上就能玩。看過的話可以直接跳過。</div>
- <div class="lead" style="color:var(--pine)">💡 學扶課的同樂時間：一樣是四關小組比賽，可以年段混合，也可以照課本選課，不是考試</div>
+ <div class="lead" style="color:var(--pine)">💡 隨時都能玩的同樂時間：一樣是四關小組比賽，可以年段混合，也可以照課本選課，不是考試</div>
  <div class="g-grid">
   <div class="g-card"><h3><span>1</span>選題目範圍</h3><ul>
    <li>「年段混合」：只選年級，不分版本、不分課</li>
@@ -841,7 +841,7 @@ function render(noPush){
   snowOn = s.t==='title'||s.t==='end'||s.t==='round'; sfxFor(s);
   $('bookchip').textContent=bookName()+'　換範圍';
   if(s.t==='title'){
-    h=`<div class="title-big">一字千金</div><div class="title-sub">學扶同樂版</div>
+    h=`<div class="title-big">一字千金</div><div class="title-sub">同樂版</div>
        <div class="title-note">${bookName()}・四個關卡・小組競賽</div>`;
   } else if(s.t==='round'){
     const R=ROUNDS[s.r];
