@@ -33,6 +33,12 @@
   - 每題附文字詳解；聽力詳解依音檔整理
   - 資料：`english/data/questions.json`，圖在 `english/img/`，音檔在 `english/audio/`
 
+- 學習單檢討：https://teacher-liujikan.github.io/xuefu/review/
+  - 學習扶助二年級數學「數與量」14 份作答單（02、05、06、07、09、14、16、17、18、21、22、23、24、25），一份一頁
+  - 作答單右上角的 QR code 直接連到那一份；學生一關一關點「寫對／寫錯」看答案和詳解，有錯的關卡給老師批改（按住 2 秒），三關完成後做錯題測驗
+  - 自己畫、自己說的題目只給參考答案，不出在錯題測驗裡
+  - 產生方式：`python3 tools/build/review/build.py`（題目在 `tools/build/review/data.py`）
+
 作答紀錄只存在學生自己裝置的瀏覽器（localStorage），不會上傳。
 
 題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。
