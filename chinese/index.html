@@ -405,6 +405,7 @@ body.printing #printArea{color:#000}
 .opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opts.numonly.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
 .exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
@@ -426,7 +427,7 @@ body.printing #printArea{color:#000}
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
     <p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>
-    <p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>
+    <p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級目前有 114 年（填注音、填國字的題目請在格子裡打字）。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
   <div class="credit">
@@ -554,7 +555,7 @@ function exHTML(q,open){
     return (WARN.test(s)?`<li class="warn" data-k="${k}"${hid}><b>小心：</b>${exText(s.replace(WARN,''))}</li>`:`<li data-k="${k}"${hid}>${exText(s)}</li>`)+
       viz.filter(v=>(v.at||0)===k).map(v=>`<li class="vizli" data-k="${k}"${hid} data-viz="${esc(JSON.stringify(v))}"></li>`).join('')}).join('');
   const ctl='';
-  return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox${q.grade===3?' bp':''}" data-n="${L.length}" data-shown="${L.length}"${open?'':' hidden'}><h3>詳解</h3><ol class="exsteps">${lis}</ol>${ctl}</div></div>`;
+  return `<div class="exwrap">${open?'':'<button type="button" class="btn exbtn" data-extoggle aria-expanded="false">💡 看詳解</button>'}<div class="exbox${q.grade<=3?' bp':''}" data-n="${L.length}" data-shown="${L.length}"${open?'':' hidden'}><h3>詳解</h3><ol class="exsteps">${lis}</ol>${ctl}</div></div>`;
 }
 function exReveal(box,all){
   const n=+box.dataset.n;let k=+box.dataset.shown;const to=all?n:Math.min(n,k+1);
@@ -580,6 +581,7 @@ function psgHTML(q,prev,always){
 }
 function fillMode(q){
   if(q.type!=='fill'&&q.type!=='calc')return 'none';
+  if(q.img)return 'below';
   const n=q.blanks.length,s=q.stem;
   if(s.split(BL).length-1===n)return 'inline';
   if(n===1&&q.blanks[0].split('|').every(v=>/^[<>=＜＞＝]$/.test(v))&&s.replace(/在\s*□\s*中/g,'').split('□').length-1===1)return 'sym';
@@ -862,7 +864,7 @@ function optsHTML(q,num){
   const im=q.optImgs||[];const texts=q.options||[];
   const hasImg=im.some(Boolean);const long=texts.some(t=>plain(t).length>14);const tiny=!hasImg&&texts.every(t=>plain(t).length<=6);
   const dis=isPaper(q)?'disabled':'';
-  if(q.img)return `<div class="opts numonly" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
+  if(q.img)return `<div class="opts numonly${texts.length===3?' n3':''}" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
   return `<div class="opts${q.bp?' bpz':''}${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${rich((t))}</span>`:''}</span></button>`).join('')}</div>`;
 }
 /* one=true：作答時一次一題（左：題幹和圖；右：選項或填答區）；one=false：交卷後的整份列表 */

@@ -410,6 +410,7 @@ body.printing #printArea{color:#000}
 .aud audio{height:40px;max-width:100%}
 .pbl{margin:6px 0 0 1.5em}
 .q.one input.blank{width:3em;text-align:center;font-size:26px}
+.opts.numonly.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
 .exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
@@ -585,6 +586,7 @@ function psgHTML(q,prev,always){
 }
 function fillMode(q){
   if(q.type!=='fill'&&q.type!=='calc')return 'none';
+  if(q.img)return 'below';
   const n=q.blanks.length,s=q.stem;
   if(s.split(BL).length-1===n)return 'inline';
   if(n===1&&q.blanks[0].split('|').every(v=>/^[<>=＜＞＝]$/.test(v))&&s.replace(/在\s*□\s*中/g,'').split('□').length-1===1)return 'sym';
@@ -867,7 +869,7 @@ function optsHTML(q,num){
   const im=q.optImgs||[];const texts=q.options||[];
   const hasImg=im.some(Boolean);const long=texts.some(t=>plain(t).length>14);const tiny=!hasImg&&texts.every(t=>plain(t).length<=6);
   const dis=isPaper(q)?'disabled':'';
-  if(q.img)return `<div class="opts numonly" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
+  if(q.img)return `<div class="opts numonly${texts.length===3?' n3':''}" role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" aria-label="選項 ${j+1}：${esc(plain(t))}"><span class="k">${j+1}</span></button>`).join('')}</div>`;
   return `<div class="opts${q.bp?' bpz':''}${long?' one':''}${tiny||hasImg?' tiny':''}"${long?' data-long="1"':''} role="radiogroup" aria-label="第 ${num} 題的選項">${texts.map((t,j)=>`<button type="button" class="opt" role="radio" aria-checked="false" data-c="${j+1}" ${dis}><span class="k">${j+1}</span><span class="ot">${im[j]?`<img src="${esc(im[j])}" alt="選項 ${j+1} 的圖">`:''}${t?`<span>${rich((t))}</span>`:''}</span></button>`).join('')}</div>`;
 }
 /* one=true：作答時一次一題（左：題幹和圖；右：選項或填答區）；one=false：交卷後的整份列表 */

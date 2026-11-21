@@ -29,12 +29,13 @@ rep("const exText=s=>rich((s)).replace(/\\n/g,'<br>');","const exText=s=>rich(s)
 # explanation: static, everything shown
 rep("const lis=L.map((s,k)=>{const hid=k>0?' hidden':'';","const lis=L.map((s,k)=>{const hid='';")
 rex(r"const ctl=L\.length>1\?`<div class=\"exctl\">.*?:'';","const ctl='';")
-rep('<div class="exbox" data-n="${L.length}" data-shown="1"','<div class="exbox${q.grade===3?\' bp\':\'\'}" data-n="${L.length}" data-shown="${L.length}"')
+rep('<div class="exbox" data-n="${L.length}" data-shown="1"','<div class="exbox${q.grade<=3?\' bp\':\'\'}" data-n="${L.length}" data-shown="${L.length}"')
 # stem with image
+rep("function fillMode(q){\n  if(q.type!=='fill'&&q.type!=='calc')return 'none';\n","function fillMode(q){\n  if(q.type!=='fill'&&q.type!=='calc')return 'none';\n  if(q.img)return 'below';\n")
 rep("function stemHTML(q,mode,num){\n","function stemHTML(q,mode,num){\n  if(q.img)return {html:qimgTag(q),rest:[]};\n")
 rep("const BL='（　）';","const BL='（　）';\nconst qimgTag=q=>`<img class=\"qimg\" src=\"${esc(q.img)}\" width=\"${q.iw}\" height=\"${q.ih}\" style=\"max-width:min(100%,${Math.round(q.iw/1.55)}px)\" alt=\"${esc(plain(q.stem)+' '+(q.options||[]).map((t,j)=>'('+(j+1)+')'+plain(t)).join(' '))}\" decoding=\"async\">`;\n/* 題組文章：同一篇文章連續出現時，只在第一題前面放一次（作答時一次一題，每題都放） */\nfunction psgHTML(q,prev,always){\n  const p=q.psg&&PSG[q.psg];if(!p)return '';\n  if(!always&&prev&&prev.psg===q.psg)return '';\n  const pic=!!p.img;\n  const body=pic?`<img class=\"pimg\" src=\"${esc(p.img)}\" width=\"${p.w}\" height=\"${p.h}\" style=\"max-width:min(100%,${Math.round(p.w/1.55)}px)\" alt=\"${esc(plain(p.text))}\" decoding=\"async\">`:p.text.split('\\n').map(t=>`<p>${rich(t)}</p>`).join('');\n  return `<div class=\"psg${pic?' pic':''}\"><p class=\"psgi\">📖 請先閱讀下面的${/圖文/.test(p.intro)?'圖文':'文章'}，再回答問題：</p>${body}</div>`;\n}")
 # options: number-only when the picture already has the options
-rep("  const dis=isPaper(q)?'disabled':'';\n","  const dis=isPaper(q)?'disabled':'';\n  if(q.img)return `<div class=\"opts numonly\" role=\"radiogroup\" aria-label=\"第 ${num} 題的選項\">${texts.map((t,j)=>`<button type=\"button\" class=\"opt\" role=\"radio\" aria-checked=\"false\" data-c=\"${j+1}\" aria-label=\"選項 ${j+1}：${esc(plain(t))}\"><span class=\"k\">${j+1}</span></button>`).join('')}</div>`;\n")
+rep("  const dis=isPaper(q)?'disabled':'';\n","  const dis=isPaper(q)?'disabled':'';\n  if(q.img)return `<div class=\"opts numonly${texts.length===3?' n3':''}\" role=\"radiogroup\" aria-label=\"第 ${num} 題的選項\">${texts.map((t,j)=>`<button type=\"button\" class=\"opt\" role=\"radio\" aria-checked=\"false\" data-c=\"${j+1}\" aria-label=\"選項 ${j+1}：${esc(plain(t))}\"><span class=\"k\">${j+1}</span></button>`).join('')}</div>`;\n")
 # card with passage
 rep("  let L=`<div class=\"stem\"><span class=\"qn\">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`,R='';\n  if(q.type==='choice')R+=optsHTML(q,num);",
     "  const pg=psgHTML(q,k>0?SET.qs[k-1]:null,one);\n  const stemBox=`<div class=\"stem${q.img?' hasimg':''}\"><span class=\"qn\">${num}.</span>${st.html}</div>${figsHTML(st.rest)}`;\n  let L=one&&pg?pg:pg+stemBox,R=one&&pg?stemBox:'';\n  if(q.type==='choice')R+=optsHTML(q,num);")
@@ -71,7 +72,7 @@ rep("t.innerHTML=[1,2,3,4,5,6].map(","t.innerHTML=[1,2,3,4,5,6].filter(g=>QS.som
 rep("function bpmfOn(g){return g in pref.bpmf?!!pref.bpmf[g]:g<=2}","function bpmfOn(g){return false}")
 rep('var P=["/xuefu/","/xuefu/math/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]')
 rep("<p>115 年三～六年級官方未公布答案，答案為自行解題，如有疑義請以官方為準。</p>","<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>")
-rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>三年級題目有注音，直接用原卷的樣子呈現；一、二年級是紙筆手寫卷，目前還沒有放。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>")
+rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級目前有 114 年（填注音、填國字的題目請在格子裡打字）。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>")
 rep("const body=pic?","const ttl=p.title?`<p class=\"psgt\">${esc(p.title)}</p>`:'';\n  const body=ttl+(pic?")
 rep(".join('');\n  return `<div class=\"psg${pic?' pic':''}\">",".join(''));\n  return `<div class=\"psg${pic?' pic':''}\">")
 rep("const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'');","const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'').replace(/[\\u{E0100}-\\u{E01EF}]/gu,'');")
@@ -102,6 +103,7 @@ css='''
 .opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opts.numonly.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
 .exbox.bp{font-family:"Bpmf Huninn","Huninn","Noto Sans TC",sans-serif;line-height:2.3}
