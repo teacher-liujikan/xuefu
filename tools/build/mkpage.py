@@ -72,7 +72,7 @@ rep("t.innerHTML=[1,2,3,4,5,6].map(","t.innerHTML=[1,2,3,4,5,6].filter(g=>QS.som
 rep("function bpmfOn(g){return g in pref.bpmf?!!pref.bpmf[g]:g<=2}","function bpmfOn(g){return false}")
 rep('var P=["/xuefu/","/xuefu/math/"]','var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]')
 rep("<p>115 年三～六年級官方未公布答案，答案為自行解題，如有疑義請以官方為準。</p>","<p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>")
-rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級目前有 114 年（填注音、填國字的題目請在格子裡打字）。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>")
+rep("<p>「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>","<p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級填注音、填國字的題目，請在答案格裡打字。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>")
 rep("const body=pic?","const ttl=p.title?`<p class=\"psgt\">${esc(p.title)}</p>`:'';\n  const body=ttl+(pic?")
 rep(".join('');\n  return `<div class=\"psg${pic?' pic':''}\">",".join(''));\n  return `<div class=\"psg${pic?' pic':''}\">")
 rep("const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'');","const plain=s=>String(s==null?'':s).replace(/<\\/?[ub]>/g,'').replace(/[\\u{E0100}-\\u{E01EF}]/gu,'');")

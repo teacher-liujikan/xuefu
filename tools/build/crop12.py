@@ -42,9 +42,10 @@ def run(g,y,psg=None):
 if __name__=='__main__':
     out={}
     for g in (1,2):
-        d,P=qpos(f'/home/claude/papers_zh12/g{g}-114-q.pdf')
+      for y in ('114','113','112','111'):
+        d,P=qpos(f'/home/claude/papers_zh12/g{g}-{y}-q.pdf')
         # 閱讀文章：第 23 題上方（右欄，第二頁），從「四、/三、閱讀測驗」標題下到第 23 題
         pg,col,x,yy,_,_=P[23]; p=d[pg]; hs=[h for h in heads(p,1,p.rect.width) if h<yy]
-        out[g]=run(g,'114',(pg,1,max(hs)+16,yy-8))
-    json.dump({f'{g}-{k}':v for g,r in out.items() for k,v in r.items()},open('/home/claude/work/zh/zh12_imgs.json','w'),ensure_ascii=False)
-    print({g:len(r) for g,r in out.items()})
+        out[(g,y)]=run(g,y,(pg,1,max(hs)+16,yy-8))
+    json.dump({(f'{g}-{k}' if y=='114' else f'{g}-{y}-{k}'):v for (g,y),r in out.items() for k,v in r.items()},open('/home/claude/work/zh/zh12_imgs.json','w'),ensure_ascii=False)
+    print({k:len(r) for k,r in out.items()})

@@ -8,11 +8,12 @@ def main():
     Q=json.load(open(OUT+'data/questions.json')); P=json.load(open(OUT+'data/passages.json'))
     Q=[q for q in Q if q['grade']>2]; P={k:v for k,v in P.items() if not k.startswith(('g1-','g2-'))}
     for g in (1,2):
-        y='114'; m=load(g,y)
-        a,b,text=m.PSG; pid=f'g{g}-{y}-p{a}'; pi=IM[f'{g}-psg']
+      for y in ('114','113','112','111'):
+        m=load(g,y); SELF=getattr(m,'SELF',False)
+        a,b,text=m.PSG; pid=f'g{g}-{y}-p{a}'; key=(lambda k:f'{g}-{k}' if y=='114' else f'{g}-{y}-{k}'); pi=IM[key('psg')]
         P[pid]=dict(id=pid,a=a,b=b,intro=f'請閱讀以下故事，並回答 {a}～{b} 題：',text=text,img=pi[0],w=pi[1],h=pi[2])
         for n in range(1,26):
-            nm,w,h=IM[f'{g}-{n}']
+            nm,w,h=IM[key(n)]
             if n in m.FILL:
                 tag,stem,ans,ex=m.FILL[n]
                 q=dict(id=f'g{g}-{y}-{n}',grade=g,year=y,no=n,type='fill',stem=stem,blanks=[ans],options=None,answer=None,ex=ex)
@@ -20,6 +21,7 @@ def main():
                 tag,stem,opts,ans,ex=m.Q[n]
                 q=dict(id=f'g{g}-{y}-{n}',grade=g,year=y,no=n,type='choice',stem=stem,options=opts,answer=ans,ex=ex+[f"所以選 {'①②③'[ans-1]} {opts[ans-1]}"])
             q.update(img=nm,iw=w,ih=h,xf=[f'{tag[0]}-{g}-{tag[1:]}'])
+            if SELF: q['ansSrc']='self'
             if a<=n<=b: q['psg']=pid
             Q.append(q)
     json.dump(Q,open(OUT+'data/questions.json','w'),ensure_ascii=False,indent=1)
