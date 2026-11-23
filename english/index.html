@@ -410,6 +410,7 @@ body.printing #printArea{color:#000}
 .aud audio{height:40px;max-width:100%}
 .pbl{margin:6px 0 0 1.5em}
 .q.one input.blank{width:3em;text-align:center;font-size:26px}
+.filltip{margin:6px 0 0;font-size:15px;color:var(--muted);line-height:1.6}
 .opts.numonly.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
@@ -574,6 +575,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-exnext],[d
 new MutationObserver(()=>mountViz()).observe(document.documentElement,{childList:true,subtree:true});
 const imgTag=(src,alt)=>`<img class="fig" src="${esc(src)}" alt="${esc(alt||'題目的圖')}" decoding="async">`;
 const BL='（　）';
+const fillTip=q=>q.grade>2||q.type!=='fill'?'':(/^[\u3105-\u3129]/.test(q.blanks[0])?'<p class="filltip">💡 用注音鍵盤按出注音和聲調，就直接送出，不用選字。</p>':'<p class="filltip">💡 請用手寫輸入，一筆一筆把國字寫出來，練習這個字怎麼寫。</p>');
 const qimgTag=q=>`<img class="qimg" src="${esc(q.img)}" width="${q.iw}" height="${q.ih}" style="max-width:min(100%,${Math.round(q.iw/1.55)}px)" alt="${esc(plain(q.stem)+' '+(q.options||[]).map((t,j)=>'('+(j+1)+')'+plain(t)).join(' '))}" decoding="async">`;
 /* 題組文章：同一篇文章連續出現時，只在第一題前面放一次（作答時一次一題，每題都放） */
 function psgHTML(q,prev,always){
@@ -883,7 +885,7 @@ function cardHTML(q,k,one){
   if((q.type==='fill'||q.type==='calc')){
     const sym=isSym(q)?`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`:'';
     if(q.type==='calc')L+=`<p class="hintline">✏️ 把算式寫在${one?'計算紙':'紙'}上，這裡填答案</p>`;
-    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blabels?q.blabels[i]:(q.blanks.length>1?`第 ${i+1} 格`:'答案')} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
+    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blabels?q.blabels[i]:(q.blanks.length>1?`第 ${i+1} 格`:'答案')} ${inputTag(q,i)}</label>`).join('')}</div>${sym}${fillTip(q)}`;
     else L+=sym;
   }
   if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;

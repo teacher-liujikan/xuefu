@@ -16,6 +16,8 @@ def main():
             nm,w,h=IM[key(n)]
             if n in m.FILL:
                 tag,stem,ans,ex=m.FILL[n]
+                zy=ans[0] in 'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ'
+                if zy and ans[-1] not in 'ˊˇˋ˙': ans=ans+'|'+ans+'ˉ'
                 q=dict(id=f'g{g}-{y}-{n}',grade=g,year=y,no=n,type='fill',stem=stem,blanks=[ans],options=None,answer=None,ex=ex)
             else:
                 tag,stem,opts,ans,ex=m.Q[n]

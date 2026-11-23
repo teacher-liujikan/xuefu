@@ -21,4 +21,6 @@ rep('var P=["/xuefu/","/xuefu/math/","/xuefu/chinese/"]','var P=["/xuefu/","/xue
 rep(".opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}",".opts.numonly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}\n.aud{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px;padding:8px 12px;border-radius:12px;background:var(--main-soft)}\n.aud span{font-weight:700;color:var(--main)}\n.aud audio{height:40px;max-width:100%}\n.pbl{margin:6px 0 0 1.5em}\n.q.one input.blank{width:3em;text-align:center;font-size:26px}")
 rep('<div class="exbox${q.grade<=3?\' bp\':\'\'}"','<div class="exbox"')
 rep("題型是依題目內容自行分類，方便老師挑題，不是官方的學扶細目。","題型照原卷的大題名稱分類。")
+import re as _re
+s=_re.sub(r'<p class="tipnote">.*?</p>','',s)
 open('/home/claude/repo-xuefu/english/index.html','w').write(s); print('en page',len(s))

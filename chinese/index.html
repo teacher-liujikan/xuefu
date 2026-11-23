@@ -405,6 +405,7 @@ body.printing #printArea{color:#000}
 .opts.bpz .opt{line-height:2.1}
 .psg p.psgt{text-indent:0;text-align:center;font-weight:700;font-size:1.05em}
 .opts.numonly{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.filltip{margin:6px 0 0;font-size:15px;color:var(--muted);line-height:1.6}
 .opts.numonly.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .opts.numonly .opt{justify-content:center;min-height:64px}
 .opts.numonly .opt .k{display:inline-grid;place-items:center;line-height:1;padding:0}
@@ -427,7 +428,7 @@ body.printing #printArea{color:#000}
   <footer>
     <p>題目來源：教育部國民及學前教育署 學習扶助篩選測驗公告試題，僅供教學練習使用。</p>
     <p>113、114 年用官方答案卷；111、112 年沒有取得官方答案卷，答案為自行解題（題目旁會標「非官方答案」），如有疑義請以官方為準。</p>
-    <p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級填注音、填國字的題目，請在答案格裡打字。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p>
+    <p>一～三年級題目有注音，直接用原卷的樣子呈現；一、二年級填注音、填國字的題目，請在答案格裡打字。「模擬卷」是照考古題的命題架構自編的題目，不是官方試題。</p><p class="tipnote">給老師和大人的小提醒：一、二年級的「填注音」題，請小朋友用注音鍵盤按出注音和聲調後就直接送出，不用選字；「填國字」題請讓小朋友用手寫輸入，一筆一筆把字寫出來，這樣才能練到這個字怎麼寫。</p>
     <p>作答紀錄只存在自己裝置的瀏覽器裡。</p>
   </footer>
   <div class="credit">
@@ -569,6 +570,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-exnext],[d
 new MutationObserver(()=>mountViz()).observe(document.documentElement,{childList:true,subtree:true});
 const imgTag=(src,alt)=>`<img class="fig" src="${esc(src)}" alt="${esc(alt||'題目的圖')}" decoding="async">`;
 const BL='（　）';
+const fillTip=q=>q.grade>2||q.type!=='fill'?'':(/^[\u3105-\u3129]/.test(q.blanks[0])?'<p class="filltip">💡 用注音鍵盤按出注音和聲調，就直接送出，不用選字。</p>':'<p class="filltip">💡 請用手寫輸入，一筆一筆把國字寫出來，練習這個字怎麼寫。</p>');
 const qimgTag=q=>`<img class="qimg" src="${esc(q.img)}" width="${q.iw}" height="${q.ih}" style="max-width:min(100%,${Math.round(q.iw/1.55)}px)" alt="${esc(plain(q.stem)+' '+(q.options||[]).map((t,j)=>'('+(j+1)+')'+plain(t)).join(' '))}" decoding="async">`;
 /* 題組文章：同一篇文章連續出現時，只在第一題前面放一次（作答時一次一題，每題都放） */
 function psgHTML(q,prev,always){
@@ -878,7 +880,7 @@ function cardHTML(q,k,one){
   if((q.type==='fill'||q.type==='calc')){
     const sym=isSym(q)?`<div class="symbtns"><span>點一下填入：</span>${['＜','＝','＞'].map(s=>`<button type="button" class="btn" data-sym="${s}" aria-label="填入 ${s}">${s}</button>`).join('')}</div>`:'';
     if(q.type==='calc')L+=`<p class="hintline">✏️ 把算式寫在${one?'計算紙':'紙'}上，這裡填答案</p>`;
-    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>${sym}`;
+    if(fm==='below')R+=`<div class="fillrow">${q.blanks.map((b,i)=>`<label>${q.blanks.length>1?`第 ${i+1} 格`:'答案'} ${inputTag(q,i)}</label>`).join('')}</div>${sym}${fillTip(q)}`;
     else L+=sym;
   }
   if(q.type==='paper')R+=`<p class="paperbox">✏️ 這題要在紙上作答，不計分。交卷後可以看答案。</p>`;
