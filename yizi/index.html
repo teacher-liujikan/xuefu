@@ -20,6 +20,7 @@
 .setup.compact .go{font-size:clamp(1.1rem,3.6vh,2rem);margin-top:0}
 .setup.compact .title-note{font-size:clamp(.75rem,1.9vh,1rem)}
 .modepick .opt small{font-size:.62em;font-weight:700;opacity:.8}
+.tpick{appearance:auto;padding:8px 10px;font-size:.95rem;cursor:pointer}
 </style>
 <title>一字千金同樂版</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -416,7 +417,9 @@ body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:0;o
       <div class="clock" id="clock">2:00</div>
       <button class="tool" id="tStart">開始</button>
       <button class="tool" id="tReset">重來</button>
+      <button class="tool" id="tMinus30">−30 秒</button>
       <button class="tool" id="tPlus30">+30 秒</button>
+      <select class="tool tpick" id="tPick" aria-label="設定這一關的作答時間"><option value="">⏱ 設定時間</option><option value="30">30 秒</option><option value="60">1 分鐘</option><option value="90">1 分半</option><option value="120">2 分鐘</option><option value="180">3 分鐘</option><option value="240">4 分鐘</option><option value="300">5 分鐘</option></select>
     </div>
   </div>
 
@@ -577,7 +580,8 @@ const escH=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;
 const HAN=/\p{Script=Han}/u;
 let room=store.get('room',null), hws=null, hRetry=0, roomErr=false, answers={}, online=[], wall=false, lastSig='';
 let inv=store.get('inv',{}), applied=store.get('applied',{});
-const tSec=s=>room?LONG[s.t]:s.time;
+let TP=store.get('tpref',{});
+const tSec=s=>TP[s.t]||(room?LONG[s.t]:s.time);
 const rnd=(n,abc)=>Array.from({length:n},()=>abc[Math.random()*abc.length|0]).join('');
 function pubState(){
   const base={n:nTeams,scores:scores.slice(0,nTeams),book:pick.g?bookName():'',q:null,round:null,mode:room&&room.mode==='wb'?'wb':'type'};
@@ -639,8 +643,9 @@ function clean(d,s){
   const str=x=>typeof x==='string'?x.slice(0,8):'';
   if(!d||typeof d!=='object') return null;
   if(Array.isArray(d.s)) return {wb:d.s.slice(0,200).filter(a=>Array.isArray(a)).map(a=>a.slice(0,4000).map(v=>Math.max(0,Math.min(1000,v|0))))};
-  if(s.t==='char') return {list:(Array.isArray(d.list)?d.list:[]).slice(0,120).map(str).filter(c=>[...c].length===1&&HAN.test(c))};
-  if(s.t==='word') return {list:(Array.isArray(d.list)?d.list:[]).slice(0,80).map(str).filter(w=>[...w].length>=2)};
+  const pend=typeof d.pend==='string'?d.pend.slice(0,80):'';
+  if(s.t==='char') return {list:[...(Array.isArray(d.list)?d.list:[]).slice(0,120).map(str),...[...pend]].filter(c=>[...c].length===1&&HAN.test(c))};
+  if(s.t==='word') return {list:[...(Array.isArray(d.list)?d.list:[]).slice(0,80).map(str),...pend.split(/[^\p{Script=Han}]+/u).map(w=>[...w].slice(0,8).join(''))].filter(w=>[...w].length>=2)};
   if(s.t==='cross') return {c:[0,1,2,3].map(i=>str((d.c||[])[i]).slice(0,2))};
   if(s.t==='fix'){const p={};for(const i of [0,1,2,3]) if(d.pick&&typeof d.pick[i]==='string') p[i]=[...d.pick[i]].slice(0,1).join('');return {pick:p}}
   return null;
@@ -710,6 +715,7 @@ function studentApp(){
   const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
   setInterval(()=>{if(st&&st.q&&st.q.phase==='open'&&localLeft>0){localLeft--;const c=root.querySelector('.s-clock');if(c){c.textContent=fmt(localLeft);c.classList.toggle('low',localLeft<=10)}}},1000);
   function draw(force){
+    const fIn=document.activeElement&&document.activeElement.id==='sIn';
     const q=st&&st.q, n=st?st.n:0; if(team>n&&n) team=0;
     const ns=JSON.stringify([team,n,q&&[q.id,q.phase,!!q.fix],st&&st.round,st&&st.scores,!!ws,dead,st&&st.mode]);
     if(!force&&ns===sig){return} sig=ns;
@@ -732,7 +738,7 @@ function studentApp(){
           ${q.fix?`<div class="s-count">正確：${escH(q.fix.full)}</div>`:''}`;
       } else if(q.t==='char'||q.t==='word'){
         main=`<div class="s-q">${q.t==='char'?`寫出有<span class="key">${escH(q.g)}</span>這個部件的字`:`寫出有<span class="key">${escH(q.g)}</span>的語詞`}</div>
-          <form class="s-form" id="sForm"><input id="sIn" ${dis} autocomplete="off" autocapitalize="off" placeholder="${q.t==='char'?'一次可以寫好幾個字':'一次寫一個語詞'}"><button ${dis}>加入</button></form>
+          <form class="s-form" id="sForm"><input id="sIn" ${dis} value="${escH(d.pend||'')}" autocomplete="off" autocapitalize="off" placeholder="${q.t==='char'?'可以一次打好幾個字，再按「加入」':'一次打一個語詞，再按「加入」'}"><button ${dis}>加入</button></form>
           <div class="s-count" id="sCount"></div><div class="s-list ${open?'':'lock'}" id="sList"></div>`;
       } else if(q.t==='fix'){
         main=`<div class="s-q">點出錯字，在下面寫上正確的字</div><div class="s-fix">${[...q.shown].map((c,i)=>`<div class="col"><button class="c ${d.pick[i]!==undefined?'sel':''}" data-i="${i}" ${dis}>${escH(c)}</button>${d.pick[i]!==undefined?`<input data-fi="${i}" value="${escH(d.pick[i])}" ${dis} autocomplete="off">`:''}${q.fix&&q.fix.f[i]?`<span class="right">${escH(q.fix.f[i])}</span>`:''}</div>`).join('')}</div>${q.fix?`<div class="s-count">正確：${escH(q.fix.full)}</div>`:''}`;
@@ -744,7 +750,7 @@ function studentApp(){
       if(note) main=`<div class="s-msg">${note}</div>`+main;
     }
     root.innerHTML=top+`<div class="s-main">${main}</div><div class="credit">© 老師媽咪／范范老師 製作</div>`;
-    if(q&&wbOn()) setupPad(q); else if(q&&(q.t==='char'||q.t==='word')) drawList(q);
+    if(q&&wbOn()) setupPad(q); else if(q&&(q.t==='char'||q.t==='word')){drawList(q);const i=$('sIn');if(i&&fIn&&!i.disabled){i.focus();const L=i.value.length;try{i.setSelectionRange(L,L)}catch(_){}}}
   }
   let padMode='pen',penSeen=false;const padHist={};
   function padDraw(c,d){const x=c.getContext('2d');x.clearRect(0,0,1000,560);x.lineCap='round';x.lineJoin='round';x.strokeStyle='#262340';x.lineWidth=9;
@@ -786,8 +792,10 @@ function studentApp(){
   root.addEventListener('submit',e=>{e.preventDefault(); const q=st&&st.q; if(!q||q.phase!=='open')return; const d=draft(q), inp=$('sIn'); const v=inp.value;
     if(q.t==='char'){[...v].filter(c=>HAN.test(c)).forEach(c=>{if(!d.list.includes(c)&&d.list.length<120)d.list.push(c)})}
     else{v.split(/[^\p{Script=Han}]+/u).filter(w=>[...w].length>=2).forEach(w=>{w=[...w].slice(0,8).join('');if(!d.list.includes(w)&&d.list.length<80)d.list.push(w)})}
-    inp.value='';inp.focus();drawList(q);send(q)});
-  const onType=e=>{const t=e.target, q=st&&st.q; if(!q||e.isComposing)return; const d=draft(q);
+    inp.value='';d.pend='';inp.focus();drawList(q);send(q)});
+  const onType=e=>{const t=e.target, q=st&&st.q; if(!q)return; const d=draft(q);
+    if(t.id==='sIn'){d.pend=t.value.slice(0,80);if(!e.isComposing)send(q);return}
+    if(e.isComposing)return;
     if(t.dataset.fi!==undefined){const c=lastHan(t.value);t.value=c;d.pick[t.dataset.fi]=c;send(q)}
     else if(t.dataset.ci!==undefined){const c=lastHan(t.value);t.value=c;d.c[+t.dataset.ci]=c;send(q)}};
   root.addEventListener('input',onType); root.addEventListener('compositionend',e=>onType({target:e.target,isComposing:false}));
@@ -872,7 +880,7 @@ function render(noPush){
        <div class="title-note">${bookName()}・四個關卡・小組競賽</div>`;
   } else if(s.t==='round'){
     const R=ROUNDS[s.r];
-    h=`${star(R.n)}<div class="round-name">第${'一二三四'[s.r]}關 ${R.name}</div><div class="round-rule">${R.rule.replace("{T}",tText(room?LONG[R.k]:R.s))}</div>`;
+    h=`${star(R.n)}<div class="round-name">第${'一二三四'[s.r]}關 ${R.name}</div><div class="round-rule">${R.rule.replace("{T}",tText(TP[R.k]||(room?LONG[R.k]:R.s)))}</div>`;
   } else if(s.t==='char'){
     h=`<div class="prompt">請寫出有<span class="key">${s.g}</span>這個部件的字</div>
        <div class="rule">小組合作，計時<b>${tText(tSec(s))}</b><br>字數最多的組別獲勝。</div>`;
@@ -961,6 +969,9 @@ function toggleTimer(){
   musUpdate();
   pushState();
 }
+$('tMinus30').onclick=()=>{left=Math.max(10,left-30);if(!tick)total=Math.max(left,Math.min(total,left));doneFlag=false;drawClock();pushState()};
+$('tPick').onchange=e=>{const v=+e.target.value;e.target.value='';if(!v||mode!=='game')return;const s=S[idx];if(!s.time)return;TP[s.t]=v;store.set('tpref',TP);
+  const run=!!tick;if(run){left=v;total=v;doneFlag=false;drawClock();pushState()}else setTimer(v);render(true)};
 $('tPlus30').onclick=()=>{left+=30;total=Math.max(total,left);doneFlag=false;drawClock();pushState()};
 $('tStart').onclick=toggleTimer;
 $('tReset').onclick=()=>setTimer(total);
