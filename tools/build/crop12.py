@@ -27,8 +27,22 @@ def run(g,y,psg=None):
         if not tab and nxt and bot==min(nxt): bot-=6
         if fillrow: bot=yy+27
         a=0 if col==0 else W/2+10; b=W/2-8 if col==0 else W-6
+        if not tab and not fillrow and not nxt:
+            while bot<H-22:
+                st=p.get_pixmap(matrix=pymupdf.Matrix(1,1),clip=pymupdf.Rect(a,bot-2,b,bot+1),alpha=False)
+                if min(st.samples)>200: break
+                bot+=3
         pm=p.get_pixmap(matrix=pymupdf.Matrix(SC,SC),clip=pymupdf.Rect(a,top,b,bot),alpha=False)
         im=Image.frombytes('RGB',(pm.width,pm.height),pm.samples)
+        if not tab:
+            import numpy as np
+            from scipy import ndimage
+            arr=np.array(im); ink=arr.min(axis=2)<170; lab,_=ndimage.label(ink,structure=np.ones((3,3)))
+            for i in set(lab[:2].ravel())|set(lab[-2:].ravel()):
+                if not i: continue
+                ys,xs=np.where(lab==i)
+                if ys.max()-ys.min()<34: arr[ndimage.binary_dilation(lab==i,iterations=2)]=255
+            im=Image.fromarray(arr)
         from PIL import ImageDraw
         ImageDraw.Draw(im).rectangle([(x-1-a)*SC,(yy-1-top)*SC,(xe+1-a)*SC,(ye+1-top)*SC],fill=(255,255,255))
         im=trim(im)
