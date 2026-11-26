@@ -224,6 +224,19 @@ input.blank:disabled{opacity:1;-webkit-text-fill-color:currentColor}
 .wlist li{display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline;padding:6px 2px;border-bottom:1px dashed var(--line)}
 .wlist .wsrc{flex:none;font-family:var(--f-num);font-weight:700;color:var(--main);font-size:15px;min-width:10.5em}
 .wlist .wstem{flex:1 1 12em;min-width:0;overflow-wrap:anywhere}
+.xfline{margin:8px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:15px}
+.xflab{color:var(--muted);font-size:14px}
+.xtag{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border:1.5px solid var(--main);border-radius:999px;background:var(--main-soft);color:var(--ink);font-size:14px;line-height:1.6}
+.xtag i{font-style:normal;font-family:var(--f-num);font-weight:700;color:var(--main);font-size:13px}
+.xtag b{font-weight:700;color:var(--red);font-size:13px;margin-left:2px}
+.xtag.big{font-size:15px;padding:4px 12px}
+.wlist .wxf{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:4px 6px}
+.wsum{margin:0 0 16px;padding:10px 14px;border:1.5px dashed var(--main);border-radius:12px;background:var(--paper)}
+.wsum h3{margin:0 0 8px;font-size:17px;color:var(--main)}
+.wsumlist{display:flex;flex-wrap:wrap;gap:6px 8px}
+.wsumact{margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.wsumact .muted{font-size:14px;flex:1 1 16em}
+.pkflash{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:var(--main-soft);border:1.5px solid var(--main);font-size:15px;line-height:1.6}
 .wacts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
 .wacts .btn{min-height:48px}
 .wback{margin:16px 0 0}
@@ -463,6 +476,20 @@ const natCmp=(a,b)=>{const x=a.split(/(\d+)/),y=b.split(/(\d+)/);for(let i=0;i<M
 let QS=[],BY={},UNITS={},XF={},DUP={};
 const normCode=c=>DUP[c]||c;
 const codeGrade=c=>+(c.split('-')[1]||0);
+/* 每題對應的學扶細目（錯題檢討用） */
+const xfOf=q=>(q.xf||[]).filter(c=>XF[c]);
+const xfTag=c=>`<span class="xtag"><i>${esc(c)}</i>${esc(XF[c].label)}</span>`;
+const xfLine=q=>{const cs=xfOf(q);return cs.length?`<p class="xfline"><span class="xflab">學扶細目</span>${cs.map(xfTag).join('')}</p>`:''};
+/* 把錯題的細目帶回首頁「老師挑題」並勾好 */
+function pickFromWrong(ids){
+  const qs=ids.map(id=>BY[id]).filter(Boolean);if(!qs.length)return;
+  const cs=[...new Set(qs.flatMap(xfOf))];if(!cs.length)return;
+  const g=Math.max(...qs.map(q=>q.grade));
+  PK.mode='code';PK.codes=cs;PK.units=[];PK.years=null;PK.limit=0;PK.prev=cs.some(c=>codeGrade(c)<g);
+  savePick();GRADE=g;pref.grade=g;savePref();PKFLASH=true;
+  go('#g='+g);
+}
+let PKFLASH=false;
 const isPaper=q=>q.type==='paper'||!!q.paperOnly;           // 只能在紙上作答
 const gradable=q=>!isPaper(q);
 const qOrder=(a,b)=>a.grade-b.grade||yv(b.year)-yv(a.year)||a.no-b.no;
@@ -666,6 +693,7 @@ function renderHome(){
   <section class="sec" aria-labelledby="hYear"><div class="sec-h"><h2 id="hYear">${paper?'依年度印整卷':'依年度練習'}</h2><small>${CN[GRADE]}年級・${paper?'整份考古題下載 Word，或列印／存成 PDF':'點一張卡片，整卷在線上作答'}</small></div><div class="years${paper?' paper':''}">${cards}</div></section>
   <section class="sec" aria-labelledby="hPick"><div class="sec-h"><h2 id="hPick">老師挑題</h2><small>${paper?'依課本單元或學扶細目挑題，做成紙本練習卷':'依課本單元或學扶細目挑題，產生練習給學生掃 QR code'}</small></div><div class="picker" id="pickerBox"></div></section>`;
   renderPicker();
+  if(PKFLASH){PKFLASH=false;const bx=$('#pickerBox');bx.insertAdjacentHTML('afterbegin',`<p class="pkflash" role="status">✅ 已經幫您勾好學生錯的 ${PK.codes.length} 個細目。不想讓學生再練的，點一下取消；選好後按最下面的按鈕出題。</p>`);setTimeout(()=>{const h=$('#hPick');if(h)h.scrollIntoView({block:'start'})},60)}
   updQR(BASE()+'#g='+GRADE,`拿平板掃這裡，練習${CN[GRADE]}年級考古題`);
   qrShow(!paper);
 }
@@ -686,12 +714,16 @@ function renderWrongPage(ids){
   WS={ids,title:(one?`${CN[qs[0].grade]}年級 ${yl(qs[0].year)} `:'')+'錯題練習'};
   $('#main').innerHTML=`<section class="wpage" aria-labelledby="hWrong"><h2 id="hWrong">錯題整理（${qs.length} 題）</h2>
   <p class="muted" style="margin:0">這是學生這次做錯的題目。可以印成紙本，或在這台裝置線上再練一次。</p>
-  <ol class="wlist">${qs.map(q=>`<li><span class="wsrc">${srcOf(q,true)}</span><span class="wstem">${esc(stemPeek(q,20))}</span></li>`).join('')}</ol>
+  <ol class="wlist">${qs.map(q=>`<li><span class="wsrc">${srcOf(q,true)}</span><span class="wstem">${esc(stemPeek(q,20))}</span><span class="wxf">${xfOf(q).map(xfTag).join('')}</span></li>`).join('')}</ol>
+  ${(()=>{const cnt={};qs.forEach(q=>xfOf(q).forEach(c=>{cnt[c]=(cnt[c]||0)+1}));const cs=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||natCmp(a,b));
+    return cs.length?`<div class="wsum"><h3>這次錯的學扶細目（${cs.length} 項）</h3><div class="wsumlist">${cs.map(c=>`<span class="xtag big"><i>${esc(c)}</i>${esc(XF[c].label)}<b>錯 ${cnt[c]} 題</b></span>`).join('')}</div>
+    <p class="wsumact"><button type="button" class="btn primary big" data-wpick>🧩 用這些細目挑題給學生練習</button><span class="muted">會回到首頁的「老師挑題」，這些細目已經勾好，不想練的再取消就可以。</span></p></div>`:''})()}
   <div class="wacts" data-exctx="wsheet"><button type="button" class="btn primary big" data-wgo>💻 線上再練一次</button><button type="button" class="btn big" data-export="word">📝 下載 Word</button><button type="button" class="btn big" data-export="pdf">🖨️ 列印／存成 PDF</button>${ansCheck(qs.some(hasEx))}<span class="exmsg" aria-live="polite"></span></div>
   <p class="wback"><a class="btn" href="#g=${GRADE}">← 回首頁</a></p></section>`;
   updQR(BASE()+'#w='+ids.join(','),'老師掃這裡，拿到這份錯題');
   qrShow(false);
 }
+document.addEventListener('click',e=>{if(e.target.closest('[data-wpick]')&&WS)pickFromWrong(WS.ids)});
 document.addEventListener('click',e=>{
   if(!e.target.closest('[data-wgo]')||!WS)return;
   LS.del(NS+'set:'+hashStr(WS.ids.join(',')));
@@ -1027,7 +1059,7 @@ function resultHTML(top){
   const retry=wrong?`<button type="button" class="btn primary" data-act="retry">錯題再做一次（${wrong} 題）</button>`:'';
   return `<div class="result" role="status"><span class="big">答對</span><b>${r}</b><span class="big">／${g.length} 題</span>${wrong===0?'<span>全部答對，太厲害了！</span>':''}
   <span class="acts">${top?'':retry}<span class="rz"><button type="button" class="btn" data-act="reset">重新作答</button></span></span>
-  ${top&&wrong?`<div class="wops" data-exctx="wrong" role="group" aria-label="錯題"><span class="wlab">錯題</span>${retry}<button type="button" class="btn" data-export="pdf">🖨️ 錯題 PDF</button><button type="button" class="btn" data-export="word">📝 錯題 Word</button>${ansCheck(wrongIds().some(id=>hasEx(BY[id])))}<button type="button" class="btn" data-act="wrongqr"${window.QRCode?'':' hidden'}>📱 錯題 QR code</button><span class="exmsg" aria-live="polite"></span></div>`:''}</div>`;
+  ${top&&wrong?`<div class="wops" data-exctx="wrong" role="group" aria-label="錯題"><span class="wlab">錯題</span>${retry}<button type="button" class="btn" data-export="pdf">🖨️ 錯題 PDF</button><button type="button" class="btn" data-export="word">📝 錯題 Word</button>${ansCheck(wrongIds().some(id=>hasEx(BY[id])))}<button type="button" class="btn" data-act="wrongqr"${window.QRCode?'':' hidden'}>📱 錯題 QR code</button><button type="button" class="btn" data-act="wrongpick">🧩 老師：用錯題細目挑題</button><span class="exmsg" aria-live="polite"></span></div>`:''}</div>`;
 }
 function showMarks(){
   SET.qs.forEach((q,k)=>{
@@ -1040,10 +1072,10 @@ function showMarks(){
     if(q.type==='choice'){
       card.querySelectorAll('.opt').forEach(b=>{const c=+b.dataset.c;b.classList.toggle('ansopt',c===q.answer);b.classList.toggle('minebad',c===+v&&c!==q.answer);
         if(c===+v&&!b.querySelector('.mytag'))b.insertAdjacentHTML('beforeend','<em class="mytag">我選的</em>')});
-      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}<b>${ok?'':CIRC[q.answer-1]}</b>${v==null?' <span class="nc">（沒有作答）</span>':''}</p>${exHTML(q,!ok)}`;
+      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}<b>${ok?'':CIRC[q.answer-1]}</b>${v==null?' <span class="nc">（沒有作答）</span>':''}</p>${ok?'':xfLine(q)}${exHTML(q,!ok)}`;
     }else{
       card.querySelectorAll('input.blank').forEach(inp=>{const i=+inp.dataset.b;inp.classList.add(blankOk((v||[])[i],q.blanks[i])?'ok':'no')});
-      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}${ok?'':q.blanks.map(b=>`<b>${fracify(esc(showBlank(b)))}</b>`).join('、')}</p>${exHTML(q,!ok)}`;
+      box.innerHTML=`<p class="ansline">${ok?'答對了！':'正確答案：'}${ok?'':q.blanks.map(b=>`<b>${fracify(esc(showBlank(b)))}</b>`).join('、')}</p>${ok?'':xfLine(q)}${exHTML(q,!ok)}`;
     }
   });
   $('#resultTop').innerHTML=resultHTML(true);$('#finish').innerHTML=resultHTML(false);
@@ -1077,6 +1109,7 @@ document.addEventListener('click',e=>{
   if(t.id==='submitNo'){const first=SET.qs.findIndex(q=>gradable(q)&&!isAnswered(q,STATE.v[q.id]));if(first>=0)showQ(first);else renderNav();return}
   if(t.dataset.extoggle!=null){const box=t.parentElement.querySelector('.exbox');if(!box)return;const open=box.hidden;box.hidden=!open;t.setAttribute('aria-expanded',open);t.textContent=open?'▴ 收起詳解':'💡 看詳解';return}
   if(t.dataset.act==='wrongqr'){if(STATE.done)wrongQR(wrongIds());return}
+  if(t.dataset.act==='wrongpick'){if(STATE.done)pickFromWrong(wrongIds());return}
   if(t.dataset.act==='retry'){
     const ids=wrongIds();if(!ids.length)return;
     const title=(SET.title.replace(/・錯題再做一次$/,'')+'・錯題再做一次').slice(0,60);
